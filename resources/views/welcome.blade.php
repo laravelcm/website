@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://facebook.com/laravelcm">Facebbok</a>
+                    <a href="https://facebook.com/laravelcm">Facebook</a>
                     <a href="https://twitter.com/laravelcm">Twitter</a>
                     <a href="https://github.com/laravelcm">GitHub</a>
                     <a href="https://laravelcm.slack.com">Slack</a>
