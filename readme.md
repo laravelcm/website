@@ -9,7 +9,7 @@
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
 
-Made with ❤️ by [John's Corporation](https://www.johns-corporation.com)
+Design Made with ❤️ by [John's Corporation](https://www.johns-corporation.com)
 
 ![Laravel Cameroon website Screenshot](https://pix.watch/m8Qxua/Ta44mF.png)
 
