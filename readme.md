@@ -1,4 +1,4 @@
-<p align="center"><img src="https://laravelcm.com/img/logo-laravelcm.svg"></p>
+<p align="center"><img src="https://pix.watch/thumb/32jPDu/oHWN60.png</p>
 
 ## Laravel PHP Framework
 
@@ -7,9 +7,6 @@
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
-
-
-Design Made with ❤️ by [John's Corporation](https://www.johns-corporation.com)
 
 ![Laravel Cameroon website Screenshot](https://pix.watch/m8Qxua/Ta44mF.png)
 
