@@ -1,4 +1,4 @@
-<p align="center"><img src="https://pix.watch/thumb/32jPDu/oHWN60.png</p>
+<p align="center"><img src="https://pix.watch/thumb/32jPDu/oHWN60.png"></p>
 
 ## Laravel PHP Framework
 
