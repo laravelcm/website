@@ -21,12 +21,12 @@ let webpackBase = {
   module: {
     rules: [
       // Linters
-      {
+      /*{
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         exclude: [/node_modules/, path.resolve('./resources/assets/js/libs')],
         enforce: 'pre'
-      },
+      },*/
       // Loaders
       {
         test: /\.js$/,

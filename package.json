@@ -1,8 +1,6 @@
 {
     "name": "laravel-cameroon",
-    "version": "0.0.1",
-    "description": "",
-    "main": "",
+    "version": "1.0.0",
     "scripts": {
         "updates": "npm-check-updates -u",
         "build": "cross-env NODE_ENV=production rm -rf public/assets && webpack --config resources/assets/build/webpack.prod.js",
@@ -44,6 +42,7 @@
         "file-loader": "^1.1.5",
         "glob": "^7.1.2",
         "html-webpack-plugin": "^2.26.0",
+        "node-sass": "^4.9.0",
         "npm-check-updates": "^2.10.3",
         "postcss": "^6.0.13",
         "postcss-loader": "^2.0.8",
