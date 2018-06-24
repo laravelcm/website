@@ -1,9 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) 2018. MckenzieArts
- * @author    Mckenziearts <monneylobe@gmail.com>
- * @link      https://github.com/Mckenziearts/laravel-command
- */
 
 namespace App\Helpers;
 
