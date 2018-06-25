@@ -14,3 +14,13 @@ trim_trailing_whitespace = false
 [*.yml]
 indent_style = space
 indent_size = 2
+
+# 2 space indentation
+[*.{scss,js}]
+indent_style = space
+indent_size = 2
+
+# Matches the package.json
+[package.json]
+indent_style = space
+indent_size = 2
