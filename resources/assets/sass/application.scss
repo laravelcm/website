@@ -19,15 +19,19 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+// External libs
+@import "libs/owlcarousel/owl.carousel.css";
+@import "libs/owlcarousel/owl.theme.default.css";
+
 // functions
 @import "mixins";
 
 // Base Style
 @import "base";
 
-// External libs
-@import "libs/owlcarousel/owl.carousel.css";
-@import "libs/owlcarousel/owl.theme.default.css";
+// Global style
+@import "content";
 
 // Pages style
 @import "pages/home";
+@import "pages/login";
