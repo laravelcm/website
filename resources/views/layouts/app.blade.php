@@ -68,11 +68,12 @@
             </div>
             <div class="nav__container">
                 <ul class="main-menu">
-                    <li class="menu__item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="menu__item"><a href="{{ route('home') }}">Blog</a></li>
-                    <li class="menu__item"><a href="{{ route('home') }}">Forum</a></li>
-                    <li class="menu__item"><a href="{{ route('home') }}">Tutoriels</a></li>
-                    <li class="menu__item"><a href="{{ route('home') }}">Events</a></li>
+                    <li class="menu__item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('home') }}">{{ __('Forum') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('home') }}">{{ __('Tutoriels') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('home') }}">{{ __('Events') }}</a></li>
                     <li class="menu__item"><a href="{{ route('home') }}"><i class="icon ion-android-globe"></i> Fr</a></li>
                 </ul>
                 <ul class="nav-social">

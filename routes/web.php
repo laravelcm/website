@@ -15,8 +15,6 @@ Route::group(['prefix' => ''], function()
 {
     /** Authenticate Route */
     Auth::routes();
-
-    Route::get('/', ['uses' => 'SiteController@index'])->name('accueil');
     Route::get('/', 'SiteController@index')->name('home');
 
     /** Package GROUP ROUTE **/

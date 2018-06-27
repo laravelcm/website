@@ -13,11 +13,12 @@
         </form>
     </div>
     <ul class="slide-main-nav">
-        <li class="menu__item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="menu__item"><a href="{{ route('home') }}">Blog</a></li>
-        <li class="menu__item"><a href="{{ route('home') }}">Forum</a></li>
-        <li class="menu__item"><a href="{{ route('home') }}">Tutoriels</a></li>
-        <li class="menu__item"><a href="{{ route('home') }}">Events</a></li>
+        <li class="menu__item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
+        <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
+        <li class="menu__item"><a href="{{ route('home') }}">{{ __('Forum') }}</a></li>
+        <li class="menu__item"><a href="{{ route('home') }}">{{ __('Tutoriels') }}</a></li>
+        <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
+        <li class="menu__item"><a href="{{ route('home') }}">{{ __('Events') }}</a></li>
         <li class="menu__item"><a href="{{ route('home') }}"><i class="icon ion-android-globe"></i> French</a></li>
     </ul>
     <ul class="slide-nav-social">
