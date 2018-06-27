@@ -4,8 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-let carousel = document.querySelector('#partners_carousel')
+import 'bootstrap'
 
+let carousel = document.querySelector('#partners_carousel')
 if (carousel) {
   import('./libs/owl.carousel.min').then((owlCarousel) => {
     $("#partners_carousel").owlCarousel({
