@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "tcg/voyager": "^1.1"
+        "tcg/voyager": "^1.1",
+        "thujohn/twitter": "^2.2"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
