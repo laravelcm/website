@@ -11,10 +11,36 @@
 |
 */
 
-Route::get('/', 'SiteController@index')->name('home');
+Route::group(['prefix' => ''], function()
+{
+    /** Authenticate Route */
+    Auth::routes();
 
-Auth::routes();
+    Route::get('/', ['uses' => 'SiteController@index'])->name('accueil');
+    Route::get('/', 'SiteController@index')->name('home');
 
+    /** Package GROUP ROUTE **/
+    Route::group(['prefix' => 'packages'], function () {
+        Route::get('/', ['uses' => 'PackageController@index'])->name('packages');
+        Route::get('{slug}', ['uses' => 'PackageController@show'])->name('packages.show')
+            ->where('slug', '[a-z0-9\-]+');
+    });
+
+    /** BLOG GROUP ROUTE **/
+    Route::group(['prefix' => 'blog'], function() {
+
+        Route::get('/', ['as' => 'blog', 'uses' => 'BlogController@index']);
+        Route::get('{category}/{slug}', ['as' => 'blog.category', 'uses' => 'BlogController@category'])
+            ->where('category', '[a-z0-9\-]+')
+            ->where('slug', '[a-z0-9\-]+');
+        Route::get('{slug}', ['as' => 'blog.post', 'uses' => 'BlogController@post'])
+            ->where('slug', '[a-z0-9\-]+');
+
+    });
+
+});
+
+/** Voyager ROUTE **/
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
