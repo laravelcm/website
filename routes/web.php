@@ -30,10 +30,9 @@ Route::group(['prefix' => ''], function()
     Route::group(['prefix' => 'blog'], function() {
 
         Route::get('/', ['as' => 'blog', 'uses' => 'BlogController@index']);
-        Route::get('{category}/{slug}', ['as' => 'blog.category', 'uses' => 'BlogController@category'])
-            ->where('category', '[a-z0-9\-]+')
+        Route::get('category/{slug}', ['as' => 'blog.category', 'uses' => 'BlogController@category'])
             ->where('slug', '[a-z0-9\-]+');
-        Route::get('{slug}', ['as' => 'blog.post', 'uses' => 'BlogController@post'])
+        Route::get('/{slug}', ['as' => 'blog.post', 'uses' => 'BlogController@post'])
             ->where('slug', '[a-z0-9\-]+');
 
     });

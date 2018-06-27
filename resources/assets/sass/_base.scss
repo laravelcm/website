@@ -391,6 +391,10 @@ footer.footer {
     margin-top: 30px;
     margin-bottom: 50px;
 
+    & > .social__item:first-child {
+      margin-left: 0;
+    }
+
     .social__item {
       margin-left: 35px;
     }
@@ -428,7 +432,6 @@ footer.footer {
   }
 
   @include media-breakpoint-up(lg) {
-
   }
 }
 

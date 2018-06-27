@@ -21,18 +21,65 @@
 }
 
 .card {
-  padding: 45px 43px;
-  @include material-box-shadow;
 
-  .card__title {
-    color: $primary;
-    padding-bottom: 20px;
-    margin-bottom: 60px;
-    border-bottom: 1px solid $gray-900;
+  .card__thumb {
+    background-color: #c5c5c5;
+    max-height: 150px;
+    overflow: hidden;
+    display: block;
+
+    img {
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      width: 100%;
+      display: block;
+    }
+  }
+  .card__content {
+    padding: 20px 30px;
+    min-height: 120px;
+
+    .card__content--date {
+      font-size: 14px;
+    }
+    .card__content--title {
+      color: $primary;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+    .card__content--summary {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .card__links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 10px;
+
+      .author_link {
+        font-weight: 700;
+        span {
+          color: $gray-900;
+        }
+      }
+      .read_link {
+        text-align: right;
+        font-weight: bold;
+        a {
+          color: $gray-900;
+          &:hover {
+            color: darken($gray-900, 15%);
+          }
+        }
+      }
+    }
   }
 
-  .btn-link.first {
-    padding-left: 0;
+  @include media-breakpoint-up(lg) {
+    .card__thumb {
+      max-height: 180px;
+    }
   }
 }
 
