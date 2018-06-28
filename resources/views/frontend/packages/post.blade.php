@@ -1,6 +1,20 @@
 @extends('layouts.app')
 @section('title', 'Article de test')
 
+@section('meta')
+    <meta name="description" content="{{ str_limit('lorem', 150) }}">
+    <!-- Facebook Meta -->
+    <meta property="og:url" content="url">
+    <meta property="og:title" content="{{ 'Title' }} - Laravel Cameroon">
+    <meta property="og:image" content="{{ asset("storage/img.png") }}">
+    <meta property="og:description" content="{{ str_limit('lorem', 150) }}">
+    <!-- Twitter Meta -->
+    <meta name="twitter:url" content="{{ 'route' }}">
+    <meta name="twitter:title" content="{{ 'Title' }} - Laravel Cameroon">
+    <meta name="twitter:description" content="{{ str_limit('Lorem ipsum', 150) }}">
+    <meta name="twitter:image" content="{{ asset("storage/img.png") }}">
+@endsection
+
 @section('content')
 
     <div class="container">

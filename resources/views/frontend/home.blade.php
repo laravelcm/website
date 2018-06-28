@@ -2,23 +2,20 @@
 @section('title', __('The best Laravel PHP developers in Cameroon'))
 
 @section('meta')
-    <meta name="description" content="John's Corporation is a branding company that supports businesses,
-    developers, artisans and individuals in the management of their brand image.
-    We create brands, their identities and their physical and digital expressions.">
+    <meta name="description" content="Laravel Cameroon is the biggest Laravel community and meetup event in Cameroon
+     that brings together the best Laravel and PHP developers in Cameroon.">
     <!-- Facebook Meta -->
     <meta property="og:url" content="{{ route('home') }}">
-    <meta property="og:title" content="John's Corporation Official">
-    <meta property="og:image" content="{{ asset('img/website.jpg') }}">
-    <meta property="og:description" content="John's Corporation is a branding company that supports businesses,
-    developers, artisans and individuals in the management of their brand image. We create brands, their
-    identities and their physical and digital expressions.">
+    <meta property="og:title" content="The best Laravel PHP developers in Cameroon - Laravel Cameroon">
+    <meta property="og:image" content="{{ asset('img/laravel-cm-cover.png') }}">
+    <meta property="og:description" content="Laravel Cameroon is the biggest Laravel community and meetup event in Cameroon
+     that brings together the best Laravel and PHP developers in Cameroon.">
     <!-- Twitter Meta -->
     <meta name="twitter:url" content="{{ route('home') }}">
-    <meta name="twitter:title" content="John's Corporation Official">
-    <meta name="twitter:description" content="John's Corporation is a branding company that supports businesses,
-    developers, artisans and individuals in the management of their brand image. We create brands,
-    their identities and their physical and digital expressions.">
-    <meta name="twitter:image" content="{{ asset('img/website.jpg') }}">
+    <meta name="twitter:title" content="The best Laravel PHP developers in Cameroon - Laravel Cameroon">
+    <meta name="twitter:description" content="Laravel Cameroon is the biggest Laravel community and meetup event in Cameroon
+     that brings together the best Laravel and PHP developers in Cameroon.">
+    <meta name="twitter:image" content="{{ asset('img/laravel-cm-cover.png') }}">
 @endsection
 
 @section('content')
