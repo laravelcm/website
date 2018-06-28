@@ -142,17 +142,17 @@
                 </li>
             </ul>
             <ul class="footer-lara-links">
-                <li class="link__laravel"><a href="https://laravel.com">Laravel</a></li>
-                <li class="link__laravel-news"><a href="https://laravel-news.com">News</a></li>
-                <li class="link__laravel-jobs"><a href="https://laravel-news.com">Jobs</a></li>
+                <li class="link__laravel"><a href="https://laravel.com" target="_blank">Laravel</a></li>
+                <li class="link__laravel-news"><a href="https://laravel-news.com" target="_blank">News</a></li>
+                <li class="link__laravel-jobs"><a href="https://larajobs.com" target="_blank">Jobs</a></li>
                 <li class="link__account"><a href="javascript:;">Your account</a></li>
                 <li class="link__contact"><a href="javascript:;">Contact</a></li>
             </ul>
             <ul class="footer-links">
-                <li class="link__tutorials"><a href="javascript:;">Tutoriels</a></li>
-                <li class="link__blog"><a href="javascript:;">Blog</a></li>
+                <li class="link__tutorials"><a href="{{ route('tutorials') }}">Tutoriels</a></li>
+                <li class="link__blog"><a href="{{ route('blog') }}">Blog</a></li>
                 <li class="link__events"><a href="javascript:;">Events</a></li>
-                <li class="link__packages"><a href="javascript:;">Packages</a></li>
+                <li class="link__packages"><a href="{{ route('packages') }}">Packages</a></li>
             </ul>
             <p> &copy; Copyright {{ date('Y') }}</p>
             <hr class="footer_bar">
