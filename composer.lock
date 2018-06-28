@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99335cb8c4fc58cdc980dc669a26226a",
+    "content-hash": "3b075e62ea4b8ecca0bb6a7169ff2349",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -3979,6 +3979,65 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "mckenziearts/laravel-command",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mckenziearts/laravel-command.git",
+                "reference": "9b06e84c16492e0c97435969f726bb38fe19f631"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mckenziearts/laravel-command/zipball/9b06e84c16492e0c97435969f726bb38fe19f631",
+                "reference": "9b06e84c16492e0c97435969f726bb38fe19f631",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": ">=5.1",
+                "illuminate/support": ">=5.1",
+                "php": ">=5.5.0"
+            },
+            "type": "laravel-package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Mckenziearts\\LaravelCommand\\LaravelCommandServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mckenziearts\\LaravelCommand\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arthur Monney",
+                    "email": "monneylobe@gmail.com",
+                    "homepage": "http://www.twitter.com/mckenziearts",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple Laravel package to provide artisan new commands",
+            "homepage": "https://github.com/Mckenziearts/laravel-command",
+            "keywords": [
+                "artisan-cli",
+                "generators",
+                "helper",
+                "laravel",
+                "observer",
+                "repository"
+            ],
+            "time": "2018-05-29T07:09:50+00:00"
         },
         {
             "name": "mockery/mockery",

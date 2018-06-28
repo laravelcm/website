@@ -212,6 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Asset' => \App\Helpers\AssetHelper::class,
+        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
 
     ],
 
