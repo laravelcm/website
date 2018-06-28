@@ -3,13 +3,12 @@
 
 @section('content')
 
-    <header class="page-header tutorial_header">
+    <header class="page-header big_header">
         <div class="container">
             <div class="header__text">
                 <h1 class="page__title">{{ __('Packages') }}</h1>
                 <p>
-                    {{ __('Do you want to code a module without going from zero?
-                    This section offers packages made for Laravel framework') }}
+                    {{ __('Do you want to code a module without going from zero? This section offers packages made for Laravel framework') }}
                 </p>
             </div>
             <div class="header__link">
@@ -86,8 +85,8 @@
                         @endfor
                     </div>
                     <div class="paginations">
-                        <a href="javascript:;" class="btn btn-primary disabled pagination__left">{{ __('Newer Posts') }}</a>
-                        <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Posts') }}</a>
+                        <a href="javascript:;" class="btn btn-primary disabled pagination__left"><i class="icon ion-ios-arrow-back"></i> {{ __('Newer Posts') }}</a>
+                        <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Posts') }} <i class="icon ion-ios-arrow-forward"></i></a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4">

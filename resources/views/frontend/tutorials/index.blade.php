@@ -3,13 +3,12 @@
 
 @section('content')
 
-    <header class="page-header tutorial_header">
+    <header class="page-header big_header">
         <div class="container">
             <div class="header__text">
                 <h1 class="page__title">{{ __('Tutorials') }}</h1>
                 <p>
-                    {{ __('Interested in learning more about Laravel? This section features tutorials on everything
-                    from getting started with Laravel, to expert topics, and everything in between.') }}
+                    {{ __('Interested in learning more about Laravel? This section features tutorials on everything from getting started with Laravel, to expert topics, and everything in between.') }}
                 </p>
             </div>
             <div class="header__link">
@@ -103,8 +102,8 @@
                 @endfor
             </div>
             <div class="paginations">
-                <a href="javascript:;" class="btn btn-primary disabled pagination__left">{{ __('Newer Tutorials') }}</a>
-                <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Tutorials') }}</a>
+                <a href="javascript:;" class="btn btn-primary disabled pagination__left"><i class="icon ion-ios-arrow-back"></i> {{ __('Newer Tutorials') }}</a>
+                <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Tutorials') }} <i class="icon ion-ios-arrow-forward"></i></a>
             </div>
         </div>
     </section>

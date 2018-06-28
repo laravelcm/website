@@ -21,7 +21,7 @@
                         <i class="fa fa-eye"></i> 1250 {{ __('views') }}
                     </li>
                     <li class="category">
-                        Category : <a href="javascript:;">Laravel Tools</a>
+                        {{ __('Category') }} : <a href="javascript:;">Laravel Tools</a>
                     </li>
                 </ul>
             </header>

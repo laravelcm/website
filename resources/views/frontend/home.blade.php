@@ -1,5 +1,25 @@
 @extends('layouts.app')
-@section('title', 'Homepage')
+@section('title', __('The best Laravel PHP developers in Cameroon'))
+
+@section('meta')
+    <meta name="description" content="John's Corporation is a branding company that supports businesses,
+    developers, artisans and individuals in the management of their brand image.
+    We create brands, their identities and their physical and digital expressions.">
+    <!-- Facebook Meta -->
+    <meta property="og:url" content="{{ route('home') }}">
+    <meta property="og:title" content="John's Corporation Official">
+    <meta property="og:image" content="{{ asset('img/website.jpg') }}">
+    <meta property="og:description" content="John's Corporation is a branding company that supports businesses,
+    developers, artisans and individuals in the management of their brand image. We create brands, their
+    identities and their physical and digital expressions.">
+    <!-- Twitter Meta -->
+    <meta name="twitter:url" content="{{ route('home') }}">
+    <meta name="twitter:title" content="John's Corporation Official">
+    <meta name="twitter:description" content="John's Corporation is a branding company that supports businesses,
+    developers, artisans and individuals in the management of their brand image. We create brands,
+    their identities and their physical and digital expressions.">
+    <meta name="twitter:image" content="{{ asset('img/website.jpg') }}">
+@endsection
 
 @section('content')
 
@@ -48,23 +68,7 @@
                             <p class="last-post__summary">
                                 Lorem ipsum dolor sit amet, consec tetur adipiscing elit...
                             </p>
-                            <a href="javascript:;" class="last-post__author"><span>By</span> Fabrice Yopa</a>
-                        </article>
-                        <article class="last_post">
-                            <time class="last-post__date">June 12, 2018</time>
-                            <h6 class="last-post__title"><a href="javascript:;">PHP 7.3: A Look at JSON Error Handling</a></h6>
-                            <p class="last-post__summary">
-                                Lorem ipsum dolor sit amet, consec tetur adipiscing elit...
-                            </p>
-                            <a href="javascript:;" class="last-post__author"><span>By</span> Fabrice Yopa</a>
-                        </article>
-                        <article class="last_post">
-                            <time class="last-post__date">June 12, 2018</time>
-                            <h6 class="last-post__title"><a href="javascript:;">PHP 7.3: A Look at JSON Error Handling</a></h6>
-                            <p class="last-post__summary">
-                                Lorem ipsum dolor sit amet, consec tetur adipiscing elit...
-                            </p>
-                            <a href="javascript:;" class="last-post__author"><span>By</span> Fabrice Yopa</a>
+                            <a href="javascript:;" class="last-post__author"><span>{{ __('by') }}</span> Fabrice Yopa</a>
                         </article>
                         <article class="last_post">
                             <time class="last-post__date">June 12, 2018</time>

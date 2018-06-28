@@ -66,6 +66,13 @@ h2:before {
     margin-left: 10px;
     vertical-align: middle;
   }
+
+  &.pagination__left {
+    i {
+      margin-right: 10px;
+      margin-left: 0;
+    }
+  }
 }
 
 ul {

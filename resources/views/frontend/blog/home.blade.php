@@ -55,8 +55,8 @@
                         @endfor
                     </div>
                     <div class="paginations">
-                        <a href="javascript:;" class="btn btn-primary disabled pagination__left">{{ __('Newer Posts') }}</a>
-                        <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Posts') }}</a>
+                        <a href="javascript:;" class="btn btn-primary disabled pagination__left"><i class="icon ion-ios-arrow-back"></i> {{ __('Newer Posts') }}</a>
+                        <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Posts') }} <i class="icon ion-ios-arrow-forward"></i></a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4">
