@@ -1,4 +1,9 @@
 @extends(Config::get('chatter.master_file_extend'))
+@section('title')
+    @if((Request::is(LaravelLocalization::getCurrentLocale() .'/' . Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title)) || (Request::is(Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title)))
+        {{ $discussion->title }}
+    @endif
+@stop
 
 @section(Config::get('chatter.yields.head'))
     @if(Config::get('chatter.sidebar_in_discussion_view'))

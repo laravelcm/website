@@ -18,8 +18,6 @@
         <title>Forum -  Laravel Cameroon</title>
     @elseif(Request::is( Config::get('chatter.routes.home') . '/' . Config::get('chatter.routes.category') . '/*' ) && isset( $discussion ) )
         <title>{{ $discussion->category->name }} - Laravel Cameroon</title>
-    @elseif(Request::is( Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title))
-        <title>{{ $discussion->title }} - Laravel Cameroon</title>
     @else
         <title>@yield('title') - Laravel Cameroon</title>
     @endif
