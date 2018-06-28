@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => ''], function()
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     /** Authenticate Route */
     Auth::routes();
