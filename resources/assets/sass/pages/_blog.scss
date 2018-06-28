@@ -2,12 +2,7 @@
   margin-top: 75px;
   margin-bottom: 60px;
 
-  .post_grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 16px;
-    grid-row-gap: 20px;
-
+  .grid-2 {
     margin-bottom: 55px;
   }
 
@@ -68,10 +63,6 @@
   }
 
   @include media-breakpoint-up(lg) {
-    .post_grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     .adwords {
       display: block;
       @include invisible(visible);

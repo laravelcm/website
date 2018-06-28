@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-8">
-                    <div class="post_grid">
+                    <div class="grid-2">
                         @for($i = 1; $i <= 6; $i++)
                         <article class="card">
                             <div class="card__thumb">
