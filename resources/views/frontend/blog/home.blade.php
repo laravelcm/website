@@ -5,7 +5,9 @@
 
     <header class="page-header">
         <div class="container">
-            <h1 class="page__title">{{ __('Blog') }}</h1>
+            <div class="header__text">
+                <h1 class="page__title">{{ __('Blog') }}</h1>
+            </div>
             <div class="header__link">
                 <div class="dropdown">
                     <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +55,7 @@
                         @endfor
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4 adwords">
+                <div class="col-sm-12 col-md-4">
                     @include('frontend.partials.sidebar', ['name' => __('Total Posts'), 'value' => 20])
                 </div>
             </div>
