@@ -19,11 +19,21 @@
         <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutoriels') }}</a></li>
         <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
         <li class="menu__item"><a href="{{ route('home') }}">{{ __('Events') }}</a></li>
-        <li class="menu__item"><a href="{{ route('home') }}"><i class="icon ion-android-globe"></i> French</a></li>
+        <li class="menu__item">
+            @if(LaravelLocalization::getCurrentLocale() == 'en')
+                <a rel="alternate" hreflang="fr" href="{{ LaravelLocalization::getLocalizedURL('fr', null, [], true) }}">
+                    <i class="icon ion-android-globe"></i> Français
+                </a>
+            @else
+                <a rel="alternate" hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                    <i class="icon ion-android-globe"></i> English
+                </a>
+            @endif
+        </li>
     </ul>
     <ul class="slide-nav-social">
-        <li><a href="https://www.facebook.com/laravelcm"><i class="fa fa-facebook"></i> Facebook</a></li>
-        <li><a href="https://twitter.com/laravelcm"><i class="fa fa-twitter"></i> Twitter</a></li>
-        <li><a href="https://laravelcm.slack.com"><i class="fa fa-slack"></i> Slack</a></li>
+        <li><a href="https://www.facebook.com/laravelcm" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://twitter.com/laravelcm" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://laravelcm.slack.com" target="_blank"><i class="fa fa-slack"></i> Slack</a></li>
     </ul>
 </nav>
