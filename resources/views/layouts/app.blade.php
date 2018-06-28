@@ -153,6 +153,7 @@
                 <li class="link__blog"><a href="{{ route('blog') }}">Blog</a></li>
                 <li class="link__events"><a href="javascript:;">Events</a></li>
                 <li class="link__packages"><a href="{{ route('packages') }}">Packages</a></li>
+                <li class="link__github"><a href="https://github.com/laravelcm" target="_blank">Github</a></li>
             </ul>
             <p> &copy; Copyright {{ date('Y') }}</p>
             <hr class="footer_bar">
