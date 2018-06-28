@@ -16,7 +16,7 @@
         <li class="menu__item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
         <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
         <li class="menu__item"><a href="{{ route('home') }}">{{ __('Forum') }}</a></li>
-        <li class="menu__item"><a href="{{ route('home') }}">{{ __('Tutoriels') }}</a></li>
+        <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutoriels') }}</a></li>
         <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
         <li class="menu__item"><a href="{{ route('home') }}">{{ __('Events') }}</a></li>
         <li class="menu__item"><a href="{{ route('home') }}"><i class="icon ion-android-globe"></i> French</a></li>
