@@ -71,10 +71,21 @@
                     <li class="menu__item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
                     <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
                     <li class="menu__item"><a href="{{ route('home') }}">{{ __('Forum') }}</a></li>
-                    <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutoriels') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutorials') }}</a></li>
                     <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
                     <li class="menu__item"><a href="{{ route('home') }}">{{ __('Events') }}</a></li>
-                    <li class="menu__item"><a href="{{ route('home') }}"><i class="icon ion-android-globe"></i> Fr</a></li>
+                    <li class="menu__item">
+                        @if(LaravelLocalization::getCurrentLocale() == 'en')
+                            <a rel="alternate" hreflang="fr" href="{{ LaravelLocalization::getLocalizedURL('fr', null, [], true) }}">
+                                <i class="icon ion-android-globe"></i> Fr
+                            </a>
+                        @else
+                            <a rel="alternate" hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
+                                <i class="icon ion-android-globe"></i> En
+                            </a>
+                        @endif
+                    </li>
+
                 </ul>
                 <ul class="nav-social">
                     <li><a href="https://www.facebook.com/laravelcm"><i class="fa fa-facebook"></i></a></li>
@@ -145,14 +156,14 @@
                 <li class="link__laravel"><a href="https://laravel.com" target="_blank">Laravel</a></li>
                 <li class="link__laravel-news"><a href="https://laravel-news.com" target="_blank">News</a></li>
                 <li class="link__laravel-jobs"><a href="https://larajobs.com" target="_blank">Jobs</a></li>
-                <li class="link__account"><a href="javascript:;">Your account</a></li>
+                <li class="link__account"><a href="javascript:;">{{ __('Your account') }}</a></li>
                 <li class="link__contact"><a href="javascript:;">Contact</a></li>
             </ul>
             <ul class="footer-links">
-                <li class="link__tutorials"><a href="{{ route('tutorials') }}">Tutoriels</a></li>
-                <li class="link__blog"><a href="{{ route('blog') }}">Blog</a></li>
-                <li class="link__events"><a href="javascript:;">Events</a></li>
-                <li class="link__packages"><a href="{{ route('packages') }}">Packages</a></li>
+                <li class="link__tutorials"><a href="{{ route('tutorials') }}">{{ __('Tutorials') }}</a></li>
+                <li class="link__blog"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
+                <li class="link__events"><a href="javascript:;">{{ __('Events') }}</a></li>
+                <li class="link__packages"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
                 <li class="link__github"><a href="https://github.com/laravelcm" target="_blank">Github</a></li>
             </ul>
             <p> &copy; Copyright {{ date('Y') }}</p>
