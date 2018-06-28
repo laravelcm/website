@@ -14,7 +14,15 @@
     <meta name="langage" content="{{ str_replace('_', '-', app()->getLocale()) }}">
     <meta name="copyright" content="//laravelcm.com">
 
-    <title>@yield('title') - Laravel Cameroon</title>
+    @if(Request::is( Config::get('chatter.routes.home')) )
+        <title>Forum -  Laravel Cameroon</title>
+    @elseif(Request::is( Config::get('chatter.routes.home') . '/' . Config::get('chatter.routes.category') . '/*' ) && isset( $discussion ) )
+        <title>{{ $discussion->category->name }} - Laravel Cameroon</title>
+    @elseif(Request::is( Config::get('chatter.routes.home') . '/*' ) && isset($discussion->title))
+        <title>{{ $discussion->title }} - Laravel Cameroon</title>
+    @else
+        <title>@yield('title') - Laravel Cameroon</title>
+    @endif
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -27,6 +35,7 @@
     <meta name="twitter:creator" content="@laravelcm">
     @yield('meta')
     <!-- Styles -->
+    @yield('css')
     <link href="{{ Asset::path('application.css') }}" rel="stylesheet" type="text/css">
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
@@ -70,7 +79,7 @@
                 <ul class="main-menu">
                     <li class="menu__item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
                     <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
-                    <li class="menu__item"><a href="{{ route('home') }}">{{ __('Forum') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('chatter.home') }}">{{ __('Forum') }}</a></li>
                     <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutorials') }}</a></li>
                     <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
                     <li class="menu__item"><a href="{{ route('home') }}">{{ __('Events') }}</a></li>
@@ -173,6 +182,7 @@
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="{{ Asset::path('application.js') }}"></script>
+    @yield('js')
     @stack('scripts')
 </body>
 </html>
