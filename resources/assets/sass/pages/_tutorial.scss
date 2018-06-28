@@ -1,0 +1,37 @@
+.page-header.tutorial_header {
+  padding: 30px 0;
+
+  .header__link {
+    margin-top: 30px;
+  }
+}
+
+.popular-tutorials {
+  margin-top: 75px;
+  margin-bottom: 45px;
+}
+
+.tutorials {
+  margin-top: 45px;
+  margin-bottom: 60px;
+
+  .grid-3 {
+    margin-bottom: 50px;
+  }
+
+  .paginations {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .pagination__left {
+      float: left;
+    }
+
+    .pagination__right {
+      float: right;
+    }
+  }
+}
