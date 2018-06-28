@@ -5,8 +5,12 @@
 
     <header class="page-header">
         <div class="container">
-            <h1 class="page__title">{{ __('Login') }}</h1>
-            <a href="{{ route('register') }}" class="btn btn-white">{{ __('Register') }}</a>
+            <div class="header__text">
+                <h1 class="page__title">{{ __('Login') }}</h1>
+            </div>
+            <div class="header__link">
+                <a href="{{ route('register') }}" class="btn btn-white">{{ __('Register') }}</a>
+            </div>
         </div>
     </header>
 
