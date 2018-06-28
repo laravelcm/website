@@ -92,10 +92,12 @@
       color: $primary;
       margin-top: 8px;
       margin-bottom: 10px;
+      min-height: 85px;
     }
     .card__content--summary {
       font-size: 15px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      min-height: 70px;
     }
 
     .card__links {
@@ -255,6 +257,11 @@
   &.lcm-1 {
     margin: 1.85rem 0;
     padding: 1rem;
+  }
+
+  &.lcm-2 {
+    margin: 1.85rem 0;
+    padding: 2rem;
   }
 }
 

@@ -54,6 +54,10 @@
                         </article>
                         @endfor
                     </div>
+                    <div class="paginations">
+                        <a href="javascript:;" class="btn btn-primary disabled pagination__left">{{ __('Newer Posts') }}</a>
+                        <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Posts') }}</a>
+                    </div>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     @include('frontend.partials.sidebar', ['name' => __('Total Posts'), 'value' => 20])

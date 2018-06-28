@@ -22,7 +22,7 @@ Route::group(['prefix' => ''], function()
         Route::get('/', ['uses' => 'PackageController@index'])->name('packages');
         Route::get('category/{slug}', ['uses' => 'BlogController@category'])->name('packages.category')
             ->where('slug', '[a-z0-9\-]+');
-        Route::get('{slug}', ['uses' => 'PackageController@show'])->name('packages.show')
+        Route::get('{slug}', ['uses' => 'PackageController@post'])->name('packages.post')
             ->where('slug', '[a-z0-9\-]+');
     });
 

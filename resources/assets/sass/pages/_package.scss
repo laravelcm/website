@@ -1,0 +1,41 @@
+.packages {
+  margin-top: 75px;
+  margin-bottom: 45px;
+
+  .card {
+    .card__links {
+      .author_link {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .paginations {
+    margin-top: 30px;
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .pagination__left {
+      float: left;
+    }
+
+    .pagination__right {
+      float: right;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .card {
+      .card__thumb {
+        max-height: 250px;
+      }
+
+      .card__content--title {
+        min-height: 55px;
+      }
+    }
+  }
+}

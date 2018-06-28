@@ -5,6 +5,23 @@
   .grid-2 {
     margin-bottom: 55px;
   }
+
+  .paginations {
+    margin-top: 30px;
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .pagination__left {
+      float: left;
+    }
+
+    .pagination__right {
+      float: right;
+    }
+  }
 }
 
 .single-post {
