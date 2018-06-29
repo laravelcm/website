@@ -1,4 +1,4 @@
-#chatter{
+#chatter {
 
   margin-top: 50px;
   margin-bottom: 80px;
@@ -349,19 +349,19 @@
             margin-top: 5px;
 
             .chatter_cat {
-              background:#ccc;
-              border-radius:$border-radius;
-              font-weight:bold;
-              font-size:10px;
-              padding:3px 7px;
-              display:inline;
-              color:#fff;
+              background: #ccc;
+              border-radius: $border-radius;
+              font-weight: bold;
+              font-size: 10px;
+              padding: 3px 7px;
+              display: inline;
+              color: #fff;
               position:relative;
-              top:-2px;
+              top: -2px;
             }
           }
-          span.chatter_middle_details{
-            font-size:10px;
+          span.chatter_middle_details {
+            font-size: 12px;
             color:#9DADC4;
             transition:color 0.3s ease;
           }
@@ -414,7 +414,7 @@
         &:hover{
           background: $gray-400;
           text-decoration:none;
-          .chatter_middle{
+          .chatter_middle {
             h3 {
               color: #212121;
             }
@@ -525,7 +525,7 @@
         padding-bottom:0px;
         color:#aaa;
         transition:color 0.3s ease;
-        font-size:12px;
+        font-size: 15px;
       }
     }
   }
@@ -584,8 +584,6 @@
 
 
   }
-
-
 
   #chatter_category_id{
     height:50px;
@@ -860,6 +858,19 @@
 
   /********** END LOADER **********/
 
+  // Profil section
+  .card-profile {
+    margin-top: 50px;
+
+    .profil_content {
+      a {
+        color: $white;
+        &:hover {
+          color: darken($white, 15%);
+        }
+      }
+    }
+  }
 }
 
 /********** MORE COLOR PICKER STYLE OVERRIDES **********/

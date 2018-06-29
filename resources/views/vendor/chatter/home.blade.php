@@ -68,6 +68,30 @@
                         {!! $categoriesMenu !!}
                     </div>
                     <!-- END SIDEBAR -->
+                    @auth
+                        <!-- Profil SIDEBAR -->
+                        <div class="card text-white bg-primary card-profile">
+                            <div class="card-header"><i class="icon ion-person"></i> {{ __('Personnal Informations') }}</div>
+                            <div class="card-body">
+                                <ul class="profil_content">
+                                    <li class="profil_item"><a href="javascript:;">{{ __('Follow Discussions') }}</a></li>
+                                    <li class="profil_item"><a href="javascript:;">{{ __('My Discussions') }}</a></li>
+                                    <li class="profil_item"><a href="javascript:;">{{ __('My Messages') }}</a></li>
+                                    <li class="profil_item"><a href="{{ route('users.account') }}">{{ __('My account') }}</a></li>
+                                    <li class="profil_item">
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Profil SIDEBAR -->
+                    @endauth
                 </div>
                 <div class="col-md-9 right-column">
                     <div class="panel">
@@ -76,22 +100,22 @@
                                 <li>
                                     <a class="discussion_list" href="/{{ Config::get('chatter.routes.home') }}/{{ Config::get('chatter.routes.discussion') }}/{{ $discussion->category->slug }}/{{ $discussion->slug }}">
                                         <div class="chatter_avatar">
-                                        @if(Config::get('chatter.user.avatar_image_database_field'))
+                                            @if(Config::get('chatter.user.avatar_image_database_field'))
 
-                                            <?php $db_field = Config::get('chatter.user.avatar_image_database_field'); ?>
+                                                <?php $db_field = Config::get('chatter.user.avatar_image_database_field'); ?>
 
-                                            <!-- If the user db field contains http:// or https:// we don't need to use the relative path to the image assets -->
-                                                @if( (substr($discussion->user->{$db_field}, 0, 7) == 'http://') || (substr($discussion->user->{$db_field}, 0, 8) == 'https://') )
-                                                    <img src="{{ $discussion->user->{$db_field}  }}">
-                                                @else
-                                                    <img src="{{ Config::get('chatter.user.relative_url_to_image_assets') . $discussion->user->{$db_field}  }}">
-                                                @endif
+                                                <!-- If the user db field contains http:// or https:// we don't need to use the relative path to the image assets -->
+                                                    @if( (substr($discussion->user->{$db_field}, 0, 7) == 'http://') || (substr($discussion->user->{$db_field}, 0, 8) == 'https://') )
+                                                        <img src="{{ $discussion->user->{$db_field}  }}">
+                                                    @else
+                                                        <img src="{{ Config::get('chatter.user.relative_url_to_image_assets') . $discussion->user->{$db_field}  }}">
+                                                    @endif
 
                                             @else
 
                                                 <span class="chatter_avatar_circle" style="background-color:#<?= \DevDojo\Chatter\Helpers\ChatterHelper::stringToColorCode($discussion->user->{Config::get('chatter.user.database_field_with_user_name')}) ?>">
-                                            {{ strtoupper(substr($discussion->user->{Config::get('chatter.user.database_field_with_user_name')}, 0, 1)) }}
-                                        </span>
+                                                    {{ strtoupper(substr($discussion->user->{Config::get('chatter.user.database_field_with_user_name')}, 0, 1)) }}
+                                                </span>
 
                                             @endif
                                         </div>
@@ -128,7 +152,6 @@
         </div>
 
         <div id="new_discussion">
-
 
             <div class="chatter_loader dark" id="new_discussion_loader">
                 <div></div>
