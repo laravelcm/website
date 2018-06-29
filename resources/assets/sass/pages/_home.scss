@@ -55,6 +55,10 @@ section.posts-events {
   .lastest-post {
     @include make-col-ready();
     display: none;
+
+    .block_header {
+      margin-bottom: 0;
+    }
   }
 
   .next-event {
@@ -77,6 +81,7 @@ section.posts-events {
       .lastest-post__title {
         margin-bottom: 35px;
         color: $primary;
+        font-size: 2rem;
       }
 
       .last-posts {
@@ -89,6 +94,11 @@ section.posts-events {
           background-color: $white;
           padding: 15px 12px;
           margin-bottom: 20px;
+          transition: all 0.13s ease-in;
+
+          &:hover {
+            @include material-box-shadow;
+          }
 
           .last-post__date {
             font-size: 14px;
