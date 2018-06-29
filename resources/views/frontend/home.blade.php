@@ -57,7 +57,10 @@
         <div class="container">
             <div class="row">
                 <div class="lastest-post">
-                    <h2 class="lastest-post__title">{{ __('Last Posts') }}</h2>
+                    <header class="block_header">
+                        <h2 class="block__title lastest-post__title">{{ __('Last Posts') }}</h2>
+                        <a href="{{ route('blog') }}" class="block__link">{{ __('All posts') }}</a>
+                    </header>
                     <div class="last-posts">
                         <article class="last_post">
                             <time class="last-post__date">June 12, 2018</time>
@@ -92,7 +95,6 @@
                             <a href="javascript:;" class="last-post__author"><span>By</span> Fabrice Yopa</a>
                         </article>
                     </div>
-                    <a href="javascript:;" class="btn btn-primary">{{ __('All posts') }} <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
                 <div class="next-event">
                     <h2 class="next-event__title">{{ __('Next Event') }}</h2>
@@ -129,7 +131,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                         culpa qui officia deserunt mollit anim id est laborum.
                     </p>
-                    <a href="javascript:;" class="btn btn-primary">{{ __('Jump to Tutorials') }} <i class="icon ion-ios-arrow-forward"></i></a>
+                    <a href="{{ route('tutorials') }}" class="btn btn-primary">{{ __('Jump to Tutorials') }} <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
                 <div class="tutorial__thumb">
                     <img src="{{ asset('img/tutorial.svg') }}" alt="tutorial illustration">
@@ -151,7 +153,7 @@
                         fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                         culpa qui officia deserunt mollit anim id est laborum.
                     </p>
-                    <a href="javascript:;" class="btn btn-primary">{{ __('See all Packages') }} <i class="icon ion-ios-arrow-forward"></i></a>
+                    <a href="{{ route('packages') }}" class="btn btn-primary">{{ __('See all Packages') }} <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
             </div>
         </section>

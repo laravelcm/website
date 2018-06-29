@@ -20,6 +20,10 @@
     font-size: .8125rem;
     font-weight: 600;
     color: $gray-900;
+
+    &:hover {
+      color: $primary-200;
+    }
   }
 
   &:after {

@@ -15,6 +15,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     /** Authenticate Route */
     Auth::routes();
+    /** Profile Route */
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/account', 'UserController@account')->name('users.account');
+        Route::get('/update-password', 'UserController@updatePassword')->name('users.password');
+    });
+
     Route::get('/', 'SiteController@index')->name('home');
 
     /** Package GROUP ROUTE **/

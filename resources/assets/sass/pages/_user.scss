@@ -1,0 +1,39 @@
+section.account {
+  margin: 100px 0;
+
+  .forum_account, .account_setting {
+    padding: 30px 50px;
+    h2, h3 {
+      color: $primary;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid $gray-900;
+    }
+  }
+
+  .forum_account {
+    .account__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 16px;
+    }
+    img {
+      display: block;
+      margin-bottom: 15px;
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  .account_setting {
+
+  }
+
+  @include media-breakpoint-up(lg) {
+    .forum_account {
+      .account__grid {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+  }
+}
