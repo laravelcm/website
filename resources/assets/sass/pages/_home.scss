@@ -1,0 +1,332 @@
+section.hero {
+  position: relative;
+  display: flex;
+  height: 500px;
+  background-image: url(img/banner-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: $white;
+  text-align: center;
+  align-items: center;
+  text-transform: uppercase;
+  &:before {
+    @include overlay($primary, .7)
+  }
+
+  h1 {
+    position: relative;
+    z-index: 10;
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: 600px;
+  }
+}
+
+section.partners {
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  margin-bottom: 70px;
+
+  .partners__list {
+    .partner {
+      margin-right: 30px;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .partners__list {
+      .partner {
+        img {
+          width: 110px;
+          height: 55px;
+        }
+      }
+    }
+  }
+}
+
+section.posts-events {
+  margin-bottom: 90px;
+
+  .lastest-post {
+    @include make-col-ready();
+    display: none;
+  }
+
+  .next-event {
+    @include make-col-ready();
+    .next-event__title {
+      color: $primary;
+      margin-bottom: 35px;
+    }
+  }
+
+  .event {
+    @include event;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .lastest-post {
+      @include make-col(8);
+      display: block;
+
+      .lastest-post__title {
+        margin-bottom: 35px;
+        color: $primary;
+      }
+
+      .last-posts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 20px;
+
+        .last_post {
+          border: 1px solid $gray-300;
+          background-color: $white;
+          padding: 15px 12px;
+          margin-bottom: 20px;
+
+          .last-post__date {
+            font-size: 14px;
+          }
+
+          .last-post__title {
+            color: $primary;
+            margin-top: 10px;
+            margin-bottom: 7px;
+          }
+
+          .last-post__summary {
+            margin-bottom: 8px;
+            font-size: 15px;
+          }
+
+          .last-post__author {
+            span { color: $gray-900 !important; }
+            font-size: 14px;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .btn {
+        float: right;
+      }
+    }
+
+    .next-event {
+      @include make-col(4);
+    }
+  }
+}
+
+section.tutorial-intro {
+  margin: 50px 0;
+  .tutorial__thumb, .tutorial__content {
+    @include make-col-ready();
+  }
+
+  .tutorial__content {
+    margin-bottom: 40px;
+    .tutorial__title {
+      color: $primary;
+      margin-bottom: 35px;
+    }
+    .tutorial__description {
+      margin-bottom: 30px;
+    }
+  }
+  .tutorial__thumb {
+    margin-bottom: 25px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .tutorial__content {
+      @include make-col(6);
+      padding-top: 40px;
+    }
+
+    .tutorial__thumb {
+      @include make-col(6);
+    }
+  }
+}
+
+section.package-intro {
+  margin: 50px 0;
+  .package__thumb, .package__content {
+    @include make-col-ready();
+  }
+
+  .package__content {
+    margin-bottom: 40px;
+    .package__title {
+      color: $primary;
+      margin-bottom: 35px;
+    }
+    .package__description {
+      margin-bottom: 30px;
+    }
+  }
+  .package__thumb {
+    margin-bottom: 25px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .package__content {
+      @include make-col(6);
+      padding-top: 30px;
+    }
+
+    .package__thumb {
+      @include make-col(6);
+    }
+  }
+}
+
+section.slack {
+  position: relative;
+  display: flex;
+  height: 500px;
+  background-image: url(img/slack-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: $white;
+  text-align: center;
+  align-items: center;
+  &:before {
+    @include overlay(#6C6C6C, .7)
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+  }
+
+  .slack__content {
+    @include make-col-ready();
+    img {
+      height: 98px;
+      width: 98px;
+      margin-bottom: 70px;
+    }
+
+    h5 { margin-bottom: 20px; }
+    input { margin-bottom: 15px; }
+    button {
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: $white;
+      font-size: 14px;
+      &:hover {
+        color: darken($white, 20%);
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    height: 600px;
+    .slack__content {
+      @include make-col(6);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .slack__content {
+      @include make-col(6);
+    }
+  }
+}
+
+section.sponsors {
+  margin: 75px 0;
+  text-align: center;
+
+  .sponsors__title {
+    color: $primary;
+  }
+
+  .sponsors_list {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    .sponsor {
+      display: inline-block;
+      margin-right: 52px;
+      img {
+        vertical-align: middle;
+        height: 50px;
+        width: 125px;
+      }
+
+      .jc_sponsor {
+        img {
+          width: 250px;
+          height: 75px;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .sponsors_list {
+      .sponsor {
+        .jc_sponsor {
+          img {
+            width: 150px;
+            height: 75px;
+          }
+        }
+      }
+    }
+  }
+}
+
+section.events {
+  margin-bottom: 80px;
+
+  .event_header {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: baseline;
+
+    .event__title {
+      margin-bottom: 0;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: $primary;
+      order: 1;
+      font-size: 1.525rem;
+    }
+
+    .event__link {
+      order: 3;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: $gray-900;
+    }
+
+    &:after {
+      content: '';
+      order: 1;
+      flex-grow: 1;
+      height: 2px;
+      background-color: $gray-200;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .event {
+    @include event;
+  }
+}

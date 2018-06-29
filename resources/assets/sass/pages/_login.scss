@@ -1,0 +1,19 @@
+.login {
+  margin: 100px 0;
+
+  .card {
+    padding: 45px 43px;
+    @include material-box-shadow;
+
+    .card__title {
+      color: $primary;
+      padding-bottom: 20px;
+      margin-bottom: 60px;
+      border-bottom: 1px solid $gray-900;
+    }
+
+    .btn-link.first {
+      padding-left: 0;
+    }
+  }
+}
