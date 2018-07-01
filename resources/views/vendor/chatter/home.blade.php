@@ -96,7 +96,7 @@
                 <div class="col-md-9 right-column">
                     <div class="panel">
                         <ul class="discussions">
-                            @foreach($discussions as $discussion)
+                            @forelse($discussions as $discussion)
                                 <li>
                                     <a class="discussion_list" href="/{{ Config::get('chatter.routes.home') }}/{{ Config::get('chatter.routes.discussion') }}/{{ $discussion->category->slug }}/{{ $discussion->slug }}">
                                         <div class="chatter_avatar">
@@ -139,7 +139,13 @@
                                         <div class="chatter_clear"></div>
                                     </a>
                                 </li>
-                            @endforeach
+                            @empty
+                                <li>
+                                    <a href="javascript:;" class="discussion_list text-center">
+                                        <h4>{{ __("This category does not have a discussion yet") }}</h4>
+                                    </a>
+                                </li>
+                            @endforelse
                         </ul>
                     </div>
 
