@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
     /**
+     * @var PostRepository
+     */
+    private $postRepository;
+
+    /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param PostRepository $postRepository
      */
-    public function __construct()
+    public function __construct(PostRepository $postRepository)
     {
-
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -23,6 +29,10 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        $posts = $this->postRepository->last(6);
+        $event = [];
+        $events = [];
+
+        return view('frontend.home', compact('posts'));
     }
 }

@@ -62,38 +62,16 @@
                         <a href="{{ route('blog') }}" class="block__link">{{ __('All posts') }}</a>
                     </header>
                     <div class="last-posts">
-                        <article class="last_post">
-                            <time class="last-post__date">June 12, 2018</time>
-                            <h6 class="last-post__title"><a href="javascript:;">PHP 7.3: A Look at JSON Error Handling</a></h6>
-                            <p class="last-post__summary">
-                                Lorem ipsum dolor sit amet, consec tetur adipiscing elit...
-                            </p>
-                            <a href="javascript:;" class="last-post__author"><span>{{ __('by') }}</span> Fabrice Yopa</a>
-                        </article>
-                        <article class="last_post">
-                            <time class="last-post__date">June 12, 2018</time>
-                            <h6 class="last-post__title"><a href="javascript:;">PHP 7.3: A Look at JSON Error Handling</a></h6>
-                            <p class="last-post__summary">
-                                Lorem ipsum dolor sit amet, consec tetur adipiscing elit...
-                            </p>
-                            <a href="javascript:;" class="last-post__author"><span>By</span> Fabrice Yopa</a>
-                        </article>
-                        <article class="last_post">
-                            <time class="last-post__date">June 12, 2018</time>
-                            <h6 class="last-post__title"><a href="javascript:;">PHP 7.3: A Look at JSON Error Handling</a></h6>
-                            <p class="last-post__summary">
-                                Lorem ipsum dolor sit amet, consec tetur adipiscing elit...
-                            </p>
-                            <a href="javascript:;" class="last-post__author"><span>By</span> Fabrice Yopa</a>
-                        </article>
-                        <article class="last_post">
-                            <time class="last-post__date">June 12, 2018</time>
-                            <h6 class="last-post__title"><a href="javascript:;">PHP 7.3: A Look at JSON Error Handling</a></h6>
-                            <p class="last-post__summary">
-                                Lorem ipsum dolor sit amet, consec tetur adipiscing elit...
-                            </p>
-                            <a href="javascript:;" class="last-post__author"><span>By</span> Fabrice Yopa</a>
-                        </article>
+                        @foreach($posts as $post)
+                            <article class="last_post">
+                                <time class="last-post__date">{{ $post->created_at->format('M d, Y') }}</time>
+                                <h6 class="last-post__title"><a href="{{ route('blog.post', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h6>
+                                <p class="last-post__summary">
+                                    {{ str_limit($post->excerpt, 60) }}
+                                </p>
+                                <a href="javascript:;" class="last-post__author"><span>{{ __('by') }}</span> {{ $post->authorId->name }}</a>
+                            </article>
+                        @endforeach
                     </div>
                 </div>
                 <div class="next-event">
