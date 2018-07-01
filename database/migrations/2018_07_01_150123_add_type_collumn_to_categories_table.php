@@ -14,7 +14,7 @@ class AddTypeCollumnToCategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->enum('type', ['POST', 'TUTORIAL', 'PACKAGES'])->default('POST');
+            $table->string('type')->default('POST');
         });
     }
 

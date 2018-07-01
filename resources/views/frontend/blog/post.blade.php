@@ -29,7 +29,7 @@
                 <h1 class="post__title">{{ $post->title }}</h1>
                 <ul class="post__metadata">
                     <li class="author">
-                        {{ __('by') }} <a href="javascript:;"> {{ $post->authorId->name }}</a>
+                        {{ __('by') }} <a href="javascript:;">{{ $post->authorId->name }}</a>
                     </li>
                     <li class="views">
                         <i class="fa fa-eye"></i> 1250 {{ __('views') }}
@@ -40,7 +40,7 @@
                 </ul>
             </header>
             <div class="post__content">
-                {!! $post->body !!}
+                <?= \DevDojo\Chatter\Helpers\ChatterHelper::demoteHtmlHeaderTags( GrahamCampbell\Markdown\Facades\Markdown::convertToHtml( $post->body ) ); ?>
             </div>
             <div class="post__footer">
                 <p>

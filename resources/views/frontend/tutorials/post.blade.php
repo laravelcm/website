@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('title', 'Article de test')
+@section('title', $tutorial->title)
 
 @section('meta')
-    <meta name="description" content="{{ str_limit('lorem', 150) }}">
+    <meta name="description" content="{{ str_limit($tutorial->resume, 150) }}">
     <!-- Facebook Meta -->
-    <meta property="og:url" content="url">
-    <meta property="og:title" content="{{ 'Title' }} - Laravel Cameroon">
-    <meta property="og:image" content="{{ asset("storage/img.png") }}">
-    <meta property="og:description" content="{{ str_limit('lorem', 150) }}">
+    <meta property="og:url" content="{{ route('tutorials.post', ['slug' => $tutorial->slug]) }}">
+    <meta property="og:title" content="{{ $tutorial->title }} - Laravel Cameroon">
+    <meta property="og:image" content="{{ asset("storage/$tutorial->image") }}">
+    <meta property="og:description" content="{{ str_limit($tutorial->resume, 150) }}">
     <!-- Twitter Meta -->
-    <meta name="twitter:url" content="{{ 'route' }}">
-    <meta name="twitter:title" content="{{ 'Title' }} - Laravel Cameroon">
-    <meta name="twitter:description" content="{{ str_limit('Lorem ipsum', 150) }}">
-    <meta name="twitter:image" content="{{ asset("storage/img.png") }}">
+    <meta name="twitter:url" content="{{ route('tutorials.post', ['slug' => $tutorial->slug]) }}">
+    <meta name="twitter:title" content="{{ $tutorial->title }} - Laravel Cameroon">
+    <meta name="twitter:description" content="{{ str_limit($tutorial->resume, 150) }}">
+    <meta name="twitter:image" content="{{ asset("storage/$tutorial->image") }}">
 @endsection
 
 @section('content')
@@ -22,45 +22,25 @@
 
         <article class="single-post">
             <div class="post__thumb">
-                <img src="{{ asset('img/post-2.png') }}" alt="Post thumb">
+                <img src="{{ asset("storage/$tutorial->image") }}" alt="Tutorial thumb">
             </div>
             <header class="post__header">
-                <span class="post__date">12 June, 2018</span>
-                <h1 class="post__title">Laravel Tenancy – Multi-Tenant Package for Laravel</h1>
+                <span class="post__date">{{ $tutorial->created_at->format('M d, Y') }}</span>
+                <h1 class="post__title">{{ $tutorial->title }}</h1>
                 <ul class="post__metadata">
                     <li class="author">
-                        {{ __('by') }} <a href="javascript:;"> M. Arthur</a>
+                        {{ __('by') }} <a href="javascript:;">{{ $tutorial->user->name }}</a>
                     </li>
                     <li class="views">
                         <i class="fa fa-eye"></i> 1250 {{ __('views') }}
                     </li>
                     <li class="category">
-                        {{ __('Category') }} : <a href="javascript:;">Laravel Tools</a>
+                        {{ __('Category') }} : <a href="{{ route('tutorials.category', ['slug' => $tutorial->category->slug]) }}">{{ $tutorial->category->name }}</a>
                     </li>
                 </ul>
             </header>
             <div class="post__content">
-                Lorem ipsum dolorsit amet, consectetur adipiscing elit  sit amet, consectetur Lorem ipsum dolorsit
-                adipiscing elit. Lorem ipsum dolorsit .
-
-                Today, we are share with youu how to implement yajra datatable in laravel application with example. in your application sorting, searching and pagination functionality is common if you use simple table for display your application data iin tabuler forrmate so you should also write manualy code for it all functionality. and it is very painful and take some time.
-
-                But, if you use yajra datatable package in your laravel application then you can save this time. because yajra datatable jquery package provide all those functionality ready made nothing else write of single line for it.
-
-                yajra datatable provide following functionality for data display in tabuler formate. here listing some basic and core functionality of yajra datatable
-
-                1. Pagination 2. Full Searching 3. Data Sorting 4. Data Export, Print
-
-                After done this tutorials and you run it your output look like this.
-
-
-                First, we need to install yajra/laravel-datatables-oracle package in our laravel application run by following command in terminal.
-
-
-                composer require yajra/laravel-datatables-oracle
-
-                Configure Package
-                Next, configure installed package in application. so, open your config/app.php file and set insstalled package service providers and aliases.
+                <?= \DevDojo\Chatter\Helpers\ChatterHelper::demoteHtmlHeaderTags( GrahamCampbell\Markdown\Facades\Markdown::convertToHtml( $tutorial->content ) ); ?>
             </div>
             <div class="post__footer">
                 <p>

@@ -7,28 +7,28 @@
 
 namespace App\Repositories;
 
-use App\Models\Category;
+use App\Models\Tutorial;
 
-class CategoryRepository
+class TutorialRepository
 {
     /**
-     * @var Category
+     * @var Tutorial
      */
     private $model;
 
     /**
-     * CategoryRepository constructor.
-     * @param Category $model
+     * TutorialRepository constructor.
+     * @param Tutorial $model
      */
-    public function __construct(Category $model)
+    public function __construct(Tutorial $model)
     {
         $this->model = $model;
     }
 
     /**
-     * Return a new instance of Category Model
+     * Return a new instance of Tutorial Model
      *
-     * @return Category
+     * @return Tutorial
      */
     public function newInstance()
     {
@@ -40,27 +40,44 @@ class CategoryRepository
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function all()
-    {
-        return $this->model->newQuery()->get();
-    }
-
-    /**
-     * Get all categories by type give in param
-     *
-     * @param string $type
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
-     */
-    public function categoryType(string $type)
+    public function online()
     {
         return $this->model
             ->newQuery()
-            ->where('type', $type)
-            ->orderBy('created_at', 'DESC')
+            ->where('is_published', true)
             ->get();
     }
 
+    /**
+     * Get last post from the database
+     *
+     * @param int $limit
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function popular(int $limit = 2)
+    {
+        return $this->model->newQuery()
+            ->with('user')
+            ->where('is_published', true)
+            ->orderBy('created_at', 'DESC')
+            ->limit($limit)
+            ->get();
+    }
 
+    /**
+     * Get all books categories by count pagination
+     *
+     * @param int $results
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function paginate(int $results = 6)
+    {
+        return $this->model->newQuery()
+            ->with('user')
+            ->where('is_published', true)
+            ->orderBy('created_at', 'DESC')
+            ->paginate($results);
+    }
 
     /**
      * Return a model with the id set in parameter
@@ -83,6 +100,7 @@ class CategoryRepository
     public function findBySlug(string $slug)
     {
         return $this->model->newQuery()
+            ->with('category')
             ->where('slug', $slug)
             ->firstOrFail();
     }

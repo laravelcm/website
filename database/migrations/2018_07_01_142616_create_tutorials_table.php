@@ -18,6 +18,7 @@ class CreateTutorialsTable extends Migration
 			$table->string('title')->unique();
 			$table->string('slug')->unique();
 			$table->text('content');
+            $table->text('resume');
 			$table->boolean('is_published')->default(false);
 			$table->string('image')->nullable();
 			$table->integer('user_id')->unsigned();

@@ -2,8 +2,8 @@
 
 namespace App;
 
+use App\Models\Tutorial;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use TCG\Voyager\Models\Post;
 
 class User extends \TCG\Voyager\Models\User
@@ -34,5 +34,13 @@ class User extends \TCG\Voyager\Models\User
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tutorials()
+    {
+        return $this->hasMany(Tutorial::class);
     }
 }

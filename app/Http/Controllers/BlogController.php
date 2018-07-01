@@ -55,7 +55,7 @@ class BlogController extends Controller
         $total = $this->postRepository->online()->count();
         $categories = $this->categoryRepository->categoryType('POST');
         $category = $this->categoryRepository->findBySlug($slug);
-        $posts = $category->posts()->where('status', 'PUBLISHED')->paginate('6');
+        $posts = $category->posts()->where('status', 'PUBLISHED')->paginate(6);
 
         return view('frontend.blog.home', compact('posts', 'total', 'categories', 'category'));
     }

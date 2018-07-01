@@ -17,9 +17,10 @@
                         {{ __('Categories') }}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="{{ route('tutorials') }}">{{ __('All') }}</a>
+                        @foreach($categories as $category)
+                            <a class="dropdown-item" href="{{ route('tutorials.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -34,36 +35,35 @@
                         <h2 class="block__title popular-tutorials__title">{{ __('Popular Tutorials') }}</h2>
                     </header>
                     <div class="grid-2">
-                        @for($i = 1; $i <= 2; $i++)
+                        @foreach($populars as $popular)
                             <article class="card">
                                 <div class="card__thumb">
-                                    <img src="{{ asset('img/post-2.png') }}" alt="Tutorial thumb">
+                                    <img src="{{ asset("storage/$popular->image") }}" alt="Tutorial thumb">
                                 </div>
                                 <div class="card__content">
-                                    <span class="card__content--date">12 June, 2018</span>
+                                    <span class="card__content--date">{{ $popular->created_at->format('M d, Y') }}</span>
                                     <h4 class="card__content--title">
-                                        <a href="javascript:;">Laravel Tenancy – Multi-Tenant Package for Laravel</a>
+                                        <a href="{{ route('tutorials.post', ['slug' => $popular->slug]) }}">{{ $popular->title }}</a>
                                     </h4>
                                     <p class="card__content--summary">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias,
-                                        animi architecto asperiores deleniti dolor eius error et...
+                                        {{ str_limit($popular->resume, 130) }}
                                     </p>
                                     <ul class="card__links">
                                         <li class="view_link">
                                             <i class="fa fa-eye"></i> 1250 {{ __('views') }}
                                         </li>
                                         <li class="read_link">
-                                            <a href="javascript:;">{{ __('Read More') }}</a>
+                                            <a href="{{ route('tutorials.post', ['slug' => $popular->slug]) }}">{{ __('Read More') }}</a>
                                         </li>
                                     </ul>
                                 </div>
                             </article>
-                        @endfor
+                        @endforeach
                     </div>
                     <div class="adwords lcm-1"></div>
                 </div>
                 <div class="col-sm-12 col-md-4">
-                    @include('frontend.partials.sidebar', ['name' => __('Total Tutorials'), 'value' => 50])
+                    @include('frontend.partials.sidebar', ['name' => __('Total Tutorials'), 'value' => $total])
                 </div>
             </div>
         </div>
@@ -75,35 +75,40 @@
                 <h2 class="block__title popular-tutorials__title">{{ __('Lastest Tutorials') }}</h2>
             </header>
             <div class="grid-3">
-                @for($i = 1; $i <= 6; $i++)
+                @foreach($tutorials as $tutorial)
                     <article class="card">
                         <div class="card__thumb">
-                            <img src="{{ asset('img/post-2.png') }}" alt="Tutorial thumb">
+                            <img src="{{ asset("storage/$tutorial->image") }}" alt="Tutorial thumb">
                         </div>
                         <div class="card__content">
-                            <span class="card__content--date">12 June, 2018</span>
+                            <span class="card__content--date">{{ $tutorial->created_at->format('M d, Y') }}</span>
                             <h4 class="card__content--title">
-                                <a href="javascript:;">Laravel Tenancy – Multi-Tenant Package for Laravel</a>
+                                <a href="{{ route('tutorials.post', ['slug' => $tutorial->slug]) }}">{{ $tutorial->title }}</a>
                             </h4>
                             <p class="card__content--summary">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias,
-                                animi architecto asperiores deleniti dolor eius error et...
+                                {{ str_limit($tutorial->resume, 130) }}
                             </p>
                             <ul class="card__links">
                                 <li class="view_link">
                                     <i class="fa fa-eye"></i> 1250 {{ __('views') }}
                                 </li>
                                 <li class="read_link">
-                                    <a href="javascript:;">{{ __('Read More') }}</a>
+                                    <a href="{{ route('tutorials.post', ['slug' => $tutorial->slug]) }}">{{ __('Read More') }}</a>
                                 </li>
                             </ul>
                         </div>
                     </article>
-                @endfor
+                @endforeach
             </div>
             <div class="paginations">
-                <a href="javascript:;" class="btn btn-primary disabled pagination__left"><i class="icon ion-ios-arrow-back"></i> {{ __('Newer Tutorials') }}</a>
-                <a href="javascript:;" class="btn btn-primary pagination__right">{{ __('Older Tutorials') }} <i class="icon ion-ios-arrow-forward"></i></a>
+                <?php $pagination = $tutorials->toArray(); ?>
+                @if(!is_null($pagination['prev_page_url']))
+                    <a href="{{ $pagination['prev_page_url'] }}" class="btn btn-primary pagination__left"><i class="icon ion-ios-arrow-back"></i> {{ __('Newer Tutorials') }}</a>
+                @endif
+
+                @if(!is_null($pagination['next_page_url']))
+                    <a href="{{ $pagination['next_page_url'] }}" class="btn btn-primary pagination__right">{{ __('Older Tutorials') }} <i class="icon ion-ios-arrow-forward"></i></a>
+                @endif
             </div>
         </div>
     </section>

@@ -18,6 +18,7 @@ class CreatePackagesTable extends Migration
 			$table->string('title')->unique();
 			$table->string('slug')->unique();
 			$table->text('content');
+			$table->text('resume');
 			$table->boolean('is_approved')->default(false);
 			$table->string('image');
 			$table->integer('category_id')->unsigned();
