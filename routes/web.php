@@ -15,6 +15,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     /** Authenticate Route */
     Auth::routes();
+    Route::get('/auth/{provider}', 'Auth\LoginController@redirectToProvider');
+    Route::get('/callback/{provider}', 'Auth\LoginController@handleProviderCallback');
     /** Profile Route */
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/account', 'UserController@account')->name('users.account');

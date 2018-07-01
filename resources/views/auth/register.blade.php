@@ -70,13 +70,13 @@
                     <div class="col-1"></div>
                     <div class="col col-md-5">
                         <h5 class="social-title">{{ __('Register using social network') }}</h5>
-                        <a href="javascript:;" class="btn btn-social btn-block btn-facebook">
+                        <a href="{{ url('/auth/facebook') }}" class="btn btn-social btn-block btn-facebook">
                             <span class="fa fa-facebook"></span> {{ __('Register with Facebook') }}
                         </a>
-                        <a href="javascript:;" class="btn btn-social btn-block btn-github">
+                        <a href="{{ url('/auth/github') }}" class="btn btn-social btn-block btn-github">
                             <span class="fa fa-github"></span> {{ __('Register with Github') }}
                         </a>
-                        <a href="javascript:;" class="btn btn-social btn-block btn-google">
+                        <a href="{{ url('/auth/google') }}" class="btn btn-social btn-block btn-google">
                             <span class="fa fa-google"></span> {{ __('Register with Google') }}
                         </a>
                     </div>
