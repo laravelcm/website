@@ -78,16 +78,18 @@
                     <h2 class="next-event__title">{{ __('Next Event') }}</h2>
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="{{ asset('img/laracon.png') }}" alt="lara event">
-                            <span class="event__price">{{ __('Free') }}</span>
+                            <img src="https://ucarecdn.com/9ccf0b5e-977d-4ec3-929e-f1773df2b46e/CJzX0fBSvwsLLjQq4ehr8DNyVtq43Zy7P8VB2wR5.png" alt="lara event">
+                            {{--<span class="event__price">{{ __('Free') }}</span>
                             <p class="event__share">
                                 <a href="javascript:;">{{ __('Share') }} <i class="fa fa-share-alt"></i></a>
-                            </p>
+                            </p>--}}
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Vendredi, 12 Juin à 18h - Akwa Douala</span>
+                            <span class="event__content-date">Jul 04, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="javascript:;">Google I/O Extended 2018 - GDG Douala</a>
+                                <a href="https://www.meetup.com/Laravel-Vuejs-Dublin/events/vghcrpyxjbjb/" target="_blank">
+                                    Laravel Dublin - Meet and Greet
+                                </a>
                             </h6>
                         </div>
                     </div>
@@ -182,10 +184,11 @@
         <div class="container">
             <header class="block_header">
                 <h2 class="block__title">{{ __('Upcomming Events') }}</h2>
-                <a href="javascript:;" class="block__link">{{ __('View all') }}</a>
+                <a href="https://laravelevents.com" class="block__link" target="_blank">{{ __('View all') }}</a>
             </header>
             <div class="row">
-                @for($i = 1; $i <= 3; $i++)
+                <h3>{{ __('Coming Soon') }}</h3>
+                {{--@for($i = 1; $i <= 3; $i++)
                 <div class="col-12 col-md-4">
                     <div class="event">
                         <div class="event__thumb">
@@ -203,7 +206,7 @@
                         </div>
                     </div>
                 </div>
-                @endfor
+                @endfor--}}
             </div>
         </div>
     </section>

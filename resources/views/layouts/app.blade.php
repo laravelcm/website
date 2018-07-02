@@ -75,12 +75,11 @@
             </div>
             <div class="nav__container">
                 <ul class="main-menu">
-                    <li class="menu__item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
                     <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
                     <li class="menu__item"><a href="{{ route('chatter.home') }}">{{ __('Forum') }}</a></li>
                     <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutorials') }}</a></li>
                     <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
-                    <li class="menu__item"><a href="{{ route('home') }}">{{ __('Events') }}</a></li>
+                    <li class="menu__item"><a href="https://laravelevents.com" target="_blank">{{ __('Events') }}</a></li>
                     <li class="menu__item">
                         @if(LaravelLocalization::getCurrentLocale() == 'en')
                             <a rel="alternate" hreflang="fr" href="{{ LaravelLocalization::getLocalizedURL('fr', null, [], true) }}">
@@ -169,7 +168,7 @@
             <ul class="footer-links">
                 <li class="link__tutorials"><a href="{{ route('tutorials') }}">{{ __('Tutorials') }}</a></li>
                 <li class="link__blog"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
-                <li class="link__events"><a href="javascript:;">{{ __('Events') }}</a></li>
+                <li class="link__events"><a href="https://laravelevents.com">{{ __('Events') }}</a></li>
                 <li class="link__packages"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
                 <li class="link__github"><a href="https://github.com/laravelcm" target="_blank">Github</a></li>
             </ul>
