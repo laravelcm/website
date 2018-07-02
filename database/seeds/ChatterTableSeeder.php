@@ -37,9 +37,9 @@ class ChatterTableSeeder extends Seeder
                 'id'         => 1,
                 'parent_id'  => null,
                 'order'      => 1,
-                'name'       => 'Introductions',
-                'color'      => '#3498DB',
-                'slug'       => 'introductions',
+                'name'       => 'General',
+                'color'      => '#2ECC71',
+                'slug'       => 'general',
                 'created_at' => null,
                 'updated_at' => null,
             ],
@@ -47,9 +47,9 @@ class ChatterTableSeeder extends Seeder
                 'id'         => 2,
                 'parent_id'  => null,
                 'order'      => 2,
-                'name'       => 'General',
-                'color'      => '#2ECC71',
-                'slug'       => 'general',
+                'name'       => 'Laravel',
+                'color'      => '#E74430',
+                'slug'       => 'laravel',
                 'created_at' => null,
                 'updated_at' => null,
             ],
@@ -57,9 +57,9 @@ class ChatterTableSeeder extends Seeder
                 'id'         => 3,
                 'parent_id'  => null,
                 'order'      => 3,
-                'name'       => 'Feedback',
-                'color'      => '#9B59B6',
-                'slug'       => 'feedback',
+                'name'       => 'Site Feedback',
+                'color'      => '#F39C12',
+                'slug'       => 'site-feedback',
                 'created_at' => null,
                 'updated_at' => null,
             ],
@@ -75,41 +75,61 @@ class ChatterTableSeeder extends Seeder
             ],
             4 => [
                 'id'         => 5,
-                'parent_id'  => 1,
-                'order'      => 1,
-                'name'       => 'Rules',
-                'color'      => '#227ab5',
-                'slug'       => 'rules',
+                'parent_id'  => null,
+                'order'      => 5,
+                'name'       => 'PHP',
+                'color'      => '#9B59B6',
+                'slug'       => 'php',
                 'created_at' => null,
                 'updated_at' => null,
             ],
             5 => [
                 'id'         => 6,
-                'parent_id'  => 5,
-                'order'      => 1,
-                'name'       => 'Basics',
-                'color'      => '#195a86',
-                'slug'       => 'basics',
+                'parent_id'  => null,
+                'order'      => 6,
+                'name'       => 'Javascript',
+                'color'      => '#ebc217',
+                'slug'       => 'javascript',
                 'created_at' => null,
                 'updated_at' => null,
             ],
             6 => [
                 'id'         => 7,
-                'parent_id'  => 5,
-                'order'      => 2,
-                'name'       => 'Contribution',
-                'color'      => '#195a86',
-                'slug'       => 'contribution',
+                'parent_id'  => null,
+                'order'      => 7,
+                'name'       => 'HTML & CSS',
+                'color'      => '#ff8c4b',
+                'slug'       => 'html-css',
                 'created_at' => null,
                 'updated_at' => null,
             ],
             7 => [
                 'id'         => 8,
-                'parent_id'  => 1,
-                'order'      => 2,
-                'name'       => 'About',
-                'color'      => '#227ab5',
-                'slug'       => 'about',
+                'parent_id'  => null,
+                'order'      => 8,
+                'name'       => 'Guides',
+                'color'      => '#D51E1B',
+                'slug'       => 'guides',
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            8 => [
+                'id'         => 9,
+                'parent_id'  => null,
+                'order'      => 9,
+                'name'       => 'React',
+                'color'      => '#09d9fe',
+                'slug'       => 'react',
+                'created_at' => null,
+                'updated_at' => null,
+            ],
+            9 => [
+                'id'         => 10,
+                'parent_id'  => null,
+                'order'      => 10,
+                'name'       => 'Vue',
+                'color'      => '#3AB981',
+                'slug'       => 'vue',
                 'created_at' => null,
                 'updated_at' => null,
             ],
@@ -119,7 +139,7 @@ class ChatterTableSeeder extends Seeder
 
         \DB::table('chatter_discussion')->delete();
 
-        \DB::table('chatter_discussion')->insert([
+        /*\DB::table('chatter_discussion')->insert([
             0 => [
                 'id'                  => 3,
                 'chatter_category_id' => 1,
@@ -185,13 +205,13 @@ class ChatterTableSeeder extends Seeder
                 'slug'                => 'welcome-to-the-chatter-laravel-forum-package',
                 'color'               => '',
             ],
-        ]);
+        ]);*/
 
         // CREATE THE POSTS
 
         \DB::table('chatter_post')->delete();
 
-        \DB::table('chatter_post')->insert([
+        /*\DB::table('chatter_post')->insert([
                     0 => [
                         'id'                    => 1,
                         'chatter_discussion_id' => 3,
@@ -276,6 +296,6 @@ class ChatterTableSeeder extends Seeder
             'created_at' => '2016-08-18 15:01:25',
             'updated_at' => '2016-08-18 15:01:25',
         ],
-        ]);
+        ]);*/
     }
 }

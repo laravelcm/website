@@ -15,6 +15,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     /** Authenticate Route */
     Auth::routes();
+    Route::get('/auth/{provider}', 'Auth\LoginController@redirectToProvider');
+    Route::get('/callback/{provider}', 'Auth\LoginController@handleProviderCallback');
     /** Profile Route */
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/account', 'UserController@account')->name('users.account');
@@ -26,7 +28,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     /** Package GROUP ROUTE **/
     Route::group(['prefix' => 'packages'], function () {
         Route::get('/', ['uses' => 'PackageController@index'])->name('packages');
-        Route::get('category/{slug}', ['uses' => 'BlogController@category'])->name('packages.category')
+        Route::get('category/{slug}', ['uses' => 'PackageController@category'])->name('packages.category')
             ->where('slug', '[a-z0-9\-]+');
         Route::get('{slug}', ['uses' => 'PackageController@post'])->name('packages.post')
             ->where('slug', '[a-z0-9\-]+');
@@ -57,6 +59,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 });
 
 /** Voyager ROUTE **/
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'console'], function () {
     Voyager::routes();
 });

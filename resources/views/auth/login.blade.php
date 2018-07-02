@@ -67,13 +67,13 @@
                     <div class="col-1"></div>
                     <div class="col col-md-5">
                         <h5 class="social-title">{{ __('Login using social network') }}</h5>
-                        <a href="javascript:;" class="btn btn-social btn-block btn-facebook">
+                        <a href="{{ url('/auth/facebook') }}" class="btn btn-social btn-block btn-facebook">
                             <span class="fa fa-facebook"></span> {{ __('Login with Facebook') }}
                         </a>
-                        <a href="javascript:;" class="btn btn-social btn-block btn-github">
+                        <a href="{{ url('/auth/github') }}" class="btn btn-social btn-block btn-github">
                             <span class="fa fa-github"></span> {{ __('Login with Github') }}
                         </a>
-                        <a href="javascript:;" class="btn btn-social btn-block btn-google">
+                        <a href="{{ url('/auth/google') }}" class="btn btn-social btn-block btn-google">
                             <span class="fa fa-google"></span> {{ __('Login with Google') }}
                         </a>
                     </div>
