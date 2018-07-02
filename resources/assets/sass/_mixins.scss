@@ -1,0 +1,94 @@
+/// overlay
+/// @access private
+/// @param {String} $color - Overlay color
+/// @param {Number} $opacity - Opacity value, % value to process.
+@mixin overlay($color, $opacity) {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color, $opacity);
+  z-index: 2;
+}
+
+/// box-shadow
+@mixin material-box-shadow {
+  box-shadow: 3px 0 8px 0px rgba(42, 42, 42, .25)
+}
+
+@mixin material-box-shadow-hover {
+  box-shadow: 6px 6px 27px 4px rgba($gray-900, .3)
+}
+
+// Event
+@mixin event {
+  background-color: $white;
+  margin-bottom: 25px;
+  transition: all 0.13s ease-in;
+  @include material-box-shadow;
+  .event__thumb {
+    position: relative;
+    height: 150px;
+    width: 100%;
+    &:before {
+      @include overlay(#6A6767, .6)
+    }
+    img {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 100%;
+      height: inherit;
+    }
+
+    .event__price, .event__share {
+      position: absolute;
+      z-index: 10;
+    }
+
+    .event__price {
+      top: 12px;
+      right: 12px;
+      padding: 6px 20px;
+      background-color: $white;
+      color: $primary;
+      font-family: 'Miriam Libre', sans-serif;
+      font-weight: bold;
+    }
+
+    .event__share {
+      bottom: 12px;
+      right: 12px;
+      margin-bottom: 0;
+      color: $white;
+      font-weight: 600;
+      font-size: 18px;
+
+      a {
+        color: inherit;
+        &:hover {
+          color: $gray-200;
+          transition: 0.33s ease-in-out;
+        }
+      }
+    }
+  }
+  .event__content {
+    padding: 15px 30px;
+    .event__content-date {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .event__content-title {
+      color: $primary;
+      letter-spacing: .05rem;
+    }
+  }
+
+  &:hover {
+    @include material-box-shadow-hover
+  }
+}

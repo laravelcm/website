@@ -15,7 +15,7 @@ return [
         'default_role'                 => 'user',
         'namespace'                    => null,
         'default_avatar'               => 'users/default.png',
-        'redirect'                     => '/admin',
+        'redirect'                     => '/console',
     ],
 
     /*
@@ -28,7 +28,8 @@ return [
     */
 
     'controllers' => [
-        'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+        //'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+        'namespace' => 'App\\Http\\Controllers\\Admin',
     ],
 
     /*
@@ -43,7 +44,7 @@ return [
     */
 
     'models' => [
-        //'namespace' => 'App\\',
+        'namespace' => 'App\\Models',
     ],
 
     /*
@@ -68,6 +69,7 @@ return [
 
     'storage' => [
         'disk' => 'public',
+        'url' => env('APP_URL').'/storage',
     ],
 
     /*
@@ -110,7 +112,7 @@ return [
         /*
          * Set whether or not the multilingual is supported by the BREAD input.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * Set whether or not the admin layout default is RTL.
@@ -120,14 +122,14 @@ return [
         /*
          * Select default language
          */
-        'default' => 'en',
+        'default' => 'fr',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
             'en',
-            //'pt',
+            'fr',
         ],
     ],
 

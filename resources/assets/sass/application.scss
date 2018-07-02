@@ -1,0 +1,45 @@
+/**
+* application.scss
+* Website content full style with Bootstrap 4.1.1
+
+* @see  https://getbootstrap.com/docs
+* @author Arthur Monney <arthur.monney@laravelcm.com>
+* @since 2018
+* @version 1.0.0
+*/
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Miriam+Libre:400,700");
+@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+
+// Custom Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// External libs
+@import "libs/owlcarousel/owl.carousel.css";
+@import "libs/owlcarousel/owl.theme.default.css";
+
+// functions
+@import "mixins";
+
+// CSS natural grid content
+@import "grid";
+
+// Base Style
+@import "base";
+
+// Global style
+@import "content";
+
+// Pages style
+@import "pages/home";
+@import "pages/login";
+@import "pages/blog";
+@import "pages/tutorial";
+@import "pages/package";
+@import "pages/forum";
+@import "pages/user";
