@@ -68,6 +68,7 @@ class PackageController extends Controller
     public function post(string $slug)
     {
         $package = $this->repository->findBySlug($slug);
+        $package->addView();
 
         return view('frontend.packages.post', compact('package'));
     }

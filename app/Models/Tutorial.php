@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use App\User;
+use CyrildeWit\EloquentViewable\Viewable;
 use Illuminate\Database\Eloquent\Model;
 
 class Tutorial extends Model
 {
+    use Viewable;
+
     /**
      * The attributes that are mass assignable.
      *

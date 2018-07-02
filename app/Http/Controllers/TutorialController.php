@@ -67,6 +67,7 @@ class TutorialController extends Controller
     public function post(string $slug)
     {
         $tutorial = $this->repository->findBySlug($slug);
+        $tutorial->addView();
 
         return view('frontend.tutorials.post', compact('tutorial'));
     }

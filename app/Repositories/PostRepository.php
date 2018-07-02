@@ -7,7 +7,7 @@
 
 namespace App\Repositories;
 
-use TCG\Voyager\Models\Post;
+use App\Models\Post;
 
 class PostRepository
 {

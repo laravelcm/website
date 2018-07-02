@@ -32,7 +32,7 @@
                         {{ __('by') }} <a href="javascript:;">{{ $post->authorId->name }}</a>
                     </li>
                     <li class="views">
-                        <i class="fa fa-eye"></i> 1250 {{ __('views') }}
+                        <i class="fa fa-eye"></i> {{ $post->getViews().' '. __('views') }}
                     </li>
                     <li class="category">
                         {{ __('Category') }} : <a href="{{ route('blog.category', ['slug' => $post->category->slug]) }}">{{ $post->category->name }}</a>

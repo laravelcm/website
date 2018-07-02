@@ -69,6 +69,7 @@ class BlogController extends Controller
     public function post(string $slug)
     {
         $post = $this->postRepository->findBySlug($slug);
+        $post->addView();
 
         return view('frontend.blog.post', compact('post'));
     }

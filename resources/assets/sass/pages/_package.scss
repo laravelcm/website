@@ -4,8 +4,12 @@
 
   .card {
     .card__links {
+      grid-template-columns: repeat(3, 1fr);
       .author_link {
         font-weight: 700;
+      }
+      .view_link {
+        text-align: center;
       }
     }
   }

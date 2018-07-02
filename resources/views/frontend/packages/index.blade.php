@@ -53,6 +53,9 @@
                                         <li class="author_link">
                                             {{ __('by') }} <a href="javascript:;">{{ $package->user->name }}</a>
                                         </li>
+                                        <li class="view_link">
+                                            <i class="fa fa-eye"></i> {{ $package->getViews().' '. __('views') }}
+                                        </li>
                                         <li class="read_link">
                                             <a href="{{ route('packages.post', ['slug' => $package->slug]) }}">{{ __('Read More') }}</a>
                                         </li>

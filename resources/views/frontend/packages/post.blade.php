@@ -32,7 +32,7 @@
                         {{ __('by') }} <a href="javascript:;">{{ $package->user->name }}</a>
                     </li>
                     <li class="views">
-                        <i class="fa fa-eye"></i> 1250 {{ __('views') }}
+                        <i class="fa fa-eye"></i> {{ $package->getViews().' '. __('views') }}
                     </li>
                     <li class="category">
                         {{ __('Category') }} : <a href="{{ route('packages.category', ['slug' => $package->category->slug]) }}">{{ $package->category->name }}</a>

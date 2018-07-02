@@ -47,7 +47,7 @@
                             </p>
                             <ul class="card__links">
                                 <li class="view_link">
-                                    <i class="fa fa-eye"></i> 1250 {{ __('views') }}
+                                    <i class="fa fa-eye"></i> {{ $tutorial->getViews().' '. __('views') }}
                                 </li>
                                 <li class="read_link">
                                     <a href="{{ route('tutorials.post', ['slug' => $tutorial->slug]) }}">{{ __('Read More') }}</a>

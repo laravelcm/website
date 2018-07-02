@@ -32,7 +32,7 @@
                         {{ __('by') }} <a href="javascript:;">{{ $tutorial->user->name }}</a>
                     </li>
                     <li class="views">
-                        <i class="fa fa-eye"></i> 1250 {{ __('views') }}
+                        <i class="fa fa-eye"></i> {{ $tutorial->getViews().' '. __('views') }}
                     </li>
                     <li class="category">
                         {{ __('Category') }} : <a href="{{ route('tutorials.category', ['slug' => $tutorial->category->slug]) }}">{{ $tutorial->category->name }}</a>

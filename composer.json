@@ -9,6 +9,7 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
+        "cyrildewit/eloquent-viewable": "^2.1",
         "devdojo/chatter": "0.2.*",
         "fideloper/proxy": "^4.0",
         "graham-campbell/markdown": "^10.0",

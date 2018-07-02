@@ -2,8 +2,15 @@
 
 namespace App\Models;
 
+use CyrildeWit\EloquentViewable\Viewable;
+
 class Category extends \TCG\Voyager\Models\Category
 {
+    use Viewable;
+
+    /**
+     * @var array
+     */
     protected $fillable = ['slug', 'name', 'type'];
 
     /**
