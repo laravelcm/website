@@ -71,6 +71,9 @@ class BlogController extends Controller
         $post = $this->postRepository->findBySlug($slug);
         $post->addView();
 
-        return view('frontend.blog.post', compact('post'));
+        $prevPost = $this->postRepository->prevPost($post->id);
+        $nextPost = $this->postRepository->nextPost($post->id);
+
+        return view('frontend.blog.post', compact('post', 'prevPost', 'nextPost'));
     }
 }

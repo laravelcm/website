@@ -64,24 +64,28 @@
     </div>
     <div class="post_pagination">
         <div class="container">
-            <a href="javascript:;" class="pagination__left">
-                <svg id="icon-arrow-thin-left" fill="none" viewBox="0 0 31.344 105.69" stroke="currentColor" stroke-width="3px" fill-rule="evenodd" width="100%" height="100%">
-                    <path d="M29.844 2.86l-25 50 25 50"></path>
-                </svg>
-                <div class="pagination__content">
-                    <h4>Puphpeteer: A Puppeteer bridge for PHP</h4>
-                    <p>Puphpeteer by Johann Pardanaud is PHP bridge for Google Chrome&#8217;s Puppeteer headless chrome Node.js API. Learn h&hellip;</p>
-                </div>
-            </a>
-            <a href="javascript:;" class="pagination__right">
-                <svg id="icon-arrow-thin-right" fill="none" viewBox="0 0 30.69 103" stroke="currentColor" stroke-width="3px" fill-rule="evenodd" width="100%" height="100%">
-                    <path d="M4.19 1.51l25 50-25 50"></path>
-                </svg>
-                <div class="pagination__content">
-                    <h4>Built with Jigsaw – the Ultimate Showcase of Web Sites Built with Jigsaw</h4>
-                    <p>“Built with Jigsaw” is a gallery of websites made with Jigsaw, and includes helpful articles about using…</p>
-                </div>
-            </a>
+            @if(!is_null($prevPost))
+                <a href="{{ route('blog.post', ['slug' => $prevPost->slug]) }}" class="pagination__left">
+                    <svg id="icon-arrow-thin-left" fill="none" viewBox="0 0 31.344 105.69" stroke="currentColor" stroke-width="3px" fill-rule="evenodd" width="100%" height="100%">
+                        <path d="M29.844 2.86l-25 50 25 50"></path>
+                    </svg>
+                    <div class="pagination__content">
+                        <h4>{{ $prevPost->title }}</h4>
+                        <p>{{ str_limit($prevPost->resume, 110) }}</p>
+                    </div>
+                </a>
+            @endif
+            @if(!is_null($nextPost))
+                <a href="{{ route('blog.post', ['slug' => $nextPost->slug]) }}" class="pagination__right">
+                    <svg id="icon-arrow-thin-right" fill="none" viewBox="0 0 30.69 103" stroke="currentColor" stroke-width="3px" fill-rule="evenodd" width="100%" height="100%">
+                        <path d="M4.19 1.51l25 50-25 50"></path>
+                    </svg>
+                    <div class="pagination__content">
+                        <h4>{{ $nextPost->title }}</h4>
+                        <p>{{ str_limit($nextPost->resume, 110) }}</p>
+                    </div>
+                </a>
+            @endif
         </div>
     </div>
 

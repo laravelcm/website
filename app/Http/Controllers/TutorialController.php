@@ -69,6 +69,9 @@ class TutorialController extends Controller
         $tutorial = $this->repository->findBySlug($slug);
         $tutorial->addView();
 
-        return view('frontend.tutorials.post', compact('tutorial'));
+        $prevPost = $this->repository->prevPost($tutorial->id);
+        $nextPost = $this->repository->nextPost($tutorial->id);
+
+        return view('frontend.tutorials.post', compact('tutorial', 'prevPost', 'nextPost'));
     }
 }

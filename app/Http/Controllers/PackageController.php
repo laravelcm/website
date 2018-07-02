@@ -70,6 +70,9 @@ class PackageController extends Controller
         $package = $this->repository->findBySlug($slug);
         $package->addView();
 
-        return view('frontend.packages.post', compact('package'));
+        $prevPost = $this->repository->prevPost($package->id);
+        $nextPost = $this->repository->nextPost($package->id);
+
+        return view('frontend.packages.post', compact('package', 'prevPost', 'nextPost'));
     }
 }

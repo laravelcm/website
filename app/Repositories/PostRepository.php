@@ -114,4 +114,36 @@ class PostRepository
             ->where('slug', $slug)
             ->firstOrFail();
     }
+
+    /**
+     * Return the previous post to the id set in param
+     *
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Model|null|object|static
+     */
+    public function prevPost(int $id)
+    {
+        return $this->model->newQuery()
+            ->select('title', 'excerpt', 'slug')
+            ->where('id', '<', $id)
+            ->where('status', '=', Post::PUBLISHED)
+            ->orderBy('id', 'DESC')
+            ->first();
+    }
+
+    /**
+     * Return the next post to the id set in param
+     *
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Model|null|object|static
+     */
+    public function nextPost(int $id)
+    {
+        return $this->model->newQuery()
+            ->select('title', 'excerpt', 'slug')
+            ->where('id', '>', $id)
+            ->where('status', '=', Post::PUBLISHED)
+            ->orderBy('id', 'ASC')
+            ->first();
+    }
 }

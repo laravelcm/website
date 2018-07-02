@@ -104,4 +104,36 @@ class PackageRepository
             ->where('slug', $slug)
             ->firstOrFail();
     }
+
+    /**
+     * Return the previous package to the id set in param
+     *
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Model|null|object|static
+     */
+    public function prevPost(int $id)
+    {
+        return $this->model->newQuery()
+            ->select('title', 'resume', 'slug')
+            ->where('id', '<', $id)
+            ->where('is_approved', true)
+            ->orderBy('id', 'DESC')
+            ->first();
+    }
+
+    /**
+     * Return the next package to the id set in param
+     *
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Model|null|object|static
+     */
+    public function nextPost(int $id)
+    {
+        return $this->model->newQuery()
+            ->select('title', 'resume', 'slug')
+            ->where('id', '>', $id)
+            ->where('is_approved', true)
+            ->orderBy('id', 'ASC')
+            ->first();
+    }
 }
