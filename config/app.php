@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'prefix' => env('APP_PREFIX', 'admin'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

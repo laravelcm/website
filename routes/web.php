@@ -59,6 +59,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 });
 
 /** Voyager ROUTE **/
-Route::group(['prefix' => 'console'], function () {
+Route::group(['prefix' => config('app.prefix')], function () {
     Voyager::routes();
 });
