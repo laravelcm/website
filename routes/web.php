@@ -28,7 +28,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     /** Package GROUP ROUTE **/
     Route::group(['prefix' => 'packages'], function () {
         Route::get('/', ['uses' => 'PackageController@index'])->name('packages');
-        Route::get('category/{slug}', ['uses' => 'BlogController@category'])->name('packages.category')
+        Route::get('category/{slug}', ['uses' => 'PackageController@category'])->name('packages.category')
             ->where('slug', '[a-z0-9\-]+');
         Route::get('{slug}', ['uses' => 'PackageController@post'])->name('packages.post')
             ->where('slug', '[a-z0-9\-]+');

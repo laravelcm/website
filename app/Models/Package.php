@@ -5,7 +5,7 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Tutorial extends Model
+class Package extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,7 +13,7 @@ class Tutorial extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'content', 'resume', 'is_published', 'image', 'user_id', 'category_id'
+        'title', 'slug', 'content', 'resume', 'is_approved', 'image', 'user_id', 'category_id'
     ];
 
     /**

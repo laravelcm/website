@@ -2,44 +2,73 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Repositories\CategoryRepository;
+use App\Repositories\PackageRepository;
 
 class PackageController extends Controller
 {
-    public function __construct()
+    /**
+     * @var PackageRepository
+     */
+    private $repository;
+
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
+
+    /**
+     * PackageController constructor.
+     * @param PackageRepository $repository
+     * @param CategoryRepository $categoryRepository
+     */
+    public function __construct(PackageRepository $repository, CategoryRepository $categoryRepository)
     {
+        $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
-     * Display List tutorials
+     * Display List Packages
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $packages = [];
+        $packages = $this->repository->paginate();
+        $total = $this->repository->online()->count();
+        $categories = $this->categoryRepository->categoryType('PACKAGE');
+        $category = null;
 
-        return view('frontend.packages.index', compact('packages'));
+        return view('frontend.packages.index', compact('packages', 'categories', 'total', 'category'));
     }
 
     /**
-     * Display tutorial single Category
+     * Display Package single Category
      *
-     * @param string $category
+     * @param string $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function category(string $category)
+    public function category(string $slug)
     {
+        $total = $this->repository->online()->count();
+        $categories = $this->categoryRepository->categoryType('PACKAGE');
+        $category = $this->categoryRepository->findBySlug($slug);
+        $packages = $category->packages()->where('is_approved', true)->paginate(6);
 
+        return view('frontend.packages.index', compact('packages', 'categories', 'total', 'category'));
     }
 
     /**
-     * Display tutorial show
+     * Display single package view
      *
      * @param string $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function post(string $slug)
     {
-        return view('frontend.packages.post');
+        $package = $this->repository->findBySlug($slug);
+
+        return view('frontend.packages.post', compact('package'));
     }
 }
