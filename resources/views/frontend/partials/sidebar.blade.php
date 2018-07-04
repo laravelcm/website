@@ -8,7 +8,11 @@
 
     <div class="card facebook">
         <h5>{{ __('Facebook Page') }}</h5>
-        <div id="fb-root"></div>
+        <div class="fb-page" data-href="https://www.facebook.com/laravelcm/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/laravelcm/" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/laravelcm/">Laravel Cameroun</a>
+            </blockquote>
+        </div>
     </div>
 
     <div class="card twitter">
