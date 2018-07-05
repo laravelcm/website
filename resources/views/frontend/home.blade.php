@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('The best Laravel PHP developers in Cameroon'))
+@section('title', __('The best Laravel & PHP developers in Cameroon'))
 
 @section('meta')
     <meta name="description" content="Laravel Cameroon is the biggest Laravel community and meetup event in Cameroon
@@ -78,17 +78,17 @@
                     <h2 class="next-event__title">{{ __('Next Event') }}</h2>
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/9ccf0b5e-977d-4ec3-929e-f1773df2b46e/CJzX0fBSvwsLLjQq4ehr8DNyVtq43Zy7P8VB2wR5.png" alt="lara event">
+                            <img src="https://ucarecdn.com/6352ed15-f246-41ff-9e00-3cf29bf9bd6f/laravelconftaiwan.jpeg" alt="lara event">
                             {{--<span class="event__price">{{ __('Free') }}</span>
                             <p class="event__share">
                                 <a href="javascript:;">{{ __('Share') }} <i class="fa fa-share-alt"></i></a>
                             </p>--}}
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Jul 04, 2018</span>
+                            <span class="event__content-date">Jul 08, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://www.meetup.com/Laravel-Vuejs-Dublin/events/vghcrpyxjbjb/" target="_blank">
-                                    Laravel Dublin - Meet and Greet
+                                <a href="https://laravelconf.tw/" target="_blank">
+                                    Laravel Conf Taiwan 2018 Announcement
                                 </a>
                             </h6>
                         </div>
@@ -104,12 +104,7 @@
                 <div class="tutorial__content">
                     <h2 class="tutorial__title">{{ __('Tutorials') }}</h2>
                     <p class="tutorial__description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
+                        {{ __('Laravel is a powerful MVC PHP framework, designed for developers who need a simple and elegant toolkit to create full-featured web applications. Here you can find plenty of tutorials resources who will teach you how to make a website with Laravel. Explore a big collection of tutorials, latest news and tips from Laravel devs around the world.') }}
                     </p>
                     <a href="{{ route('tutorials') }}" class="btn btn-primary">{{ __('Jump to Tutorials') }} <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
@@ -126,12 +121,7 @@
                 <div class="package__content">
                     <h2 class="package__title">{{ __('Packages') }}</h2>
                     <p class="package__description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
+                        {{ __('Laravel is a very popular framework, and says popularity says big community. Find in this section a list of packages that can help you quickly build your application, examples of use of packages and links to download them.') }}
                     </p>
                     <a href="{{ route('packages') }}" class="btn btn-primary">{{ __('See all Packages') }} <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>

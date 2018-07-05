@@ -34,7 +34,6 @@
     @yield('meta')
     <!-- Styles -->
     @yield('css')
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <link href="{{ Asset::path('application.css') }}" rel="stylesheet" type="text/css">
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
