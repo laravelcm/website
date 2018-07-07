@@ -60,7 +60,7 @@
 <body>
 
     <span class="overlay"></span>
-    <nav class="site_nav">
+    <nav class="site_nav" id="site_nav">
         <div class="container">
             <div class="nav_header">
                 <a href="{{ route('home') }}" class="nav__logo">
@@ -75,10 +75,10 @@
             </div>
             <div class="nav__container">
                 <ul class="main-menu">
-                    <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
-                    <li class="menu__item"><a href="{{ route('chatter.home') }}">{{ __('Forum') }}</a></li>
-                    <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutorials') }}</a></li>
-                    <li class="menu__item"><a href="{{ route('packages') }}">{{ __('Packages') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('blog') }}" class="{{ (url()->current() == route('blog'))? 'active' : '' }}">{{ __('Blog') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('chatter.home') }}" class="{{ (url()->current() == route('chatter.home'))? 'active' : '' }}">{{ __('Forum') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('tutorials') }}" class="{{ (url()->current() == route('tutorials'))? 'active' : '' }}">{{ __('Tutorials') }}</a></li>
+                    <li class="menu__item"><a href="{{ route('packages') }}" class="{{ (url()->current() == route('packages'))? 'active' : '' }}">{{ __('Packages') }}</a></li>
                     <li class="menu__item"><a href="https://laravelevents.com" target="_blank">{{ __('Events') }}</a></li>
                     <li class="menu__item">
                         @if(LaravelLocalization::getCurrentLocale() == 'en')

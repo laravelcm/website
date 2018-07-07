@@ -5,6 +5,7 @@
  */
 
 import 'bootstrap'
+import Headroom from './libs/headroom'
 
 let carousel = document.querySelector('#partners_carousel')
 if (carousel) {
@@ -28,6 +29,15 @@ if (carousel) {
       }
     })
   })
+}
+
+// grab an element
+let myElement = document.querySelector('#site_nav')
+if (myElement) {
+  // construct an instance of Headroom, passing the element
+  let headroom = new Headroom(myElement)
+  // initialise
+  headroom.init()
 }
 
 // Add return on top button
