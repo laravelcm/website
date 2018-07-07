@@ -19,7 +19,7 @@
             <div class="card">
                 <h2 class="card__title">{{ __('Register a new account') }}</h2>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col-sm-12 col-md-6">
                         <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                             @csrf
 
@@ -61,14 +61,14 @@
                                 <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
 
                                 {{ __('Have an account') }} ?
-                                <a class="btn btn-link" href="{{ route('login') }}">
+                                <a class="btn-link" href="{{ route('login') }}">
                                     {{ __('Click here to login') }}
                                 </a>
                             </div>
                         </form>
                     </div>
-                    <div class="col-1"></div>
-                    <div class="col col-md-5">
+                    <div class="col-sm-1 col-md-1"></div>
+                    <div class="col-sm-12 col-md-5">
                         <h5 class="social-title">{{ __('Register using social network') }}</h5>
                         <a href="{{ url('/auth/facebook') }}" class="btn btn-social btn-block btn-facebook">
                             <span class="fa fa-facebook"></span> {{ __('Register with Facebook') }}
