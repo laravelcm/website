@@ -74,9 +74,9 @@
                             <div class="card-header"><i class="icon ion-person"></i> {{ __('Personnal Informations') }}</div>
                             <div class="card-body">
                                 <ul class="profil_content">
-                                    <li class="profil_item"><a href="javascript:;">{{ __('Follow Discussions') }}</a></li>
+                                    {{--<li class="profil_item"><a href="javascript:;">{{ __('Follow Discussions') }}</a></li>
                                     <li class="profil_item"><a href="javascript:;">{{ __('My Discussions') }}</a></li>
-                                    <li class="profil_item"><a href="javascript:;">{{ __('My Messages') }}</a></li>
+                                    <li class="profil_item"><a href="javascript:;">{{ __('My Messages') }}</a></li>--}}
                                     <li class="profil_item"><a href="{{ route('users.account') }}">{{ __('My account') }}</a></li>
                                     <li class="profil_item">
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();

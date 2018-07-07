@@ -21,6 +21,7 @@
 
     <section class="account">
         <div class="container">
+            @include('frontend.partials.success')
             <div class="row">
                 <div class="col-sm-12 col-md-3">
                     @include('frontend.users.sidebar')
@@ -28,7 +29,7 @@
                 <div class="col-sm-12 col-md-9">
                     <div class="card forum_account">
                         <h2>{{ __('Update password') }}</h2>
-                        <form action="#" method="POST">
+                        <form action="{{ route('users.update-password', auth()->user()) }}" method="POST">
                             @csrf
 
                             <div class="form-group">
