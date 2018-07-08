@@ -76,6 +76,7 @@
   }
 
   .post__content {
+    font-size: 18px;
     margin-bottom: 30px;
   }
 
@@ -105,6 +106,10 @@
       .post__date {
         font-size: 16px;
       }
+    }
+
+    .post__content {
+      font-size: 20px;
     }
   }
 }

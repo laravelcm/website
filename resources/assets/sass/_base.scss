@@ -81,12 +81,6 @@ ul {
   padding: 0;
 }
 
-.container {
-  width: 400px;
-  @include media-breakpoint-up(md) {
-    width: 100%;
-  }
-}
 
 nav.site_nav {
   position: fixed;
@@ -181,12 +175,12 @@ nav.site_nav {
 
         a {
           color: $gray-900;
-          padding: 20px 15px;
-          border-bottom: 3px solid transparent;
+          padding: 23px 15px;
           transition: all 0.2s ease-in-out;
+          background-color: transparent;
           &:hover, &.active {
-            color: $primary;
-            border-color: $primary;
+            color: $white;
+            background-color: $primary;
           }
         }
       }
@@ -381,7 +375,7 @@ nav.slide_menu {
 footer.footer {
   position: relative;
   padding-top: 60px;
-  padding-bottom: 100px;
+  padding-bottom: 30px;
   background-image: url(img/footer-bg.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -432,7 +426,7 @@ footer.footer {
   }
 
   .footer-links {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     a {
       color: $gray-200;
       font-size: 14px;
@@ -446,8 +440,9 @@ footer.footer {
 
   p {
     font-family: 'Miriam Libre', sans-serif;
-    margin-bottom: 55px;
+    margin-bottom: 20px;
     font-weight: bold;
+    font-size: 14px;
   }
 
   hr.footer_bar {

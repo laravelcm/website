@@ -173,7 +173,6 @@
                 <li class="link__github"><a href="https://github.com/laravelcm" target="_blank">Github</a></li>
             </ul>
             <p> &copy; Copyright {{ date('Y') }}</p>
-            <hr class="footer_bar">
         </div>
     </footer>
 
