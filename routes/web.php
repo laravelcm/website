@@ -20,7 +20,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     /** Profile Route */
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/account', 'UserController@account')->name('users.account');
-        Route::get('/update-password', 'UserController@updatePassword')->name('users.password');
+        Route::put('/update-account/{id}', 'UserController@updateAccount')->name('users.update-account');
+        Route::get('/update-password', 'UserController@password')->name('users.password');
+        Route::post('/update-password/{id}', 'UserController@updatePassword')->name('users.update-password');
     });
 
     Route::get('/', 'SiteController@index')->name('home');
@@ -59,6 +61,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 });
 
 /** Voyager ROUTE **/
-Route::group(['prefix' => 'console'], function () {
+Route::group(['prefix' => config('app.prefix')], function () {
     Voyager::routes();
 });

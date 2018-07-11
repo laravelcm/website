@@ -21,6 +21,7 @@
 
     <section class="account">
         <div class="container">
+            @include('frontend.partials.success')
             <div class="row">
                 <div class="col-sm-12 col-md-3">
                     @include('frontend.users.sidebar')
@@ -28,7 +29,7 @@
                 <div class="col-sm-12 col-md-9">
                     <div class="card forum_account">
                         <h2>{{ __('Profile') }}</h2>
-                        <form action="#" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('users.update-account', auth()->user()) }}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="account__grid">
@@ -40,25 +41,25 @@
 
                                         @if ($errors->has('name'))
                                             <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="email">{{ __('E-Mail Address') }} <small class="text-danger">*</small></label>
 
-                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ auth()->user()->email }}" disabled>
+                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ auth()->user()->email }}" readonly>
 
                                         @if ($errors->has('email'))
                                             <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
 
                                     <div class="form-group">
                                         <label for="phone_number">{{ __('Phone Number') }}</label>
-                                        <input id="phone_number" type="email" class="form-control" name="phone_number" value="{{ auth()->user()->phone_number }}">
+                                        <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ auth()->user()->phone_number }}">
                                     </div>
 
                                     <div class="form-group">

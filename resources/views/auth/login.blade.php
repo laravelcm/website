@@ -19,7 +19,7 @@
             <div class="card">
                 <h2 class="card__title">{{ __('Login to your account') }}</h2>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col-sm-12 col-md-6">
                         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                             @csrf
 
@@ -64,8 +64,8 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-1"></div>
-                    <div class="col col-md-5">
+                    <div class="col-sm-1 col-md-1"></div>
+                    <div class="col-sm-12 col-md-5">
                         <h5 class="social-title">{{ __('Login using social network') }}</h5>
                         <a href="{{ url('/auth/facebook') }}" class="btn btn-social btn-block btn-facebook">
                             <span class="fa fa-facebook"></span> {{ __('Login with Facebook') }}

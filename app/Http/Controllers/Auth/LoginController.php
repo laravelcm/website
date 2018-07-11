@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Carbon;
 use Socialite;
 use Illuminate\Support\Facades\Auth;
 
@@ -72,7 +73,7 @@ class LoginController extends Controller
         }
 
         $user = User::where($provider.'_id', '=', $providerUser->getId())
-            ->Where('email', '=', $providerUser->getEmail())
+            ->orWhere('email', '=', $providerUser->getEmail())
             ->first();
 
         if (is_null($user)) {
