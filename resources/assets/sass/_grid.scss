@@ -22,6 +22,10 @@
   grid-column-gap: 16px;
   grid-row-gap: 20px;
 
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   @include media-breakpoint-up(lg) {
     grid-template-columns: repeat(3, 1fr);
   }

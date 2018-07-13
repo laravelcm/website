@@ -65,7 +65,7 @@
     <div class="post_pagination">
         <div class="container">
             @if(!is_null($prevPost))
-                <a href="{{ route('blog.post', ['slug' => $prevPost->slug]) }}" class="pagination__left">
+                <a href="{{ route('packages.post', ['slug' => $prevPost->slug]) }}" class="pagination__left">
                     <svg id="icon-arrow-thin-left" fill="none" viewBox="0 0 31.344 105.69" stroke="currentColor" stroke-width="3px" fill-rule="evenodd" width="100%" height="100%">
                         <path d="M29.844 2.86l-25 50 25 50"></path>
                     </svg>
@@ -76,7 +76,7 @@
                 </a>
             @endif
             @if(!is_null($nextPost))
-                <a href="{{ route('blog.post', ['slug' => $nextPost->slug]) }}" class="pagination__right">
+                <a href="{{ route('packages.post', ['slug' => $nextPost->slug]) }}" class="pagination__right">
                     <svg id="icon-arrow-thin-right" fill="none" viewBox="0 0 30.69 103" stroke="currentColor" stroke-width="3px" fill-rule="evenodd" width="100%" height="100%">
                         <path d="M4.19 1.51l25 50-25 50"></path>
                     </svg>
