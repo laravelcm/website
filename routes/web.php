@@ -15,7 +15,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     /** Authenticate Route */
     Auth::routes();
-    Route::get('/slack/invite','SlackInvitationController@invite');
+    Route::get('/slack/result', function () {
+        return view('frontend.slack-invite');
+    })->name('slack.result');
+    Route::post('/slack/invite','SlackInvitationController@sendInvitation')->name('slack.invite');
     Route::get('/auth/{provider}', 'Auth\LoginController@redirectToProvider');
     Route::get('/callback/{provider}', 'Auth\LoginController@handleProviderCallback');
     /** Profile Route */

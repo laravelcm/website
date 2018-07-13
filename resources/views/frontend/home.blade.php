@@ -135,8 +135,9 @@
                 <div class="slack__content">
                     <img src="{{ asset('img/logo-full.svg') }}" alt="Logo laravelcm">
                     <h5>{{ __('Join the Laravel Cameroon community on Slack') }}</h5>
-                    <form action="#">
-                        <input type="email" class="form-control" placeholder="What is your email address ?">
+                    <form action="{{ route('slack.invite') }}" method="POST">
+                        @csrf
+                        <input type="email" name="email" class="form-control" placeholder="What is your email address ?">
                         <button type="submit" class="btn btn-primary btn-block">{{ __('Get My Invite') }}</button>
                     </form>
                     <a href="https://laravelcm.slack.com" target="_blank">{{ __('Jump to Slack Channel') }}</a>

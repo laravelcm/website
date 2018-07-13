@@ -2,56 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\PostRepository;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 
 class SlackInvitationController extends Controller
 {
+    /**
+     * @var \GuzzleHttp\Client
+     */
+    protected $client;
 
     /**
-     * Show the application dashboard.
+     * Slack Team name
      *
-     * @return \Illuminate\Http\Response
+     * @var string
      */
-    public function invite()
+    protected $team;
+
+    /**
+     * SlackInvitationController constructor.
+     */
+    public function __construct()
     {
-        $result = $this->request_invitation('test@test.com');
-
-
+        $this->client = new Client();
+        $this->team   = env('SLACK_TEAM_NAME', 'Laravel Cameroon');
     }
 
-    function request_invitation($email)
+    /**
+     * Slack Invitation
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sendInvitation(Request $request)
     {
-        // users.admin.invite is undocumented API, keep in mind.
-        $api_response = $this->call_api('/api/users.admin.invite?t=' . time(), [
-            'email' => $email,
-            'set_active' => 'true',
-            '_attempts' => '1',
-        ]);
-        dd($api_response);
-        if ($api_response->ok !== true) {
-            throw new \RuntimeException('Slack API response not ok, error:' . $api_response->error); // TODO more nice Exception
-        }
-    }
-    function call_api($path, $params = [])
-    {
-        $client = new \GuzzleHttp\Client([
-            'base_uri' => "https://slack.com/"
-        ]);
-        var_dump(env('SLACK_API'));
-        var_dump(env('SLACK_TOKEN'));
+        $rules = ['email' => 'required|string|email'];
+        $validator = validator($request->all(), $rules);
+        $email = $request->input('email');
 
-        try {
-            $api_response_raw = $client->request('post', $path, [
-                'form_params' => array_merge(['token' => env('SLACK_API')], $params)
-            ]);
-        } catch (GuzzleException $e) {
+        if ($validator->fails()) {
+            return redirect(route('slack.result'))->with('error', 'You must enter your email to proceed.');
+        } else {
+            try {
+                $this->client->request('POST',
+                    env('SLACK_TEAM_URL').'/api/users.admin.invite?t='
+                    .time().'&email='.$email.'&token='.env('SLACK_API_TOKEN')
+                    .'&set_active=true&_attempts=1');
+                return redirect(route('slack.result'))->with('success', "An invitation to your mail to join {$this->team} workspace.");
+            } catch (GuzzleException $e) {
+                return redirect(route('slack.result'))->with('error', 'An error occured while sending invitation, please try again.');
+            }
         }
-        $api_response = json_decode($api_response_raw->getBody());
-        if ($api_response === null) {
-            throw new \RuntimeException('Slack API response an invalid json'); // TODO more nice Exception
-        }
-        return $api_response;
     }
 }
