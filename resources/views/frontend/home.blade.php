@@ -78,17 +78,13 @@
                     <h2 class="next-event__title">{{ __('Next Event') }}</h2>
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/6352ed15-f246-41ff-9e00-3cf29bf9bd6f/laravelconftaiwan.jpeg" alt="lara event">
-                            {{--<span class="event__price">{{ __('Free') }}</span>
-                            <p class="event__share">
-                                <a href="javascript:;">{{ __('Share') }} <i class="fa fa-share-alt"></i></a>
-                            </p>--}}
+                            <img src="https://ucarecdn.com/3cf97be3-9792-4b98-8280-5a62392475bf/laraconus.png" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Jul 08, 2018</span>
+                            <span class="event__content-date">Jul 25, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://laravelconf.tw/" target="_blank">
-                                    Laravel Conf Taiwan 2018 Announcement
+                                <a href="http://laracon.us/" target="_blank">
+                                    Laracon US
                                 </a>
                             </h6>
                         </div>
@@ -178,26 +174,51 @@
                 <a href="https://laravelevents.com" class="block__link" target="_blank">{{ __('View all') }}</a>
             </header>
             <div class="row">
-                <h3>{{ __('Coming Soon') }}</h3>
-                {{--@for($i = 1; $i <= 3; $i++)
-                <div class="col-12 col-md-4">
+                <div class="col-sm-12 col-md-4">
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="{{ asset('img/laracon.png') }}" alt="lara event">
-                            <span class="event__price">{{ __('Free') }}</span>
-                            <p class="event__share">
-                                <a href="javascript:;">{{ __('Share') }} <i class="fa fa-share-alt"></i></a>
-                            </p>
+                            <img src="https://ucarecdn.com/3cf97be3-9792-4b98-8280-5a62392475bf/laraconus.png" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Vendredi, 12 Juin à 18h - Akwa Douala</span>
+                            <span class="event__content-date">Jul 25, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="javascript:;">Google I/O Extended 2018 - GDG Douala</a>
+                                <a href="http://laracon.us/" target="_blank">
+                                    Laracon US
+                                </a>
                             </h6>
                         </div>
                     </div>
                 </div>
-                @endfor--}}
+                <div class="col-sm-12 col-md-4">
+                    <div class="event">
+                        <div class="event__thumb">
+                            <img src="https://ucarecdn.com/4ddfc653-d819-48e9-bd31-be5ad7cfbac9/vSrhGE5dsgeyB2AzPXSC7K5Cnc2xiFlvQvu75vWW.png" alt="laravel event">
+                        </div>
+                        <div class="event__content">
+                            <span class="event__content-date">Jul 25, 2018</span>
+                            <h6 class="event__content-title">
+                                <a href="https://www.meetup.com/Ohio-Laravel/events/252272148/" target="_blank">
+                                    Ohio Laravel July Meetup
+                                </a>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="event">
+                        <div class="event__thumb">
+                            <img src="https://ucarecdn.com/4ba0a49c-5ea6-4f37-8966-b88b24cec7c7/-/resize/1400x700/" alt="laravel event">
+                        </div>
+                        <div class="event__content">
+                            <span class="event__content-date">Jul 26, 2018</span>
+                            <h6 class="event__content-title">
+                                <a href="https://www.meetup.com/Laravel-Mcr/events/pkcrwpyxkbjc/" target="_blank">
+                                    Laravel Manchester Meetup
+                                </a>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -5,10 +5,11 @@ namespace App\Models;
 use App\User;
 use CyrildeWit\EloquentViewable\Viewable;
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Package extends Model
 {
-    use Viewable;
+    use Viewable, SearchableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +18,25 @@ class Package extends Model
      */
     protected $fillable = [
         'title', 'slug', 'content', 'resume', 'is_approved', 'image', 'user_id', 'category_id'
+    ];
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'packages.title' => 10,
+            'packages.content' => 10,
+        ],
     ];
 
     /**
