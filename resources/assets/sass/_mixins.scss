@@ -33,7 +33,7 @@
     height: 150px;
     width: 100%;
     &:before {
-      @include overlay(#6A6767, .6)
+      @include overlay(#6A6767, .2)
     }
     img {
       background-size: cover;

@@ -63,7 +63,7 @@
                     <div class="adwords lcm-1"></div>
                 </div>
                 <div class="col-sm-12 col-md-4">
-                    @include('frontend.partials.sidebar', ['name' => __('Total Tutorials'), 'value' => $total])
+                    @include('frontend.partials.sidebar', ['name' => __('Total Tutorials'), 'value' => $total, 'hide' => false])
                 </div>
             </div>
         </div>

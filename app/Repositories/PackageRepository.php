@@ -136,4 +136,19 @@ class PackageRepository
             ->orderBy('id', 'ASC')
             ->first();
     }
+
+    /**
+     * Return search results
+     *
+     * @param string $query
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function search(string $query)
+    {
+        return $this->model
+            ->scopeSearch($this->model->newQuery(), $query)
+            ->select('title', 'resume', 'slug', 'image', 'created_at')
+            ->where('is_approved', true)
+            ->get();
+    }
 }

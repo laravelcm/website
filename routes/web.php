@@ -30,6 +30,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     });
 
     Route::get('/', 'SiteController@index')->name('home');
+    Route::get('/search', 'SiteController@search')->name('search');
 
     /** Package GROUP ROUTE **/
     Route::group(['prefix' => 'packages'], function () {

@@ -7,7 +7,7 @@
         </a>
     </div>
     <div class="slide-nav__search">
-        <form action="#" class="search">
+        <form action="{{ route('search') }}" class="search">
             <input type="text" placeholder="Search" name="q">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>

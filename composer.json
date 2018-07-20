@@ -17,6 +17,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
         "mcamara/laravel-localization": "^1.3",
+        "nicolaslopezj/searchable": "^1.10",
         "tcg/voyager": "^1.1",
         "thujohn/twitter": "^2.2",
         "yajra/laravel-disqus": "^1.1"

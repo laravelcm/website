@@ -1,10 +1,13 @@
 <aside class="sidebar">
-    <div class="card sidebar_card">
-        <h5>
-            <span class="fa fa-pencil-square-o"></span>
-            {{ $name }} ({{ $value }})
-        </h5>
-    </div>
+
+    @if($hide === false)
+        <div class="card sidebar_card">
+            <h5>
+                <span class="fa fa-pencil-square-o"></span>
+                {{ $name }} ({{ $value }})
+            </h5>
+        </div>
+    @endif
 
     <div class="card facebook">
         <h5>{{ __('Facebook Page') }}</h5>
