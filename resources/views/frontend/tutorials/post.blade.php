@@ -60,6 +60,7 @@
                 </p>
             </div>
         </article>
+        <div id="disqus_thread"></div>
 
     </div>
     <div class="post_pagination">
