@@ -19,7 +19,7 @@
     @elseif(Request::is( Config::get('chatter.routes.home') . '/' . Config::get('chatter.routes.category') . '/*' ) && isset( $discussion ) )
         <title>{{ $discussion->category->name }} - Laravel Cameroon</title>
     @else
-        <title>@yield('title') - Laravel Cameroon</title>
+        <title>@yield('title')</title>
     @endif
 
     <!-- Fonts -->
@@ -163,7 +163,7 @@
                 <li class="link__laravel-news"><a href="https://laravel-news.com" target="_blank">News</a></li>
                 <li class="link__laravel-jobs"><a href="https://larajobs.com" target="_blank">Jobs</a></li>
                 <li class="link__account"><a href="{{ route('users.account') }}">{{ __('My account') }}</a></li>
-                <li class="link__contact"><a href="javascript:;">Contact</a></li>
+                <li class="link__contact"><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
             <ul class="footer-links">
                 <li class="link__tutorials"><a href="{{ route('tutorials') }}">{{ __('Tutorials') }}</a></li>
