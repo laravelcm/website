@@ -82,170 +82,187 @@ ul {
   padding: 0;
 }
 
+.header {
+  .laravel-meetup-banner {
+    padding: 10px;
+    background: linear-gradient(-135deg,#8649D6 0,#2791D2 100%);
+    text-align: center;
+    color: #D3E6FB;
+    font-size: 16px;
+    text-shadow: 0 2px 4px rgba(0,0,0,.14);
 
-nav.site_nav {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  display: flex;
-  height: 74px;
-  width: 100%;
-  padding: 0;
-  background-color: $white;
-  border-top: 6px solid $primary;
-  box-shadow: 1px 0 2px 2px rgba(42,42,42,.25);
-  z-index: 25;
-
-  .nav_header {
-    margin-top: 4px;
-    .nav__logo {
-      font-family: 'Miriam Libre', sans-serif;
+    a {
       font-weight: 700;
-      color: $primary;
-      letter-spacing: -.02em;
-      svg {
-        width: 50px;
-        height: 60px;
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 10px;
-      }
-    }
-    .nav_hamberger {
-      float: right;
-      display: inline-block;
-      margin-top: 16px;
-      cursor: pointer;
-      background-color: transparent;
-      border: none;
-      font-size: 18px;
-      color: $gray-900;
-      outline: none;
+      color: #fff;
+      box-shadow: inset 0 -5px 0 #9691E4;
+      font-family: "Miriam Libre", sans-serif;
     }
   }
 
-  .nav__container {
-    display: none;
-  }
-
-  @include media-breakpoint-up(lg) {
-    .container { box-sizing: content-box; }
+  nav.site_nav {
+    //position: fixed;
+    //left: 0;
+    //top: 0;
+    //right: 0;
+    display: flex;
+    height: 74px;
+    width: 100%;
+    padding: 0;
+    background-color: $white;
+    border-top: 6px solid $primary;
+    box-shadow: 1px 0 2px 2px rgba(42,42,42,.25);
+    z-index: 25;
 
     .nav_header {
-      float: left;
-      margin-right: 30px;
-      margin-top: 0;
-
+      margin-top: 4px;
       .nav__logo {
-        display: inline-block;
-        font-size: 18px;
-        line-height: 70px;
-
+        font-family: 'Miriam Libre', sans-serif;
+        font-weight: 700;
+        color: $primary;
+        letter-spacing: -.02em;
         svg {
-          height: 32px;
-          width: 48px;
+          width: 50px;
+          height: 60px;
+          display: inline-block;
+          vertical-align: middle;
           margin-right: 10px;
         }
       }
-
-      .nav_hamberger { display: none; }
+      .nav_hamberger {
+        float: right;
+        display: inline-block;
+        margin-top: 16px;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        font-size: 18px;
+        color: $gray-900;
+        outline: none;
+      }
     }
 
     .nav__container {
-      position: relative;
-      top: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      flex-flow: row nowrap;
-      justify-content: flex-start;
-      box-sizing: border-box;
+      display: none;
     }
 
-    .main-menu {
-      width: auto;
-      flex: 2 auto;
-      order: 1;
-      text-align: right;
+    @include media-breakpoint-up(lg) {
+      .container { box-sizing: content-box; }
 
-      .menu__item {
-        display: inline-block;
-        font-family: 'Miriam Libre', sans-serif;
-        font-weight: 400;
+      .nav_header {
+        float: left;
+        margin-right: 30px;
+        margin-top: 0;
 
-        a {
-          color: $gray-900;
-          padding: 23px 15px;
-          transition: all 0.2s ease-in-out;
-          background-color: transparent;
-          &:hover, &.active {
-            color: $white;
-            background-color: $primary;
+        .nav__logo {
+          display: inline-block;
+          font-size: 18px;
+          line-height: 70px;
+
+          svg {
+            height: 32px;
+            width: 48px;
+            margin-right: 10px;
+          }
+        }
+
+        .nav_hamberger { display: none; }
+      }
+
+      .nav__container {
+        position: relative;
+        top: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        box-sizing: border-box;
+      }
+
+      .main-menu {
+        width: auto;
+        flex: 2 auto;
+        order: 1;
+        text-align: right;
+
+        .menu__item {
+          display: inline-block;
+          font-family: 'Miriam Libre', sans-serif;
+          font-weight: 400;
+
+          a {
+            color: $gray-900;
+            padding: 23px 15px;
+            transition: all 0.2s ease-in-out;
+            background-color: transparent;
+            &:hover, &.active {
+              color: $white;
+              background-color: $primary;
+            }
           }
         }
       }
-    }
 
-    .nav-social {
-      width: auto;
-      flex: 0 auto;
-      order: 2;
-      margin: 0 10px;
-      text-align: center;
+      .nav-social {
+        width: auto;
+        flex: 0 auto;
+        order: 2;
+        margin: 0 10px;
+        text-align: center;
 
-      li {
-        display: inline-block;
-        width: 25px;
-        margin: 0 2px;
-      }
-    }
-
-    .nav__search {
-      display: inline-block;
-      width: 100px;
-      flex: 1 auto;
-      order: 3;
-
-      .search {
-        display: flex;
-        border-left: 2px solid $gray-100;
-      }
-
-      input {
-        height: auto;
-        width: 100%;
-        padding: 26px 0 26px 25px;
-        flex: 1 0;
-        margin: 0;
-        font-size: .8125rem;
-        font-weight: 600;
-        line-height: 15px;
-        font-family: Source Sans Pro, sans-serif;
-        border: 0;
-        border-radius: 0;
-        box-sizing: border-box;
-        outline: none;
-        &::placeholder {
-          text-transform: uppercase;
-          color: $primary;
+        li {
+          display: inline-block;
+          width: 25px;
+          margin: 0 2px;
         }
       }
 
-      button {
-        padding: 23px 20px 20px 5px;
-        margin: 0;
-        margin-right: -20px;
-        background-color: transparent;
-        color: $gray-900;
-        flex: 0 auto;
-        border: 0;
-        border-radius: 0;
-        cursor: pointer;
-        transition: background-color .15s ease 0s,color .15s ease 0s;
+      .nav__search {
+        display: inline-block;
+        width: 100px;
+        flex: 1 auto;
+        order: 3;
 
-        &:hover {
-          color: $primary;
+        .search {
+          display: flex;
+          border-left: 2px solid $gray-100;
+        }
+
+        input {
+          height: auto;
+          width: 100%;
+          padding: 26px 0 26px 25px;
+          flex: 1 0;
+          margin: 0;
+          font-size: .8125rem;
+          font-weight: 600;
+          line-height: 15px;
+          font-family: Source Sans Pro, sans-serif;
+          border: 0;
+          border-radius: 0;
+          box-sizing: border-box;
+          outline: none;
+          &::placeholder {
+            text-transform: uppercase;
+            color: $primary;
+          }
+        }
+
+        button {
+          padding: 23px 20px 20px 5px;
+          margin: 0;
+          margin-right: -20px;
+          background-color: transparent;
+          color: $gray-900;
+          flex: 0 auto;
+          border: 0;
+          border-radius: 0;
+          cursor: pointer;
+          transition: background-color .15s ease 0s,color .15s ease 0s;
+
+          &:hover {
+            color: $primary;
+          }
         }
       }
     }
@@ -370,7 +387,7 @@ nav.slide_menu {
 
 .site-content {
   flex: 1;
-  padding-top: 74px;
+  //padding-top: 74px;
 }
 
 footer.footer {

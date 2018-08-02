@@ -78,13 +78,13 @@
                     <h2 class="next-event__title">{{ __('Next Event') }}</h2>
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/3cf97be3-9792-4b98-8280-5a62392475bf/laraconus.png" alt="laravel event">
+                            <img src="https://ucarecdn.com/42b237ff-827f-4af9-a464-0d769e04ef78/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Jul 25, 2018</span>
+                            <span class="event__content-date">Aug 14, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="http://laracon.us/" target="_blank">
-                                    Laracon US
+                                <a href="https://www.meetup.com/Laravel-Detroit/events/252646476/" target="_blank">
+                                    Detroit Laravel Code, Coffee, and Collaboration
                                 </a>
                             </h6>
                         </div>
@@ -162,6 +162,11 @@
                         <img src="{{ asset('img/partners/deelynx-logo.svg') }}" alt="Deelynx Logo">
                     </a>
                 </li>
+                <li class="sponsor">
+                    <a href="https://www.bhent.net/" class="bhent_sponsor">
+                        <img src="{{ asset('img/partners/bhent-logo.svg') }}" alt="Bhent Logo" style="height: auto">
+                    </a>
+                </li>
             </ul>
             <a href="javascript:;" class="btn btn-primary" target="_blank">{{ __('Become a Sponsor') }} <i class="icon ion-ios-arrow-forward"></i></a>
         </div>
@@ -177,13 +182,13 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/3cf97be3-9792-4b98-8280-5a62392475bf/laraconus.png" alt="laravel event">
+                            <img src="https://ucarecdn.com/42b237ff-827f-4af9-a464-0d769e04ef78/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Jul 25, 2018</span>
+                            <span class="event__content-date">Aug 14, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="http://laracon.us/" target="_blank">
-                                    Laracon US
+                                <a href="https://www.meetup.com/Laravel-Detroit/events/252646476/" target="_blank">
+                                    Detroit Laravel Code, Coffee, and Collaboration
                                 </a>
                             </h6>
                         </div>
@@ -192,13 +197,13 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/4ddfc653-d819-48e9-bd31-be5ad7cfbac9/vSrhGE5dsgeyB2AzPXSC7K5Cnc2xiFlvQvu75vWW.png" alt="laravel event">
+                            <img src="https://ucarecdn.com/b76b5885-db31-4ebd-84f4-820a089fe525/-/crop/1184x592/0,92/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Jul 25, 2018</span>
+                            <span class="event__content-date">Jul 22, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://www.meetup.com/Ohio-Laravel/events/252272148/" target="_blank">
-                                    Ohio Laravel July Meetup
+                                <a href="https://www.meetup.com/Ohio-Laravel/events/253391571/" target="_blank">
+                                    Ohio Laravel Meetup - Auto-generating REST (and GraphQL!) APIs
                                 </a>
                             </h6>
                         </div>
@@ -207,13 +212,13 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/4ba0a49c-5ea6-4f37-8966-b88b24cec7c7/-/resize/1400x700/" alt="laravel event">
+                            <img src="https://ucarecdn.com/79afd87e-f6d3-4f94-9f5f-6fda637442d5/-/crop/5553x2773/0,122/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Jul 26, 2018</span>
+                            <span class="event__content-date">Jul 25, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://www.meetup.com/Laravel-Mcr/events/pkcrwpyxkbjc/" target="_blank">
-                                    Laravel Manchester Meetup
+                                <a href="https://www.eventbrite.fr/e/billets-laravel-cameroon-meetup-48591234691?aff=ehomecard" target="_blank">
+                                    Laravel Cameroon Meetup
                                 </a>
                             </h6>
                         </div>

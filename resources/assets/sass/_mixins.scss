@@ -76,6 +76,7 @@
     }
   }
   .event__content {
+    min-height: 128px;
     padding: 15px 30px;
     .event__content-date {
       display: block;

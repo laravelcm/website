@@ -32,7 +32,7 @@ if (carousel) {
 }
 
 // grab an element
-let myElement = document.querySelector('#site_nav')
+let myElement = document.querySelector('#header')
 if (myElement) {
   // construct an instance of Headroom, passing the element
   let headroom = new Headroom(myElement)
