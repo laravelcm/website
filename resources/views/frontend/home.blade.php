@@ -46,7 +46,7 @@
                 </li>
                 <li class="partner item">
                     <a href="http://geekofcode.com/">
-                        <img src="{{ asset('img/partners/geekofcode-logo.svg') }}" alt="Geek OF Code Logo">
+                        <img src="{{ asset('img/partners/activspaces.jpg') }}" alt="ActivSpaces Logo" style="width: 65px">
                     </a>
                 </li>
             </ul>
@@ -165,6 +165,11 @@
                 <li class="sponsor">
                     <a href="https://www.bhent.net/" class="bhent_sponsor">
                         <img src="{{ asset('img/partners/bhent-logo.svg') }}" alt="Bhent Logo" style="height: auto">
+                    </a>
+                </li>
+                <li class="sponsor">
+                    <a href="http://activspaces.com/" class="activspace_sponsor">
+                        <img src="{{ asset('img/partners/activspaces.jpg') }}" alt="ACTIVSPACES Logo" style="width: auto">
                     </a>
                 </li>
             </ul>
