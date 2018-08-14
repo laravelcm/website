@@ -111,4 +111,10 @@ class SiteController extends Controller
 
         return view('frontend.search', compact('results', 'total'));
     }
+
+    public function meetup()
+    {
+
+        return view('frontend.meetup', []);
+    }
 }

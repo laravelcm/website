@@ -40,12 +40,12 @@
                     </a>
                 </li>
                 <li class="partner item">
-                    <a href="http://www.deelynx.com/">
-                        <img src="{{ asset('img/partners/deelynx-logo.svg') }}" alt="Deelynx Logo">
+                    <a href="https://gdgdouala.com/">
+                        <img src="{{ asset('img/partners/gdg-douala-logo.png') }}" alt="GDG Douala Logo"  style="width: 140px">
                     </a>
                 </li>
                 <li class="partner item">
-                    <a href="http://geekofcode.com/">
+                    <a href="http://activspaces.com">
                         <img src="{{ asset('img/partners/activspaces.jpg') }}" alt="ActivSpaces Logo" style="width: 65px">
                     </a>
                 </li>
@@ -78,13 +78,13 @@
                     <h2 class="next-event__title">{{ __('Next Event') }}</h2>
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/42b237ff-827f-4af9-a464-0d769e04ef78/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
+                            <img src="https://ucarecdn.com/d5c771b5-83e8-4fe9-846c-ef21022c3b25/-/crop/744x372/0,24/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Aug 14, 2018</span>
+                            <span class="event__content-date">Aug 18, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://www.meetup.com/Laravel-Detroit/events/252646476/" target="_blank">
-                                    Detroit Laravel Code, Coffee, and Collaboration
+                                <a href="https://www.eventbrite.com/e/laravelng-abuja-routing-the-laravel-way-tickets-48857070814" target="_blank">
+                                    Laravel Nigeria Abuja
                                 </a>
                             </h6>
                         </div>
@@ -142,40 +142,7 @@
         </div>
     </section>
 
-    <section class="sponsors">
-        <div class="container">
-            <h2 class="sponsors__title">{{ __('Our Sponsors') }}</h2>
-            <p class="sponsors_text">{{ __('The companies that help make the community a success.') }}</p>
-            <ul class="sponsors_list">
-                <li class="sponsor">
-                    <a href="https://www.johns-corporation.com" class="jc_sponsor">
-                        <img src="{{ asset('img/partners/logo-jc.svg') }}" alt="John's Corporation Logo">
-                    </a>
-                </li>
-                <li class="sponsor">
-                    <a href="https://diool.com" class="diool_sponsor">
-                        <img src="{{ asset('img/partners/logo-diool.svg') }}" alt="Diool Logo">
-                    </a>
-                </li>
-                <li class="sponsor">
-                    <a href="http://www.deelynx.com/" class="deelynx_sponsor">
-                        <img src="{{ asset('img/partners/deelynx-logo.svg') }}" alt="Deelynx Logo">
-                    </a>
-                </li>
-                <li class="sponsor">
-                    <a href="https://www.bhent.net/" class="bhent_sponsor">
-                        <img src="{{ asset('img/partners/bhent-logo.svg') }}" alt="Bhent Logo" style="height: auto">
-                    </a>
-                </li>
-                <li class="sponsor">
-                    <a href="http://activspaces.com/" class="activspace_sponsor">
-                        <img src="{{ asset('img/partners/activspaces.jpg') }}" alt="ACTIVSPACES Logo" style="width: auto">
-                    </a>
-                </li>
-            </ul>
-            <a href="javascript:;" class="btn btn-primary" target="_blank">{{ __('Become a Sponsor') }} <i class="icon ion-ios-arrow-forward"></i></a>
-        </div>
-    </section>
+    @include('frontend.partials.sponsors')
 
     <section class="events">
         <div class="container">
@@ -187,13 +154,13 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/42b237ff-827f-4af9-a464-0d769e04ef78/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
+                            <img src="https://ucarecdn.com/d5c771b5-83e8-4fe9-846c-ef21022c3b25/-/crop/744x372/0,24/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Aug 14, 2018</span>
+                            <span class="event__content-date">Aug 18, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://www.meetup.com/Laravel-Detroit/events/252646476/" target="_blank">
-                                    Detroit Laravel Code, Coffee, and Collaboration
+                                <a href="https://www.eventbrite.com/e/laravelng-abuja-routing-the-laravel-way-tickets-48857070814" target="_blank">
+                                    Laravel Nigeria Abuja
                                 </a>
                             </h6>
                         </div>
@@ -222,7 +189,7 @@
                         <div class="event__content">
                             <span class="event__content-date">Jul 25, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://www.eventbrite.fr/e/billets-laravel-cameroon-meetup-48591234691?aff=ehomecard" target="_blank">
+                                <a href="{{ route('meetup') }}" target="_blank">
                                     Laravel Cameroon Meetup
                                 </a>
                             </h6>

@@ -78,11 +78,12 @@
                 </div>
                 <div class="nav__container">
                     <ul class="main-menu">
+                        <li class="menu__item"><a href="{{ route('meetup') }}" class="{{ (url()->current() == route('meetup'))? 'active' : '' }}">{{ __('Meetup') }}</a></li>
                         <li class="menu__item"><a href="{{ route('blog') }}" class="{{ (url()->current() == route('blog'))? 'active' : '' }}">{{ __('Blog') }}</a></li>
                         <li class="menu__item"><a href="{{ route('chatter.home') }}" class="{{ (url()->current() == route('chatter.home'))? 'active' : '' }}">{{ __('Forum') }}</a></li>
                         <li class="menu__item"><a href="{{ route('tutorials') }}" class="{{ (url()->current() == route('tutorials'))? 'active' : '' }}">{{ __('Tutorials') }}</a></li>
                         <li class="menu__item"><a href="{{ route('packages') }}" class="{{ (url()->current() == route('packages'))? 'active' : '' }}">{{ __('Packages') }}</a></li>
-                        <li class="menu__item"><a href="https://laravelevents.com" target="_blank">{{ __('Events') }}</a></li>
+                        {{--<li class="menu__item"><a href="https://laravelevents.com" target="_blank">{{ __('Events') }}</a></li>--}}
                         <li class="menu__item">
                             @if(LaravelLocalization::getCurrentLocale() == 'en')
                                 <a rel="alternate" hreflang="fr" href="{{ LaravelLocalization::getLocalizedURL('fr', null, [], true) }}">

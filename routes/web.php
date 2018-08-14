@@ -29,6 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::get('/', 'SiteController@index')->name('home');
     Route::get('/search', 'SiteController@search')->name('search');
+    Route::get('/meetup', 'SiteController@meetup')->name('meetup');
     Route::get('/contact', function () { return view('frontend.contact');})->name('contact');
 
     /** Package GROUP ROUTE **/

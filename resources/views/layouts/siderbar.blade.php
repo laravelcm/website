@@ -13,6 +13,7 @@
         </form>
     </div>
     <ul class="slide-main-nav">
+        <li class="menu__item"><a href="{{ route('meetup') }}">{{ __('Meetup') }}</a></li>
         <li class="menu__item"><a href="{{ route('blog') }}">{{ __('Blog') }}</a></li>
         <li class="menu__item"><a href="{{ route('chatter.home') }}">{{ __('Forum') }}</a></li>
         <li class="menu__item"><a href="{{ route('tutorials') }}">{{ __('Tutoriels') }}</a></li>
