@@ -114,7 +114,15 @@ class SiteController extends Controller
 
     public function meetup()
     {
+        $participants = [
+            ['name' => 'Lorentzo Konwo', 'email' => 'konwoubuntu@gmail.com'],
+            ['name' => 'Junior Alkaj', 'email' => 'alkaj09@gmail.com'],
+            ['name' => 'Hyasenthe Fotso', 'email' => 'hyashyasenthe@gmail.com'],
+            ['name' => 'Joe Bhent', 'email' => 'joe.bhent@bhent.com'],
+            ['name' => 'Jean Piere M.', 'email' => 'mbanga.jp@johns-corporation.com'],
+            ['name' => 'Lionel Nkot', 'email' => 'mbanga.jp@johns-corporation.com'],
+        ];
 
-        return view('frontend.meetup', []);
+        return view('frontend.meetup', compact('participants'));
     }
 }

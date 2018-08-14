@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="meetup-register">
-                    <p class="meetup-people"><strong>{{ __('Are you going') }}?</strong> 72 {{ __('people going') }}</p>
+                    <p class="meetup-people"><strong>{{ __('Are you going') }}?</strong> 150 {{ __('people going') }}</p>
                     <a href="https://www.eventbrite.fr/e/billets-laravel-cameroon-meetup-48591234691?aff=ehomecard" class="btn btn-primary" target="_blank">
                         {{ __('Register now') }} <i class="icon ion-ios-arrow-thin-right"></i>
                     </a>
@@ -118,7 +118,7 @@
                     <li>{{ __('and all that revolves around the world of Laravel') }}</li>
                 </ul>
 
-                <h3 class="meetup-attendees__header">{{ __('Attendees') }} (72)</h3>
+                <h3 class="meetup-attendees__header">{{ __('Attendees') }} (150)</h3>
 
                 <div class="attendees">
                     <div class="attendee">
@@ -126,13 +126,13 @@
                         <a href="https://github.com/mckenziearts" target="_blank">Arthur Monney</a>
                         <p class="attendee__post">Co-organizer</p>
                     </div>
-                    @for ($i = 0; $i < 6; $i++)
+                    @foreach ($participants as $participant)
                         <div class="attendee">
-                            <img src="https://www.gravatar.com/avatar/"{{ md5(strtolower(trim('monneylobe@gmail.com'))) }}&s="110" alt="participant">
-                            <a href="javascript:;" target="_blank">Arthur Monney {{ $i }}</a>
+                            <img src="https://www.gravatar.com/avatar/"{{ md5(strtolower(trim($participant['email']))) }}&s="110" alt="participant">
+                            <a href="javascript:;" target="_blank">{{ $participant['name'] }}</a>
                             <p class="attendee__post">Participant</p>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </section>

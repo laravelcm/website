@@ -19,6 +19,8 @@
                 </a>
             </li>
         </ul>
-        <a href="javascript:;" class="btn btn-primary" target="_blank">{{ __('Become a Sponsor') }} <i class="icon ion-ios-arrow-forward"></i></a>
+        <a href="https://drive.google.com/open?id=1zMNIHN8bfmYJAcCg6w3i0Fyj0zhI3AIp" class="btn btn-primary" target="_blank">
+            {{ __('Become a Sponsor') }} <i class="icon ion-ios-arrow-forward"></i>
+        </a>
     </div>
 </section>
