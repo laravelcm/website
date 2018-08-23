@@ -14,8 +14,8 @@
                 </a>
             </li>
             <li class="sponsor">
-                <a href="https://www.bhent.net/" class="bhent_sponsor">
-                    <img src="{{ asset('img/partners/bhent-logo.svg') }}" alt="Bhent Logo" style="height: auto">
+                <a href="https://www.kerawa.com/" class="kerawa_sponsor">
+                    <img src="{{ asset('img/partners/logo-kerawa.png') }}" alt="Kerawa Logo" style="height: auto; width: 70px">
                 </a>
             </li>
         </ul>

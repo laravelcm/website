@@ -84,6 +84,8 @@ ul {
 
 .header {
   .laravel-meetup-banner {
+    display: block;
+    visibility: visible;
     padding: 10px;
     background: linear-gradient(-135deg,#8649D6 0,#2791D2 100%);
     text-align: center;
@@ -97,13 +99,14 @@ ul {
       box-shadow: inset 0 -5px 0 #9691E4;
       font-family: "Miriam Libre", sans-serif;
     }
+
+    &.hidden {
+      display: none;
+      visibility: hidden;
+    }
   }
 
   nav.site_nav {
-    //position: fixed;
-    //left: 0;
-    //top: 0;
-    //right: 0;
     display: flex;
     height: 74px;
     width: 100%;
@@ -139,6 +142,12 @@ ul {
         color: $gray-900;
         outline: none;
       }
+    }
+    &.fixed {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
     }
 
     .nav__container {
@@ -387,7 +396,10 @@ nav.slide_menu {
 
 .site-content {
   flex: 1;
-  //padding-top: 74px;
+
+  &.p-content {
+    padding-top: 74px;
+  }
 }
 
 footer.footer {

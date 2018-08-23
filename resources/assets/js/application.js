@@ -23,7 +23,7 @@ if (carousel) {
           nav: false
         },
         1024: {
-          items: 4,
+          items: 3,
           nav: false
         }
       }
@@ -32,7 +32,7 @@ if (carousel) {
 }
 
 // grab an element
-let myElement = document.querySelector('#header')
+let myElement = document.querySelector('[data-headroom]')
 if (myElement) {
   // construct an instance of Headroom, passing the element
   let headroom = new Headroom(myElement)

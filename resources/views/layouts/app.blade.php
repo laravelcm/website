@@ -58,12 +58,17 @@
 </head>
 <body>
 
+    <?php
+        $eventDate = strtotime('2018-08-25');
+        $today = time() - (60*60*24);
+    ?>
+
     <span class="overlay"></span>
     <header class="header">
-        <div class="laravel-meetup-banner">
+        <div class="laravel-meetup-banner @if ($today > $eventDate) hidden @endif">
             {!! __("Join Laravel Cameroon Meetup in ActivSpace Akwa, Douala on August 25th. Tickets are now available! <a href='https://www.eventbrite.fr/e/billets-laravel-cameroon-meetup-48591234691?aff=ehomecard'>Get your ticket today!</a>") !!}
         </div>
-        <nav class="site_nav" id="site_nav">
+        <nav class="site_nav @if ($today > $eventDate) fixed @endif" @if ($today > $eventDate) data-headroom @endif id="site_nav">
             <div class="container">
                 <div class="nav_header">
                     <a href="{{ route('home') }}" class="nav__logo">
@@ -113,7 +118,7 @@
         </nav>
     </header>
     @include('layouts.siderbar')
-    <main class="site-content">
+    <main class="site-content @if ($today > $eventDate) p-content @endif">
         @yield('content')
     </main>
 

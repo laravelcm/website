@@ -240,3 +240,93 @@
     }
   }
 }
+
+.schedule {
+  margin-top: 50px;
+
+  .schedule-title {
+    color: $primary;
+    margin-bottom: 30px;
+  }
+
+  .schedule__break, .schedule__timeslots {
+    padding: 15px;
+    background: #f35045;
+    color: $white;
+    font-weight: 400;
+    margin-bottom: 25px;
+    width: 100%;
+
+    > time {
+      margin-right: 20px;
+      font-weight: 500;
+    }
+
+    > h6 {
+      display: inline-block;
+      font-weight: 400;
+      font-size: 16px;
+      color: $white;
+      margin: 0;
+    }
+  }
+
+  .schedule__timeslots {
+    background-color: $primary-200;
+  }
+
+  .schedule__workshop {
+    margin-bottom: 25px;
+
+    .schedule__session {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      border-bottom: 5px solid transparent;
+      padding: 25px 15px 70px;
+
+      &.red-badge { border-color: $red; }
+      &.blue-badge { border-color: $blue; }
+      &.green-badge { border-color: $primary }
+      &.indigo-badge { border-color: $indigo }
+      &.pink-badge { border-color: $pink }
+
+      .session-talk, .session-workshop {
+        background-color: $orange;
+        display: inline-block;
+        padding: 4px 0;
+        width: 80px;
+        text-align: center;
+        border-radius: $border-radius;
+        font-size: 13px;
+        margin-bottom: 15px;
+        color: $white;
+      }
+
+      .session-workshop {
+        background-color: $purple;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+
+        .end-time {
+          color: rgba(#000, .7);
+          display: inline-block;
+          font-size: 15px;
+          time {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {}
+}

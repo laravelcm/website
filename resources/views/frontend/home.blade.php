@@ -39,11 +39,11 @@
                         <img src="{{ asset('img/partners/logo-jc.svg') }}" alt="John's Corporation Logo">
                     </a>
                 </li>
-                <li class="partner item">
+                {{--<li class="partner item">
                     <a href="https://gdgdouala.com/">
                         <img src="{{ asset('img/partners/gdg-douala-logo.png') }}" alt="GDG Douala Logo"  style="width: 140px">
                     </a>
-                </li>
+                </li>--}}
                 <li class="partner item">
                     <a href="http://activspaces.com">
                         <img src="{{ asset('img/partners/activspaces.jpg') }}" alt="ActivSpaces Logo" style="width: 65px">
@@ -78,13 +78,13 @@
                     <h2 class="next-event__title">{{ __('Next Event') }}</h2>
                     <div class="event">
                         <div class="event__thumb">
-                            <img src="https://ucarecdn.com/d5c771b5-83e8-4fe9-846c-ef21022c3b25/-/crop/744x372/0,24/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
+                            <img src="https://ucarecdn.com/79afd87e-f6d3-4f94-9f5f-6fda637442d5/-/crop/5553x2773/0,122/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
                         </div>
                         <div class="event__content">
-                            <span class="event__content-date">Aug 18, 2018</span>
+                            <span class="event__content-date">Jul 25, 2018</span>
                             <h6 class="event__content-title">
-                                <a href="https://www.eventbrite.com/e/laravelng-abuja-routing-the-laravel-way-tickets-48857070814" target="_blank">
-                                    Laravel Nigeria Abuja
+                                <a href="{{ route('meetup') }}" target="_blank">
+                                    Laravel Cameroon Meetup
                                 </a>
                             </h6>
                         </div>
@@ -151,36 +151,6 @@
                 <a href="https://laravelevents.com" class="block__link" target="_blank">{{ __('View all') }}</a>
             </header>
             <div class="row">
-                <div class="col-sm-12 col-md-4">
-                    <div class="event">
-                        <div class="event__thumb">
-                            <img src="https://ucarecdn.com/d5c771b5-83e8-4fe9-846c-ef21022c3b25/-/crop/744x372/0,24/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
-                        </div>
-                        <div class="event__content">
-                            <span class="event__content-date">Aug 18, 2018</span>
-                            <h6 class="event__content-title">
-                                <a href="https://www.eventbrite.com/e/laravelng-abuja-routing-the-laravel-way-tickets-48857070814" target="_blank">
-                                    Laravel Nigeria Abuja
-                                </a>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <div class="event">
-                        <div class="event__thumb">
-                            <img src="https://ucarecdn.com/b76b5885-db31-4ebd-84f4-820a089fe525/-/crop/1184x592/0,92/-/resize/1400x700/-/resize/1400x700/" alt="laravel event">
-                        </div>
-                        <div class="event__content">
-                            <span class="event__content-date">Jul 22, 2018</span>
-                            <h6 class="event__content-title">
-                                <a href="https://www.meetup.com/Ohio-Laravel/events/253391571/" target="_blank">
-                                    Ohio Laravel Meetup - Auto-generating REST (and GraphQL!) APIs
-                                </a>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-sm-12 col-md-4">
                     <div class="event">
                         <div class="event__thumb">

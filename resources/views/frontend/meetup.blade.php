@@ -2,20 +2,17 @@
 @section('title', __('Laravel Cameroun Meetup 2018'))
 
 @section('meta')
-    <meta name="description" content="Laravel Cameroon is the biggest PHP & Laravel community and meetup event in Cameroon
-     that brings together the best Laravel and PHP developers in Cameroon.">
+    <meta name="description" content="{{ __('Laravel Cameroon is the biggest PHP & Laravel community and meetup event in Cameroon that brings together the best Laravel and PHP developers in Cameroon.') }}">
     <!-- Facebook Meta -->
     <meta property="og:url" content="{{ route('meetup') }}">
-    <meta property="og:title" content="Laravel Cameroon Meetup 2018">
-    <meta property="og:image" content="{{ asset('img/meetup.jpg') }}">
-    <meta property="og:description" content="Laravel Cameroon is the biggest PHP & Laravel community and meetup event in Cameroon
-     that brings together the best Laravel and PHP developers in Cameroon.">
+    <meta property="og:title" content="{{ __('Laravel Cameroon Meetup 2018') }}">
+    <meta property="og:image" content="{{ asset('img/meetup-1254052.jpg') }}">
+    <meta property="og:description" content="{{ __('Laravel Cameroon is the biggest PHP & Laravel community and meetup event in Cameroon that brings together the best Laravel and PHP developers in Cameroon.') }}">
     <!-- Twitter Meta -->
     <meta name="twitter:url" content="{{ route('meetup') }}">
-    <meta name="twitter:title" content="Laravel Cameroon Meetup 2018">
-    <meta name="twitter:description" content="Laravel Cameroon is the biggest PHP & Laravel community and meetup event in Cameroon
-     that brings together the best Laravel and PHP developers in Cameroon.">
-    <meta name="twitter:image" content="{{ asset('img/meetup.jpg') }}">
+    <meta name="twitter:title" content="{{ __('Laravel Cameroon Meetup 2018') }}">
+    <meta name="twitter:description" content="{{ __('Laravel Cameroon is the biggest PHP & Laravel community and meetup event in Cameroon that brings together the best Laravel and PHP developers in Cameroon.') }}">
+    <meta name="twitter:image" content="{{ asset('img/meetup-1254052.jpg') }}">
 @endsection
 
 @section('content')
@@ -26,7 +23,7 @@
                 <div class="meetup-time">
                     <time class="displayDate">
                         <span class="meetup_day">25</span>
-                        <span class="meetup_month">Aug</span>
+                        <span class="meetup_month">{{ __('Aug') }}</span>
                     </time>
                 </div>
                 <div class="meetup-date">
@@ -37,7 +34,7 @@
                             <img src="{{ asset('img/organizers/fabrice.png') }}" alt="Fabrice Yopa">
                         </div>
                         <div class="meetup-organizer__info">
-                            <p class="meetup-organizer__name">{{ __('Hosted by') }} <a href="https://github.com/fabriceyopa">Fabrice Yopa</a></p>
+                            <p class="meetup-organizer__name">{{ __('Hosted by') }} <a href="https://github.com/fabriceyopa" target="_blank">Fabrice Yopa</a></p>
                             <p class="meetup-name">{{ __('From') }} <a href="https://laravelcm.com">{{ __('Laravel Cameroon') }}</a></p>
                             <p class="meetup-community">{{ __('PHP & Laravel Community') }}</p>
                         </div>
@@ -62,6 +59,7 @@
     </div>
 
     <div class="container">
+
         <section class="meetup">
             <div class="meetup-flex-location">
                 <div class="meetup-location">
@@ -69,7 +67,7 @@
                         <span><i class="icon ion-ios-clock-outline"></i></span>
                         <div>
                             {{  __('Saturday, August 25, 2018') }} <br> {{ __('9:00 AM to 4:00 PM') }} <br>
-                            <a href="">{{ __('Add to calendar') }}</a>
+                            <a href="https://calendar.google.com/calendar/r?pli=1" target="_blank">{{ __('Add to calendar') }}</a>
                         </div>
                     </div>
                     <div class="location-place">
@@ -101,7 +99,7 @@
                 </div>
             </div>
             <div class="meetup-content">
-                <img src="{{ asset('img/meetup.jpg') }}" alt="image cover">
+                <img src="{{ asset('img/meetup-1254052.jpg') }}" alt="image cover">
 
                 <h3 class="meetup-detail__title">{{ __('Details') }}</h3>
 
@@ -118,7 +116,7 @@
                     <li>{{ __('and all that revolves around the world of Laravel') }}</li>
                 </ul>
 
-                <h3 class="meetup-attendees__header">{{ __('Attendees') }} (150)</h3>
+                {{--<h3 class="meetup-attendees__header">{{ __('Attendees') }} (150)</h3>
 
                 <div class="attendees">
                     <div class="attendee">
@@ -133,9 +131,72 @@
                             <p class="attendee__post">Participant</p>
                         </div>
                     @endforeach
+                </div>--}}
+            </div>
+        </section>
+
+        <section class="schedule">
+            <h3 class="schedule-title">{{ __('Schedule') }}</h3>
+            <div class="schedule__break">
+                <time>09:30 - 10:00</time>
+                <h6>{{ __('Registration') }}</h6>
+            </div>
+            <div class="schedule__timeslots">
+                <time>10:00</time>
+            </div>
+            <div class="schedule__workshop grid-5">
+                <div class="schedule__session red-badge">
+                    <h6 class="session-talk">{{ __('Talk') }}</h6>
+                    <h4>{{ __('Introduction of the community') }}</h4>
+                </div>
+                <div class="schedule__session blue-badge">
+                    <h6 class="session-talk">{{ __('Talk') }}</h6>
+                    <h4>{{ __("Sponsors's words") }}</h4>
+                </div>
+                <div class="schedule__session green-badge">
+                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
+                    <h4>{{ __("Laravel Guide Tour") }}</h4>
+                </div>
+            </div>
+            <div class="schedule__break">
+                <time>11:00 - 11:10</time>
+                <h6>{{ __('Break #1 (10 min)') }}</h6>
+            </div>
+            <div class="schedule__timeslots">
+                <time>11:10</time>
+            </div>
+            <div class="schedule__workshop grid-5">
+                <div class="schedule__session red-badge">
+                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
+                    <h4>{{ __("Laravel: What do i think") }}</h4>
+                </div>
+                <div class="schedule__session blue-badge">
+                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
+                    <h4>{{ __("Laravel ecosystem") }}</h4>
+                </div>
+            </div>
+            <div class="schedule__break">
+                <time>12:00 - 12:10</time>
+                <h6>{{ __('Break #2 (10 min)') }}</h6>
+            </div>
+            <div class="schedule__timeslots">
+                <time>12:10</time>
+            </div>
+            <div class="schedule__workshop grid-5">
+                <div class="schedule__session red-badge">
+                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
+                    <h4>{{ __("Getting started") }}</h4>
+                </div>
+                <div class="schedule__session blue-badge">
+                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
+                    <h4>{{ __("Laravel Introduction with Docker") }}</h4>
+                    <div class="metadata">
+                        <span class="end-time">{{ __('Ends') }} <time>14:00</time></span>
+                    </div>
                 </div>
             </div>
         </section>
+
     </div>
 
     @include('frontend.partials.sponsors')
