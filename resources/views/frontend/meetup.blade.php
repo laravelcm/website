@@ -138,54 +138,68 @@
         <section class="schedule">
             <h3 class="schedule-title">{{ __('Schedule') }}</h3>
             <div class="schedule__break">
-                <time>09:30 - 10:00</time>
+                <time>09:00 - 09:30</time>
                 <h6>{{ __('Registration') }}</h6>
             </div>
             <div class="schedule__timeslots">
-                <time>10:00</time>
+                <time>09:30</time>
             </div>
             <div class="schedule__workshop grid-5">
                 <div class="schedule__session red-badge">
                     <h6 class="session-talk">{{ __('Talk') }}</h6>
                     <h4>{{ __('Introduction of the community') }}</h4>
+                    <a href="https://twitter.com/Tekyid237" target="_blank">Idriss Tekeudo</a>
                 </div>
                 <div class="schedule__session blue-badge">
-                    <h6 class="session-talk">{{ __('Talk') }}</h6>
-                    <h4>{{ __("Sponsors's words") }}</h4>
+                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
+                    <h4>{{ __("Laravel Guide Tour") }}</h4>
                 </div>
                 <div class="schedule__session green-badge">
                     <h6 class="session-workshop">{{ __('Workshop') }}</h6>
-                    <h4>{{ __("Laravel Guide Tour") }}</h4>
+                    <h4>{{ __("Laravel: What do i think") }}</h4>
+                    <a href="https://twitter.com/MonneyArthur" target="_blank">Arthur Monney</a>
                 </div>
             </div>
             <div class="schedule__break">
                 <time>11:00 - 11:10</time>
-                <h6>{{ __('Break #1 (10 min)') }}</h6>
+                <h6>{{ __('Break #1') }} (10 min)</h6>
             </div>
             <div class="schedule__timeslots">
                 <time>11:10</time>
             </div>
             <div class="schedule__workshop grid-5">
                 <div class="schedule__session red-badge">
-                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
-                    <h4>{{ __("Laravel: What do i think") }}</h4>
+                    <h6 class="session-talk">{{ __('Talk') }}</h6>
+                    <h4>{{ __("Sponsors's words") }}</h4>
+                    <a href="https://kerawa.com" target="_blank">Kerawa Cameroun</a>
                 </div>
                 <div class="schedule__session blue-badge">
                     <h6 class="session-workshop">{{ __('Workshop') }}</h6>
                     <h4>{{ __("Laravel ecosystem") }}</h4>
+                    <a href="https://twitter.com/yopafabrice" target="_blank">Fabrice Yopa</a>
+                </div>
+                <div class="schedule__session green-badge">
+                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
+                    <h4>{{ __("Getting started") }}</h4>
+                </div>
+                <div class="schedule__session pink-badge">
+                    <h6 class="session-talk">{{ __('Talk') }}</h6>
+                    <h4>{{ __("Sponsors's words") }}</h4>
+                    <a href="https://www.diool.com" target="_blank">Diool Labs</a>
                 </div>
             </div>
             <div class="schedule__break">
-                <time>12:00 - 12:10</time>
-                <h6>{{ __('Break #2 (10 min)') }}</h6>
+                <time>12:00 - 12:15</time>
+                <h6>{{ __('Break #2') }} (15 min)</h6>
             </div>
             <div class="schedule__timeslots">
-                <time>12:10</time>
+                <time>12:15</time>
             </div>
             <div class="schedule__workshop grid-5">
                 <div class="schedule__session red-badge">
-                    <h6 class="session-workshop">{{ __('Workshop') }}</h6>
-                    <h4>{{ __("Getting started") }}</h4>
+                    <h6 class="session-talk">{{ __('Talk') }}</h6>
+                    <h4>{{ __("Sponsors's words") }}</h4>
+                    <a href="https://www.johns-corporation.com" target="_blank">John's Corporation</a>
                 </div>
                 <div class="schedule__session blue-badge">
                     <h6 class="session-workshop">{{ __('Workshop') }}</h6>
