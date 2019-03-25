@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'socialite';
+  src:  url('../fonts/socialite.eot?vuoe9i');
+  src:  url('../fonts/socialite.eot?vuoe9i#iefix') format('embedded-opentype'),
+  url('../fonts/socialite.ttf?vuoe9i') format('truetype'),
+  url('../fonts/socialite.woff?vuoe9i') format('woff'),
+  url('../fonts/socialite.svg?vuoe9i#socialite') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="social-"], [class*=" social-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'socialite' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.social-gitlab:before {
+  content: "\e907";
+}
+.social-bitbucket:before {
+  content: "\e900";
+}
+.social-deezer:before {
+  content: "\e901";
+}
+.social-discord:before {
+  content: "\e902";
+}
+.social-medium:before {
+  content: "\e905";
+}
+.social-yahoo:before {
+  content: "\e906";
+}
+.social-unsplash:before {
+  content: "\e90f";
+}
+.social-google:before {
+  content: "\ea88";
+}
+.social-facebook:before {
+  content: "\ea90";
+}
+.social-instagram:before {
+  content: "\ea92";
+}
+.social-spotify:before {
+  content: "\ea94";
+}
+.social-twitter:before {
+  content: "\ea96";
+}
+.social-youtube:before {
+  content: "\ea9d";
+}
+.social-dribbble:before {
+  content: "\eaa7";
+}
+.social-dropbox:before {
+  content: "\eaae";
+}
+.social-github:before {
+  content: "\eab0";
+}
+.social-trello:before {
+  content: "\eab3";
+}
+.social-soundcloud:before {
+  content: "\eac3";
+}
+.social-linkedin:before {
+  content: "\eaca";
+}
+.social-pinterest:before {
+  content: "\ead1";
+}

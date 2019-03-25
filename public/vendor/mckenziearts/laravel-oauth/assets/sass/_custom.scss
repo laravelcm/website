@@ -1,0 +1,60 @@
+// colors
+$white:     #fff;
+$bitbucket: #205081;
+$deezer:    #131313;
+$discord:   #989FEC;
+$dribbble:  #ea4c89;
+$dropbox:   #007ee5;
+$facebook:  #47639e;
+$github:    #444;
+$gitlab:    #FCA326;
+$google:    #dd4b39;
+$instagram: #e4405f;
+$linkedin:  #0077B5;
+$medium:    #00E470;
+$pinterest: #9F1121;
+$spotify:   #00D95F;
+$soundcloud:#FF6A22;
+$trello:    #0277BD;
+$twitter:   #55acee;
+$unsplash:  #000;
+$youtube:   #cd201f;
+$yahoo:     #7B1FA2;
+
+$theme-colors: (
+  "white":      $white,
+  "bitbucket":  $bitbucket,
+  "deezer":     $deezer,
+  "discord":    $discord,
+  "dribbble":   $dribbble,
+  "dropbox":    $dropbox,
+  "facebook":   $facebook,
+  "github":     $github,
+  "gitlab":     $gitlab,
+  "google":     $google,
+  "instagram":  $instagram,
+  "linkedin":   $linkedin,
+  "medium":     $medium,
+  "pinterest":  $pinterest,
+  "spotify":    $spotify,
+  "soundcloud": $soundcloud,
+  "trello":     $trello,
+  "twitter":    $twitter,
+  "unsplash":   $unsplash,
+  "youtube":    $youtube,
+  "yahoo":      $yahoo,
+);
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-radius:               2px;
+$border-radius-lg:            $border-radius;
+$border-radius-sm:            $border-radius;
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-padding-x:         1.12rem;

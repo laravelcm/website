@@ -1,0 +1,332 @@
+.meetup-header {
+  background: $white;
+  border-bottom: 1px solid rgba(46,62,72, .12);
+  border-top: 1px solid rgba(46,62,72, .12);
+
+  .meetup-element {
+    @include make-row;
+
+    .meetup-time {
+      display: none;
+      @include make-col-ready()
+    }
+
+    .meetup-date {
+      @include make-col-ready();
+      margin-bottom: 20px;
+      .meetup-date__date {
+        margin-bottom: 0;
+      }
+      .meetup-title {
+        color: $primary;
+        margin-bottom: 10px;
+      }
+      .meetup-organizer {
+        display: flex;
+        flex-direction: row;
+        p {
+          margin-bottom: 0;
+        }
+        .meetup-organizer__avatar {
+          margin-right: 15px;
+          img {
+            width: 65px;
+            height: 65px;
+          }
+        }
+      }
+    }
+
+    .meetup-register {
+      @include make-col-ready();
+      .meetup-share {
+        margin-top: 5px;
+        border-top: 1px solid $gray-900;
+        padding-top: 10px;
+        a {
+          display: inline-block;
+          margin-right: 5px;
+          color: $gray-900;
+          font-size: 20px;
+          vertical-align: middle;
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+      .meetup-share:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .meetup-element {
+      padding: 20px 0;
+
+      .meetup-time {
+        display: block;
+        @include make-col(1);
+
+        time {
+          display: flex;
+          flex-direction: column;
+          background-color: #e5e5e5;
+          text-align: center;
+          padding: 10px;
+          border: 1px solid rgba(46,62,72,.12);
+          border-radius: 8px;
+          width: 70px;
+          height: 65px;
+          line-height: 1.2;
+          font-weight: bold;
+
+          .meetup_day {
+            color: $primary;
+            font-size: 20px;
+          }
+          .meetup_month {
+            color: $gray-900;
+            font-weight: 500;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .meetup-date {
+        @include make-col(7);
+      }
+
+      .meetup-register {
+        @include make-col(4);
+        padding-left: 25px;
+        .meetup-share {
+          font-size: 18px;
+          margin-bottom: 0;
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+}
+
+.meetup {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+
+  .meetup-flex-location {
+    order: 1;
+    margin-bottom: 25px;
+
+    .meetup-location {
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      padding: 16px 20px;
+      @include material-box-shadow;
+
+      .location-time, .location-place {
+        display: flex;
+        padding-bottom: 15px;
+
+        span {
+          margin-right: 18px;
+          font-size: 25px;
+        }
+      }
+    }
+
+    .location--map {
+      #map {
+        width: 100%;
+        height: 300px;
+        background-color: $primary;
+      }
+    }
+  }
+  .meetup-content {
+    order: 2;
+    > img {
+      width: 100%;
+      height: auto;
+    }
+
+    h3, .meetup-detail__title, .meetup-attendees__header {
+      color: $primary;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+
+    .attendees {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 16px;
+      grid-row-gap: 20px;
+
+      .attendee {
+        height: 220px;
+        max-width: 190px;
+        background-color: $white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 15px;
+
+        a {
+          display: inline-block;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+
+        img {
+          display: block;
+          height: 85px;
+          width: 85px;
+          margin: 0 auto;
+          margin-bottom: 15px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+
+    .meetup-flex-location {
+      .meetup-location {
+        flex-direction: row;
+
+        .location-place {
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .meetup-content {
+      .attendees {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+
+    .meetup-flex-location {
+      order: 2;
+      width: calc(100% - 770px);
+
+      .meetup-location {
+        flex-direction: column;
+
+        .location-place {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .meetup-content {
+      order: 1;
+      max-width: 700px;
+      margin-right: 70px;
+
+      .attendees {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
+
+.schedule {
+  margin-top: 50px;
+
+  .schedule-title {
+    color: $primary;
+    margin-bottom: 30px;
+  }
+
+  .schedule__break, .schedule__timeslots {
+    padding: 15px;
+    background: #f35045;
+    color: $white;
+    font-weight: 400;
+    margin-bottom: 25px;
+    width: 100%;
+
+    > time {
+      margin-right: 20px;
+      font-weight: 500;
+    }
+
+    > h6 {
+      display: inline-block;
+      font-weight: 400;
+      font-size: 16px;
+      color: $white;
+      margin: 0;
+    }
+  }
+
+  .schedule__timeslots {
+    background-color: $primary-200;
+  }
+
+  .schedule__workshop {
+    margin-bottom: 25px;
+
+    .schedule__session {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background-color: $white;
+      border-bottom: 5px solid transparent;
+      padding: 25px 15px 70px;
+
+      &.red-badge { border-color: $red; }
+      &.blue-badge { border-color: $blue; }
+      &.green-badge { border-color: $primary }
+      &.indigo-badge { border-color: $indigo }
+      &.pink-badge { border-color: $pink }
+
+      .session-talk, .session-workshop {
+        background-color: $orange;
+        display: inline-block;
+        padding: 4px 0;
+        width: 80px;
+        text-align: center;
+        border-radius: $border-radius;
+        font-size: 13px;
+        margin-bottom: 15px;
+        color: $white;
+      }
+
+      .session-workshop {
+        background-color: $purple;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+
+        .end-time {
+          color: rgba(#000, .7);
+          display: inline-block;
+          font-size: 15px;
+          time {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {}
+}

@@ -1,0 +1,62 @@
+/**
+* public.scss
+* Website content full style with Bootstrap 4.3.1
+
+* @see      https://getbootstrap.com/docs
+* @author   Arthur Monney <arthur.monney@laravelcm.com>
+* @since    2019
+* @version  1.2
+*/
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Miriam+Libre:400,700");
+@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+
+// Custom Variables
+@import "public/variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// External libs
+@import "public/libs/owlcarousel/owl.carousel.css";
+@import "public/libs/owlcarousel/owl.theme.default.css";
+
+@import 'navbar';
+
+// functions
+@import "public/mixins";
+
+// CSS natural grid content
+@import "public/grid";
+
+// Base Style
+@import "public/base";
+@import "public/code";
+
+// Global style
+@import "public/content";
+
+// Pages style
+@import "public/pages/home";
+@import "public/pages/login";
+@import "public/pages/blog";
+@import "public/pages/tutorial";
+@import "public/pages/package";
+@import "public/pages/forum";
+@import "public/pages/user";
+@import "public/pages/search";
+@import "public/pages/contact";
+@import "public/pages/meetup";
+
+.skip-to-content {
+  @include sr-only;
+  @include sr-only-focusable;
+
+  &:active,
+  &:focus {
+    position: absolute;
+  }
+}
+

@@ -1,0 +1,43 @@
+@import "custom";
+// Bootstrap required style
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+// Bootstrap buttons
+@import "~bootstrap/scss/buttons";
+// Icons
+@import "style.css";
+
+.socialite-buttons {
+  margin: 10px 0;
+
+  .btn-social {
+    position: relative;
+    padding-left: 35px;
+    margin: 15px 10px;
+    border-width: 2px;
+
+    [class^="social-"], [class*=" social-"] {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 7px;
+      position: absolute;
+      height: inherit;
+      left: 6px;
+      top: 8px;
+      font-size: 18px;
+    }
+    &:not([class*=" btn-outline-"]) {
+      border-width: 1px;
+    }
+  }
+
+  .btn-discord,
+  .btn-twitter,
+  .btn-gitlab,
+  .btn-outline-discord:hover, .btn-outline-discord:focus,
+  .btn-outline-twitter:hover, .btn-outline-twitter:focus,
+  .btn-outline-gitlab:hover, .btn-outline-gitlab:focus {
+    color: $white;
+  }
+}

@@ -1,0 +1,26 @@
+.filepicker {
+    &-modal {
+        @extend .typicms-modal;
+
+        &-open {
+            @extend .typicms-modal-open;
+        }
+
+        &-no-overlay:after {
+            display: none !important;
+        }
+
+        .wrapper {
+            @extend .typicms-modal-wrapper;
+            padding: 30px;
+        }
+    }
+
+    &-btn-close {
+        @extend .typicms-modal-btn-close;
+    }
+
+    &-btn-add {
+        @extend .typicms-modal-btn-add;
+    }
+}

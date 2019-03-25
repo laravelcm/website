@@ -1,0 +1,130 @@
+$sidebar-width: 260px;
+
+.sidebar-menu {
+    @include list-unstyled();
+}
+
+.sidebar {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    padding-top: 5rem;
+    background-color: $gray-700;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1000;
+    width: $sidebar-width;
+    padding-bottom: 1rem;
+}
+
+.sidebar-panel {
+    margin-bottom: 20px;
+}
+
+.sidebar-title {
+    letter-spacing: 1px;
+    display: block;
+    font-size: 12px;
+    padding: 0 20px 10px;
+    text-transform: uppercase;
+    color: $gray-600;
+    text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3);
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: $gray-600;
+    }
+
+    &:active {
+        color: $gray-500;
+    }
+}
+
+.nav-sidebar {
+    padding: 0;
+    > li {
+        display: flex;
+        &:hover {
+            .append {
+                display: block;
+            }
+        }
+
+        > a {
+            display: block;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.5);
+            color: $gray-200;
+            padding: 10px 20px;
+
+            &.append {
+                flex-grow: 0;
+                display: none;
+            }
+
+            .icon {
+                color: $gray-500;
+                margin-right: 10px;
+            }
+
+            div {
+            }
+
+            &:hover,
+            &:focus {
+                color: $white;
+                transition: all 0.2s;
+                text-decoration: none;
+
+                .icon {
+                    color: $white;
+                    transition: all 0.2s;
+                }
+            }
+
+            &:active {
+                transition: all 0s;
+                text-shadow: none;
+                color: $gray-500;
+
+                .icon {
+                    color: $gray-500;
+                    transition: all 0s;
+                }
+            }
+        }
+    }
+
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+        text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.5);
+        color: #fff;
+        background-color: $primary;
+
+        .icon {
+            color: #eee;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .sidebar,
+    .main {
+        transition: all 0.25s ease-out;
+    }
+    .sidebar {
+        transform: translateX(-$sidebar-width);
+    }
+    .active .sidebar {
+        transform: translateX(0);
+    }
+    .active .main {
+        transform: translateX($sidebar-width);
+    }
+}

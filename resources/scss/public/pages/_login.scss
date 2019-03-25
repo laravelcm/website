@@ -1,0 +1,29 @@
+.login {
+  margin: 100px 0;
+
+  .card {
+    padding: 45px 43px;
+    @include material-box-shadow;
+
+    .card__title {
+      color: $primary;
+      padding-bottom: 20px;
+      margin-bottom: 60px;
+      border-bottom: 1px solid $gray-900;
+      font-size: 1.5rem;
+    }
+
+    a.btn-link {
+      padding: 0;
+      margin-right: 5px;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .card {
+      .card__title {
+        font-size: 2rem;
+      }
+    }
+  }
+}

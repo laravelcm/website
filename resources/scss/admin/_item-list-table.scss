@@ -1,0 +1,71 @@
+.item-list-table {
+    margin-bottom: 2rem;
+
+    thead th {
+        white-space: nowrap;
+        border-top: none;
+        vertical-align: top;
+    }
+
+    .checkboxes,
+    .checkbox,
+    .delete {
+        width: 30px;
+    }
+
+    .edit {
+        width: 50px;
+    }
+
+    .position {
+        width: 50px;
+    }
+
+    .status,
+    .status_translated {
+        width: 50px;
+    }
+
+    .image {
+        width: 100px;
+    }
+
+    .date,
+    .created_at,
+    .updated_at,
+    .start_date,
+    .end_date {
+        width: 160px;
+    }
+
+    .files {
+        width: 70px;
+    }
+
+    .action {
+        width: 120px;
+    }
+}
+
+.th-sort {
+    cursor: pointer;
+}
+
+.th-sort:before {
+    margin-right: 5px;
+    color: $gray-400;
+    font: normal normal normal 14px / 1 FontAwesome;
+    content: $fa-var-sort;
+}
+
+.th-sort-asc:before {
+    color: $gray-700;
+    font: normal normal normal 14px / 1 FontAwesome;
+    content: $fa-var-sort-asc;
+}
+
+.th-sort-desc:before {
+    color: $gray-700;
+    font: normal normal normal 14px / 1 FontAwesome;
+    content: $fa-var-sort-desc;
+}

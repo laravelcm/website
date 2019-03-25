@@ -1,0 +1,183 @@
+.body-filepicker {
+    padding: 20px;
+
+    &.has-navbar {
+        padding-top: 30px;
+    }
+}
+.filepicker-title {
+    &-clickable {
+        cursor: pointer;
+        color: $gray-600;
+        &:hover,
+        &:focus {
+            color: $gray-900;
+        }
+    }
+    div {
+        display: inline-block;
+        &:not(:last-child):after {
+            display: inline-block;
+            content: '/';
+            color: $gray-700;
+            margin: 0 5px;
+        }
+    }
+}
+.filemanager {
+    @include clearfix;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    &-item {
+        position: relative;
+        float: left;
+        width: 135px;
+        height: 135px;
+        font-size: 12px;
+        text-align: center;
+        margin: 10px;
+
+        &-with-name {
+            height: 187px;
+        }
+
+        &-editable {
+            display: inline-block;
+            position: relative;
+
+            &:hover &-button,
+            &:focus &-button {
+                display: flex;
+            }
+
+            &-button {
+                display: none;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                font-size: 12px;
+                border-radius: 12px;
+                background-color: $primary;
+                color: #fff;
+                height: 24px;
+                width: 24px;
+                align-items: center;
+                justify-content: center;
+                border: #fff 2px solid;
+                pointer-events: auto;
+
+                &:hover,
+                &:focus {
+                    color: #fff;
+                    background-color: darken($primary, 19%);
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &-removable {
+            display: inline-block;
+            position: relative;
+
+            &:hover &-button,
+            &:focus &-button {
+                display: flex;
+            }
+
+            &-button {
+                display: none;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                font-size: 12px;
+                border-radius: 12px;
+                background-color: $gray-700;
+                color: #fff;
+                height: 24px;
+                width: 24px;
+                align-items: center;
+                justify-content: center;
+                border: #fff 2px solid;
+                pointer-events: auto;
+
+                &:hover,
+                &:focus {
+                    color: #fff;
+                    background-color: #000;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &-wrapper {
+            max-height: 187px;
+            border-radius: 3px;
+            padding-bottom: 10px;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        &-selected &-wrapper,
+        &-over &-wrapper {
+            background-color: #ddd;
+        }
+
+        &-name {
+            display: block;
+            margin: 0 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &-image {
+            max-width: 120px;
+            max-height: 120px;
+
+            &[src$='.svg'] {
+                width: 100%;
+            }
+
+            &-wrapper {
+                border-radius: 3px;
+                background-color: #fff;
+                padding: 2px;
+                border: 1px solid #ccc;
+            }
+        }
+
+        &-icon {
+            width: 135px;
+            height: 135px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:before {
+                @extend .fa;
+                font-size: 80px;
+            }
+
+            &-a:before {
+                content: $fa-var-file-audio-o;
+            }
+
+            &-v:before {
+                content: $fa-var-file-video-o;
+            }
+
+            &-d:before {
+                content: $fa-var-file-o;
+            }
+
+            &-f:before {
+                content: $fa-var-folder-o;
+            }
+        }
+
+        &-dragging-source {
+            opacity: 0.4;
+        }
+    }
+}

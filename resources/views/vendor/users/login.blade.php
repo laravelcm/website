@@ -1,0 +1,77 @@
+@extends('core::public.master')
+@section('title', __('Log in'))
+
+@push('css')
+    <link href="{{ url('/vendor/mckenziearts/laravel-oauth/assets/css/socialite.css') }}" rel="stylesheet">
+@endpush
+
+@section('content')
+
+    <header class="page-header">
+        <div class="container">
+            <div class="header__text">
+                <h1 class="page__title">{{ __('Log in') }}</h1>
+            </div>
+            <div class="header__link">
+                <a href="{{ route('register') }}" class="btn btn-white">{{ __('Register') }}</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="login">
+        <div class="container">
+            <div class="card">
+                <h2 class="card__title">{{ __('Login to your account') }}</h2>
+                @include('users::_status')
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                            @csrf
+
+                            <div class="form-group">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="{{ __('E-Mail') }}">
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{ __('Password') }}">
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <span class="label-text">{{ __('Remember') }}</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">{{ __('Log in') }}</button>
+                                <a class="btn btn-link first" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a> |
+                                <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register a new account') }}</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-1 col-md-1"></div>
+                    <div class="col-sm-12 col-md-5">
+                        <h5 class="socialite-title">{{ __('Login using social network') }}</h5>
+                        @socialite('login')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+@endsection

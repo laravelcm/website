@@ -1,0 +1,92 @@
+@import 'admin/bootstrap';
+@import 'admin/buttons';
+@import '~font-awesome/scss/font-awesome';
+@import 'navbar';
+@import 'auth';
+@import 'fancybox';
+@import 'alertify';
+@import 'admin/sortable-tree';
+@import 'admin/dropzone';
+@import 'admin/files';
+@import 'admin/history';
+@import 'admin/files-list';
+@import 'admin/selectize.bootstrap4';
+@import 'admin/sidebar';
+@import 'admin/twilight';
+@import 'admin/sortable';
+@import 'admin/filepicker-modal';
+@import 'admin/permissions';
+@import 'admin/modal';
+@import 'admin/header';
+@import 'admin/item-list-actions';
+@import 'admin/item-list-table';
+@import 'admin/item-list-pagination';
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.container-menulinks {
+  position: static;
+}
+
+.main {
+  padding: 1.5rem;
+  @include media-breakpoint-up(md) {
+    min-height: 0;
+    margin-left: 260px;
+  }
+}
+
+h1 {
+  margin-top: 0;
+  font-weight: normal;
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.btn-status {
+  padding: 2px;
+  line-height: 1;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  &-switch {
+    font-size: 20px !important;
+    color: $primary;
+  }
+  &-switch.fa-toggle-off {
+    color: $gray-400;
+  }
+}
+
+.container-system-locales {
+  max-height: 150px;
+  overflow: scroll;
+}
+
+.tab-content {
+  padding-top: 15px;
+}
+
+.delete-attachment {
+  cursor: pointer;
+}
+
+.checkbox.form-group-translation {
+  margin-bottom: 20px;
+  & + .checkbox.form-group-translation {
+    margin-top: 10px;
+  }
+}
+
+.noscroll {
+  overflow: hidden;
+}

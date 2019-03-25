@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    &-title {
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+    &-toolbar {
+        margin-top: 4px;
+    }
+    .btn-back {
+        color: $gray-500;
+        font-size: 30px;
+        margin-right: 0.7rem;
+        transition: 0.15s color ease-in-out;
+        &:hover,
+        &:focus {
+            color: darken($gray-500, 15%);
+        }
+    }
+}

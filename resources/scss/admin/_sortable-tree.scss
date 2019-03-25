@@ -1,0 +1,102 @@
+.sl-vue-tree {
+    position: relative;
+    cursor: default;
+    user-select: none;
+}
+
+.sl-vue-tree-root > .sl-vue-tree-nodes-list {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.sl-vue-tree-selected > .sl-vue-tree-node-item {
+    background-color: $gray-100;
+}
+
+.sl-vue-tree-node-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    padding-right: 10px;
+    line-height: 28px;
+    border: 1px solid transparent;
+    border-top: 1px solid #ddd;
+}
+
+.sl-vue-tree-node-item.sl-vue-tree-cursor-inside {
+    background-color: $gray-300;
+    .title {
+        cursor: default !important;
+    }
+}
+.sl-vue-tree-node.sl-vue-tree-selected .sl-vue-tree-node-item.sl-vue-tree-cursor-inside {
+    background-color: $gray-100;
+}
+
+.sl-vue-tree-cursor {
+    position: absolute;
+    background-color: $gray-300;
+    height: 3px;
+    width: 100%;
+    &:after {
+        position: absolute;
+        content: ' ';
+        display: block;
+        border: 12px solid $gray-300;
+        left: 0;
+        top: -11px;
+        width: 0;
+        height: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+    }
+}
+
+.sl-vue-tree-gap {
+    width: 25px;
+    min-height: 1px;
+}
+
+.sl-vue-tree-toggle {
+    position: absolute;
+    cursor: pointer;
+    left: 0px;
+    top: 6px;
+    color: $gray-400;
+    font-size: 18px;
+}
+
+.sl-vue-tree-sidebar {
+    margin-left: auto;
+}
+
+.sl-vue-tree-drag-info {
+    position: absolute;
+    background-color: $gray-700;
+    opacity: 0.5;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+.sl-vue-tree-title {
+    display: flex;
+    padding: 4px 0;
+    align-items: center;
+    div {
+        margin: 0 2px;
+    }
+    .title {
+        cursor: move;
+        padding: 0 2px;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-radius: 3px;
+    }
+}

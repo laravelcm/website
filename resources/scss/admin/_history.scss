@@ -1,0 +1,11 @@
+.history-table {
+    .action {
+        white-space: nowrap;
+    }
+    .user_name {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 250px;
+    }
+}

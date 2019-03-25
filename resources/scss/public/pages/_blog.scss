@@ -1,0 +1,263 @@
+.posts, .events-page {
+  margin-top: 75px;
+  margin-bottom: 60px;
+
+  .grid-2 {
+    margin-bottom: 55px;
+  }
+
+  .paginations {
+    margin-top: 30px;
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .pagination__left {
+      float: left;
+    }
+
+    .pagination__right {
+      float: right;
+    }
+  }
+}
+
+.single-post {
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  .post__thumb {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    height: 175px;
+
+    img {
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+  }
+
+  .post__header {
+    margin-bottom: 30px;
+
+    .post__date {
+      font-size: 14px;
+    }
+
+    .post__title {
+      color: $primary;
+      margin-top: 12px;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .post__metadata {
+      li {
+        display: inline-block;
+        margin-right: 25px;
+        margin-bottom: 10px;
+
+        &.author {
+          font-weight: 700;
+        }
+        &.category {
+          a {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  .post__content {
+    font-size: 18px;
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    ul {
+      margin-bottom: 20px;
+      margin-left: 10px;
+      padding-left: 15px;
+      list-style: circle;
+    }
+
+    h2, h3, h4, h5, h6 {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding-left: 20px;
+
+      &::before {
+        content: "#";
+        font-family: 'Source Sans Pro', sans-serif;
+        position: absolute;
+        left: 0;
+        color: $primary;
+        opacity: .7;
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background-size: cover;
+    }
+  }
+
+  .post__footer {
+    span {
+      display: inline-block;
+      text-transform: uppercase;
+      margin-right: 20px;
+    }
+    a {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .post__thumb {
+      height: auto;
+      margin-bottom: 15px;
+      img {
+        height: auto;
+      }
+    }
+
+    .post__header {
+      .post__date {
+        font-size: 16px;
+      }
+    }
+
+    .post__content {
+      font-size: 19px;
+
+      img {
+        width: auto;
+      }
+    }
+  }
+}
+
+.post_pagination {
+  background-color: $white;
+  display: block;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  svg {
+    color: $primary;
+    height: 50px;
+    width: 15px;
+    margin-top: 5px;
+
+    position: absolute;
+    transform: translatex(0);
+    transition: transform .15s ease-in-out;
+  }
+
+  h4 {
+    margin-bottom: 5px;
+    font-weight: 400;
+    transition: color .13s ease-in;
+    font-size: 1rem;
+    color: $gray-900;
+  }
+  p {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .pagination__left, .pagination__right {
+    margin: 1.1875rem auto 1.25rem;
+    max-width: 425px;
+    color: #c5c5c5;
+    position: relative;
+    min-height: 50px;
+
+    &:hover {
+      h4 {
+        color: $primary;
+      }
+    }
+  }
+
+  .pagination__left {
+    text-align: left;
+    float: left;
+
+    svg {
+      left: 0;
+    }
+
+    .pagination__content {
+      margin-left: 35px;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(-10px);
+      }
+    }
+  }
+
+  .pagination__right {
+    text-align: right;
+    float: right;
+
+    svg {
+      right: 0;
+    }
+
+    .pagination__content {
+      margin-right: 35px;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(10px);
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .pagination__left, .pagination__right {
+      margin: 2.4375rem auto 2.5rem;
+    }
+
+    .pagination__left {
+      .pagination__content {
+        margin-left: 50px;
+      }
+    }
+
+    .pagination__right {
+      .pagination__content {
+        margin-right: 50px;
+      }
+    }
+  }
+}
+
+#disqus_thread {
+  margin-bottom: 25px;
+}

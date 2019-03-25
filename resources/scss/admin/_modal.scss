@@ -1,0 +1,67 @@
+$width: 80vw;
+$height: 75vh;
+
+.typicms-modal {
+    display: none;
+    z-index: 10050;
+    position: fixed;
+    top: (100 - $height) / 2 - 3;
+    left: (100 - $width) / 2;
+
+    &-open {
+        display: block;
+    }
+
+    &-wrapper {
+        height: $height;
+        width: $width;
+        background-color: #fff;
+        overflow: scroll;
+    }
+
+    &:after {
+        display: block;
+        position: fixed;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        content: '';
+    }
+
+    &-content {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    &-btn-close {
+        color: #fff;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        border: 2px solid #fff;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        cursor: pointer;
+        z-index: 2002;
+    }
+
+    &-btn-add {
+        @extend .btn-lg;
+        border-radius: 0;
+        position: fixed;
+        height: 50px;
+        top: (100 - $height) / 2 - 3 + $height;
+        left: (100 - $width) / 2;
+        width: $width;
+    }
+}
