@@ -25,7 +25,18 @@
                         <a href="#" class="block__link">@lang('db.All tutorials')</a>
                     </header>
                     <div class="last-posts">
-
+                        @if ($latestTutorials = Tutorials::latest(6) and $latestTutorials->count() > 0)
+                            @foreach($latestTutorials as $tutorial)
+                                <article class="last_post" itemscope itemtype="http://schema.org/Article">
+                                    <time class="last-post__date">{{ $tutorial->created_at->format('M d, Y') }}</time>
+                                    <h6 class="last-post__title"><a href="{{ $tutorial->uri() }}">{{ $tutorial->title }}</a></h6>
+                                    <p class="last-post__summary">
+                                        {{ str_limit($tutorial->summary, 60) }}
+                                    </p>
+                                    <strong class="last-post__author text-primary"><span>{{ __('by') }}</span> {{ $tutorial->user->getFullName() }}</strong>
+                                </article>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="next-event">
@@ -100,16 +111,6 @@
     </section>
 
     @include('pages::public.partials.sponsors')
-
-{{--
-    @if ($latestNews = News::latest(3) and $latestNews->count() > 0)
-        <div class="news-container">
-            <h3><a href="{{ Route::has($lang.'::index-news') ? route($lang.'::index-news') : '/' }}">@lang('db.Latest news')</a></h3>
-            @include('news::public._list', ['items' => $latestNews])
-            <a href="{{ Route::has($lang.'::index-news') ? route($lang.'::index-news') : '/' }}" class="btn btn-light btn-xs">@lang('db.All news')</a>
-        </div>
-    @endif
---}}
 
     @if ($upcomingEvents = Events::upcoming() and $upcomingEvents->count() > 0)
         <section class="events">
