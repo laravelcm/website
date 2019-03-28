@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="api-token" content="{{ auth()->user()->api_token ?? '' }}">
-
     <title>@yield('title') – Console {{ config('typicms.'.config('typicms.admin_locale').'.website_title') }}</title>
-
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicons/favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicons/favicon-16x16.png') }}" sizes="16x16">
+    <link rel="manifest" href="{{ asset('img/favicons/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('img/favicons/safari-pinned-tab.svg') }}" color="#00795d">
+    <meta name="theme-color" content="#fff">
+    <meta name="mobile-web-app-capable" content="yes">
     @stack('css')
-
     <link href="{{ App::environment('production') ? mix('/css/admin.css') : asset('/css/admin.css') }}" rel="stylesheet">
-
 </head>
 
 <body ontouchstart="" class="@can('see-navbar')has-navbar @endcan @yield('bodyClass')">
