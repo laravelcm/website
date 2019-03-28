@@ -9,7 +9,7 @@
     <meta name="api-token" content="{{ auth()->user()->api_token ?? '' }}">
     <title>@yield('title') – Console {{ config('typicms.'.config('typicms.admin_locale').'.website_title') }}</title>
     @stack('css')
-<!-- Favicon -->
+    <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
     <link rel="icon" type="image/png" href="{{ asset('img/favicons/favicon-32x32.png') }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ asset('img/favicons/favicon-16x16.png') }}" sizes="16x16">
