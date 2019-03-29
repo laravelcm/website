@@ -12918,6 +12918,10 @@ footer.footer hr.footer_bar {
   background-color: #fff;
 }
 
+footer.footer .lang-switcher {
+  margin-bottom: 30px;
+}
+
 /* Return on top */
 #returnOnTop {
   display: none;
@@ -13636,6 +13640,9 @@ section.posts-events .event:hover {
 }
 
 @media (min-width: 992px) {
+  section.posts-events {
+    margin-top: 50px;
+  }
   section.posts-events .lastest-post {
     display: block;
   }

@@ -1,7 +1,7 @@
 @if ($enabledLocales = TypiCMS::enabledLocales() and count($enabledLocales) > 1)
 <nav class="lang-switcher dropdown">
-    <button class="lang-switcher-btn btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownLangSwitcher">
-        {{ $lang }}
+    <button class="lang-switcher-btn btn btn-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownLangSwitcher">
+        {{ config('typicms.languages.'. $lang) }}
     </button>
     <div class="lang-switcher-list dropdown-menu" aria-labelledby="dropdownLangSwitcher">
         @foreach ($enabledLocales as $locale)
