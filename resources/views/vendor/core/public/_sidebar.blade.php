@@ -7,14 +7,17 @@
         </a>
     </div>
     <div class="slide-nav__search">
-        <form action="#" class="search">
-            @csrf
+        <form action="javascript:;" class="search">
             <input type="text" placeholder="Search" name="q">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
     <ul class="slide-main-nav">
-
+        <li class="menu__item"><a href="{{ Route::has($lang.'::index-news') ? route($lang.'::index-news') : '/' }}">{{ __('Blog') }}</a></li>
+        <li class="menu__item"><a href="{{ TypiCMS::homeUrl(). '/forums' }}">{{ __('Forum') }}</a></li>
+        <li class="menu__item"><a href="{{ Route::has($lang.'::index-tutorials') ? route($lang.'::index-tutorials') : '/' }}">{{ __('Tutoriels') }}</a></li>
+        <li class="menu__item"><a href="{{ Route::has($lang.'::index-packages') ? route($lang.'::index-packages') : '/' }}">{{ __('Packages') }}</a></li>
+        {{--<li class="menu__item"><a href="{{ Route::has($lang.'::index-events') ? route($lang.'::index-events') : '/' }}">{{ __('Events') }}</a></li>--}}
     </ul>
     <ul class="slide-nav-social">
         <li><a href="https://www.facebook.com/laravelcm" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>

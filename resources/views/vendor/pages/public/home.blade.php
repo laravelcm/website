@@ -16,53 +16,27 @@
         </section>
     @endif
 
-    <section class="posts-events">
-        <div class="container">
-            <div class="row">
-                <div class="lastest-post">
-                    <header class="block_header">
-                        <h2 class="block__title lastest-post__title">@lang('db.Lastest Tutorials')</h2>
-                        <a href="#" class="block__link">@lang('db.All tutorials')</a>
-                    </header>
-                    <div class="last-posts">
-                        @if ($latestTutorials = Tutorials::latest(6) and $latestTutorials->count() > 0)
-                            @foreach($latestTutorials as $tutorial)
-                                <article class="last_post" itemscope itemtype="http://schema.org/Article">
-                                    <time class="last-post__date">{{ $tutorial->created_at->format('M d, Y') }}</time>
-                                    <h6 class="last-post__title"><a href="{{ $tutorial->uri() }}">{{ $tutorial->title }}</a></h6>
-                                    <p class="last-post__summary">
-                                        {{ str_limit($tutorial->summary, 60) }}
-                                    </p>
-                                    <strong class="last-post__author text-primary"><span>{{ __('by') }}</span> {{ $tutorial->user->getFullName() }}</strong>
-                                </article>
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-                <div class="next-event">
-                    <h2 class="next-event__title">@lang('db.Next Event')</h2>
-                    @if ($upcomingEvents = Events::upcoming() and $upcomingEvents->count() > 0)
-                        @php
-                            $nextEvent = $upcomingEvents->first()
-                        @endphp
-                        <div class="event">
-                            <div class="event__thumb">
-                                {!! $nextEvent->present()->thumb(350, 150) !!}
-                            </div>
-                            <div class="event__content">
-                                <span class="event__content-date">{!! $nextEvent->present()->dateFromTo !!}</span>
-                                <h6 class="event__content-title">
-                                    <a href="{{ $nextEvent->uri() }}" itemprop="url">{{ $nextEvent->title }}</a>
-                                </h6>
-                            </div>
-                        </div>
+    <div class="container">
+        <section class="posts-events">
+            <div class="lastest-post">
+                <header class="block_header">
+                    <h2 class="block__title lastest-post__title">@lang('db.Lastest Tutorials')</h2>
+                    <a href="{{ Route::has($lang.'::index-tutorials') ? route($lang.'::index-tutorials') : '/' }}" class="block__link">@lang('db.All tutorials')</a>
+                </header>
+                <div class="last-posts">
+                    @if ($latestTutorials = Tutorials::latest(6) and $latestTutorials->count() > 0)
+                        @foreach($latestTutorials as $tutorial)
+                            <article class="last_post" itemscope itemtype="http://schema.org/Article">
+                                <time class="last-post__date">{{ $tutorial->created_at->format('M d, Y') }}</time>
+                                <h6 class="last-post__title"><a href="{{ $tutorial->uri() }}">{{ $tutorial->title }}</a></h6>
+                                <p class="last-post__summary">{{ str_limit($tutorial->summary, 60) }}</p>
+                                <strong class="last-post__author text-primary"><span>{{ __('by') }}</span> {{ $tutorial->user->getFullName() }}</strong>
+                            </article>
+                        @endforeach
                     @endif
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div class="container">
+        </section>
         <section class="tutorial-intro">
             <div class="row">
                 <div class="tutorial__content">
@@ -70,7 +44,7 @@
                     <p class="tutorial__description">
                         @lang('db.Laravel is a powerful MVC PHP framework, designed for developers who need a simple and elegant toolkit to create full-featured web applications. Here you can find plenty of tutorials resources who will teach you how to make a website with Laravel. Explore a big collection of tutorials, latest news and tips from Laravel devs around the world.')
                     </p>
-                    <a href="#" class="btn btn-primary">@lang('db.Jump to Tutorials') <i class="icon ion-ios-arrow-forward"></i></a>
+                    <a href="{{ Route::has($lang.'::index-tutorials') ? route($lang.'::index-tutorials') : '/' }}" class="btn btn-primary">@lang('db.Jump to Tutorials') <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
                 <div class="tutorial__thumb">
                     <img src="{{ asset('img/tutorial.svg') }}" alt="tutorial illustration">
@@ -87,7 +61,7 @@
                     <p class="package__description">
                         @lang('db.Laravel is a very popular framework, and says popularity says big community. Find in this section a list of packages that can help you quickly build your application, examples of use of packages and links to download them.')
                     </p>
-                    <a href="#" class="btn btn-primary">@lang('db.See all Packages') <i class="icon ion-ios-arrow-forward"></i></a>
+                    <a href="{{ Route::has($lang.'::index-packages') ? route($lang.'::index-packages') : '/' }}" class="btn btn-primary">@lang('db.See all Packages') <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
             </div>
         </section>
