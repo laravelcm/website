@@ -36,4 +36,11 @@ return [
     */
     'template_dir' => 'public',
 
+    'lang_chooser' => false,
+
+    'languages' => [
+        'en' => 'English (En)',
+        'fr' => 'Français (Fr)',
+    ],
+
 ];

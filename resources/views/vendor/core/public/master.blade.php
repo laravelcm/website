@@ -195,6 +195,7 @@
                     <li class="link__github"><a href="https://github.com/laravelcm" target="_blank">Github</a></li>--}}
                     @menu('footer-links')
                 </ul>
+                @include('core::public._lang-switcher')
                 <p> &copy; Copyright {{ date('Y') }}</p>
             </div>
         </footer>

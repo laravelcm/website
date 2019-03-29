@@ -120,6 +120,7 @@ section.posts-events {
   }
 
   @include media-breakpoint-up(lg) {
+    margin-top: 50px;
     .lastest-post {
       //@include make-col(8);
       display: block;
