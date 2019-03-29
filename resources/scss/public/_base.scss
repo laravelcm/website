@@ -486,9 +486,6 @@ footer.footer {
     height: 2px;
     background-color: $white;
   }
-
-  @include media-breakpoint-up(lg) {
-  }
 }
 
 /* Return on top */
@@ -514,5 +511,13 @@ footer.footer {
   &:hover {
     filter: alpha(opacity = 80); /* IE < 8 */
     opacity: 1;
+  }
+}
+
+section {
+  padding: 15px;
+
+  @include media-breakpoint-up(lg) {
+    padding: 0;
   }
 }

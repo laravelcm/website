@@ -29,7 +29,7 @@ section.partners {
   display: flex;
   align-items: center;
   padding: 15px 0;
-  margin-bottom: 70px;
+  margin-bottom: 20px;
 
   .partners__list {
     .partner {
@@ -50,14 +50,60 @@ section.partners {
 }
 
 section.posts-events {
-  margin-bottom: 90px;
-
   .lastest-post {
     @include make-col-ready();
-    display: none;
 
     .block_header {
       margin-bottom: 0;
+    }
+
+    .lastest-post__title {
+      margin-bottom: 35px;
+      color: $primary;
+      font-size: 2rem;
+    }
+
+    .last-posts {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-column-gap: 20px;
+
+      .last_post {
+        border: 1px solid $gray-300;
+        background-color: $white;
+        padding: 15px 12px;
+        margin-bottom: 20px;
+        transition: all 0.13s ease-in;
+
+        &:hover {
+          @include material-box-shadow;
+        }
+
+        .last-post__date {
+          font-size: 14px;
+        }
+
+        .last-post__title {
+          color: $primary;
+          margin-top: 10px;
+          margin-bottom: 7px;
+        }
+
+        .last-post__summary {
+          margin-bottom: 8px;
+          font-size: 15px;
+        }
+
+        .last-post__author {
+          span { color: $gray-900 !important; }
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .btn {
+      float: right;
     }
   }
 
@@ -75,7 +121,7 @@ section.posts-events {
 
   @include media-breakpoint-up(lg) {
     .lastest-post {
-      @include make-col(8);
+      //@include make-col(8);
       display: block;
 
       .lastest-post__title {
@@ -135,7 +181,6 @@ section.posts-events {
 }
 
 section.tutorial-intro {
-  margin: 50px 0;
   .tutorial__thumb, .tutorial__content {
     @include make-col-ready();
   }
@@ -167,7 +212,6 @@ section.tutorial-intro {
 }
 
 section.package-intro {
-  margin: 50px 0;
   .package__thumb, .package__content {
     @include make-col-ready();
   }
@@ -257,7 +301,8 @@ section.slack {
 }
 
 section.sponsors {
-  margin: 75px 0;
+  margin-top: 20px;
+  margin-bottom: 50px;
   text-align: center;
 
   .sponsors__title {
@@ -286,6 +331,7 @@ section.sponsors {
   }
 
   @include media-breakpoint-up(lg) {
+    margin-top: 50px;
     .sponsors_list {
       .sponsor {
         .jc_sponsor {
@@ -300,7 +346,7 @@ section.sponsors {
 }
 
 section.events {
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 
   .event_header {
     position: relative;
