@@ -42,7 +42,7 @@
                 <div class="tutorial__content">
                     <h2 class="tutorial__title">@lang('db.Tutorials')</h2>
                     <p class="tutorial__description">
-                        @lang('db.Laravel is a powerful MVC PHP framework, designed for developers who need a simple and elegant toolkit to create full-featured web applications. Here you can find plenty of tutorials resources who will teach you how to make a website with Laravel. Explore a big collection of tutorials, latest news and tips from Laravel devs around the world.')
+                        {{ __('Laravel is a powerful MVC PHP framework, designed for developers who need a simple and elegant toolkit to create full-featured web applications. Here you can find plenty of tutorials resources who will teach you how to make a website with Laravel. Explore a big collection of tutorials, latest news and tips from Laravel devs around the world.') }}
                     </p>
                     <a href="{{ Route::has($lang.'::index-tutorials') ? route($lang.'::index-tutorials') : '/' }}" class="btn btn-primary">@lang('db.Jump to Tutorials') <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
@@ -59,7 +59,7 @@
                 <div class="package__content">
                     <h2 class="package__title">@lang('db.Packages')</h2>
                     <p class="package__description">
-                        @lang('db.Laravel is a very popular framework, and says popularity says big community. Find in this section a list of packages that can help you quickly build your application, examples of use of packages and links to download them.')
+                        {{ __('Laravel is a very popular framework, and says popularity says big community. Find in this section a list of packages that can help you quickly build your application, examples of use of packages and links to download them.') }}
                     </p>
                     <a href="{{ Route::has($lang.'::index-packages') ? route($lang.'::index-packages') : '/' }}" class="btn btn-primary">@lang('db.See all Packages') <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
