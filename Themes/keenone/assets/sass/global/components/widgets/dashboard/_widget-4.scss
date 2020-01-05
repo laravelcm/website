@@ -1,0 +1,83 @@
+//
+// Widget 4
+//
+
+// General Mode
+
+.kt-widget-4 {
+	margin: 0.5rem 0;
+
+	.kt-widget-4__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 1.5rem;	
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		.kt-widget-4__item-content {
+			.kt-widget-4__item-price {
+				text-align: right;
+
+				.kt-widget-4__item-badge {
+					font-size: 1.1rem;
+					color: kt-base-color(label, 2);
+					font-weight: 500; 
+				}
+
+				.kt-widget-4__item-number {
+					font-weight: 500; 
+					font-size: 1.2rem;
+					color: kt-base-color(label, 3);
+				}
+			}	
+
+			.kt-widget-4__item-section {
+				display: flex;
+				align-items: center;
+
+				.kt-widget-4__item-pic {
+					> img {
+						width: 3.5rem;
+						height: 3.5rem;
+						border-radius: 100%;
+					}
+				}
+
+				.kt-widget-4__item-info {
+					padding-left: 1rem;
+					flex: 1 0 0px;
+
+					.kt-widget-4__item-username {
+						font-weight: 500; 
+						font-size: 1.1rem;
+						color: kt-base-color(label, 4);
+						@include kt-transition();
+
+						&:hover {
+							@include kt-transition();
+							color: kt-brand-color();
+						}
+					}	
+
+					.kt-widget-4__item-desc {
+						font-weight: 500;
+						font-size: 0.9rem;			
+						color: kt-base-color(label, 2);
+					}
+				}
+			}
+
+			&:first-child {
+				width:80%;
+			}
+
+			&:last-child {
+				width: 20%;
+				flex-grow: 1;
+			}
+		}
+	}
+}

@@ -1,0 +1,162 @@
+//
+// Media
+//
+
+
+
+.kt-media {
+    display: inline-flex;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    @include kt-media-size(50px, 1.3rem);
+
+    @include kt-rounded {
+        border-radius: $kt-border-radius;
+    }
+
+    img {
+        display: flex;
+        @include kt-rounded {
+            border-radius: $kt-border-radius;
+        }
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: kt-base-color(label, 2);
+
+        @include kt-rounded {
+            border-radius: $kt-border-radius;
+        }
+    }
+
+    // State colors
+    &.kt-media--default {
+        background-color: kt-base-color(grey, 2);
+    }
+
+    @each $name, $color in $kt-state-colors {
+        &.kt-media--#{$name} {
+            span {
+                background: rgba(kt-get($color, base), 0.1);
+                color: kt-get($color, base);
+            }
+        }
+    }
+
+    // sizing
+    &.kt-media--xs {
+        @include kt-media-size(24px, 0.8rem);
+    }
+
+    &.kt-media--sm {
+        @include kt-media-size(30px, 0.9rem);
+    }
+
+    &.kt-media--md {
+        @include kt-media-size(47px, 1rem);
+    }
+
+    &.kt-media--lg {
+        @include kt-media-size(65px, 1.3rem);
+    }
+
+    &.kt-media--xl {
+        @include kt-media-size(80px, 1.7rem);
+    }
+
+    // circle style
+    &.kt-media--circle {
+        @include kt-rounded {
+            border-radius: 50%;
+        }
+
+        img {
+            @include kt-rounded {
+                border-radius: 50%;
+            }
+        }
+
+        span {
+            @include kt-rounded {
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.kt-media-card {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    .kt-media {
+        margin-right: 0.75rem;
+    }
+
+    .kt-media-card__info {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .kt-media-card__title {
+            color: kt-base-color(label, 3);
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        a.kt-media-card__title {
+            transition: color 0.3s ease;
+            &:hover {
+                transition: color 0.3s ease;
+                color: kt-brand-color();
+            }
+        }
+
+        .kt-media-card__desc {
+            color: kt-base-color(label, 2);
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        a.kt-media-card__desc {
+            transition: color 0.3s ease;
+            &:hover {
+                transition: color 0.3s ease;
+                color: kt-brand-color();
+            }
+        }
+    }
+}
+
+.kt-media-group {
+    display: flex;
+    align-items: center;
+
+    .kt-media {
+        position: relative;
+        z-index: 0;
+        margin-left: -10px;
+        border: 2px solid #fff;
+        transition: all 0.3s ease;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:hover {
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+    }
+}

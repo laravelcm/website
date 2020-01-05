@@ -1,0 +1,95 @@
+//
+// Timeline
+//
+
+.kt-timeline {
+	.kt-timeline__item {
+	  	position: relative;	  	  		
+
+	  	&:before {     
+			content:"";
+			width: 4px;
+			height: 100%;				
+			background: kt-base-color(grey, 2);
+			left: 1.5rem;
+			top: 0;
+			position: absolute;
+		}  			
+
+	  	.kt-timeline__item-section {
+	  		display: flex; 
+	  		align-items: center;
+
+	  		.kt-timeline__item-section-border {
+	  			border-top: 8px solid #fff; 
+	  			border-bottom: 8px solid #fff;
+	  			position: relative;
+
+	  			.kt-timeline__item-section-icon {
+	  				width: 3.2rem;
+	  				height: 3.2rem; 
+	  				border-radius: 100%;
+	  				display: flex; 
+	  				align-items: center; 
+	  				justify-content: center;
+
+	  				> i {
+	  					font-size: 1.7rem;	  						
+	  				}
+	  			}
+	  		}
+	  			 
+	  		.kt-timeline__item-datetime {
+	  			margin-left: 1.2rem;
+	  			color: kt-base-color(label, 2);
+	  			font-weight: 600;
+	  			font-size: 0.9rem;
+	  		}
+	  	}
+
+	  	.kt-timeline__item-text {
+	  		text-decoration: none;
+	  		margin-left: 4.4rem;
+		  	color: kt-base-color(label, 3);
+		  	font-weight: 400;
+		  	font-size: 1rem;
+		  	display: block;		  	
+		}  		
+
+	  	.kt-timeline__item-info {
+	  		padding: 1rem 0 2rem 4.4rem;
+	  		color: kt-base-color(label, 2);
+	  		font-weight: 400;
+	  		font-size: 0.9rem;
+	  	}
+
+	  	&:last-child {
+	  		.kt-timeline__item-info {
+	  			padding-bottom: 1rem;
+	  		}	  		 			 	  			 
+	    }
+	}
+
+	// State font color
+	@each $name, $color in $kt-state-colors {
+		.kt-timeline__item {
+			&.kt-timeline__item--#{$name} {
+				.kt-timeline__item-section {
+					.kt-timeline__item-section-border {
+						background-color: #fff;
+
+						.kt-timeline__item-section-icon {
+							background-color: rgba(kt-get($color, base), 0.2);
+						}
+					}
+				}					   					
+			}
+
+			.kt-timeline__item-text {
+				&:hover {						
+					color: kt-state-color(brand, base);
+				}								 
+			}	
+		}		 	
+	}
+}

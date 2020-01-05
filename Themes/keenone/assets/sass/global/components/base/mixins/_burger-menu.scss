@@ -1,0 +1,204 @@
+//
+// Burger Icon Mixins
+//
+
+
+
+
+@mixin kt-burger-icon-build($class, $config) {
+	$space: kt-get($config, thickness) + kt-get($config, space);
+
+	.#{$class} {
+		display: inline-block;
+	  	position: relative;
+	  	overflow: hidden;
+	  	margin: 0;
+	  	padding: 0;
+	  	font-size: 0;
+	  	text-indent: -9999px;
+	    appearance: none;
+	    box-shadow: none;
+	    border-radius: none; 
+	    border: none;
+	    cursor: pointer;
+	    background: none;
+	    outline: none !important;	    
+	  	width: kt-get($config, width);
+	  	height: kt-get($config, height);
+	    transition: all kt-get($config, transition-duration) ease;
+		
+		span {
+	  		display: block;
+	  		position: absolute;
+	  		top: (kt-get($config, height) / 2) - (kt-get($config, thickness)) + 1px;
+	  		height: kt-get($config, thickness);
+	  		min-height: kt-get($config, thickness);
+	  		width: 100%;
+	  		
+	  		@include kt-rounded {
+	  			border-radius: kt-get($config, radius);
+	  		}
+
+	  		transition: all kt-get($config, transition-duration) ease;
+
+	  		&::before,
+	  		&::after {
+	  			position: absolute;
+			  	display: block;
+			  	left: 0;
+			  	width: 100%;
+			  	height: kt-get($config, thickness);
+			  	min-height: kt-get($config, thickness);
+			  	content: "";
+
+			  	@include kt-rounded {
+			  		border-radius: kt-get($config, radius);
+			  	}
+
+			  	transition: all kt-get($config, transition-duration) ease;
+	  		}
+
+	  		&::before {
+	  			top: -($space);
+	  		}
+
+	  		&::after {
+	  			bottom: -($space);
+	  		}
+		}
+
+	    // left direction style
+	    &.#{$class}--left {
+	    	span {
+	    		&:before {
+	    			transition: all kt-get($config, transition-duration) ease;
+	    			left: auto;
+	    			right: 0px;
+	    			width: 50%;
+	    		}
+
+	    		&:after {
+	    			transition: all kt-get($config, transition-duration) ease;
+	    			left: auto;
+	    			right: 0px;
+	    			width: 75%;
+	    		}
+	    	}
+
+	    	// hover states
+	    	&:hover {
+	    		span {
+		    		&:after, 
+		    		&:before {
+		    			width: 100%;
+		    			transition: all kt-get($config, transition-duration) ease;
+		    		}
+		    	}
+	    	}
+
+	    	// active state
+		    &.#{$class}--active {
+		    	span {
+		    		&:before {
+		    			transition: all kt-get($config, transition-duration) ease;
+		    			left: 0px;
+		    			right: auto;
+		    			width: 50%;
+		    		}
+
+		    		&:after {
+		    			transition: all kt-get($config, transition-duration) ease;
+		    			left: 0px;
+		    			right: auto;
+		    			width: 75%;
+		    		}
+		    	}
+		    }
+	    }
+
+	    // right direction style
+	    &.#{$class}--right {
+	    	span {
+		    	&:before {
+		    		left: 0px;
+		    		right: auto;
+		    		width: 50%;
+		    		transition: width kt-get($config, transition-duration) ease;
+		    	}
+
+		    	&:after {
+		    		left: 0px;
+		    		right: auto;
+		    		width: 75%;
+		    		transition: width kt-get($config, transition-duration) ease;
+		    	}
+		    }
+
+	    	// hover states
+	    	&:hover {
+	    		span {
+		    		&:after, 
+		    		&:before {
+		    			width: 100%;
+		    			transition: width kt-get($config, transition-duration) ease;
+		    		}
+		    	}
+	    	}
+
+	    	// active state
+		    &.#{$class}--active {
+		    	span {
+		    		&:before {
+		    			left: auto;
+	    				right: 0px;
+		    			width: 50%;
+		    			transition: width kt-get($config, transition-duration) ease;
+		    		}
+
+		    		&:after {
+		    			left: auto;
+	    				right: 0px;
+		    			width: 75%;
+		    			transition: width kt-get($config, transition-duration) ease;
+		    		}
+		    	}
+		    }
+	    }
+	}
+}
+
+@mixin kt-burger-icon-skin($class, $config) {
+	.#{$class} {
+		span {
+	 		background: kt-get($config, default);
+
+	  		&::before,
+	  		&::after {
+			  	background: kt-get($config, default);
+	  		}
+		}
+
+	    //active & hover state 
+	    &:hover {	   
+	    	span { 	
+		    	background: kt-get($config, hover);
+
+		    	&::before,
+		  		&::after {
+		  			background: kt-get($config, hover);
+		  		}
+		  	}
+	    }
+
+	    &.#{$class}--active {
+	    	span { 	
+		    	background: kt-get($config, active);
+
+		    	&::before,
+		  		&::after {
+		  			background: kt-get($config, active);
+		  		}
+		  	}
+	    }
+	}
+}

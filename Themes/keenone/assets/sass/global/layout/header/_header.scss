@@ -1,0 +1,45 @@
+//
+// Header
+//
+
+
+
+// Desktop mode
+@include kt-desktop {
+	.kt-header {
+		display: flex;
+		justify-content: space-between;
+		height: kt-get($kt-header-config, base, desktop, default, height);
+		transition: kt-get($kt-aside-config, base, minimize, transition);
+		position: relative;
+		z-index: 2;
+		
+		// Fixed
+		&.kt-header--fixed {
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			z-index: kt-get($kt-header-config, base, desktop, fixed, zindex);
+		}
+
+		// Aside enabled
+		.kt-aside--enabled & {
+			&.kt-header--fixed {
+				left: kt-get($kt-aside-config, base, default, width);
+			}
+		}
+
+		// Fixed and minimized header
+		.kt-header--fixed.kt-header--minimize & {
+			height: kt-get($kt-header-config, base, desktop, fixed, minimizeHeight);
+			transition: height 0.3s ease;
+		}
+
+		// Minimize Aside
+		.kt-header--fixed.kt-aside--minimize & {
+			left: kt-get($kt-aside-config, base, minimize, width);
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+		}
+	}
+}

@@ -1,0 +1,240 @@
+//
+// Pagination
+//
+
+
+
+// Base
+.kt-pagination {
+    display: flex;
+    align-items: center; 
+    flex-wrap: wrap;
+    justify-content: space-between;  
+    margin: 0;
+    padding: 0;   
+    
+    .kt-pagination__links {
+        display: flex;
+        justify-content: center;
+        align-items: center;      
+        list-style-type: none;
+        margin: 0;
+        padding: 0;          
+
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;             
+            margin-right: 0.5rem;
+            
+            @include kt-rounded {
+                border-radius: 4px;
+            }
+
+            a {
+                display: flex;   
+                justify-content: center;
+                align-items: center;
+                font-weight: 500;
+                color: kt-base-color(label, 2);
+                font-size: 1rem;
+                padding: 0 0.2rem; 
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;                
+                min-width: 30px;
+                min-height: 30px;    
+                margin: 0;           
+                
+                i {
+                    color: kt-base-color(label, 1);
+                }
+            }
+
+            &.kt-pagination__link--first, 
+            &.kt-pagination__link--next, 
+            &.kt-pagination__link--prev, 
+            &.kt-pagination__link--last {
+                background: rgba(kt-base-color(grey, 2), 0.9);     
+
+                a {
+                    color: kt-brand-color();
+
+                    i {
+                        color: kt-brand-color();
+                    }
+                }
+            }
+
+            &.kt-pagination__link--active,
+            &:hover {            
+                background: kt-brand-color();
+                transition: color 0.3s ease;
+
+                a {
+                    color: kt-brand-color(inverse);
+
+                    i {
+                        color: kt-brand-color(inverse);
+                    }
+                }
+            }
+        }
+    }
+
+    // Toolbar
+    .kt-pagination__toolbar {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        padding: 0;   
+
+        .form-control {              
+            padding: 0 10px;   
+            margin-right: 10px;              
+            height: 30px; 
+            font-weight: 600;            
+            font-size: 1.1rem;
+            font-weight: 500;           
+            line-height: 1;           
+            outline: none;
+            border: none;        
+            background: rgba(kt-base-color(grey, 2), 0.9);   
+        }
+
+        .pagination__desc {
+            flex-grow: 1;
+            font-weight: 500; 
+            color: kt-base-color(label, 2);
+        }
+    }
+
+    // States
+    @each $name, $color in $kt-state-colors {
+        &.kt-pagination--#{$name} {               
+            .kt-pagination__links {
+                li {
+                    &.kt-pagination__link--first, 
+                    &.kt-pagination__link--next, 
+                    &.kt-pagination__link--prev, 
+                    &.kt-pagination__link--last {
+                        background: rgba(kt-get($color, base), 0.1);     
+
+                        a {
+                            color: kt-get($color, base);
+
+                            i {
+                                color: kt-get($color, base);
+                            }
+                        }
+                    }
+
+                    &.kt-pagination__link--active,
+                    &:hover {
+                        background: kt-get($color, base);
+                        transition: color 0.3s ease;
+
+                        a {
+                            color: kt-brand-color(inverse);
+
+                            i {
+                                color: kt-brand-color(inverse);
+                            }
+                        }
+                    }
+                }
+            }  
+
+            .kt-pagination__toolbar {
+                .form-control {
+                    background: rgba(kt-get($color, base), 0.1);                                   
+                }                
+            }
+        }
+    } 
+
+    // Circle style links
+    &.kt-pagination--circle {
+        .kt-pagination__links {
+            li {
+                min-width: 30px;
+                min-height: 30px;
+
+                @include kt-rounded {
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    // Sizing options
+    &.kt-pagination--lg {
+        .kt-pagination__links {
+            li {
+                a {                   
+                    font-size: 1.3rem;                            
+                    min-width: 35px;
+                    min-height: 35px;                
+                }
+                
+            }
+        }
+
+        .kt-pagination__toolbar {   
+            .form-control {                           
+                height: 35px;                           
+                font-size: 1.2rem;
+                padding: 0.2rem 0 0.2rem 0.2rem;                     
+            }    
+        }
+    }
+
+    &.kt-pagination--sm {
+        .kt-pagination__links {
+            li {
+                a {                   
+                    font-size: 1rem;                            
+                    min-width: 25px;
+                    min-height: 25px;                
+                }
+                
+            }
+        }
+
+        .kt-pagination__toolbar {   
+            .form-control {                           
+                height: 25px;                           
+                font-size: 0.9rem;                     
+            }    
+        }
+    }
+}
+
+
+@include kt-mobile {
+    .kt-pagination {        
+        .kt-pagination__links {
+            display: flex;
+            flex-wrap: wrap;
+
+            li { 
+                margin: 0.3rem 0.5rem 0.3rem 0;;
+                            
+                a {
+                    font-size: 0.9rem;
+                    min-width: 25px;
+                    min-height: 25px;
+                }                
+            } 
+        }        
+       
+        .kt-pagination__toolbar {
+            .form-control {                           
+                height: 25px;                             
+                font-size: 0.9rem; 
+                padding: 0.2rem 0 0.2rem 0.2rem;                  
+            }
+        }
+    }
+} 

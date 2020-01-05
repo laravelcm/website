@@ -1,0 +1,77 @@
+//
+// Blog - Grid v2
+//
+
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+.kt-blog-grid-v2{
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 33rem;
+	padding: 3.5rem;
+	position: relative;
+
+	&:before{
+		content: ' ';
+		position: absolute;
+		top:0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		opacity: 0.3;
+		z-index:0;
+	}
+
+	.kt-blog-grid-v2__tag{
+		background-color: rgba(kt-state-color(brand,inverse), 0.3);
+		color: kt-state-color(brand,inverse);
+		font-weight: 600;
+		padding: 0.5rem 0.7rem;
+		margin: 0 auto auto 0;
+		border-radius: 5px;
+		align-self: flex-start;
+		position: relative;
+		z-index: 1;
+	}
+
+	.kt-blog-grid-v2__body{
+		position: relative;
+		z-index: 1;
+
+		.kt-blog-grid-v2__date{
+			color: kt-state-color(brand,inverse);
+			margin-bottom: 1.5rem;
+			font-weight: 400;
+		}
+
+		.kt-blog-grid-v2__link{
+			color: kt-state-color(brand, inverse);
+
+			.kt-blog-grid-v2__title{
+				font-weight: 700;
+				margin:0;
+			}
+
+			&:hover,
+			&:focus{
+
+				.kt-blog-grid-v2__title{
+					text-decoration: underline;
+				}
+			}
+		}		
+	}
+}

@@ -1,0 +1,206 @@
+//
+// Offcanvas Mixins
+//
+
+
+
+
+@mixin kt-offcanvas-base($class, $layout) {
+	$width: kt-get($layout, self, width);
+	$transition: left 0.3s ease, right 0.3s ease; 
+
+	// Base
+	.#{$class} {
+		//display: block !important;
+		z-index: kt-get($layout, self, zindex);
+		position: fixed;
+		-webkit-overflow-scrolling: touch;
+		top: 0;
+		bottom: 0;
+		overflow-y: auto; 				
+		-webkit-transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		width: $width !important;
+		transition: $transition;
+		left: -($width + 20px);
+
+		&.#{$class}--on {			
+			transition: $transition;
+			left: 0;
+		}
+
+		@include kt-hack-ie {
+			transition: none !important;
+		}
+	}
+
+	// Pull from right
+	.#{$class}--right {
+		.#{$class} {
+			right: -($width + 20px);
+			left: auto;
+
+			&.#{$class}--on {			
+				transition: $transition;
+				right: 0;
+				left: auto;
+			}
+		}
+	}
+
+	// Close icon
+	@if kt-get($layout, close) != null {
+		// Mobile close button
+		.#{$class}-close {
+			width:  kt-get($layout, close, size);
+			height: kt-get($layout, close, size);
+			top: 1px;
+			z-index: kt-get($layout, self, zindex) + 1;
+			transition: $transition;
+			position: fixed;
+			border: 0;
+			box-shadow: none;
+			@include kt-rounded {
+				border-radius: 3px; 
+			}			
+			cursor: pointer;
+			outline: none !important;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			@include kt-hack-ie {
+				transition: none !important;
+			}
+
+			> i {					
+				line-height: 0;
+				font-size: kt-get($layout, close, font-size);
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			left: - (kt-get($layout, close, size));
+
+			// Pull from right
+			.#{$class}--right & {
+				left: auto;
+				right: - (kt-get($layout, close, size));
+			}
+
+			.#{$class}--on & {			
+				transition: $transition;
+				left: $width - kt-get($layout, close, size) - 1px;
+			}
+
+			// Pull from right
+			.#{$class}--on.#{$class}--right & {
+				left: auto;
+				right: $width - kt-get($layout, close, size) - 1px;
+			}
+		}
+	}
+
+	// Overlay
+	.#{$class}-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		overflow: hidden;
+		z-index: kt-get($layout, self, zindex) - 1;
+		background: rgba(#000000, 0.1);
+		animation: kt-animate-fade-in .3s linear 1;
+	}
+}
+
+@mixin kt-offcanvas-skin($class, $skin) {
+	.#{$class} {
+		@if (kt-has($skin, self, bg-color)) {
+			background: kt-get($skin, self, bg-color);
+		}
+
+		@if (kt-has($skin, self, shadow)) {
+			box-shadow: kt-get($skin, self, shadow);
+		}
+	}
+
+	.#{$class}-overlay {
+		background: kt-get($skin, overlay, bg-color);
+	}
+
+	@if (kt-has($skin, close)) {
+		.#{$class}-close {
+			background-color: kt-get($skin, close, bg-color, default);
+
+			> i {
+				color: kt-get($skin, close, icon-color, default);
+			}
+
+			&:hover {
+				background-color: kt-get($skin, close, bg-color, hover);
+
+				> i {
+					color: kt-get($skin, close, icon-color, hover);
+				}
+			}
+		}
+	}
+}
+
+@mixin kt-offcanvas-build($class, $mode, $config) {
+	// close icon
+	.#{$class}-close {
+		display: none;
+	}
+
+	@if $mode == default {
+		@include kt-offcanvas-base($class, kt-get($config, layout));
+		@include kt-offcanvas-skin($class, kt-get($config, skin));
+	}
+
+	@if $mode == desktop {
+		@include kt-desktop {
+			@include kt-offcanvas-base($class, kt-get($config, layout));
+			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		}
+	}
+
+	@if $mode == desktop-and-tablet {
+		@include kt-desktop-and-tablet {
+			@include kt-offcanvas-base($class, kt-get($config, layout));
+			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		}
+	}
+
+	@if $mode == tablet {
+		@include kt-tablet {
+			@include kt-offcanvas-base($class, kt-get($config, layout));
+			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		}
+	}
+
+	@if $mode == tablet-and-mobile {
+		@include kt-tablet-and-mobile {
+			@include kt-offcanvas-base($class, kt-get($config, layout));
+			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		}
+	}
+
+	@if $mode == mobile {
+		@include kt-mobile {
+			@include kt-offcanvas-base($class, kt-get($config, layout));
+			@include kt-offcanvas-skin($class, kt-get($config, skin));
+		}
+	}
+
+	@include kt-responsive-below(kt-get($config, layout, self, width) + 50px) {
+		.#{$class} {
+			width: 90% !important;
+		}
+	}
+}

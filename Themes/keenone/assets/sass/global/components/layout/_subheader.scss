@@ -1,0 +1,298 @@
+//
+// Subheader
+//
+
+
+
+// Config
+$kt-subheader-config: (
+	fixed: (
+		height: (
+			desktop: 54px,
+			mobile: 45px
+		)
+	),
+	toggle: (
+		width: 20px,
+		height: 22px,
+		transition-duration: 0.4s,
+		thickness: 2px,
+		space: 4px,
+		radius: 2px,
+		color: (
+			default: kt-base-color(label, 2),
+			hover: kt-brand-color(),
+			active: kt-brand-color()
+		)
+	)
+);
+
+// Base
+.kt-subheader {
+	display: flex;
+	align-items: stretch;
+	margin: 15px 0;
+
+	.kt-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		flex-wrap: wrap;
+	}
+
+	// Head actions buttons
+	.btn {
+		display: inline-flex;
+		margin-left: 0.75rem;
+		height: 34px !important;
+		padding-top: 0;
+		padding-bottom: 0;
+
+		i {
+			font-size: 1.1rem !important;
+		}
+
+		&.btn-icon {
+			width: 34px !important;
+		}
+	}
+
+	// Main
+	.kt-subheader__main {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: wrap;
+		padding: 0;
+
+		// Mobile Toggler
+		.kt-subheader__mobile-toggle {
+			display: none;
+		}
+
+		// Buttons
+		.btn {
+			margin-left: 0;
+			margin-right: 0.75rem;
+		}
+
+		// Title
+		.kt-subheader__title {
+			margin: 0;
+			padding: 0 1.5rem 0 0;
+			font-size: 1.3rem;
+			font-weight: 500;
+			color: kt-base-color(label, 3);
+		}
+
+		// Desc
+		.kt-subheader__desc {
+			padding: 0 0.5rem 0 0;
+			font-size: 1rem;
+			font-weight: 400;
+			color: kt-base-color(label, 2);
+		}
+
+		// Separator
+		.kt-subheader__separator {
+			display: block;
+			width: 12px;
+			height: 4px;
+			border-radius: 2px;
+			background: rgba(#959cb6, 0.5);
+			margin: 0 1.5rem 0 0;
+
+			&.kt-subheader__separator--v {
+				width: 1px;
+				height: 20px;
+			}
+		}
+
+		// Breadcrumbs
+		.kt-subheader__breadcrumbs {
+			display: flex;
+			align-items: center;
+			list-style-type: none;
+			flex-wrap: wrap;
+			margin: 0;
+			padding: 0;
+
+			.kt-subheader__breadcrumbs-home {
+				padding: 0px 0.65rem 0px 0px;
+				@include kt-transition();
+
+				> i {
+					font-size: 1rem;
+					color: #959cb6;
+				}
+
+				&:hover {
+					> i {
+						@include kt-transition();
+						color: kt-brand-color();
+					}
+				}
+
+				&.kt-subheader__breadcrumbs-home--active {
+					> i {
+						color: kt-brand-color();
+					}
+				}
+			}
+
+			.kt-subheader__breadcrumbs-link {
+				padding: 0 0.35rem 0 0;
+				font-size: 1rem;
+				font-weight: 500;
+				color: #959cb6;
+
+				&:hover {
+					color: kt-brand-color();
+				}
+
+				&.kt-subheader__breadcrumbs-link--active {
+					color: kt-brand-color();
+				}
+
+				@include kt-hover-transition();
+			}
+
+			.kt-subheader__breadcrumbs-separator {
+				display: flex;
+				justify-content: content;
+				align-items: center;
+				padding: 0 0.45rem 0 0;
+
+				&:after {
+					display: block;
+					width: 4px;
+					height: 4px;
+					border-radius: 50%;
+					content: " ";
+					background: rgba(#959cb6, 0.5);
+				}
+			}
+		}
+	}
+
+	// Toolbar
+	.kt-subheader__toolbar {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		padding: 0;
+
+		// Toolbar buttons
+		.btn {
+			margin-left: 0.5rem;
+		}
+
+		// Group btn
+		.btn-group {
+			margin-left: 0.5rem;
+
+			.btn {
+				margin-left: 0;
+			}
+		}
+
+		.kt-subheader__search {
+			margin-left: 1rem;
+
+			.input-group {
+				border: 0;
+				background-color: #f3f4f6;
+
+				@include kt-rounded {
+					border-radius: $kt-border-radius;
+				}
+			}
+
+			.input-group-text {
+				border: 0;
+				background-color: transparent;
+
+				@include kt-input-placeholder(#b1b5cb);
+				color: darken(#b1b5cb, 10%);
+
+				i {
+					color: kt-brand-color();
+				}
+			}
+
+			.form-control {
+				border: 0;
+				font-weight: 400;
+				@include kt-input-reset();
+			}
+		}
+	}
+
+	// Solid stylemin-height: kt-get($kt-subheader-config, fixed, height);
+	.kt-subheader--solid & {
+		margin: 0 0 kt-get($kt-page-padding, desktop) 0;
+		min-height: kt-get($kt-subheader-config, fixed, height, desktop);
+		background-color: #fff;
+	}
+}
+
+@include kt-tablet-and-mobile {
+	// Subheader
+	.kt-subheader {
+		margin: 2px 0;
+		padding: 5px 0;
+
+		// Main
+		.kt-subheader__main {
+			// Mobile Toggler
+			@include kt-burger-icon-build(kt-subheader__mobile-toggle, kt-get($kt-subheader-config, toggle));
+			@include kt-burger-icon-skin(kt-subheader__mobile-toggle, kt-get($kt-subheader-config, toggle, color));
+
+			.kt-subheader__mobile-toggle {
+				display: inline-block;
+				margin-right: 1rem;
+			}
+
+			.kt-subheader__title {
+				font-size: 1.2rem;
+				padding: 0.5rem 0.5rem 0.5rem 0;
+			}
+
+			.kt-subheader__separator {
+				margin-right: 0.5rem;
+			}
+
+			.kt-subheader__breadcrumbs {
+				padding: 0.5rem 0;
+			}
+		}
+
+		// Toolbar
+		.kt-subheader__toolbar {
+			padding: 0.5rem 0;
+
+			.kt-subheader__search {
+				margin-left: 0.5rem;
+
+				.form-control {
+					width: 85px;
+				}
+			}
+		}
+
+		// Solid stylemin-height: kt-get($kt-subheader-config, fixed, height);
+		.kt-subheader--solid & {
+			margin: 0 0 kt-get($kt-page-padding, mobile) 0;
+			min-height: kt-get($kt-subheader-config, fixed, height, mobile);
+			background-color: #fff;
+		}
+	}
+}
+
+@include kt-mobile {
+	.kt-subheader {
+		.kt-subheader__toolbar {
+			padding-top: 0.5rem;
+		}
+	}
+}

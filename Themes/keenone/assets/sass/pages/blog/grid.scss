@@ -1,0 +1,67 @@
+//
+// Blog - Grid
+//
+
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+$kt-blog-grid-font-color: #918ea7;
+.kt-blog-grid{
+
+	.kt-blog-grid__head{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.kt-blog-grid__thumb-link{
+			flex: 1;
+
+			.kt-blog-grid__image{
+				width:100%;
+				height:100%;
+			}
+		}		
+	}
+
+	.kt-blog-grid__body{
+
+		.kt-blog-grid__date{
+			color: $kt-blog-grid-font-color;
+			margin-bottom: 0.75rem;
+			font-weight: 400;
+		}
+
+		.kt-blog-grid__title{
+			font-size: 1.5rem;
+			font-weight: 500;
+			margin-bottom: 1.25rem;			
+			line-height: 2.25rem;
+		}
+
+		.kt-blog-grid__content{
+			font-size: 1.1rem;
+			font-weight: 400;
+			color: $kt-blog-grid-font-color;
+			margin-bottom: 1.25rem;
+		}
+
+		.kt-blog-grid__link{
+			color: kt-state-color(brand, base);
+			font-weight: 500;
+			font-size: 1.1rem;
+			@include kt-transition;
+
+			&:hover,
+			&:focus{
+				color: darken( kt-state-color(brand, base), 20%);
+			}
+		}
+	}
+}

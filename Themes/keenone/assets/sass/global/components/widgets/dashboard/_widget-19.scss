@@ -1,0 +1,133 @@
+//
+// Widget 19
+//
+
+
+
+
+.kt-widget-19 {
+	display: flex;
+	align-items: stretch;
+	justify-content:space-between;
+	flex-grow: 1;
+
+    .kt-widget-19__title {
+		display: flex;
+		flex-basis: auto;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		z-index: 1;
+		margin-left: 1.5rem;
+		margin-right: 2rem;
+
+		.kt-widget-19__label {
+			font-size: 2.2rem;
+			font-weight: 600;	
+			color: kt-base-color(label, 3);
+
+			small {
+				font-size: 1.3rem;
+				color: kt-base-color(label, 2);
+				margin-right: 0.25rem;
+			}
+		}
+
+		.kt-widget-19__bg {
+			opacity: 0.08;
+			position: absolute;
+			z-index: 0;
+			width: 120px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+    }
+
+    .kt-widget-19__data {
+    	flex: 1;
+    	display:flex;
+    	align-items: flex-end;
+    	justify-content: flex-end;
+    	flex: 0 0 180px;
+
+    	@include kt-transition;
+
+    	.kt-widget-19__chart {
+    		display: flex;
+    		width: 100%;
+    		flex: 0 0 100%;
+    		margin-right: 1rem;
+    		flex-wrap: wrap;
+    		justify-content: space-between;
+    		align-items:flex-end;
+    		transition: all 0.3s ease;
+
+    		.kt-widget-19__bar {
+    			$bar-height: 100px;
+    			$bar-width: 8px;
+
+	    		display: flex;
+	    		align-items:flex-end;
+	    		transition: all 0.3s ease;
+				background-color: kt-base-color(shape, 1);
+				height: $bar-height;
+				width: $bar-width;
+				border-radius: 5px;
+
+				[class*="kt-widget-19__bar"] {
+					border-radius: 5px;
+					transition: all .6s ease;
+					background-color: kt-brand-color();
+					width: $bar-width;
+				}
+
+				@for $i from 1 through 100 {
+					$this-height : $bar-height * ($i / 100);
+					.kt-widget-19__bar-#{$i} {
+						height: #{$this-height};
+					}
+				}
+			}
+    	}
+    }   
+
+    @include kt-media-range(xl, 1650px) {
+    	.kt-widget-19__title {
+			margin-left: 1rem;
+			margin-right: 1rem;
+
+			.kt-widget-19__label {
+				font-size: 2rem;
+				font-weight: 500;	
+			}
+
+			.kt-widget-19__bg {
+				width: 100px;
+			}
+	    }
+
+    	.kt-widget-19__data{
+    		flex: 0 0 120px;
+    	}
+    }
+
+    @include kt-media-below(sm) {
+    	.kt-widget-19__title {
+			margin-left: 1rem;
+			margin-right: 1rem;
+
+			.kt-widget-19__label {
+				font-size: 1.7rem;
+			}
+
+			.kt-widget-19__bg {
+				width: 100px;
+			}
+	    }
+
+    	.kt-widget-19__data{
+    		flex: 0 0 120px;
+    	}
+    }
+} 

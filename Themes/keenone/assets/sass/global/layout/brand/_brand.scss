@@ -1,0 +1,58 @@
+//
+// Aside Brand
+//
+
+
+
+.kt-aside__brand {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	padding: 0 kt-get($kt-page-padding, desktop);
+	height: kt-get($kt-header-config, base, desktop, default, height);
+
+	.kt-aside__brand-logo {
+		display: flex;
+		justify-content: flex-begin;
+
+		img {
+			.kt-aside--minimize & {
+				display: none;
+			}
+		}
+	}
+
+	.kt-aside__brand-tools {
+		display: flex;
+		justify-content: flex-end;
+
+		@include kt-burger-icon-build(kt-aside__brand-aside-toggler, kt-get($kt-brand-config, aside-toggler));
+		@include kt-burger-icon-skin(kt-aside__brand-aside-toggler,  kt-get($kt-brand-config, aside-toggler, color));
+	}
+}
+
+@include kt-desktop {
+	.kt-aside__brand {
+		transition: kt-get($kt-aside-config, base, minimize, transition);
+
+		.kt-header--fixed.kt-aside--static & {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: kt-get($kt-aside-config, base, default, width);
+			z-index: kt-get($kt-aside-config, base, fixed, zindex);
+		}
+
+		.kt-header--fixed.kt-aside--static.kt-aside--minimize & {
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+			width: kt-get($kt-aside-config, base, minimize, width);
+		}
+	}
+}
+
+@include kt-tablet-and-mobile {
+	.kt-aside__brand {
+		display: none;
+	}
+}

@@ -1,0 +1,174 @@
+//
+//  List
+//
+
+
+
+
+// Base
+@mixin kt-list-base() {
+    .kt-list {
+        position: relative;
+        padding: 0;
+        margin: 0;
+
+        .kt-list__item {
+            position: relative;
+            display: flex;      
+            align-items: center;      
+            padding: 0.75rem 0;  
+
+            .kt-list__icon {
+                display: inline-block;
+                min-width: 50px;
+                padding: 0 15px 0 10px;
+                line-height: 0;
+                text-align: center;
+
+                @include kt-icons-style(font-size, (fontawesome: 1.2rem, lineawesome: 1.6rem, flaticon: 1.6rem) );
+            }           
+
+            .kt-list__text {
+                width: 100%;
+                display: inline-block;
+                text-align: left;
+                padding: 0 5px 0 0;
+                font-size: 1rem;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            .kt-list__time {
+                min-width: 80px;
+                text-align: right;      
+                display: inline-block;
+                padding: 0;
+                font-size: 0.9rem;
+            }
+
+            &:first-child {
+                padding-top: 0;
+                margin-top: 0;
+            }
+
+            &:last-child {
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        &.kt-list--badge {
+            &:before {
+                position: absolute;
+                display: block;
+                content: '';
+                width: 1px;
+                height: 100%;
+                top: 0;
+                bottom: 0;
+                left: 3px;     
+            }  
+
+            .kt-list__item {
+                &:first-child,
+                &:last-child {
+                    &:before {
+                        background-color: white;
+                        position: absolute;
+                        display: block;
+                        content: '';
+                        width: 1px;
+                        height: 50%;
+                        top: 0;
+                        bottom: 0;
+                        left: 3px;
+                    }  
+                }
+
+                &:last-child {
+                    &:before {
+                        top: auto;
+                        bottom: 0;
+                    }   
+                }       
+
+                .kt-list__badge {
+                    display: flex;
+                    align-items: center;                
+                    text-align: left;
+                    position: relative;
+                    width: 20px;
+
+                    &:before {
+                        position: absolute;
+                        display: block;
+                        content: '';
+                        width: 7px;
+                        height: 7px;
+                        left: 0;                
+                        border-radius: 100%;
+                    }
+                }
+            }
+        }        
+    }
+}
+
+// Skin
+@mixin kt-list-skin() {
+    .kt-list {
+        &:before {
+            background-color: kt-base-color(grey, 2);
+        }
+
+        .kt-list__item {
+            .kt-list__badge {
+                &:before {
+                    background-color: kt-base-color(grey, 2);
+                }
+
+                @each $name, $color in $kt-state-colors {
+                    &.kt-list__badge--#{$name} {
+                        &:before {
+                            background-color: kt-get($color, base);
+                        }
+                    }
+                }
+            }
+
+            .kt-list__icon {
+                i {
+                    color: kt-base-color(label, 2);
+                }
+            }
+
+            .kt-list__text {
+                color: kt-base-color(label, 3);
+            }
+
+            .kt-list__time {
+                color: kt-base-color(label, 2);
+            }
+
+            &:first-child,
+            &:last-child {
+                &:before {
+                    background-color: kt-base-color(label, 2);
+                }
+            }
+
+            &.kt-list__item--blur {
+                opacity: 0.5;
+            }
+        }
+    } 
+}
+
+// Build
+// Base
+@include kt-list-base();
+
+// Skin
+@include kt-list-skin();

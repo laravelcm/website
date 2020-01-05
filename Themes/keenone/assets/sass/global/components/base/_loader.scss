@@ -1,0 +1,78 @@
+//
+// Loader
+//
+
+
+
+
+// Config
+$kt-loader-config: (
+	default: (
+		size: 1.4rem,
+		width: 2px
+	),
+	lg: (
+		size: 2rem,
+		width: 3px 
+	),
+	sm: (
+		size: 1rem,
+		width: 1px
+	)
+);
+
+// Base
+@mixin kt-loader-base() {
+	// Spinner markup
+	.kt-loader {
+	    display: inline-block;
+	    width: kt-get($kt-loader-config, default, size);
+	    height: kt-get($kt-loader-config, default, size);
+	    margin: 0 auto;
+	    border-radius: 100%;  
+	    background-color: kt-base-color(grey, 1);
+	    opacity: 0;
+	    animation: kt-loader-scaleout 0.9s infinite ease-in-out;
+
+	    &.kt-loader--lg {
+			width: kt-get($kt-loader-config, lg, size);
+	    	height: kt-get($kt-loader-config, lg, size);
+		}
+
+		&.kt-loader--sm {
+			width: kt-get($kt-loader-config, sm, size);
+	    	height: kt-get($kt-loader-config, sm, size);
+		}
+
+		.btn & {
+			position: relative;
+			line-height: 0;
+		}
+	}
+
+	// States
+	@each $name, $color in $kt-state-colors {
+        .kt-loader.kt-loader--#{$name} {
+            background-color: kt-get($color, base);
+        }
+    }
+
+	// Spinner animation
+	@keyframes kt-loader-scaleout {
+	    0% { 
+	        opacity: 0.3;
+	        transform: scale(0);
+	    } 
+	    100% {        
+	        opacity: 1;
+	        transform: scale(1.0);
+	    }
+	}
+}
+
+@mixin kt-loader-skin($color) {
+	background-color: $color;
+}
+
+// Build
+@include kt-loader-base();

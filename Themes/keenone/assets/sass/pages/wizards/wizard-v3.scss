@@ -1,0 +1,337 @@
+//
+// Wizard v3
+//
+
+
+
+
+// Custom pages SASS files are compiled per demo as 
+// each demo has own config settings that may override the global theme config
+// and pages may slighty different on demos
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+$kt-wizard-v3-step-bg: #f6f6f9;
+$kt-wizard-v3-step-font: kt-base-color(label, 1);
+$kt-wizard-v3-label-font: kt-base-color(label, 2);
+
+// General mode
+.kt-wizard-v3 {
+	// Nav
+	.kt-wizard-v3__nav {
+		padding: 4rem;
+		border-bottom: 1px solid #eeeef4;
+
+		@include kt-minimal-desktop-and-below{
+			padding: 2rem 1rem;
+		}
+
+		.kt-wizard-v3__nav-line{
+			height: 3px;
+			background-color: $kt-wizard-v3-step-bg;
+			transform: translateY(1.7rem);
+			margin: 0 10%;
+			position: relative;
+			z-index: 0;
+
+			@include kt-mobile-sm{
+				display: none;
+			}
+		}
+
+		.kt-wizard-v3__nav-items{
+			display:flex;
+			flex-direction: row;
+			justify-content: space-between;
+			position: relative;
+			z-index:1;
+
+			@include kt-mobile-sm{
+				flex-direction: column;
+			}
+
+			.kt-wizard-v3__nav-item{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				flex-wrap: wrap;
+				flex-basis: auto;
+				flex:1;
+				flex-basis:auto;
+				font-weight: 500;
+				font-size: 1.1rem;
+
+				@include kt-mobile-sm{
+					flex-direction: row;
+					margin-bottom: 2rem;
+				}
+
+				span{
+					width: 3.5rem;	
+					height: 3.5rem;
+					font-size: 1.5rem;
+					border-radius: 50%;
+					display:flex;
+					align-items: center;
+					justify-content: center;
+					margin: 0 1rem;
+				}
+
+				i{
+					display: none;
+					width: 3.5rem;	
+					height: 3.5rem;
+					font-size: 1.1rem;
+					border-radius: 50%;
+					align-items: center;
+					justify-content: center;
+					margin: 0 1rem;
+				}
+
+				.kt-wizard-v3__nav-label{
+					margin-top: 1rem;
+					color: $kt-wizard-v3-label-font;
+					text-align: center;
+
+					@include kt-mobile-sm{
+						text-align: left;
+						margin-top: 0;
+					}
+				}
+				
+				&[data-ktwizard-state="current"]{
+					color: kt-state-color(brand, base);
+
+					span{
+						background-color: kt-state-color(brand, base);
+						color: kt-state-color(brand, inverse);
+					}
+				}
+
+				&[data-ktwizard-state="pending"]{
+					color: $kt-wizard-v3-step-font;
+
+					span{
+						background-color: $kt-wizard-v3-step-bg;
+						color: $kt-wizard-v3-step-font;
+					}
+				}
+
+				&[data-ktwizard-state="done"]{
+					color: kt-state-color(success, base);
+
+					span {
+						display: none;
+					}
+
+					i {
+						display:flex;
+						background-color: kt-state-color(success, base);
+						color: kt-state-color(success, inverse);
+					}
+				}
+			}
+		}
+	} 
+
+	.kt-form {
+		padding: 2rem 4rem 4rem;
+
+		@include kt-mobile-sm{
+			padding: 2rem 1rem 4rem;
+		}
+
+		.kt-wizard-v3__content{
+			padding-bottom: 1.3rem;
+			border-bottom: 1px solid #eeeef4;
+			margin: 0 auto 2rem;
+			width: 630px;
+
+			@include kt-minimal-desktop-and-below{
+				width: 100%;
+				margin: 0 0 1.5rem 0;
+			}
+		}
+
+		.kt-form__actions{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 630px;
+			margin: 0 auto;
+
+			@include kt-minimal-desktop-and-below{
+				width: 100%;
+				margin: 0;
+			}
+
+			@include kt-mobile-sm{
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.btn{
+				@include kt-mobile-sm{
+					margin: 0 0.5rem 1rem;
+				}
+			}
+
+			[data-ktwizard-type="action-prev"]{
+				margin-right:auto;
+
+				@include kt-mobile-sm{
+					margin-right:0.5rem;
+				}
+			}
+
+			[data-ktwizard-type="action-next"]{
+				margin: auto 0 auto auto;
+
+				@include kt-mobile-sm{
+					margin: 0 0 1rem;
+				}
+			}
+		}
+	}	
+
+	// Step
+	[data-ktwizard-type="step"] {
+		
+		&[data-ktwizard-state="current"] {
+			
+		}
+
+		&[data-ktwizard-state="done"] {
+			
+		}
+
+		&[data-ktwizard-state="pending"] {
+			
+		}
+	}
+
+	// Step info
+	[data-ktwizard-type="step-info"] {
+		display: none;
+
+		&[data-ktwizard-state="current"] {
+			display: block;
+		}
+	}
+
+	// Content states
+	[data-ktwizard-type="step-content"] {
+		display: none;
+		
+		&[data-ktwizard-state="current"] {
+			display: block;
+		}
+	}
+
+
+ 	// Action buttons states
+	& {
+		[data-ktwizard-type="action-prev"]{
+			display: none;
+		}
+
+		[data-ktwizard-type="action-next"]{
+			display: inline-block;
+		}
+
+		[data-ktwizard-type="action-submit"]{
+			display: none;
+		}
+	}
+ 	
+	&[data-ktwizard-state="first"] {
+		[data-ktwizard-type="action-prev"]{
+			display: none;
+		}
+
+		[data-ktwizard-type="action-next"]{
+			display: inline-block;
+		}
+
+		[data-ktwizard-type="action-submit"]{
+			display: none;
+		}
+	}
+
+	&[data-ktwizard-state="between"] {
+		[data-ktwizard-type="action-prev"]{
+			display: inline-block;
+		}
+
+		[data-ktwizard-type="action-next"]{
+			display: inline-block;
+		}
+
+		[data-ktwizard-type="action-submit"]{
+			display: none;
+		}
+	}
+
+	&[data-ktwizard-state="last"] {
+		[data-ktwizard-type="action-prev"]{
+			display: inline-block;
+		}
+
+		[data-ktwizard-type="action-next"]{
+			display: none;
+		}
+
+		[data-ktwizard-type="action-submit"]{
+			display: inline-block;
+		}
+	}
+}
+
+// Responsive mode(ref $kt-media-breakpoints in framework\_config.scss)
+// Above 1200px
+@include kt-media-above(xl) {
+	.kt-wizard-v3 {
+		.kt-wizard-v3__aside {
+			width: 400px;
+			border-right: 1px solid #eeeef4;
+			padding: 1.5rem;
+		}
+
+		.kt-wizard-v3__wrapper {
+			padding: 1.5rem;
+		}
+	}
+}
+
+// Above 1024px and below 1200px
+@include kt-media-range(lg, xl) {
+	.kt-wizard-v3 {
+		.kt-wizard-v3__aside {
+			border-bottom: 1px solid #eeeef4;
+			padding: 1rem;
+		}
+
+		.kt-wizard-v3__wrapper {
+			padding: 1rem;
+		}
+	}
+}
+
+// Below 1024px
+@include kt-media-below(lg) {
+	.kt-wizard-v3 {
+		.kt-wizard-v3__aside {
+			padding: 1rem;
+		}
+
+		.kt-wizard-v3__wrapper {
+			padding: 1rem;
+		}
+	}
+}

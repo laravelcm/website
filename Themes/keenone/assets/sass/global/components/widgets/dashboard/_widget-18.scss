@@ -1,0 +1,87 @@
+//
+// Widget 18
+//
+
+
+
+
+.kt-widget-18{
+	.kt-widget-18__summary{
+		margin-top: -1rem;
+		margin-bottom: 1rem;
+		display: flex;
+		align-items: flex-end;
+
+		.kt-widget-18__total{
+			font-size: 3rem;
+			font-weight: 600;
+			color: kt-base-color(label, 4);
+			margin-right: 1rem;
+		}
+
+		.kt-widget-18__label{
+			color: kt-base-color(label, 2);
+			font-weight: 500;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.kt-widget-18__progress{
+		margin-bottom: 2rem;
+	}
+
+	.kt-widget-18__item{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-bottom: 2rem;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+
+		.kt-widget-18__legend{
+			background-color: kt-state-color(brand, base);
+			width: 1rem;
+			height: 1rem;
+			border-radius: 3px;
+			margin-right: 1.25rem;
+		}
+
+		.kt-widget-18__desc{
+			margin-right: 1.25rem;
+
+			.kt-widget-18__title{
+				font-size: 1.1rem;
+				font-weight: 500;
+				color: kt-base-color(label, 4);
+				margin-bottom: 0.2rem;
+				@include kt-transition();
+
+				&:hover{
+					@include kt-transition();
+					color: kt-state-color(brand, base);
+				}
+			}
+
+			.kt-widget-18__desc{
+				font-size: 0.9rem;
+				font-weight: 500;
+				color: kt-base-color(label, 2);
+			}
+		}
+
+		.kt-widget-18__orders{
+			font-weight: 400;
+			color: kt-base-color(label, 2);
+			font-size: 0.9rem;
+			margin: auto 0 auto auto;
+
+			span {
+				font-weight: 500;
+				color: kt-base-color(label, 3);
+				font-size: 1rem;
+			}
+		}
+	}
+}

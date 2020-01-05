@@ -1,0 +1,344 @@
+//
+// Pricing v2
+//
+
+
+
+
+// Custom pages SASS files are compiled per demo as 
+// each demo has own config settings that may override the global theme config
+// and pages may slighty different on demos
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+// Component config
+$base-color: #918ea7;
+$currency-color: #cccce3;
+
+.kt-pricing-v2 {
+	// col-* helper class for right border
+	.kt-pricing-v2--line-right{
+		border-right-width: 1px;
+		border-right-style: solid;
+		border-right-color: #f0f0f6;
+
+		@include kt-media-below(xxl) {
+			border-right-width:0;
+		}
+	}
+
+	// pricing v2 tab buttons
+	.btn-group{
+		.btn{
+			background-color: #fff;
+			color: #7f87aa;
+
+			&:hover,
+			&.active{
+				background-color: #b4aad3;
+				color: #fff;
+			}
+		}
+	}
+
+	// pricing item
+	.kt-pricing-v2__item{
+		flex:1;
+		padding: 3rem 3rem 3.5rem;
+		margin-bottom: 2rem;
+		box-shadow: 0px 0px 20px 0px rgba(103,92,139,0.05);
+		
+		@include kt-rounded {
+			border-radius: 0.35rem;
+		}
+
+		// square shape
+		&.kt-pricing-v2--square{
+			border-radius:0;
+		}
+
+		// elevated style
+		&.kt-pricing-v2--elevated{
+			box-shadow: $kt-elevate-shadow;
+		}
+
+		// no shadow 
+		&.kt-pricing-v2--flat{
+			box-shadow: none;
+			padding-bottom: 1.5rem;
+		}
+
+		// set white bg only
+		&.kt-pricing-v2--white-bg{
+			background-color: #fff;
+		}
+
+		@include kt-tablet-and-mobile{
+			padding: 2rem 0;
+			margin-bottom: 1.25rem;
+		}
+
+		.kt-pricing-v2__header{
+			.kt-pricing-v2__title{
+				margin: 2rem 0;
+				font-weight: 600;
+			}
+
+			.kt-iconbox{
+				background-color: transparent;
+				padding-top:2rem;
+				padding-bottom: 2.5rem;
+
+				.kt-iconbox__icon{
+					margin-bottom: 4.75rem;
+					color: #8388a4;
+				}
+
+				.kt-iconbox__title{
+					font-size: 1.5rem;
+					font-weight: 500;
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.kt-pricing-v2__body{
+			display: flex;
+			flex-direction: column;
+			flex:1;
+			justify-content: center;
+			align-items: center;
+			line-height: 2rem;
+			font-size: 1.1rem;
+
+			.kt-pricing-v2__content{
+				font-weight: 500;
+				color: $base-color;
+				display:table;
+			}
+
+			.kt-pricing-v2__price{
+				font-weight: 600;
+				font-size:4rem;
+				height:4rem;
+				text-align: center;
+				margin-bottom: 3rem;
+				display: flex;
+				align-items:center;
+
+				.kt-pricing-v2__price-currency{
+					color: $currency-color;
+					font-size:2rem;
+					font-weight: 300;
+					align-self:flex-start;
+					margin-right: 0.25rem;
+				}
+
+				.kt-pricing-v2__price-type{
+					color: $currency-color;
+					font-size:1.5rem;
+					font-weight: 300;
+					align-self:flex-end;
+					margin-left: 0.25rem;
+				}
+			}
+
+			.kt-pricing-v2__button{
+				margin-bottom: 2rem;
+			}
+		}		
+
+		// State colors
+		@each $name, $color in $kt-state-colors {
+			&.kt-pricing-v2--#{$name}{
+				@if $name == 'warning' or $name == 'light' {
+					background-color:#fff;
+				} @else {
+					background-color: kt-get($color, inverse);
+				}
+				padding-left: 2rem;
+				padding-right: 2rem;
+
+				.kt-pricing-v2__header{
+					.kt-iconbox__icon{
+						@if $name == 'metal'{
+							color: darken(kt-get($color, base), 20%);
+						} @else {
+							color: kt-get($color, base);
+						}
+					}
+				}
+
+				.kt-pricing-v2__button .btn{
+					color: kt-get($color, inverse);
+					background-color: kt-get($color, base);
+
+					&:hover,
+					&:focus{					
+						background-color: darken(kt-get($color, base),10%);
+					}
+
+					&.btn-outline{
+						@if $name == 'warning' or $name == 'light' {
+							background-color:#fff;
+						} @else {
+							background-color: kt-get($color, inverse);
+						}
+						border-width: 1px;
+						border-style: solid;
+						border-color: kt-get($color, base);
+						color: kt-get($color, base);
+
+						&:hover,
+						&:focus{
+							@if $name == 'warning' or $name == 'light' {
+								border-color:#fff;
+							} @else {
+								border-color: kt-get($color, inverse);
+
+							}
+							color: kt-get($color, inverse);
+							background-color: kt-get($color, base);
+						}
+					}
+				}
+			}
+
+			&.kt-pricing-v2--outline-#{$name}{
+				@if $name == 'warning' or $name == 'light' {
+					background-color:#fff;
+				} @else {
+					background-color: kt-get($color, inverse);
+				}
+				border-width: 1px;
+				border-style: solid;
+				border-color: kt-get($color, base);
+				padding-left: 2rem;
+				padding-right: 2rem;
+
+				.kt-pricing-v2__header{
+
+					.kt-iconbox__icon{
+						color: kt-get($color, base);
+					}
+				}
+
+				.kt-pricing-v2__button .btn{
+					color: kt-get($color, inverse);
+					background-color: kt-get($color, base);
+
+					&:hover,
+					&:focus{					
+						background-color: darken(kt-get($color, base),10%);
+					}
+
+					&.btn-outline{
+						@if $name == 'warning' or $name == 'light' {
+							background-color:#fff;
+						} @else {
+							background-color: kt-get($color, inverse);
+						}
+						border-width: 1px;
+						border-style: solid;
+						border-color: kt-get($color, base);
+						color: kt-get($color, base);
+
+						&:hover,
+						&:focus{
+							@if $name == 'warning' or $name == 'light' {
+								border-color:#fff;
+							} @else {
+								border-color: kt-get($color, inverse);
+
+							}
+							color: kt-get($color, inverse);
+							background-color: kt-get($color, base);
+						}
+					}
+				}
+			}
+
+			&.kt-pricing-v2--fill-#{$name}{
+				background-color: kt-get($color, base);
+				color: kt-get($color, inverse);
+				padding-left: 2rem;
+				padding-right: 2rem;
+
+				.kt-iconbox{
+					background-color: kt-get($color, base);
+
+					.kt-iconbox__icon{
+
+						@if $name != 'light'{
+							.kt-iconbox__icon--bg{
+								background-image: url(../../../media/misc/iconbox_bg-white.png);
+							}
+						}
+					}
+
+					.kt-iconbox__icon,
+					.kt-iconbox__title{
+						color: kt-get($color, inverse);
+					}
+				}
+
+				.kt-pricing-v2__price{
+					.kt-pricing-v2__price-currency{
+						@if $name == 'warning' or $name == 'light' {
+							color: lighten(kt-get($color, inverse),21%);
+						} @else {
+							color: lighten(kt-get($color, base),21%);
+						}
+					}
+					.kt-pricing-v2__price-type{
+						@if $name == 'warning' or $name == 'light' {
+							color: lighten(kt-get($color, inverse),21%);
+						} @else {
+							color: lighten(kt-get($color, base),21%);
+						}
+					}
+				}
+
+				.kt-pricing-v2__button .btn{
+					@if $name == 'warning' or $name == 'light' {
+						background-color: #fff;
+					} @else {
+						background-color: kt-get($color, inverse);
+					}
+					color: kt-get($color, base);
+					border-width: 1px;
+					border-style: solid;
+					border-color: kt-get($color, base);
+
+					&:hover,
+					&:focus{					
+						background-color: kt-get($color, base);
+						color: kt-get($color, inverse);
+						border-color: kt-get($color, inverse);
+					}
+
+					&.btn-outline{
+						border-width: 1px;
+						border-style: solid;
+						border-color: kt-get($color, inverse);
+						color: kt-get($color, inverse);
+						background-color: kt-get($color, base);
+
+						&:hover,
+						&:focus{
+							border-color: kt-get($color, base);
+							color: kt-get($color, base);
+							background-color: kt-get($color, inverse);
+						}
+					}
+				}
+			}
+		}
+	}
+}

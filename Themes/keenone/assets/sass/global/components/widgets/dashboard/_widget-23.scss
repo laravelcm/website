@@ -1,0 +1,148 @@
+//
+// Widget 23
+//
+
+
+
+
+.kt-widget-23 {
+    .kt-widget-23__stats {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .kt-widget-23__stat {
+            overflow: hidden;  
+            flex: 1;
+
+            .kt-widget-23__value {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: kt-base-color(label, 3);
+            }
+
+            .kt-widget-23__text {
+
+            }
+
+            > span {
+                display: block;
+                text-align: center;
+            }
+        }
+    }
+
+    .kt-widget-23__items {
+        margin-top: 3rem;
+
+        .kt-widget-23__label{
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: kt-base-color(label, 3);
+        }
+
+        table {
+            tbody {
+                tr {
+                    th {
+                        padding: 1rem 0;
+
+                        img {
+                            width: 6rem;
+                            height: 5rem;
+                            border-radius: 0.4rem;
+                        }
+                    }
+
+                    td {
+                        padding: 1rem 0;
+                        vertical-align: middle;                        
+
+                        .kt-widget-23__title {
+                            color: kt-base-color(label, 3);
+                            font-weight: 500;
+                            font-size: 1.1rem;
+                            display: block;
+
+                            &:hover {
+                                @include kt-transition();
+                                color: kt-brand-color() !important;
+                            }                            
+                        }
+
+                        .kt-widget-23__desc {
+                            font-size: 1rem;
+
+                            .kt-badge {
+                                margin-left: 0.6rem;
+                            }
+                        }
+
+                        .kt-widget-23__icon {
+                            .btn-icon {                 
+                                width: 1.7rem;
+
+                                i {                           
+                                    font-size: 1.6rem;
+
+                                    &:hover {
+                                        @include kt-transition();
+                                        color: kt-brand-color() !important;
+                                    }
+                                }                               
+                            }    
+                        }
+
+                        .kt-widget-23__state {
+                            .kt-widget-23__info {
+                                .kt-widget-23__subtitle {
+                                    color: kt-base-color(label, 3);
+                                    font-weight: 500;
+                                }
+                            }
+
+                            .kt-widget-23__date {
+                                padding-top: 0.5rem;
+                                display: block;                               
+                            }
+                        }                         
+                        
+
+                        &:last-child {                                                  
+                            text-align: right;                        
+                        }
+                    }
+
+                    &:first-child {
+                        th ,td {
+                            border-top: 0;
+                        }
+                    }                    
+                }    
+            }           
+        }
+
+        .kt-widget-23__footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }  
+}    
+
+// Mobile Mode
+@include kt-tablet-and-mobile {
+	.kt-widget-23 {
+        .kt-widget-23__items {
+            table {
+                tbody {
+                    tr {
+                        td {
+                            padding-left: 1rem;
+                        }
+                    }
+                }
+            }
+        }	 
+	}		 
+}

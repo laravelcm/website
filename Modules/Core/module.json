@@ -1,0 +1,19 @@
+{
+  "name": "Core",
+  "alias": "core",
+  "description": "",
+  "keywords": [],
+  "order": 0,
+  "active": 1,
+  "version": "1.0.0",
+  "providers": [
+    "Modules\\Core\\Providers\\CoreServiceProvider"
+  ],
+  "aliases": {
+    "Theme": "Modules\\Core\\Facades\\Theme"
+  },
+  "files": [
+    "Helpers/system.php"
+  ],
+  "requires": []
+}

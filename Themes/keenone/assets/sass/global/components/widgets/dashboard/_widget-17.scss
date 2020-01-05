@@ -1,0 +1,125 @@
+//
+// Widget 17
+//
+
+
+
+.kt-widget-17 {
+
+	.kt-widget-17__item{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 2rem;
+		flex-wrap: wrap;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+
+		.kt-widget-17__product{
+			flex: 2;
+			display: flex;
+			align-items: center;
+
+			@include kt-mobile-sm{
+				flex-basis: 100%;
+				margin-bottom: 1.25rem;
+			}
+
+			.kt-widget-17__thumb {
+				border-radius: 5px;
+				overflow:hidden;
+				margin-right: 1.25rem;
+				flex: 0 0 6rem;
+				
+				a {
+					width: 6rem;
+					height: 5rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.kt-widget-17__image{
+					width: 100%;
+				}
+			}
+
+			.kt-widget-17__product-desc{
+				.kt-widget-17__title{
+					font-size: 1.1rem;
+					font-weight: 500;
+					color: kt-base-color(label, 4);
+					margin-bottom: 0.5rem;
+					transition: all 0.3s ease;
+
+					&:hover{
+						color: kt-state-color(brand, base);
+					}
+				}
+
+				.kt-widget-17__sku {
+					font-weight: 500;
+					font-size: 0.9rem;
+					color: kt-base-color(label, 2);
+				}
+			}
+		}
+
+		.kt-widget-17__prices{
+			flex:1;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			font-size: 1.1rem;
+			color: kt-base-color(label, 3);
+			font-weight: 500;
+
+			.kt-widget-17__unit{
+				span{
+					color: kt-base-color(label, 2);
+				}
+			}
+
+			.kt-widget-17__total{
+				min-width: 7.5rem;
+				text-align:right;
+			}
+		}
+	}
+
+	.kt-widget-17__foot{
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+
+		.kt-widget-17__foot-info,
+		.kt-widget-17__foot-toolbar{
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		.kt-widget-17__foot-info{
+			.kt-widget-17__foot-label{
+				margin: 0.25rem 0.5rem 0.25rem 0;			
+			}
+
+			.kt-widget-17__foot-desc{
+				font-weight: 500;
+				color: kt-base-color(label, 2);
+			}			
+		}
+
+		.kt-widget-17__foot-toolbar {
+			display: flex;
+			justify-content: flex-end;
+
+			a{
+				margin: 0.25rem 0 0.25rem 0.5rem;	
+			}
+		}		
+	}	
+}

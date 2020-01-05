@@ -1,0 +1,63 @@
+//
+// Toastr
+//
+
+
+
+
+// Base
+@mixin kt-toastr-base() {
+    .toast {
+        background-position: 15px center #{'/*rtl:calc(100% - 15px) center*/'} !important;
+		box-shadow: $kt-dropdown-shadow;
+		border: 0;
+
+    	.toast-close-button {
+			@include kt-close-icon();
+       		outline: none !important;
+    	    font-size: 0;
+    	    content: " ";
+            &:before {
+            	font-size: 0.9rem;
+            }
+		}
+		
+		// Title
+		.toast-title {
+			font-size: 1rem;
+			font-weight: 500;
+			margin-bottom: 0.25rem;
+		}
+
+		// Message
+		.toast-message {
+			font-size: 0.9rem;
+		}
+    }
+}
+
+@mixin kt-toastr-state($name, $color) {
+	.toast-#{$name} {
+	    background-color: kt-get($color, base);
+	    color: kt-get($color, inverse);
+	    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+	}
+
+    #toast-container > div:hover {
+    	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.125);
+    }
+}
+
+@mixin kt-toastr-skin() {
+	@include kt-toastr-state(success, kt-get($kt-state-colors, success));
+	@include kt-toastr-state(warning, kt-get($kt-state-colors, warning));
+	@include kt-toastr-state(info, kt-get($kt-state-colors, info));
+	@include kt-toastr-state(error, kt-get($kt-state-colors, danger));
+}
+
+// Build
+// Base
+@include kt-toastr-base();
+
+// Skin
+@include kt-toastr-skin();

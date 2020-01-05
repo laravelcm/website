@@ -1,0 +1,139 @@
+//
+// Aside
+//
+
+
+
+
+// Aside
+.kt-aside {
+	width: kt-get($kt-aside-config, base, default, width);
+	transition: kt-get($kt-aside-config, base, minimize, transition);
+
+	// Menu
+	.kt-aside-menu {
+		margin: 15px 0;
+
+		.ps__rail-y {
+			right: 3px;
+		}
+	}
+
+	// Footer
+	.kt-aside__footer {
+		.kt-aside__footer-nav {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 7px 30px;
+		}
+
+		.kt-aside__footer-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.btn {
+			height: 45px;
+	    	width: 45px;
+			background-color: #f0f0f6;
+			border-radius: 50%;
+
+			i {
+				@include kt-transition();
+				font-size: 1.4rem;
+				color: kt-brand-color();
+			}
+
+			&:hover {
+				background-color: kt-brand-color();
+
+				i {
+					@include kt-transition();
+					color: kt-brand-color(inverse);
+				}
+			}
+		}
+
+		// Minimize
+		.kt-aside--minimize & {
+			.dropdown.dropdown-inline,
+			.btn {
+				display: none;
+
+				&:last-child {
+					display: inline-block;
+					opacity: 0;
+				}
+			}
+		}
+	}
+}
+
+// Desktop Mode
+@include kt-desktop {
+	.kt-aside {
+		// Fixed
+		.kt-aside--fixed & {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			z-index: kt-get($kt-aside-config, base, fixed, zindex);
+		}
+
+		.kt-aside--static & {
+			position: relative;
+			z-index: 1;
+		}
+
+		.kt-header--fixed.kt-aside--static & {
+			padding-top: kt-get($kt-header-config, base, default, height);
+		}
+
+		// Minimize
+		.kt-aside--minimize & {
+			width: kt-get($kt-aside-config, base, minimize, width);
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+		}
+
+		.kt-aside--minimizing & {
+			overflow: hidden;
+			
+			.kt-aside-menu {
+				.kt-menu__nav  {
+					width: kt-get($kt-aside-config, base, default, width);
+					overflow: hidden;
+				}
+			}
+		}
+
+		// Scroll
+		@include kt-perfect-scrollbar-ver-size( kt-get($kt-aside-config, base, fixed, scroll, width) );
+	}
+
+	// Fixed & Minimize Aside hover
+	.kt-aside--fixed.kt-aside--minimize-hover {
+		.kt-aside {
+			width: kt-get($kt-aside-config, base, default, width);
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+		}
+
+		.kt-header {
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+			left: kt-get($kt-aside-config, base, minimize, width);
+		}
+
+		.kt-wrapper {
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+			padding-left: kt-get($kt-aside-config, base, minimize, width);
+		}
+	}
+}
+
+// Build aside menu
+@include kt-menu-ver-build-layout(kt-get($kt-aside-config, menu));
+
+// Aside offcanvas panel for mobile mode
+@include kt-offcanvas-build(kt-aside, tablet-and-mobile, kt-get($kt-aside-config, base, offcanvas-mobile));

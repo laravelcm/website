@@ -1,0 +1,163 @@
+//
+// Pricing v1
+//
+
+
+
+
+// Custom pages SASS files are compiled per demo as 
+// each demo has own config settings that may override the global theme config
+// and pages may slighty different on demos
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+// Component config
+$kt-pricing-v1-base-color: #b2afc6;
+$kt-pricing-v1-label-color: #9b98af;
+$kt-pricing-v1-currency-color: #cccce3;
+
+.kt-pricing-v1 {
+	margin: 2rem 0;
+	padding: 0 2rem;
+	border-right: 1px solid #ebebf5;
+
+	@include kt-media-below(xl) {
+		@at-root
+		div[class*='col-']{
+			&:nth-child(2n){
+				.kt-pricing-v1{
+					border-right-width:0;
+				}
+			}
+		}
+
+		border-right: 0;
+		margin: 0 2rem ;
+		padding: 2rem 0;
+		border-bottom: 1px solid #ebebf5;
+	}
+
+	&--last{
+		border-right: 0;
+
+		@include kt-tablet-and-mobile{
+			border-bottom: 0;
+		}
+	}
+
+	.kt-pricing-v1__header{
+
+		.kt-iconbox__icon{
+			margin-bottom: 3rem;
+		}
+
+		.kt-iconbox__title{
+			font-size: 1.7rem;
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+	}
+
+	.kt-pricing-v1__body{
+		display: flex;
+		flex-direction: column;
+		flex:1;
+		justify-content: center;
+		align-items: center;
+
+		.kt-pricing-v1__labels{
+			display:flex;
+			flex-wrap: wrap;
+			flex: 1;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 1.25rem;
+
+			.kt-pricing-v1__labels-item{
+				color: $kt-pricing-v1-label-color;
+				font-size:1.15rem;
+				font-weight: 500;
+
+				&:after{
+					content: '•';
+					align-self:center;
+					margin: 0 1rem;
+					color: lighten($kt-pricing-v1-label-color, 20%);
+				}
+
+				&:first-child{
+					margin-left: 0;
+				}
+
+				&:last-child{
+					padding-right: 0;
+
+					&:after{
+						content: none;
+					}
+				}
+			}
+		}
+
+		.kt-pricing-v1__content{
+			color: $kt-pricing-v1-base-color;
+			text-align: center;
+			padding: 0 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.kt-pricing-v1__price{
+			font-weight: 700;
+			font-size:4rem;
+			text-align: center;
+			margin-bottom: 2rem;
+			display: flex;
+
+			.kt-pricing-v1__price-currency{
+				color: $kt-pricing-v1-currency-color;
+				font-size:1.75rem;
+				font-weight: 300;
+				align-self:top;
+				margin-top: 1rem;
+				margin-left: 0.4rem;
+			}
+		}
+
+		.kt-pricing-v1__button{
+			margin-bottom: 2.75rem;
+		}
+	}		
+
+	// State colors
+	@each $name, $color in $kt-state-colors {
+		&.kt-pricing-v1--#{$name}{
+			.kt-pricing-v1__header{
+
+				.kt-iconbox__icon{
+					color: kt-get($color, base);
+				}
+			}
+
+			.kt-pricing-v1__price .kt-pricing-v1__price-currency{
+				color: lighten(kt-get($color, base), 20%);
+			}
+
+			.kt-pricing-v1__button .btn{
+				background-color: kt-get($color, base);
+				color: kt-get($color, inverse);
+				border-color: kt-get($color, base);
+
+				&:hover,
+				&:focus{
+					background-color: darken(kt-get($color, base), 10%);
+				}
+			}
+		}
+	}
+}

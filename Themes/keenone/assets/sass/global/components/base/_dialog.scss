@@ -1,0 +1,59 @@
+//
+// Loading
+//
+
+
+
+
+// Base
+.kt-dialog {
+    $width: 130px;
+    width: $width;
+    margin: 0 auto;
+    position: fixed;
+    z-index: 1100;   
+    justify-content: center;
+    padding:  1rem;    
+    box-shadow: 0px 3px 12px 0px rgba(0,0,0,0.1);
+    background-color: #fff;
+
+    @include kt-rounded {
+        border-radius: $kt-border-radius;
+    }
+
+    // Placement 
+    &.kt-dialog--top-center {
+        display: flex;
+        top: -100px;
+        left: 50%;
+        margin-left: -($width / 2);
+        transition: top 0.6s ease;
+
+        @include kt-rounded {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        &.kt-dialog--shown {
+            top: 0px;
+            transition: top 0.6s ease;
+        }
+    }
+
+    // Types
+    &.kt-dialog--loader {
+        font-size: 1rem;
+        padding: 0.75rem;
+        font-weight: 400;
+        color: kt-base-color(label, 3);
+
+        // States
+	    @each $name, $color in $kt-state-colors {
+            &.kt-dialog--#{$name} {
+                background-color: rgba(kt-get($color, base), 0.1);
+                color: kt-get($color, base);    
+                box-shadow: 0px 0px 20px 0px rgba(kt-get($color, base), 0.3);
+            }
+        }
+    }
+}

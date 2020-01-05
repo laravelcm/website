@@ -1,0 +1,106 @@
+//
+// Widget - General - 4
+//
+
+
+
+.kt-widget.kt-widget--general-4 {
+
+    .kt-widget__head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+
+        .kt-media {
+            margin-right: 1rem;
+        }
+
+        .kt-widget__toolbar {
+            align-content: flex-start;
+        }
+    }
+
+    .kt-widget__title {
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: kt-base-color(label, 3);
+        transition: color 0.3s ease;
+        margin-bottom: 1rem;        
+
+        &:hover {
+            transition: color 0.3s ease;
+            color: kt-brand-color();
+        }
+    }
+
+    .kt-widget__desc {
+        font-size: 1rem;
+        color: kt-base-color(label, 2);
+        margin-bottom: 1.5rem;
+    }
+
+    .kt-widget__links {
+        margin-bottom: 1.5rem;
+
+        .kt-widget__link {
+            display: flex;
+            margin-bottom: 0.35rem;
+    
+            i {
+                font-size: 1.1rem;
+                width: 20px;
+                margin-right: 0.25rem;
+            }
+    
+            a {
+                font-size: 1rem;
+                font-weight: 600;
+                color: kt-base-color(label, 2);
+                transition: color 0.3s ease;
+    
+                &:hover {
+                    color: kt-brand-color();
+                    transition: color 0.3s ease;
+                }
+            }
+    
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }    
+
+    .kt-widget__actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .kt-widget__left {
+            .btn {
+                margin-right: 0.25rem;
+                
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        
+        .kt-widget__right {
+            .btn {
+                margin-left: 0.25rem;
+                
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        } 
+    }
+}
+
+@include kt-mobile {
+    .kt-widget.kt-widget--general-4 {
+        
+    }
+}

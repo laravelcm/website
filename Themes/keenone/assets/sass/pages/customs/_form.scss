@@ -1,0 +1,26 @@
+//
+// Custom Element
+//
+
+
+
+// Radio button
+.radio-group {
+  label {
+    overflow: hidden;
+  }
+
+  input {
+    /* This is on purpose for accessibility. Using display: hidden is evil.
+    This makes things keyboard friendly right out tha box! */
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    top: -20px;
+  }
+
+  .not-active  {
+    color: lighten($kt-brand-color, 5);
+    background-color: #fff;
+  }
+}

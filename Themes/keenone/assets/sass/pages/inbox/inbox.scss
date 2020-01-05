@@ -1,0 +1,1336 @@
+//
+// Inbox
+//
+
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+// Config for aside
+$kt-aside-config: (
+	offcanvas: (
+		layout: (
+			self: (
+				zindex: 1001,
+				width: 300px
+			),
+			close: (
+				size: 25px,
+				font-size: 1.4rem
+			)
+		),
+		skin: (
+			overlay: (
+				bg-color: rgba(#000000, 0.05)
+			),
+			close: (
+				bg-color: (
+					default: kt-base-color(grey, 1),
+					hover: transparent
+				),
+				icon-color: (
+					default: kt-base-color(label, 2),
+					hover: kt-brand-color()
+				)
+			)
+		)
+	)
+);
+
+$kt-inbox-icon-color: lighten(#8e96b8, 6%);
+$kt-inbox-hover-bg: #f2f3f7;
+
+// Base
+.kt-inbox {
+	// Icon
+	.kt-inbox__icon {
+		@include kt-btn-reset();
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 35px;
+		width: 35px;
+		background-color: transparent;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		margin: 0;
+		border-radius: 0;
+
+		i {
+			color: $kt-inbox-icon-color;
+			font-size: 1.3rem;
+		}
+
+		&.kt-inbox__icon--sm {
+			height: 30px;
+			width: 30px;
+
+			i {
+				font-size: 0.9rem;
+			}
+		}
+
+		&.kt-inbox__icon--light {
+			background-color: transparent;
+		}
+
+		@include kt-rounded {
+			border-radius: $kt-border-radius;
+		}
+
+		@include kt-svg-icon-color($kt-inbox-icon-color);
+
+		&.kt-inbox__icon--active,
+		&:hover {
+			transition: all 0.3s ease;
+			background-color: kt-base-color(grey, 2);
+
+			&.kt-inbox__icon--light {
+				background-color: transparent;
+			}
+
+			i {
+				color: kt-brand-color();
+			}
+
+			@include kt-svg-icon-color(kt-brand-color());
+		}
+
+		// Back
+		&.kt-inbox__icon--back {
+			background-color: transparent;
+
+			i {
+				color: $kt-inbox-icon-color;
+				font-size: 1.5rem;
+			}
+
+			@include kt-svg-icon-color($kt-inbox-icon-color);
+
+			svg {
+				height: 32px;
+				width: 32px;
+			}
+
+			&:hover {
+				background-color: transparent;
+
+				i {
+					color: kt-brand-color();
+				}
+
+				@include kt-svg-icon-color(kt-brand-color());
+			}
+		}
+	}
+
+
+	// Aside
+	.kt-inbox__aside {
+		padding: 40px 20px;
+		width: 275px;
+
+		.kt-inbox__compose {
+			margin: 0 20px;
+			padding: 0.9rem 0;
+		}
+
+		.kt-inbox__nav {
+			margin-top: 1.2rem;
+
+			.kt-nav {
+				.kt-nav__item {
+					margin-bottom: 0.5rem;
+
+					.kt-nav__link {
+						padding: 0.75rem 20px;
+
+						@include kt-rounded {
+							border-radius: $kt-border-radius;
+						}
+
+						i {
+							color: $kt-inbox-icon-color;
+						}
+
+						@include kt-svg-icon-color($kt-inbox-icon-color);
+
+						.kt-nav__link-icon {
+							text-align: center;
+							margin: 0 0.7rem 0 -0.23rem;
+						}
+
+						.kt-nav__link-text {
+							font-weight: 500;
+							color: kt-base-color(label, 2);
+						}
+					}
+
+					&:last-child {
+						margin-bottom: 0;
+
+						.kt-nav__link {
+							.kt-nav__link-icon {
+								font-size: 0.9rem;
+							}
+						}
+					}
+
+					&.hover,
+					&.kt-nav__item--selected,
+					&.kt-nav__item--active {
+						.kt-nav__link {
+							background-color: kt-base-color(grey, 1);
+
+							@include kt-rounded {
+								border-radius: $kt-border-radius;
+							}
+
+							i {
+								color: kt-brand-color();
+							}
+
+							@include kt-svg-icon-color(kt-brand-color());
+
+							.kt-nav__link-text {
+								color: kt-brand-color();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// List
+	.kt-inbox__list {
+		display: none;
+		padding: 0;
+
+		@include kt-desktop {
+			margin-left: kt-get($kt-page-padding, desktop);
+		}
+
+		&.kt-inbox__list--shown {
+			display: flex;
+		}
+
+		.kt-inbox__items {
+			padding: 0;
+
+			.kt-inbox__item {
+				display: none;
+				align-items: flex-start;
+				padding: 12px kt-get($kt-portlet, space, desktop);
+				transition: all 0.3s ease;
+				cursor: pointer;
+
+				.kt-inbox__info {
+					display: flex;
+
+					@include kt-hack-ie  {
+						 padding: 8px 0;
+					}
+
+					@include kt-hack-ie  {
+						 min-width: 210px;
+					}
+
+					.kt-inbox__actions {
+						display: flex;
+						margin-right: 10px;
+						align-items: center;
+
+						@include kt-hack-ie  {
+							 min-width: 70px;
+						}
+
+						.kt-checkbox {
+							margin: 0;
+							padding: 0;
+							margin-right: 10px;
+						}
+
+						.kt-inbox__icon {
+							height: 22px;
+							width: 22px;
+
+							i {
+								font-size: 1rem;
+								color: kt-base-color(grey, 2);
+							}
+
+							&:hover {
+								i {
+									color: rgba(kt-state-color(warning), 0.5) !important;
+								}
+							}
+
+							&.kt-inbox__icon--on {
+								i {
+									color: kt-state-color(warning) !important;
+								}
+							}
+						}
+					}
+
+					.kt-inbox__sender {
+						display: flex;
+						align-items: center;
+						margin-right: 30px;
+						width: 175px;
+
+						@include kt-hack-ie  {
+							 min-width: 175px;
+						}
+
+						.kt-media {
+							margin-right: 10px;
+							min-width: 30px !important;
+
+							span {
+								min-width: 30px !important;
+							}
+						}
+
+						.kt-inbox__author {
+							font-size: 1rem;
+							color: kt-base-color(label, 3);
+							font-weight: 500;
+						}
+
+						@include kt-media-below(1400px) {
+							display: block;
+							width: 70px;
+							margin-right: 10px;
+
+							.kt-inbox__author {
+								display: block;
+							}
+
+							.kt-media {
+								margin-bottom: 5px;
+							}
+						}
+					}
+				}
+
+				.kt-inbox__details {
+					flex-grow: 1;
+					margin-top: 5px;
+
+					@include kt-hack-ie  {
+  						width: 0;
+							height: 0;
+					}
+
+					.kt-inbox__message {
+						.kt-inbox__subject {
+							font-size: 1rem;
+							color: kt-base-color(label, 4);
+							font-weight: 400;
+						}
+
+						.kt-inbox__summary {
+							font-size: 1rem;
+							color: kt-base-color(label, 1);
+							font-weight: 400;
+							text-overflow: ellipsis;
+						}
+					}
+
+					.kt-inbox__labels {
+						display: flex;
+						margin-top: 5px;
+
+						.kt-inbox__label {
+							margin-right: 5px;
+						}
+					}
+				}
+
+				.kt-inbox__datetime {
+					font-size: 1rem;
+					color: kt-base-color(label, 1);
+					font-weight: 400;
+					margin-left: 20px;
+					margin-top: 5px;
+					width: 85px;
+					text-align: right;
+
+					@include kt-media-below(1400px) {
+						width: 70px;
+					}
+				}
+
+				&:hover,
+				&.kt-inbox__item--selected {
+					transition: all 0.3s ease;
+					background-color: $kt-inbox-hover-bg;
+
+					.kt-inbox__info {
+						.kt-inbox__actions {
+							.kt-inbox__icon {
+								i {
+									font-size: 1rem;
+									color: kt-base-color(grey, 3);
+								}
+							}
+						}
+					}
+				}
+
+				&.kt-inbox__item--unread {
+					.kt-inbox__sender {
+						.kt-inbox__author {
+							color: kt-base-color(label, 4);
+							font-weight: 600;
+						}
+					}
+
+					.kt-inbox__details {
+						.kt-inbox__message {
+							.kt-inbox__subject {
+								color: kt-base-color(label, 4);
+								font-weight: 600;
+							}
+						}
+					}
+
+					.kt-inbox__datetime {
+						color: kt-base-color(label, 4);
+						font-weight: 600;
+					}
+				}
+			}
+
+			// Item types
+			&[data-type="inbox"] {
+				.kt-inbox__item[data-type="inbox"] {
+					display: flex;
+				}
+			}
+
+			&[data-type="marked"] {
+				.kt-inbox__item[data-type="marked"] {
+					display: flex;
+				}
+			}
+
+			&[data-type="draft"] {
+				.kt-inbox__item[data-type="draft"] {
+					display: flex;
+				}
+			}
+
+			&[data-type="sent"] {
+				.kt-inbox__item[data-type="sent"] {
+					display: flex;
+				}
+			}
+
+			&[data-type="trash"] {
+				.kt-inbox__item[data-type="trash"] {
+					display: flex;
+				}
+			}
+		}
+	}
+
+	// Toolbar
+	.kt-inbox__toolbar {
+		position: relative;
+		display: flex;
+		flex-grow: 1;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		.kt-inbox__actions {
+			display: flex;
+			align-items: center;
+			margin-right: 1rem;
+
+			.kt-inbox__check {
+				display: flex;
+				align-items: center;
+
+				.kt-checkbox {
+					margin: 0;
+					padding-left: 0;
+				}
+
+				.kt-inbox__icon {
+					margin-left: 0;
+				}
+			}
+
+			.kt-inbox__panel {
+				display: none;
+				flex-wrap: wrap;
+			}
+
+			&.kt-inbox__actions--expanded {
+				.kt-inbox__panel {
+					display: flex;
+				}
+			}
+
+			.kt-inbox__icon {
+				margin-right: 0.5rem;
+
+				&.kt-inbox__icon--back {
+					margin-right: 2.5rem;
+				}
+			}
+		}
+
+		.kt-inbox__controls {
+			display: flex;
+			align-items: center;
+			margin-left: 1rem;
+
+			.kt-inbox__icon {
+				margin-left: 0.5rem;
+			}
+
+			.kt-inbox__sort {
+				margin-left: 0.5rem;
+			}
+
+			.kt-inbox__pages {
+				margin-left: 0.5rem;
+
+				.kt-inbox__perpage {
+					color: kt-base-color(label, 2);
+					font-size: 1rem;
+					font-weight: 500;
+					margin-right: 1rem;
+					cursor: pointer;
+					transition: all 0.3s ease;
+					padding: 0.5rem 0;
+
+					&:hover {
+						transition: all 0.3s ease;
+						color: kt-brand-color();
+					}
+				}
+			}
+		}
+
+		.kt-inbox__search {
+			width: 300px;
+
+			@include kt-media-above(1600px) {
+				position: absolute;
+				left: 50%;
+				width: 300px;
+				margin-left: -150px;
+
+				@include kt-hack-ie {
+					top: 18px;
+				}
+			}
+
+			@include kt-media-below(1599px) {
+				width: 175px;
+			}
+
+			.input-group {
+				.input-group-text {
+					border: none;
+					background-color: lighten($kt-inbox-hover-bg, 1%);
+					padding: 0 1rem 0 1rem;
+
+					i {
+						font-size: 1.2rem;
+						color: $kt-inbox-icon-color;
+					}
+				}
+
+				.form-control {
+					height: 44px;
+					border: none;
+					background-color: lighten($kt-inbox-hover-bg, 1%);
+
+					@include kt-tablet-and-mobile {
+						height: 40px;
+					}
+				}
+			}
+		}
+
+		.kt-inbox__sep {
+			display: flex;
+			height: 1rem;
+			width: 1rem;
+		}
+
+		//kt-media-breakpoint(lg),
+		@include kt-media-below(1450px) {
+			position: static;
+
+			.kt-inbox__search {
+				order: 1;
+				margin-top: kt-get($kt-portlet, space, desktop);
+				margin-bottom: 10px;
+				flex-grow: 1;
+				width: 100%;
+			}
+
+			.kt-inbox__actions {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			.kt-inbox__controls {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			&.kt-inbox__toolbar--extended {
+				.kt-inbox__actions {
+					order: 2;
+					margin-bottom: 10px;
+					justify-content: flex-first;
+				}
+
+				.kt-inbox__controls {
+					order: 2;
+					margin-bottom: 10px;
+					justify-content: flex-end;
+				}
+			}
+		}
+	}
+
+	// View
+	.kt-inbox__view {
+		padding: 0;
+		display: none;
+
+		@include kt-desktop {
+			margin-left: kt-get($kt-page-padding, desktop);
+		}
+
+		// Shown
+		&.kt-inbox__view--shown {
+			display: flex;
+		}
+
+		// Subject
+		.kt-inbox__subject {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			padding: 0 kt-get($kt-portlet, space, desktop);
+
+			.kt-inbox__title {
+				margin-right: 1rem;
+				display: flex;
+				align-items: center;
+
+				.kt-inbox__text {
+					margin: 0;
+					padding: 0;
+					color: kt-base-color(label, 3);
+					font-size: 1.4rem;
+					font-weight: 500;
+				}
+
+				.kt-inbox__label {
+					margin-left: 0.75rem;
+				}
+			}
+
+			.kt-inbox__actions {
+				display: flex;
+				align-items: center;
+				margin: 10px 0;
+
+				.kt-inbox__icon {
+					margin-left: 0.5rem;
+
+					&:first-child {
+						margin-left: 0;
+					}
+				}
+			}
+		}
+
+		// Reply
+		.kt-inbox__reply {
+			margin-top: 30px;
+			margin-bottom: 10px;
+			display: flex;
+			flex-direction: column;
+			padding: 0 kt-get($kt-portlet, space, desktop);
+
+			.kt-inbox__actions {
+				display: flex;
+
+				.btn {
+					margin-right: 1rem;
+				}
+			}
+
+			.kt-inbox__form {
+				display: none;
+			}
+
+			&.kt-inbox__reply--on {
+				.kt-inbox__actions {
+					display: none;
+				}
+
+				.kt-inbox__form {
+					display: flex;
+				}
+			}
+		}
+
+		// Messages
+		.kt-inbox__messages {
+			margin-top: 15px;
+
+			// Message
+			.kt-inbox__message {
+				// Base
+				padding: 0 kt-get($kt-portlet, space, desktop) 15px kt-get($kt-portlet, space, desktop);
+				margin-bottom: 15px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				@include kt-rounded {
+					border-radius: $kt-border-radius;
+					box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.05);
+				}
+
+				// Head
+				.kt-inbox__head {
+					display: flex;
+					align-items: center;
+					cursor: pointer;
+
+					.kt-media {
+						margin-right: 1.2rem;
+					}
+
+					.kt-inbox__info {
+						display: flex;
+						flex-direction: column;
+						flex-wrap: wrap;
+						padding: 0.5rem 0.5rem 0.5rem 0;
+						flex-grow: 1;
+
+						.kt-inbox__author {
+							display: flex;
+							align-items: center;
+							flex-wrap: wrap;
+
+							.kt-inbox__name {
+								color: kt-base-color(label, 4);
+								font-weight: 600;
+								font-size: 1.1rem;
+								margin-right: 0.5rem;
+							}
+
+							.kt-inbox__status {
+								color: kt-base-color(label, 1);
+								font-weight: 500;
+
+								a {
+									font-size: 0.9rem;
+								}
+
+								.kt-badge {
+									margin-right: 0.4rem;
+									margin-bottom: 0.1rem;
+								}
+							}
+						}
+
+						.kt-inbox__details {
+							display: flex;
+
+							.kt-inbox__tome {
+								display: none;
+
+								.kt-inbox__details {
+									padding: 20px 0;
+
+									td {
+										padding: 5px 10px;
+										vertical-align: top;
+
+										&:nth-child(1) {
+											width: 30px;
+											text-align: right;
+											color: kt-base-color(label, 1);
+										}
+
+										&:nth-child(2) {
+											text-align: left;
+											color: kt-base-color(label, 3);
+											font-weight: 500;
+										}
+									}
+								}
+
+								.kt-inbox__label {
+									color: kt-base-color(label, 2);
+									font-weight: 400;
+									font-size: 1rem;
+
+									i {
+										margin-left: 0.5rem;
+										font-size: 0.7rem;
+										color: kt-base-color(label, 2);
+									}
+								}
+							}
+
+							.kt-inbox__desc {
+								color: kt-base-color(label, 2);
+								font-weight: 400;
+								font-size: 1rem;
+							}
+						}
+					}
+
+					.kt-inbox__actions {
+						display: flex;
+						align-items: center;
+
+						.kt-inbox__datetime {
+							color: kt-base-color(label, 1);
+							font-weight: 500;
+							font-size: 1rem;
+							margin-right: 1.5rem;
+						}
+
+						.kt-inbox__group {
+							display: flex;
+						}
+
+						.kt-inbox__icon {
+							&.kt-inbox__icon--label {
+								&:hover {
+									i {
+										color: rgba(kt-state-color(warning), 0.5) !important;
+									}
+								}
+
+								&.kt-inbox__icon--on {
+									i {
+										color: kt-state-color(warning) !important;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// Body
+				.kt-inbox__body {
+					display: none;
+					padding:  1rem 0;
+				}
+
+				// Message expanded
+				&.kt-inbox__message--expanded {
+					// Head
+					.kt-inbox__head {
+						.kt-inbox__info {
+							.kt-inbox__details {
+								.kt-inbox__tome {
+									display: flex;
+								}
+
+								.kt-inbox__desc {
+									display: none;
+								}
+							}
+						}
+					}
+
+					// Body
+					.kt-inbox__body {
+						display: block;
+					}
+				}
+
+				// Message reply
+				&.kt-inbox__message--reply {
+					.kt-inbox__reply {
+						display: flex;
+					}
+				}
+			}
+
+			.kt-inbox__reply {
+				margin-bottom: 30px;
+			}
+		}
+	}
+
+	// Form
+	.kt-inbox__form {
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
+
+		.kt-inbox__head {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+			padding: 20px kt-get($kt-portlet, space, desktop) - 10px 20px kt-get($kt-portlet, space, desktop);
+			border-bottom: 1px solid kt-base-color(grey, 2);
+
+			.kt-inbox__title {
+				margin-right: 10px;
+				font-size: 1.2rem;
+				font-weight: 500;
+				color: kt-base-color(label, 3);
+			}
+
+			.kt-inbox__actions {
+				display: flex;
+
+				.kt-inbox__icon {
+					margin-left: 5px;
+				}
+			}
+		}
+
+		.kt-inbox__body {
+			padding: 0 0 10px 0;
+
+			.kt-inbox__to {
+				display: flex;
+				min-height: 50px;
+				align-items: center;
+				padding: 10px kt-get($kt-portlet, space, desktop);
+
+				.kt-inbox__wrapper {
+					display: flex;
+					flex-direction: column;
+					flex-grow: 1;
+				}
+
+				.tagify {
+					border: 0 !important;
+
+					.tagify__input {
+						border: 0 !important;
+					}
+				}
+
+				.kt-inbox__field {
+					display: flex;
+					align-items: center;
+					width: 100%;
+					padding: 0;
+
+					&.kt-inbox__field--cc,
+					&.kt-inbox__field--bcc {
+						display: none;
+						margin-top: 5px;
+					}
+
+					.kt-inbox__label {
+						font-weight:400;
+						font-size: 1rem;
+						width: 40px;
+						min-width: 40px;
+						color: kt-base-color(label, 2);
+					}
+
+					.kt-inbox__input {
+						flex-grow: 1;
+
+						input {
+							border: 0 !important;
+							box-shadow: none !important;
+							-moz-appearance: none !important;
+							-webkit-appearance: none !important;
+						}
+
+						.form-control {
+							border: 0;
+							border-radius: 0;
+							padding-left: 0;
+							padding-right: 0;
+
+							@include kt-input-placeholder(kt-base-color(label, 2));
+							color: kt-base-color(label, 2);
+						}
+					}
+
+					.kt-inbox__tools {
+						display: flex;
+						align-items: center;
+						margin-left: 1rem;
+
+						.kt-inbox__tool {
+							font-size: 1rem;
+							color: kt-base-color(label, 1);
+							font-weight: 500;
+							margin-left: 10px;
+							cursor: pointer;
+						}
+					}
+				}
+
+				&.kt-inbox__to--cc {
+					.kt-inbox__tools {
+						.kt-inbox__tool:nth-child(1) {
+							display: none;
+						}
+					}
+
+					.kt-inbox__field.kt-inbox__field--cc {
+						display: flex;
+					}
+				}
+
+				&.kt-inbox__to--bcc {
+					.kt-inbox__tools {
+						.kt-inbox__tool:nth-child(2) {
+							display: none;
+						}
+					}
+
+					.kt-inbox__field.kt-inbox__field--bcc {
+						display: flex;
+					}
+				}
+			}
+
+			.kt-inbox__subject {
+				display: flex;
+				min-height: 50px;
+				align-items: center;
+				padding: 0 kt-get($kt-portlet, space, desktop);
+				border-top: 1px solid kt-base-color(grey, 2);
+
+				.form-control {
+					border: 0;
+					border-radius: 0;
+					padding-left: 0;
+					padding-right: 0;
+					font-weight:400;
+					font-size: 1rem;
+
+					@include kt-input-placeholder(kt-base-color(label, 2));
+					color: kt-base-color(label, 2);
+				}
+			}
+
+			.kt-inbox__text {
+				padding: 10px kt-get($kt-portlet, space, desktop);
+				padding-bottom: 0;
+				font-weight:400;
+				font-size: 1rem;
+				color: kt-base-color(label, 2);
+			}
+
+			.ql-container.ql-snow  {
+				border: 0;
+				padding: 0;
+				border-radius: 0;
+
+				.ql-editor {
+					font-weight:400;
+					font-size: 1rem;
+					color: kt-base-color(label, 2);
+					padding: 15px kt-get($kt-portlet, space, desktop);
+					font-family: kt-get($kt-font-families, regular);
+
+					&.ql-blank {
+						&:before {
+							left: kt-get($kt-portlet, space, desktop);
+							color: kt-base-color(label, 1);
+							font-weight: 400;
+							font-style: normal;
+						}
+					}
+				}
+			}
+
+			.ql-toolbar.ql-snow {
+				display: flex;
+				height: 50px;
+				align-items: center;
+				border-radius: 0;
+				border: 0;
+				border-top: 1px solid kt-base-color(grey, 2);
+				border-bottom: 1px solid kt-base-color(grey, 2);
+				padding-left: 18px;
+
+				.ql-picker-label {
+					&,
+					&:before {
+						font-weight:400;
+						font-size: 1rem;
+						color: kt-base-color(label, 2);
+						font-family: kt-get($kt-font-families, regular);
+					}
+				}
+			}
+
+			.kt-inbox__attachments {
+				min-width: 500px;
+    			display: inline-block;
+				padding: 0 kt-get($kt-portlet, space, desktop);
+			}
+		}
+
+		.kt-inbox__foot {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			width: 100%;
+			padding: 20px kt-get($kt-portlet, space, desktop) - 10px 20px kt-get($kt-portlet, space, desktop);
+			border-top: 1px solid kt-base-color(grey, 2);
+
+			.kt-inbox__primary {
+				display: flex;
+				flex-grow: 1;
+				align-items: center;
+
+				.btn-group {
+					.btn {
+						&:nth-child(1) {
+							padding-left: 20px;
+							padding-right: 20px;
+						}
+
+						&:nth-child(2) {
+							padding-left: 6px;
+							padding-right: 9px;
+						}
+					}
+				}
+
+				.kt-inbox__panel {
+					display: flex;
+					align-items: center;
+					margin-left: 1rem;
+				}
+			}
+
+			.kt-inbox__secondary {
+				display: flex;
+				align-items: center;
+				margin: 0;
+			}
+		}
+	}
+
+	// Portlet head
+	.kt-portlet__head {
+		min-height: 80px !important;
+		padding: 10px kt-get($kt-portlet, space, desktop);
+	}
+}
+
+// Tablet and mobile mode
+@include kt-tablet-and-mobile {
+	// Inbox
+	.kt-inbox {
+		display: flex;
+		flex-wrap: wrap;
+
+		// Aside
+		.kt-inbox__aside {
+			background: #fff;
+			margin: 0;
+
+			.kt-inbox__compose {
+				margin: 0;
+			}
+
+			.kt-inbox__nav {
+				.kt-nav {
+					.kt-nav__item {
+						.kt-nav__link {
+							padding: 0.75rem 10px;
+						}
+					}
+				}
+			}
+		}
+
+		// Toolbar
+		.kt-inbox__toolbar {
+			position: static;
+
+			.kt-inbox__search {
+				margin: 10px 0;
+			}
+
+			.kt-inbox__actions {
+				margin: 10px 0;
+			}
+
+			.kt-inbox__controls {
+				margin: 10px 0;
+			}
+		}
+
+		// List
+		.kt-inbox__list {
+			.kt-inbox__items {
+				overflow: auto;
+
+				.kt-inbox__item {
+					min-width: 500px;
+					//flex-wrap: wrap;
+					padding: 10px kt-get($kt-portlet, space, mobile);
+					margin-bottom: 15px;
+				}
+			}
+
+			// Portlet head
+			.kt-portlet__head {
+				min-height: 60px !important;
+				padding: 10px kt-get($kt-portlet, space, mobile);
+			}
+		}
+
+		// View
+		.kt-inbox__view {
+			.kt-inbox__subject {
+				padding: 10px kt-get($kt-portlet, space, mobile);
+
+				.kt-inbox__title {
+					display: block;
+
+					.kt-inbox__text {
+						display: inline;
+					}
+				}
+			}
+
+			.kt-inbox__messages {
+				padding: 10px kt-get($kt-portlet, space, mobile);
+
+				.kt-inbox__message {
+					padding: 0 10px 5px 10px;
+    				margin-bottom: 15px;
+
+					.kt-inbox__head {
+						.kt-media {
+							span {
+								width: 26px;
+    							height: 26px;
+							}
+						}
+
+						.kt-inbox__info {
+							.kt-inbox__details {
+								.kt-inbox__desc {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.kt-inbox__reply {
+				padding: 10px kt-get($kt-portlet, space, mobile);
+				overflow: auto;
+			}
+		}
+
+		// Form
+		.kt-inbox__form {
+			min-width: 400px;
+			.kt-inbox__body {
+				.kt-inbox__to {
+					padding: 10px kt-get($kt-portlet, space, mobile);
+				}
+
+				.kt-inbox__subject {
+					padding: 10px kt-get($kt-portlet, space, mobile);
+				}
+
+				.kt-inbox__text {
+					padding: 10px kt-get($kt-portlet, space, mobile);
+				}
+
+				.ql-container.ql-snow  {
+					.ql-editor {
+						padding: 15px kt-get($kt-portlet, space, mobile);
+
+						&.ql-blank {
+							&:before {
+								left: kt-get($kt-portlet, space, mobile);
+							}
+						}
+					}
+				}
+
+				.kt-inbox__attachments {
+					min-width: auto;
+					padding: 0 kt-get($kt-portlet, space, mobile);
+				}
+			}
+		}
+
+		// Portlet head
+		.kt-portlet__head {
+			min-height: 60px !important;
+			padding: 10px kt-get($kt-portlet, space, mobile);
+		}
+	}
+}
+
+// Mobile mode
+@include kt-mobile {
+	// Inbox
+	.kt-inbox {
+		// View
+		.kt-inbox__view {
+			.kt-inbox__messages {
+				.kt-inbox__message {
+					.kt-inbox__head {
+						flex-wrap: wrap;
+
+						.kt-media {
+
+						}
+
+						.kt-inbox__info {
+
+						}
+
+						.kt-inbox__actions {
+							flex-grow: 1;
+							justify-content: space-between;
+						}
+					}
+				}
+			}
+
+			.kt-inbox__reply {
+				padding: 10px kt-get($kt-portlet, space, mobile);
+			}
+		}
+	}
+}
+
+// Aside  offcanvas
+@include kt-offcanvas-build(kt-inbox__aside, tablet-and-mobile, kt-get($kt-aside-config, offcanvas) );

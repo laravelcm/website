@@ -1,0 +1,166 @@
+//
+// Header Dark Skin
+//
+
+
+
+
+// Include framework config
+@import "../../../../../config";
+
+// Include demo config
+@import "../../../config";
+
+$kt-header-item-font-color: #ffffff;
+$kt-header-icon-font-color: #6e7899;
+$kt-header-item-hover-bg: #282f48;
+$kt-header-bg-color: #536be2;
+
+// Desktop mode
+@include kt-desktop {
+	.kt-header {
+		background-color: kt-get($kt-layout-skins, navy);
+		box-shadow: 0px 0px 40px 0px rgba(82,63,105,0.1);
+
+		// Menu
+		.kt-header-menu {
+			.kt-menu__nav {
+				> .kt-menu__item {
+					> .kt-menu__link {
+						border-radius: 4px;
+
+						.kt-menu__link-text {
+							color: #c0c4d1;
+							font-weight: 500;
+						}
+
+						.kt-menu__hor-arrow {
+							color: #677191;
+						}
+
+						.kt-menu__hor-icon {
+							color: #677191;
+						}
+					}
+
+					&.kt-menu__item--here,
+					&.kt-menu__item--active,
+					&:hover {
+						> .kt-menu__link {
+							background-color: $kt-header-item-hover-bg;
+							
+							.kt-menu__link-text {
+								color: $kt-header-item-font-color;
+							}
+
+							.kt-menu__hor-arrow {
+								color: $kt-header-item-font-color;
+							}
+
+							.kt-menu__hor-icon {
+								color: $kt-header-item-font-color;
+							}
+						}	
+					}
+				}
+			}
+		}
+	}
+}
+
+// General mode
+.kt-header {
+	.kt-header__topbar {
+		padding-right: 15px;				
+
+		.kt-aside-secondary--enabled & {
+			padding-right: 0;
+		}
+
+		.kt-header__topbar-item {
+			.kt-header__topbar-icon {
+				i {
+					color: $kt-header-icon-font-color;
+				}
+			}
+
+			// User profile
+			&.kt-header__topbar-item--user {
+				.kt-header__topbar-welcome {
+					color: #6b7594;
+				}
+
+				.kt-header__topbar-username {
+					color: #c0c4d1;
+				}		
+			}		
+
+			// Quick panel 
+			&.kt-header__topbar--quick-panel-toggler {
+				.kt-header__topbar-icon {
+					i {
+						color: $kt-header-icon-font-color;
+					}
+				}
+			}
+
+			&:hover,
+			&.show {
+				.kt-header__topbar-icon {
+					background-color: $kt-header-item-hover-bg;
+					i {
+						color: #fff;
+					}	
+				}
+
+				&.kt-header__topbar-item--user {
+					.kt-header__topbar-user {
+						@include kt-transition();
+						background-color: $kt-header-item-hover-bg;
+
+						.kt-header__topbar-username {
+							color: $kt-header-item-font-color;
+						}
+					}
+				}
+
+				&.kt-header__topbar--quick-panel-toggler {
+					background-color: kt-brand-color();
+
+					.kt-header__topbar-icon {
+						i {
+							color: kt-brand-color(inverse);
+						}
+					}
+				}
+			}		
+
+			// Search
+			&.kt-header__topbar-item--search {
+				.kt-input-icon {
+					.kt-input-icon__icon {
+						i {
+							color: kt-base-color(label, 2);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Mobile mode
+@include kt-tablet-and-mobile {
+	// Topbar
+	.kt-header__topbar {
+		background-color: kt-get($kt-layout-skins, navy);
+		box-shadow: none;
+	}
+
+	.kt-header__topbar--mobile-on {
+		.kt-header__topbar {
+			box-shadow: 0px 0px 40px 0px rgba(82,63,105,0.1);
+			border-top: 1px solid #2e3448; 
+		}
+	}
+}

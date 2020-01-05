@@ -1,0 +1,49 @@
+//
+// Main Stylesheet
+//
+
+////////////////////////////////////////////////////////////////
+///////////// DO NOT MODIFY BELOW INCLUDE ORDER ////////////////
+////////////////////////////////////////////////////////////////
+
+// 1: Include global config
+@import "config";
+
+// 2: Include layout config
+@import "global/layout/config";
+
+// 3: Bootstrap framework includes
+@import "global/integration/frameworks/bootstrap/variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "global/integration/frameworks/bootstrap/bootstrap.scss";
+
+// 4: Components include
+@import "global/include";
+
+////////////////////////////////////////////////////////////////
+///////////// DO NOT MODIFY ABOVE INCLUDE ORDER ////////////////
+////////////////////////////////////////////////////////////////
+
+// 5: Layout config
+@import "global/layout/header/config";
+@import "global/layout/brand/config";
+@import "global/layout/aside/config";
+@import "global/layout/aside-secondary/config";
+@import "global/layout/footer/config";
+
+// 6: Layout includes
+@import "global/layout/base/base";
+
+@import "global/layout/header/header";
+@import "global/layout/header/header-mobile";
+@import "global/layout/header/menu";
+@import "global/layout/header/topbar";
+
+@import "global/layout/brand/brand";
+@import "global/layout/aside/aside";
+@import "global/layout/aside-secondary/aside-secondary";
+@import "global/layout/content/content";
+@import "global/layout/footer/footer";
+
+// 8: Module styles
+@import "../../../../Modules/Setting/Resources/assets/sass/app";

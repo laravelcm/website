@@ -1,0 +1,8 @@
+{
+  "name": "tailwind",
+  "title": "Tailwind",
+  "description": "Theme Build Using The Tailwindcss Framework",
+  "author": "Arthur Monney",
+  "version": "1.0.0",
+  "parent": ""
+}

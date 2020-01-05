@@ -1,0 +1,77 @@
+//
+// Grid Navigation
+//
+
+
+
+
+.kt-grid-nav-v2 {
+	display: flex;
+  	align-items: flex-start;
+  	flex-wrap: wrap;
+
+	.kt-grid-nav-v2__item {
+		display: flex;		
+		width: calc(50% - 3px);	
+		min-height: 180px;
+		border-radius: 6px;
+
+		// IE10, IE11 fix
+	    @include kt-hack-ie() {
+	        height: 180px;
+	    }
+
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 1rem;
+		background: kt-base-color(grey, 1);
+		
+		.kt-grid-nav-v2__item-icon {
+			display: inline-block;
+			text-align: center;
+			margin-bottom: 0.5rem;
+
+			i {				
+				font-size: 2.25rem;
+				color: kt-brand-color();
+			}
+		}
+
+		.kt-grid-nav-v2__item-title {
+			display: inline-block;
+			text-align: center;
+			font-size: 1.2rem;
+		   	font-weight: 500;
+		   	color: #5d5b6f;
+		}		
+
+		@include kt-transition();
+
+		&:hover {
+			@include kt-transition();
+			text-transform: none;
+			background: kt-brand-color();
+
+			.kt-grid-nav-v2__item-icon {
+				i {						
+					color: kt-brand-color(inverse);
+				}
+			}
+
+			.kt-grid-nav-v2__item-title {
+				color: kt-brand-color(inverse);
+			}
+		}
+
+		&:nth-of-type(odd) {
+		    margin: 3px 3px 3px 0;
+		}
+
+		&:nth-of-type(even) {
+		    margin: 3px 0 3px 3px;
+		}		
+	}
+}
+
+ 

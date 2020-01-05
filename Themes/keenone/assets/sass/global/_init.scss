@@ -1,0 +1,22 @@
+//
+// Main init file of global functions and mixins
+//
+
+
+
+// Functions
+@import "functions";
+
+// Mixins
+@import "mixins";
+@import "integration/plugins/mixins/perfect-scrollbar";
+@import "components/base/mixins/grid";
+@import "components/base/mixins/burger-menu";
+@import "components/base/mixins/menu-horizontal";
+@import "components/base/mixins/menu-vertical";
+@import "components/base/mixins/offcanvas";
+@import "components/base/mixins/spinner";
+@import "components/base/mixins/wave";
+@import "components/layout/mixins/app";
+@import "components/typography/mixins/link";
+@import "components/general/mixins/media";

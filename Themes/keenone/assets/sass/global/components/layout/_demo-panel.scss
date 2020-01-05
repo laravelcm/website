@@ -1,0 +1,258 @@
+//
+// Demo Panel
+//
+
+
+// Config
+$kt-demo-panel: (
+	self: (
+		bg-color: #fff,
+		shadow: 0px 0px 28px 0px rgba(82,63,105,0.13),
+
+		offcanvas: (
+			layout: (
+				self: (
+					zindex: 1001,
+					direction: right,
+					transition:	all .3s ease,
+					width: 350px
+				),
+
+				close: (
+					size: 25px,
+					font-size: 1.4rem
+				)
+			),
+
+			skin: (
+				overlay: (
+					bg-color: rgba(#000000, 0.05),
+				)
+			)
+		)
+	)
+);
+
+// Base
+.kt-demo-panel-toggle {
+	background-color: #fff;
+	cursor: pointer;
+	position: fixed;
+	z-index:  kt-get($kt-demo-panel, self, offcanvas, layout, self, zindex) - 1;
+	right: 0;
+	top: 200px;
+	width: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding:  1.5rem 0;
+	box-shadow: kt-get($kt-demo-panel, self, shadow);
+
+	span {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+		font-size: 1.3rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: kt-brand-color();
+		letter-spacing: 3px;
+	}
+
+	@include kt-rounded {
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}
+}
+
+.kt-demo-panel {
+	background-color: kt-get($kt-demo-panel, self, bg-color);
+	box-shadow: kt-get($kt-demo-panel, self, shadow);
+	padding: 2.5rem;
+
+	// Head
+	.kt-demo-panel__head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 3rem;
+
+		.kt-demo-panel__title {
+			font-size:  1.4rem;
+			font-weight: 500;
+			color: kt-base-color(label, 4);
+			margin: 0;
+			padding: 0;
+
+			small {
+				color: kt-base-color(label, 2);
+				font-size: 1.1rem;
+			}
+		}
+
+		.kt-demo-panel__close {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 28px;
+			height: 28px;
+			background-color: kt-base-color(grey, 1);
+			@include kt-transition();
+
+			i {
+				@include kt-transition();
+				font-size: 0.8rem;
+				color: kt-base-color(label, 2);
+			}
+
+			@include kt-rounded {
+				border-radius: $kt-border-radius;
+			}
+
+			&:hover {
+				@include kt-transition();
+				background-color: kt-brand-color();
+
+				i {
+					@include kt-transition();
+					color: kt-brand-color(inverse);
+				}
+			}
+		}
+	}	
+
+	// Content
+	.kt-demo-panel__body {
+		position: relative;
+
+		.ps__rail-y {
+			opacity: 1;
+		}
+
+		.kt-demo-panel__item {
+			display: block;
+			margin-bottom: 2rem;
+			outline: 0;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			.kt-demo-panel__item-title {
+				font-size: 1.1rem;
+				font-weight: 500;
+				color: kt-base-color(label, 3);
+				text-align: center;
+				margin-bottom: 0.5rem;
+			}
+
+			.kt-demo-panel__item-preview {
+				overflow: hidden;
+				position: relative;
+				@include kt-transition();
+				border: 4px solid kt-base-color(grey, 2);
+
+				img {
+					width: 100%;
+				}
+
+				.kt-demo-panel__item-preview-overlay {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					background-color: rgba(#000, 0.15);
+					@include kt-transition();
+					opacity: 0;
+
+					.btn {
+						margin-right: 5px;
+
+						&:last-child {
+							margin-right: 0;
+						}
+
+						&.btn-light {
+							background-color: #fff;
+							color: kt-base-color(label, 2);
+
+							&:hover {
+								background-color: #fff;
+								color: kt-base-color(label, 3);
+							}
+						}
+					}
+				}
+
+				@include kt-rounded {
+					border-radius: 4px;
+				}
+			}
+
+			&.kt-demo-panel__item--active {
+				.kt-demo-panel__item-preview {
+					@include kt-transition();
+					border: 4px solid kt-brand-color();
+				}
+			}
+
+			&:hover {
+				.kt-demo-panel__item-preview {
+					@include kt-transition();
+				
+					.kt-demo-panel__item-preview-overlay {
+						@include kt-transition();
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		.kt-demo-panel__purchase {
+			margin-bottom: 2rem;
+			display: block;
+		}
+	}
+}
+
+// Desktop view
+@include kt-desktop {
+	.kt-demo-panel {
+		.kt-demo-panel__body {
+			padding-right: 1.5rem;
+			margin-right: -1.5rem;
+		}
+	}
+}
+
+// Build offcanvas mode
+@include kt-offcanvas-build(kt-demo-panel, default, kt-get($kt-demo-panel, self, offcanvas) );
+
+// Mobile view
+@include kt-tablet-and-mobile {
+	.kt-demo-panel-toggle {
+		width: 30px;
+		padding: 1rem 0;
+
+		span {
+			font-size: 1.2rem;
+			font-weight: 600;
+			letter-spacing: 2px;
+		}
+	}
+
+	.kt-demo-panel {
+		padding: 1rem;
+	}
+
+	.kt-demo-panel-toggle {
+		top: 20%;
+	}
+}

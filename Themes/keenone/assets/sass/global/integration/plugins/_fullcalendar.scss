@@ -1,0 +1,567 @@
+//
+// Fullcalendar Component
+//
+
+
+
+
+// Base
+@mixin kt-fullcalendar-base() {
+    $cell-space-x: 0.5rem;
+    $cell-space-y: 0.5rem;
+    $head-space-x: 0.5rem;
+    $head-space-y: 0.75rem;
+    $head-list-space-x: 1.25rem;
+    
+    .fc-unthemed {
+        // day
+        .fc-day-grid td:not(.fc-axis) {
+            padding: $cell-space-y $cell-space-x;
+
+            &.fc-event-container {
+                padding: 0.2rem $cell-space-x;
+            }
+        }
+
+        .fc-axis {
+            padding-top: $cell-space-y;
+            padding-bottom: $cell-space-y;
+        }
+
+        .fc-scroller {
+            .fc-content-col {
+                padding: $cell-space-y $cell-space-x;
+            }
+        }
+
+        // header
+        th.fc-day-header {
+            padding: $head-space-y $head-space-x;  
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .fc-list-heading {
+            .fc-widget-header {
+                padding: $head-space-y $head-list-space-x;  
+            }
+
+            .fc-list-heading-main, 
+            .fc-list-heading-alt {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+
+            .fc-list-heading-main {
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+        }
+
+        .fc-list-item {
+            td {
+                padding: $head-space-y $head-list-space-x;
+            }
+
+            .fc-event-dot {
+                border-radius: 50%;
+            }
+        }
+
+        // past
+        td.fc-past {
+
+        } 
+
+        // today
+        td.fc-today {
+
+        }
+
+        // future
+        td.fc-future {
+
+        }
+
+        // event
+        .fc-event, 
+        .fc-event-dot {
+            padding: 0;
+
+            .fc-content {
+                padding: 0.55rem 0.55rem 0.55rem 2rem;
+
+                &:before {
+                    display: block;
+                    content: " ";
+                    position: absolute;
+                    height: 10px;
+                    width: 10px;
+                    border-radius: 50%;
+                    top: 0.7rem;
+                    left: 0.75rem;
+                }
+            }
+
+            &.fc-not-start.fc-end {
+                .fc-content {
+                    padding-left: 0.5rem;
+                }
+            }
+
+            .fc-time {
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+
+            .fc-title {
+                font-size: 0.9rem;
+                font-weight: 400;
+            }
+
+            @include kt-rounded {
+                border-radius: $kt-border-radius;
+            }
+        }
+
+        // 
+        .fc-description {
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            font-weight: normal;
+        }
+
+        .fc-list-item-title > a {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        a.fc-more {
+            font-size: 0.9rem;  
+            font-weight: 500; 
+        }
+
+        // popover
+        .fc-popover {
+
+            @include kt-rounded {
+                border-radius: $kt-border-radius;
+            }
+
+            .fc-header {    
+                padding: 0.75rem 1.25rem;
+
+                @include kt-rounded {
+                    border-top-left-radius: $kt-border-radius;
+                    border-top-right-radius: $kt-border-radius;
+                }
+
+                .fc-close {
+                    margin-top: 0.35rem;
+                }
+
+                .fc-title {
+                    font-weight: 400;
+                }
+            }
+
+            .fc-body {
+                .fc-event-container {
+                    padding: 1.25rem 1.25rem 0.75rem  1.25rem;
+                }
+
+                .fc-event {
+                    margin-bottom: 0.5rem;
+                    border-radius: $kt-border-radius;
+
+                    &.fc-not-start.fc-not-end {
+                        border-top-right-radius: 0;
+                        border-bottom-right-radius: 0;
+                    }
+
+                    &.fc-not-start.fc-end {
+                        border-top-left-radius: 0;
+                        border-bottom-left-radius: 0;
+                    }
+                }
+            }            
+        }
+
+        // toolbar
+        .fc-toolbar {
+            margin-bottom: 1.5rem;
+
+            h2 {
+                font-size: 1.2rem;
+                font-weight: 500;
+                text-transform: uppercase;
+                margin-top: 0.75rem;
+            }
+
+            .fc-button {
+                outline: none !important;
+                height: 2.75rem;
+                padding: 0 1.25rem;
+                font-size: 1rem;
+
+                &.fc-corner-left {
+                    @include kt-rounded {
+                        border-top-left-radius:$kt-border-radius;
+                        border-bottom-left-radius:$kt-border-radius;
+                    }
+                }
+
+                &.fc-corner-right {
+                    @include kt-rounded {
+                        border-top-right-radius:$kt-border-radius;
+                        border-bottom-right-radius:$kt-border-radius;
+                    }
+                }
+
+                .fc-icon {
+                    font-size: 1.1rem;
+
+                    &:after {
+                        display: none;
+                    }
+
+                    &.fc-icon-left-single-arrow {
+                        @include kt-la-icon( kt-get($kt-action-icons, left) );
+                    }
+
+                    &.fc-icon-right-single-arrow {
+                        @include kt-la-icon( kt-get($kt-action-icons, right) );
+                    }
+                }
+            }
+        }
+
+        // time
+        .fc-axis {
+            > span {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .ui-draggable-handle {
+        cursor: move; /* fallback if grab cursor is unsupported */
+        cursor: grab;
+        cursor: -moz-grab; 
+        cursor: -webkit-grab;
+    }
+
+    @include kt-tablet-and-mobile {
+        .fc-unthemed {
+            // toolbar
+            .fc-toolbar {
+                margin-bottom: 1.5rem;
+
+                .fc-left,
+                .fc-right,
+                .fc-center {
+                    display: block;
+                    float: none;
+                    margin-bottom: 1rem;
+                    text-align: center;
+
+                    h2 {
+                        text-align: center;
+                        float: none;
+                    }
+
+                    > .fc-button-group {
+                        display: inline-block;
+                        float: none;
+
+                        > .fc-button {
+                            float: none;
+                        }
+                    }
+
+                    > .fc-button {
+                        float: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Skin
+@mixin kt-fullcalendar-skin() {
+    $border-width: 6px;
+
+    .fc-unthemed {
+        // general elements
+
+        th, td, thead, tbody, .fc-divider, .fc-row, .fc-content, .fc-popover, .fc-list-view, .fc-list-heading td {
+            border-color: kt-base-color(grey, 2);
+        }
+
+        // past
+        td.fc-past {
+
+        } 
+
+        // today
+        td.fc-today {
+            background: rgba(kt-state-color(brand, base), 0.025);
+        }
+
+        // future
+        td.fc-future {
+
+        }
+
+        // event
+        .fc-day-grid-event {
+            margin: 0;
+        }
+
+        .fc-event, 
+        .fc-event-dot {
+            background: #fff;  
+            border: 1px solid kt-base-color(grey, 2);
+
+            &.fc-not-start.fc-not-end {
+                border-left: 1px solid kt-base-color(grey, 1);
+            }
+
+            &.fc-start {
+                .fc-content:before {
+                    background: kt-base-color(grey, 3);
+                }
+            }
+
+            box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.055);
+
+            .fc-time {
+                color: kt-base-color(label, 3);
+            }
+
+            .fc-title {
+                color: kt-base-color(label, 3);
+            }
+        }
+
+        .fc-description {
+            color:kt-base-color(label, 2);
+        }
+
+        .fc-list-item-title > a[href] {
+            &:hover {
+                color: kt-state-color(brand, base);
+                text-decoration: none;
+            }
+        }
+
+        .fc-more {
+            color: kt-base-color(label, 2);
+        }
+
+        // event states
+        .fc-event,
+        .fc-event-dot {
+            @each $name, $color in $kt-state-colors {
+                &.fc-start.fc-event-#{$name} {
+                    .fc-content {
+                        &:before {
+                            background: kt-get($color, base);
+                        }
+                    }                    
+                }
+
+                &.fc-not-start.fc-end.fc-event-solid-#{$name},
+                &.fc-not-start.fc-not-end.fc-event-solid-#{$name},
+                &.fc-start.fc-event-solid-#{$name} {
+                    background: kt-get($color, base);
+
+                    .fc-title {
+                        color: kt-get($color, inverse);
+                    }
+
+                    .fc-description {
+                        color: kt-get($color, inverse);
+                    }
+
+                    .fc-time {
+                        color: kt-get($color, inverse);
+                    }                     
+                }
+            }
+        }
+
+        .fc-divider, 
+        .fc-popover .fc-header, 
+        .fc-list-heading td {
+            background: kt-base-color(grey, 1);
+        }
+
+        .fc-time-grid-event {
+            overflow: hidden;
+        }
+
+        // popover
+        .fc-popover {
+            box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.075);
+            background: #fff;
+
+            .fc-header {            
+                background: #fff;
+                border-bottom: 1px solid kt-base-color(grey, 2);
+
+                .fc-close {
+                    color: kt-base-color(label, 2);
+
+                    &:hover {
+                        color: kt-base-color(label, 3);
+                    }
+                }
+
+                .fc-title {
+                    color: kt-base-color(label, 3);
+                }
+            }
+
+            .fc-body {
+                .fc-event,
+                .fc-event-dot {
+                    &.fc-not-start.fc-not-end {
+                        .fc-content:before {
+                            background: kt-base-color(grey, 2);
+                        }
+                    }              
+
+                    @each $name, $color in $kt-state-colors {
+                        &.fc-not-start.fc-not-end.fc-event-#{$name} {
+                            .fc-content:before {
+                                background: kt-get($color, base);
+                            }    
+                        }
+
+                        &.fc-not-start.fc-not-end.fc-event-solid-#{$name} {
+                            background: kt-get($color, base);
+
+                            .fc-title {
+                                color: kt-get($color, inverse);
+                            }
+
+                            .fc-description {
+                                color: kt-get($color, inverse);
+                            }
+
+                            .fc-time {
+                                color: kt-get($color, inverse);
+                            }      
+                        }
+                    }
+                }
+            }   
+        }
+
+        // header
+        th.fc-day-header {
+            > a,
+            > span {
+                color: kt-base-color(label, 2);
+            } 
+        }
+
+        // list heading
+        .fc-list-heading {
+            td {
+                background: kt-base-color(grey, 2);
+                border-color: kt-base-color(grey, 2);
+            }
+
+            .fc-list-heading-main {
+                color: kt-base-color(label, 3);
+            }
+
+            .fc-list-heading-alt {
+                color: kt-base-color(label, 2);
+            }
+        }
+
+        .fc-divider, .fc-popover .fc-header, .fc-list-heading td {
+            background: kt-base-color(grey, 1);
+        }
+
+        // list item
+        .fc-list-item {
+            &:hover {
+                td {
+                    background: transparent !important;    
+                }
+            }
+
+            .fc-event-dot {
+                background:  kt-base-color(grey, 3);
+                border-color:  kt-base-color(grey, 3);
+            }
+
+            @each $name, $color in $kt-state-colors {
+                &.fc-event-solid-#{$name},
+                &.fc-event-#{$name} {
+                    .fc-event-dot {
+                        background:  kt-get($color, base);
+                        border-color:  kt-get($color, base);
+                    }
+                }
+            }
+        }
+
+        // toolbar
+        .fc-toolbar {
+            h2 {
+                
+            }
+
+            .fc-button {
+                color: kt-base-color(label, 2);
+                background: transparent;
+                border: 1px solid kt-base-color(grey, 2);
+                text-shadow: none !important;
+                box-shadow:  none !important;
+
+                .fc-icon {
+                    color: kt-base-color(label, 2);
+                }
+
+                &:hover {
+                    border: 0;
+                    background: kt-base-color(grey, 1);
+                    border: 1px solid kt-base-color(grey, 2);
+                    color: kt-base-color(label, 2);
+                }
+
+                &:focus,
+                &:active,
+                &.fc-button-active {
+                    background: kt-state-color(brand, base);
+                    color: kt-state-color(brand, inverse);
+                    border: 1px solid kt-state-color(brand, base);
+                    box-shadow: none;
+                    text-shadow: none;
+
+                    .fc-icon {
+                        color: kt-state-color(brand, inverse);
+                    }    
+                }
+
+                &.fc-button-disabled {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+}
+
+// Build
+// Base
+@include kt-fullcalendar-base();
+
+// Skin
+@include kt-fullcalendar-skin();

@@ -1,0 +1,228 @@
+//
+// Blog - Post
+//
+
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+$kt-blog-post-title-color: #464457;
+$kt-blog-post-font-color: #918ea7;
+$kt-blog-post-content-color: #7b7986;
+$kt-blog-post-margin-bottom: 2.5rem;
+$kt-blog-post-user-image: 3rem;
+.kt-blog-post{
+	display: flex;
+	flex-direction: column;
+
+	.kt-blog-post__title{
+		color: $kt-blog-post-title-color;
+	}
+
+	.kt-blog-post__meta{
+		display: flex;
+		margin-bottom: 2rem;
+		color: $kt-blog-post-font-color;
+		font-size: 1.1rem;
+
+		.kt-blog-post__date{
+			padding: 0.2rem 1rem 0.2rem 0;
+			border-right: 1px solid #e9e9f1;
+		}
+
+		.kt-blog-post__author{
+			padding: 0.2rem 1rem;
+			border-right: 1px solid #e9e9f1;
+
+			.kt-blog-post__link{
+				@include kt-transition;
+				font-weight: 500;
+			}
+		}
+
+		.kt-blog-post__comments{
+			padding: 0.2rem 1rem;
+		}
+	}
+
+	.kt-blog-post__hero-image{
+		flex:1;
+		flex-basis: auto;
+		margin-bottom: $kt-blog-post-margin-bottom;
+
+		.kt-blog-post__image{
+			width: 100%;
+			border-radius: 5px;
+		}
+	}
+
+	.kt-blog-post__content{
+		font-size: 1.2rem;
+		line-height: 2rem;
+		font-weight: 400;
+		color: $kt-blog-post-content-color;
+		margin-bottom: $kt-blog-post-margin-bottom;
+	}
+
+	.kt-blog-post__foot{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: $kt-blog-post-margin-bottom;
+		flex-wrap: wrap;
+
+		.kt-blog-post__author{
+			display: flex;
+			align-items: center;
+
+			.kt-blog-post__profile{
+				width: $kt-blog-post-user-image;
+				height: $kt-blog-post-user-image;
+				flex: 0 0 $kt-blog-post-user-image;
+				margin-right: 1rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 50%;
+				overflow: hidden;
+
+				.kt-blog-post__image{
+					width:$kt-blog-post-user-image;
+				}
+			}
+
+			.kt-blog-post__label{
+				color: $kt-blog-post-font-color;
+				font-size: 1.1rem;
+
+				span{
+					font-weight: 500;
+					color: $kt-blog-post-title-color;
+				}
+			}
+		}
+
+		.kt-blog-post__social{
+			display: flex;
+			align-items: center;
+
+			.kt-blog-post__label{
+				font-weight: 500;
+				font-size: 1.1rem;
+				color: $kt-blog-post-title-color;
+			}
+
+			.kt-blog-post__link{
+				font-size: 1.7rem;
+				color: #afb0c3;
+				margin-left: 1rem;
+				@include kt-transition;
+
+				&:hover,
+				&:focus{
+					color: kt-state-color(brand, base);
+				}
+			}
+		}
+	}
+
+	.kt-blog-post__comments{
+
+		.kt-blog-post__input{
+			margin-bottom: $kt-blog-post-margin-bottom;
+
+			.kt-blog-post__input-title{
+				font-size: 1.7rem;
+				font-weight: 400;
+				color: $kt-blog-post-font-color;
+				margin-bottom: 2rem;
+			}
+
+			.kt-blog-post__form{
+				display: flex;
+				flex-direction: column;
+
+				.kt-blog-post__textarea{
+					border: 1px solid #dddee7;
+					margin-bottom: 1.5rem;
+				}
+
+				.btn{
+					align-self: flex-end;
+				}
+			}
+		}
+
+		.kt-blog-post__threads{
+
+			.kt-blog-post__thread{
+				display: flex;
+				max-width: 60rem;
+
+				.kt-blog-post__head{
+					width: $kt-blog-post-user-image;
+					height: $kt-blog-post-user-image;
+					flex: 0 0 $kt-blog-post-user-image;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					border-radius: 50%;
+					overflow: hidden;
+					margin-right: 1rem;
+
+					.kt-blog-post__image{
+						width: $kt-blog-post-user-image;
+						height: $kt-blog-post-user-image;
+					}
+				}
+
+				.kt-blog-post__body{
+
+					.kt-blog-post__top{
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						flex-wrap: wrap;
+						margin-bottom: 0.7rem;
+
+						.kt-blog-post__author{
+
+							.kt-blog-post__label{
+								color: $kt-blog-post-font-color;
+								margin-right: 1rem;
+
+								span{
+									color: $kt-blog-post-title-color;
+									font-weight: 500;
+									font-size: 1.1rem;
+								}
+							}
+						}
+
+						.kt-blog-post__link{
+							font-weight: 500;
+							font-size: 1.1rem;
+						}
+					}
+
+					.kt-blog-post__content{
+						font-size: 1.1rem;
+						font-weight: 400;
+						color: $kt-blog-post-content-color;
+					}
+				}
+
+				&--sub{
+					margin-left: 5rem;
+				}
+			}
+		}
+
+	}
+}

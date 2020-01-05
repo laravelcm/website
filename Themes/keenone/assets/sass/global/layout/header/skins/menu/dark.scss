@@ -1,0 +1,17 @@
+//
+// Header Menu Dark Skin
+//
+
+
+
+// Include framework config
+@import "../../../../../config";
+
+// Include demo config
+@import "../../../config";
+
+// Include header config
+@import "../../config";
+
+// Build Header Menu Skin
+@include kt-menu-ver-build-skin(kt-get($kt-header-config, menu, desktop), dark);

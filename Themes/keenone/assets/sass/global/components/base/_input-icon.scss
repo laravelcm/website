@@ -1,0 +1,136 @@
+// 
+// Input Icon
+//
+
+
+
+
+// Config
+$kt-input-icon: (
+	default: (
+		width: 3.2rem,
+		font-size: (
+			flaticon: 1.3em,
+			fontawesome: 1.2em,
+			lineawesome: 1.4em
+		)
+	),
+	lg: (
+		width: 4.2rem,
+		font-size: (
+			flaticon: 1.4em,
+			fontawesome: 1.3em,
+			lineawesome: 1.6em
+		)
+	),
+	sm: (
+		width: 2.7rem,
+		font-size: (
+			flaticon: 1em,
+			fontawesome: 1em,
+			lineawesome: 1.1em
+		)
+	)
+);
+
+// Base
+.kt-input-icon {
+    position: relative;
+    padding: 0;
+    width: 100%;
+
+    // icon input sizing
+    > .kt-input-icon__icon {
+        position: absolute;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        top: 0;
+        width: kt-get($kt-input-icon, default, width);
+
+        &.kt-input-icon__icon--left {
+            left: 0;
+        }
+
+        &.kt-input-icon__icon--right {
+            right: 0;
+        }
+
+        > span {
+            display: flex;
+            align-items: center;    
+            justify-content: center;
+            height: 100%;
+
+            i {
+                display: flex;
+                align-items: center;    
+                justify-content: center;
+                line-height: 0;
+                color: kt-base-color(label, 2);
+            }
+        }
+
+        // set icon sizes
+        @include kt-icons-size( kt-get($kt-input-icon, default, font-size) );
+    }
+
+    .form-control.form-control-lg + .kt-input-icon__icon {
+        width: kt-get($kt-input-icon, lg, width);
+
+        // set icon sizes
+        @include kt-icons-size( kt-get($kt-input-icon, lg, font-size) );
+    }
+
+    .form-control.form-control-sm ~ .kt-input-icon__icon {
+        width: kt-get($kt-input-icon, sm, width);
+
+        // set icon sizes
+        @include kt-icons-size( kt-get($kt-input-icon, sm, font-size) );
+    }
+
+    // icon input alignments
+    &.kt-input-icon--left {
+        .form-control {
+            padding-left: (kt-get($kt-input-icon, default, width) - 0.4rem);
+
+            &.form-control-lg {
+                padding-left: (kt-get($kt-input-icon, lg, width) - 0.6rem);
+            }
+
+            &.form-control-sm {
+                padding-left: (kt-get($kt-input-icon, sm, width) - 0.2rem);
+            }
+        }
+    }
+
+    &.kt-input-icon--right {
+        .form-control {
+            padding-right: (kt-get($kt-input-icon, default, width) - 0.4rem);
+
+            &.form-control-lg {
+                padding-right: (kt-get($kt-input-icon, lg, width) - 0.6rem);
+            }
+
+            &.form-control-sm {
+                padding-right: (kt-get($kt-input-icon, sm, width) - 0.2rem);
+            }
+        }
+    }
+
+    // fixed width icon inputs        
+    &.kt-input-icon--fixed {
+        display: inline-block;
+        width: kt-get($kt-input-icon, default, fixed);
+    }
+
+    &.kt-input-icon--fixed-large {
+        display: inline-block;
+        width: kt-get($kt-input-icon, lg, fixed);
+    }
+
+    &.kt-input-icon--fixed-small {
+        display: inline-block;
+        width: kt-get($kt-input-icon, sm, fixed);
+    }  
+}

@@ -1,0 +1,78 @@
+//
+// Demo Config
+//
+
+// State colors
+$kt-state-colors: (
+  // Keen states
+  brand: (
+    base: #007A5E,
+    inverse: #ffffff
+  ),
+  metal: (
+    base: #d3dae6,
+    inverse: #586272
+  ),
+  light: (
+    base: #ffffff,
+    inverse: #282a3c
+  ),
+  dark: (
+    base: lighten(#4c467a, 12%),
+    inverse: #ffffff
+  ),
+  accent: (
+    base: #00c5dc,
+    inverse: #ffffff
+  ),
+  focus: (
+    base: #9816f4,
+    inverse: #ffffff
+  ),
+
+  // Bootstrap states
+  primary: (
+    base: #007A5E,
+    inverse: #ffffff
+  ),
+  success: (
+    base: #1dc9b7,
+    inverse: #ffffff
+  ),
+  info: (
+    base: #5578eb,
+    inverse: #ffffff
+  ),
+  warning: (
+    base: #ffb822,
+    inverse: #111111
+  ),
+  danger: (
+    base: #fd397a,
+    inverse: #ffffff
+  )
+);
+
+// Page
+$kt-page-bg-color: #f2f3f8;
+
+// Layout Skins
+$kt-layout-skins: (
+  brand: $kt-brand-color,
+  navy: #242939,
+  light: #ffffff
+);
+
+// Page padding
+$kt-page-padding: (
+  desktop: 25px,
+  mobile: 15px
+);
+
+// Page container width
+$kt-page-container-width: 1380px;
+
+// Layout
+$kt-aside-default-width: 260px;
+$kt-aside-minimize-width: 78px;
+$kt-aside-offcanvas-width: 255px;

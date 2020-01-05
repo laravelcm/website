@@ -1,0 +1,43 @@
+{
+  "name": "mckenziearts/user-module",
+  "description": "User module for Laravel Boilerplate.",
+  "keywords": [
+    "user",
+    "authentication",
+    "authorisation"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arthur Monney",
+      "email": "monneylobe@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "type": "laravel-modules",
+  "require": {
+    "php": ">=7.1.3",
+    "composer/installers": "~1.0",
+    "mckenziearts/core-module": "~1.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Modules\\User\\Providers\\UserServiceProvider"
+      ],
+      "aliases": {}
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\User\\": ""
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Modules\\User\\Tests\\": "Tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

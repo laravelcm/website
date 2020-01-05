@@ -1,0 +1,79 @@
+//
+// Typeahead
+//
+
+
+
+
+// Base
+@mixin kt-bootstrap-typeahead-base() {
+    .typeahead {
+        .twitter-typeahead {
+            display: block !important;
+        }
+
+        .tt-menu {
+            border: 0;
+            margin: 0;
+            min-width: 275px;
+            padding: 5px 0;
+            left: auto #{'/*rtl:ignore*/'}!important;
+
+            border-radius: 0;
+
+            @include kt-rounded {
+                border-radius: $kt-border-radius;
+            }
+
+            .tt-dataset {
+                .tt-suggestion {
+                    padding: 5px 15px;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+// Skin
+@mixin kt-bootstrap-typeahead-skin() {
+    .typeahead {
+        .form-control {
+            &.tt-hint {
+                color: $input-placeholder-color;
+            }
+            
+            &.tt-input {
+                color: $input-plaintext-color;
+            }
+        }
+
+        .tt-menu {
+            background: white;
+            box-shadow: $kt-dropdown-shadow;
+
+            .tt-dataset {
+                .tt-suggestion {
+                    color: kt-base-color(label, 3);
+                    cursor: pointer;
+
+                    .tt-highlight {
+                        color: kt-base-color(label, 4);
+                        font-weight: 500;
+                    }
+
+                    &:hover {
+                        background: kt-base-color(grey, 1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Base
+@include kt-bootstrap-typeahead-base();
+
+// Light
+@include kt-bootstrap-typeahead-skin();

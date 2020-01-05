@@ -1,0 +1,126 @@
+//
+// Global Components And 3rd-party Plugin Customizations
+//
+
+
+
+// 3rd-party plugins customizations
+@import "integration/plugins/perfect-scrollbar";
+@import "integration/plugins/blockui";
+@import "integration/plugins/fullcalendar";
+@import "integration/plugins/bootstrap-datepicker";
+@import "integration/plugins/bootstrap-datetimepicker";
+@import "integration/plugins/bootstrap-timepicker";
+@import "integration/plugins/bootstrap-daterangepicker";
+@import "integration/plugins/bootstrap-touchspin";
+@import "integration/plugins/bootstrap-maxlength";
+@import "integration/plugins/bootstrap-select";
+@import "integration/plugins/typeahead";
+@import "integration/plugins/nouislider";
+@import "integration/plugins/fontawesome5";
+@import "integration/plugins/summernote";
+@import "integration/plugins/bootstrap-markdown";
+@import "integration/plugins/dropzone";
+@import "integration/plugins/recaptcha";
+@import "integration/plugins/toastr";
+@import "integration/plugins/gmaps";
+@import "integration/plugins/sweetalert2";
+@import "integration/plugins/bootstrap-session-timeout";
+@import "integration/plugins/datatables";
+@import "integration/plugins/jquery-repeater";
+@import "integration/plugins/duallistbox";
+@import "integration/plugins/uppy";
+@import "integration/plugins/jstree";
+@import "integration/plugins/quill";
+@import "integration/plugins/tagify";
+
+// Base components
+@import "components/base/page-loader";
+@import "components/base/container";
+@import "components/base/page-loader";
+@import "components/base/normalize";
+@import "components/base/animations";
+@import "components/base/helpers";
+@import "components/base/mixins/grid";
+@import "components/base/grid";
+@import "components/base/portlet";
+@import "components/base/datatable";
+@import "components/base/scrolltop";
+@import "components/base/form";
+@import "components/base/input-icon";
+@import "components/base/checkbox";
+@import "components/base/radio";
+@import "components/base/switch";
+@import "components/base/option";
+@import "components/base/avatar";
+@import "components/base/spinner";
+@import "components/base/loader";
+@import "components/base/pulse";
+@import "components/base/dialog";
+
+// General components
+@import "components/general/grid-nav-v2";
+@import "components/general/grid-nav";
+@import "components/general/head";
+@import "components/general/list";
+@import "components/general/nav";
+@import "components/general/notification-v2";
+@import "components/general/notification";
+@import "components/general/scroll";
+@import "components/general/notes";
+@import "components/general/slider";
+@import "components/general/timeline";
+@import "components/general/user-card-v2";
+@import "components/general/user-card-v3";
+@import "components/general/user-card-v4";
+@import "components/general/user-card";
+@import "components/general/pagination";
+@import "components/general/media";
+@import "components/general/iconbox";
+
+// Layout components
+@import "components/layout/demo-panel";
+@import "components/layout/offcanvas-panel";
+@import "components/layout/quick-search";
+@import "components/layout/sticky-toolbar";
+@import "components/layout/subheader";
+@import "components/layout/app";
+
+// Typography components
+@import "components/typography/badge";
+@import "components/typography/code";
+@import "components/typography/demo";
+@import "components/typography/divider";
+@import "components/typography/heading";
+@import "components/typography/link";
+@import "components/typography/section";
+@import "components/typography/separator";
+
+// Widget components
+@import "components/widgets/dashboard/widget-1";
+@import "components/widgets/dashboard/widget-2";
+@import "components/widgets/dashboard/widget-3";
+@import "components/widgets/dashboard/widget-4";
+@import "components/widgets/dashboard/widget-5";
+@import "components/widgets/dashboard/widget-6";
+@import "components/widgets/dashboard/widget-7";
+@import "components/widgets/dashboard/widget-9";
+@import "components/widgets/dashboard/widget-10";
+@import "components/widgets/dashboard/widget-11";
+@import "components/widgets/dashboard/widget-12";
+@import "components/widgets/dashboard/widget-13";
+@import "components/widgets/dashboard/widget-14";
+@import "components/widgets/dashboard/widget-15";
+@import "components/widgets/dashboard/widget-16";
+@import "components/widgets/dashboard/widget-17";
+@import "components/widgets/dashboard/widget-18";
+@import "components/widgets/dashboard/widget-19";
+@import "components/widgets/dashboard/widget-20";
+@import "components/widgets/dashboard/widget-21";
+@import "components/widgets/dashboard/widget-22";
+@import "components/widgets/dashboard/widget-23";
+@import "components/widgets/general/general-1";
+@import "components/widgets/general/general-2";
+@import "components/widgets/general/general-3";
+@import "components/widgets/general/general-4";
+@import "components/widgets/general/profile";

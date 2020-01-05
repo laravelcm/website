@@ -1,0 +1,43 @@
+//
+// Wave Babkground Mixins
+//
+
+
+
+@mixin wave($important:""){
+	@if $important != "" {
+   		background-color: kt-base-color(grey, 1) !important;
+	}
+	@else {
+		background-color: kt-base-color(grey, 1);
+	}	
+	overflow: hidden;
+	position: relative;
+
+	> div{
+		z-index: 1;
+	}
+	
+	&:before{
+		content: ' ';
+		position: absolute;
+		top: 0;
+		left:0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		z-index: -1;
+	}
+
+	&:after{
+		content: ' ';
+		width: 1000px;
+		height: 1025px;
+		position: absolute;
+		bottom: 65%;
+		left: -250px;	
+		border-radius: 35%;
+		background: rgba(255, 255, 255, 1);
+		z-index: 0;
+	}
+}

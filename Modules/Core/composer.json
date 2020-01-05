@@ -1,0 +1,43 @@
+{
+  "name": "mckenziearts/core-module",
+  "description": "Core Module for Laravel Boilerplate",
+  "keywords": ["core", "laravel"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arthur Monney",
+      "email": "monneylobe@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3",
+    "composer/installers": "~1.0",
+    "maatwebsite/laravel-sidebar": "~2.1",
+    "nwidart/laravel-modules": "~2.0",
+    "tightenco/ziggy": "^0.7.1",
+    "typicms/laravel-translatable-bootforms": "^4.1",
+    "van-ons/laraberg": "^1.0"
+  },
+  "type": "laravel-modules",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Modules\\Core\\Providers\\CoreServiceProvider"
+      ],
+      "aliases": {
+        "Theme": "Modules\\Core\\Facades\\Theme"
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Core\\": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "suggest": {
+    "symfony/yaml": "Allows for parsing of YAML theme info and change log files"
+  }
+}

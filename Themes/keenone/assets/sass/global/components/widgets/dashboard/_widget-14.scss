@@ -1,0 +1,148 @@
+//
+// Widget 14
+//
+
+
+
+
+.kt-widget-14 {
+	.kt-widget-14__body{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		.kt-widget-14__product{
+			display: flex;
+			align-items: center;
+			flex: 2;
+
+			@include kt-mobile-sm {
+				flex-basis: 100%;
+				margin-bottom: 1rem;
+				flex: auto;
+			}
+		}
+
+		.kt-widget-14__data{
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+
+			@include kt-mobile-sm{
+				justify-content: flex-start;
+			}
+		}
+	}
+
+	.kt-widget-14__content{
+		display: flex;
+		flex-direction: column;		
+		flex-wrap: wrap;
+		flex:1;
+	}
+	
+	.kt-widget-14__thumb {
+		border-radius: 50%;
+		overflow:hidden;
+		margin-right: 1.25rem;
+		flex: 0 0 5rem;
+
+		a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 5rem;
+			height: 5rem;
+		}
+
+		@include kt-mobile-sm{
+			margin-bottom: 0.5rem;
+		}
+
+		.kt-widget-14__image{
+			width:100%;
+			height: auto;
+
+			&--landscape{
+				height: 100%;
+				width: auto;
+			}
+		}
+	}
+
+	.kt-widget-14__title {
+		font-size: 1.3rem;
+		font-weight: 500;
+		color: kt-base-color(label, 4);
+		margin-bottom: 0.6rem;
+		@include kt-transition();
+
+		&:hover{
+			@include kt-transition();
+			color: kt-state-color(brand, base);
+		}
+	}
+
+	.kt-widget-14__desc {
+		font-weight: 400;
+		color: kt-base-color(label, 2);
+		padding-right: 0.5rem;
+	}
+
+	.kt-widget-14__info {
+		border-radius: 5px;
+		background-color: kt-base-color(grey, 1);
+		text-align: center;
+		padding: 0.7rem 1rem;
+		margin-left: 0.5rem;
+
+		@include kt-mobile-sm{
+			&:first-child{
+				margin-left: 0;
+			}
+		}
+
+		.kt-widget-14__info-title {
+			font-size: 1.4rem;
+			font-weight: 600;
+			color: kt-base-color(label, 4);
+		}
+	}
+
+	.kt-widget-14__foot {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 2.5rem;
+
+		.kt-widget-14__foot-info,
+		.kt-widget-14__foot-toolbar{
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			flex: 1;
+		}
+
+		.kt-widget-14__foot-info {
+			.kt-widget-14__foot-label {
+				margin: 0.25rem 0.5rem 0.25rem 0;			
+			}
+
+			.kt-widget-14__foot-desc{
+				font-weight: 500;
+				color: kt-base-color(label, 2);
+			}			
+		}
+
+		.kt-widget-14__foot-toolbar {
+			display: flex;
+			justify-content: flex-end;
+
+			a {
+				margin: 0.25rem 0 0.25rem 0.5rem;	
+			}
+		}		
+	}	
+}

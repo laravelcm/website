@@ -1,0 +1,131 @@
+//
+// App(general layout for apps)
+//
+
+
+
+// Config
+$kt-app-config: (
+	aside: (
+		offcanvas: (
+			layout: (
+				self: (
+					zindex: 1001,
+					width: 300px
+				),
+				close: (
+					size: 25px,
+					font-size: 1.4rem
+				)
+			),
+			skin: (
+				overlay: (
+					bg-color: rgba(#000000, 0.05)
+                ),
+                close: (
+                    bg-color: (
+                        default: kt-base-color(grey, 1),
+                        hover: transparent
+                    ),
+                    icon-color: (
+                        default: kt-base-color(label, 2),
+                        hover: kt-brand-color()
+                    )
+                )
+			)
+		)
+    )
+);
+
+// General Mode
+.kt-app {
+    // Aside
+    .kt-app__aside {
+        // Default size
+        @include kt-app-aside-width(350px);
+
+        // Extra Small size
+        &.kt-app__aside--xs {
+            @include kt-app-aside-width(250px);
+        }
+
+        // Small size
+        &.kt-app__aside--sm {
+            @include kt-app-aside-width(300px);
+        }
+
+        // Large size
+        &.kt-app__aside--lg {
+            @include kt-app-aside-width(450px);
+        }
+        
+        // Extra large size
+        &.kt-app__aside--xl {
+            @include kt-app-aside-width(600px);
+        }
+    }
+
+    // Content
+    .kt-app__content {
+        margin-left: $grid-gutter-width;
+    }
+
+    // Detail
+    .kt-app__detail {
+        margin-left: $grid-gutter-width;
+        
+        // Default size
+        @include kt-app-detail-width(550px);
+
+        // Small size
+        &.kt-app__detail--sm {
+            @include kt-app-detail-width(400px);
+        }
+
+        // Large size
+        &.kt-app__detail--lg {
+            @include kt-app-detail-width(700px);
+        }
+        
+        // Extra large size
+        &.kt-app__detail--xl {
+            @include kt-app-detail-width(850px);
+        }
+    }
+}
+
+// Tablet & Mobile Mode.  
+.kt-app {
+     // Media range 1024px and below(see: $kt-media-breakpoints in sass/theme/_config.scss and sass/themes/core/_mixins.scss)
+     @include kt-tablet-and-mobile {
+        .kt-app__aside {
+            padding: 35px 15px 15px 15px;
+            background-color: #ffffff;
+
+            &.kt-app__aside--fit {
+                padding: 20px 0 0 0;
+
+                .kt-portlet {
+                    box-shadow: 0px 0px 30px 0px rgba(82,63,105, 0.1);
+                }
+
+                .kt-portlet {
+                    box-shadow:none;
+                }
+            }
+        }   
+
+        // Content
+        .kt-app__content {
+            margin-left: 0;
+        }
+    
+        // Detail
+        .kt-app__detail {
+            margin-left:0;
+        }
+    }
+}
+
+// App aside  offcanvas
+@include kt-offcanvas-build(kt-app__aside, tablet-and-mobile, kt-get($kt-app-config, aside, offcanvas) );

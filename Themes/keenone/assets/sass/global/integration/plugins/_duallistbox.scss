@@ -1,0 +1,101 @@
+//
+// DualListBox
+//
+
+
+
+
+// Base
+.dual-listbox {
+    // Search input
+    .dual-listbox__search {
+        width: 225px;
+        border: 1px solid kt-base-color(grey, 2);
+        color: $input-plaintext-color;
+        outline: none !important;
+
+        @include kt-rounded {
+            border-radius: $kt-border-radius;
+        }
+
+        &:active,
+        &:focus {
+            border-color: $input-focus-border-color !important;
+        }       
+
+        &.dual-listbox__search--hidden {
+            display: none;
+        }
+    }
+
+    // Container
+    .dual-listbox__container {        
+        .dual-listbox__title {
+            color: kt-base-color(label, 3);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.75rem 0.75rem;
+
+            border: 1px solid kt-base-color(grey, 2);
+            border-bottom: 0;
+
+            @include kt-rounded {
+                border-top-left-radius: $kt-border-radius;
+                border-top-right-radius: $kt-border-radius;
+            }
+        }
+
+        .dual-listbox__buttons {
+            margin: 0 1rem;
+
+            .dual-listbox__button {
+                @include kt-btn-reset();
+
+                padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+                color: kt-base-color(label, 1);
+                font-weight: 500;
+                font-size: 0.9rem;
+                background-color: #f2f3f7;
+                transition: all 0.3s ease;
+
+                @include kt-rounded {
+                    border-radius: $kt-border-radius;
+                }
+
+                i {
+                    font-size: 0.6rem;
+                }
+
+                &:hover {
+                    transition: all 0.3s ease;
+                    color: kt-brand-color();
+                }
+            }
+        }        
+
+        .dual-listbox__selected,
+        .dual-listbox__available {
+            width: 225px;
+            color: $input-plaintext-color;
+            border: 1px solid kt-base-color(grey, 2);
+
+            @include kt-rounded {
+                border-bottom-left-radius: $kt-border-radius;
+                border-bottom-right-radius: $kt-border-radius;
+            }
+
+            .dual-listbox__item {
+                padding: 0.75rem 0.75rem;
+                border-bottom: 1px solid kt-base-color(grey, 2);
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+
+                &.dual-listbox__item--selected {
+                    background-color: #f2f3f7;
+                }
+            }
+        }
+	}
+}

@@ -1,0 +1,49 @@
+//
+// Widget 11
+//
+
+
+
+
+// General Mode
+.kt-widget-11 {
+	.kt-widget-11__item {
+		margin-bottom: 2.75rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		.kt-widget-11__wrapper {
+			display:flex;
+			justify-content: space-between;
+			margin-bottom: 1rem;
+			
+			.kt-widget-11__title {
+				color: kt-base-color(label, 2);
+				font-weight: 500;
+				font-size: 1.1rem;
+			}
+
+			.kt-widget-11__value {
+				color: kt-base-color(label, 4);
+				font-weight: 500;
+				font-size: 1.1rem;
+				padding-left: 0.5rem;
+			}	
+		}
+
+		.kt-widget-11__progress {
+			.progress {
+				height: 0.5rem;
+			}
+		}
+	}	
+}
+
+
+// Mobile Mode
+@include kt-tablet-and-mobile {
+	.kt-widget-11 {
+	}		 
+}

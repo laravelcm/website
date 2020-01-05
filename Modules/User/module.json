@@ -1,0 +1,15 @@
+{
+  "name": "User",
+  "alias": "user",
+  "description": "The user module is responsible for managing users and permissions.",
+  "keywords": [],
+  "order": 0,
+  "active": 1,
+  "version": "1.0.0",
+  "providers": [
+    "Modules\\User\\Providers\\UserServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": []
+}

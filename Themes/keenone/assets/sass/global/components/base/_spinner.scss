@@ -1,0 +1,97 @@
+//
+// Spinner
+//
+
+
+
+
+// Config
+$kt-spinner-config: (
+	size: (
+		sm: 16px,
+		md: 20px,
+		lg: 24px
+	)
+);
+
+// Spinner Default
+.kt-spinner {
+	position: relative;
+
+	&:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 0;  		
+        border-radius: 50%;
+    }
+
+  	// Sizes  	
+  	&.kt-spinner--sm {
+  		@include kt-spinner-size(sm);
+  	}
+  	
+  	@include kt-spinner-size(md);
+  	
+  	&.kt-spinner--lg {
+  		@include kt-spinner-size(lg);
+  	}
+
+  	// Default Style
+  	&:before {
+        animation: kt-spinner .5s linear infinite;
+    }
+
+  	// State Colors 
+    @each $name, $color in $kt-state-colors {
+        &.kt-spinner--#{$name} {
+            &:before {
+                border: 2px solid kt-get($color, base);
+                border-right: 2px solid transparent;
+            }
+        }
+    }
+
+    // Input mode
+    &.kt-spinner--input {
+        &.kt-spinner--right {
+            &:before {
+                left: auto;
+                right: $input-btn-padding-x;
+            }
+        }
+
+        &.kt-spinner--left {
+            &:before {
+                right: auto;
+                left: $input-btn-padding-x;
+            }
+        }
+    }
+
+    // Spinner Default
+    &.kt-spinner--v2 {
+      	// Default Style
+      	&:before {
+           animation: kt-spinner .5s linear infinite;
+       }
+
+      	// State Colors 
+        @each $name, $color in $kt-state-colors {
+            &.kt-spinner--#{$name} {
+                &:before {
+                    border: 2px solid lighten(kt-get($color, base), 30%);
+                    border-top-color: darken(kt-get($color, base), 3%);
+                }
+            }
+        }
+    }
+}
+
+// Animations
+@keyframes kt-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}

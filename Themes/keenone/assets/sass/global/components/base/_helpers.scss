@@ -1,0 +1,526 @@
+//
+// Helpers
+//
+
+
+
+
+// Margin & Padding Helpers
+@mixin kt-margin-and-padding($mode) {
+	@if $mode == general {
+		$mode: '';
+	} @else {
+		$mode: "-" + $mode;
+	}
+
+	@for $i from 0 through 20 {
+		$num: $i * 5;
+
+		.kt-margin-#{$num}#{$mode} {
+			margin: #{$num}px !important;
+		}
+
+		.kt-margin-t-#{$num}#{$mode} {
+			margin-top: #{$num}px !important;
+		}
+
+		.kt-margin-b-#{$num}#{$mode} {
+			margin-bottom: #{$num}px !important;
+		}
+
+		.kt-margin-l-#{$num}#{$mode} {
+			margin-left: #{$num}px !important;
+		}
+
+		.kt-margin-r-#{$num}#{$mode} {
+			margin-right: #{$num}px !important;
+		}
+
+		.kt-padding-#{$num}#{$mode} {
+			padding: #{$num}px !important;
+		}
+
+		.kt-padding-t-#{$num}#{$mode} {
+			padding-top: #{$num}px !important;
+		}
+
+		.kt-padding-b-#{$num}#{$mode} {
+			padding-bottom: #{$num}px !important;
+		}
+
+		.kt-padding-l-#{$num}#{$mode} {
+			padding-left: #{$num}px !important;
+		}
+
+		.kt-padding-r-#{$num}#{$mode} {
+			padding-right: #{$num}px !important;
+		}
+
+		// short format
+		.kt-m#{$num}#{$mode} {
+			margin: #{$num}px !important;
+		}
+
+		.kt-mt-#{$num}#{$mode} {
+			margin-top: #{$num}px !important;
+		}
+
+		.kt-mb-#{$num}#{$mode} {
+			margin-bottom: #{$num}px !important;
+		}
+
+		.kt-ml-#{$num}#{$mode} {
+			margin-left: #{$num}px !important;
+		}
+
+		.kt-mr-#{$num}#{$mode} {
+			margin-right: #{$num}px !important;
+		}
+
+		.kt-p#{$num}#{$mode} {
+			padding: #{$num}px !important;
+		}
+
+		.kt-pt#{$num}#{$mode} {
+			padding-top: #{$num}px !important;
+		}
+
+		.kt-pb-#{$num}#{$mode} {
+			padding-bottom: #{$num}px !important;
+		}
+
+		.kt-pl#{$num}#{$mode} {
+			padding-left: #{$num}px !important;
+		}
+
+		.kt-pr#{$num}#{$mode} {
+			padding-right: #{$num}px !important;
+		}
+	}
+}
+
+@include kt-margin-and-padding(general);
+
+@include kt-desktop {
+	@include kt-margin-and-padding(desktop);
+}
+
+@include kt-tablet {
+	@include kt-margin-and-padding(tablet);
+}
+
+@include kt-tablet-and-mobile {
+	@include kt-margin-and-padding(tablet-and-mobile);
+}
+
+@include kt-mobile {
+	@include kt-margin-and-padding(mobile);
+}
+
+// Opacity
+@mixin kt-opacity {
+	@for $i from 1 through 9 {
+		.kt-opacity-#{$i} {
+			opacity: #{$i * 0.1};
+		} 
+	}
+}
+
+@include kt-opacity();
+
+// Border radius
+.kt-radius-100 {
+	border-radius: 100%;
+} 
+
+// General helpers
+.kt-valign-top {
+	vertical-align: top;
+} 
+
+.kt-space-5 {
+	display: block;
+	height: 0;
+	margin-bottom: 5px;
+}
+
+.kt-space-10 {
+	display: block;
+	height: 0;
+	margin-bottom: 10px;
+}
+
+.kt-space-15 {
+	display: block;
+	height: 0;
+	margin-bottom: 15px;
+}
+
+.kt-space-20 {
+	display: block;
+	height: 0;
+	margin-bottom: 20px;
+}
+
+.kt-space-30 {
+	display: block;
+	height: 0;
+	margin-bottom: 30px;
+}
+
+.kt-space-40 {
+	display: block;
+	height: 0;
+	margin-bottom: 40px;
+}
+
+.kt-valign-middle {
+	vertical-align: middle;
+}
+
+.kt-valign-bottom {
+	vertical-align: bottom;
+}
+
+.kt-block-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.kt-align-right {
+	text-align: right;
+}
+
+.kt-align-left {
+	text-align: left;
+}
+
+.kt-align-center {
+	text-align: center;
+}
+
+.kt-pull-right {
+	float: right;
+}
+
+.kt-pull-left {
+	float: left;
+}
+
+.kt-img-rounded {
+	border-radius: 50% !important;
+}
+
+.kt-block-inline {
+	display: inline-block;
+}
+
+.kt-icon-middle {
+	&:before {
+		vertical-align: middle;
+	}
+}
+
+// Element visibility
+.kt-hidden,
+.kt-hide {
+	display: none !important;
+}
+
+// Font sizing
+.kt-font-sm {
+	font-size: 0.8rem !important;
+}
+
+.kt-font-md {
+	font-size: 0.9rem !important;
+}
+
+.kt-font-lg {
+	font-size: 1.2rem !important;
+}
+
+.kt-font-xl {
+	font-size: 1.5rem !important;
+}
+
+.kt-clearfix {
+	@include kt-clearfix();
+}
+
+// Icon font sizing
+.kt-icon-sm {
+	font-size: 0.75rem !important;
+}
+
+.kt-icon-md {
+	font-size: 0.9rem !important;
+}
+
+.kt-icon-lg {
+	font-size: 1.2rem !important;
+}
+
+.kt-icon-xl {
+	font-size: 1.4rem !important;
+}
+
+
+.kt-marginless {
+	margin: 0 !important;
+}
+
+.kt-img-centered {
+	text-align: center;
+}
+
+// Text Transform
+.kt-font-transform-u {
+	text-transform: uppercase;
+}
+
+.kt-font-transform-l {
+	text-transform: lowercase;
+}
+
+.kt-font-transform-c {
+	text-transform: capitalize;
+}
+
+.kt-font-transform-i {
+	text-transform: initial;
+}
+
+// Font Weights
+.kt-font-regular {
+	font-weight: 400 !important;
+}
+.kt-font-bold {
+	font-weight: 500 !important;
+}
+
+.kt-font-bolder {
+	font-weight: 600 !important;
+}
+
+.kt-font-boldest {
+	font-weight: 700 !important;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+// State colors
+@each $name, $color in $kt-state-colors {
+	.kt-font-#{$name} {
+		color: kt-get($color, base) !important;
+	}
+
+	.kt-font-hover-#{$name}{
+		&:hover{
+			color: darken(kt-get($color, base),20%);
+		}
+	}
+
+	.kt-font-inverse-#{$name} {
+		color: kt-get($color, inverse) !important;
+	}
+
+	.kt-bg-#{$name} {
+		background-color: kt-get($color, base) !important;
+	}
+
+	.kt-bg-fill-#{$name} {
+		background-color: kt-get($color, base) !important;
+		color: kt-get($color, inverse) !important;
+
+		> i {
+			color: kt-get($color, inverse) !important;
+		}
+	}
+
+	.kt-bg-light-#{$name} {
+		background-color: rgba(kt-get($color, base), 0.1) !important;
+	}
+}
+
+// Social colors
+@each $name, $color in $kt-social-colors {
+	.kt-font-#{$name} {
+		color: kt-get($color, base) !important;
+	}
+}
+
+// Base colors
+@each $name, $color in kt-get($kt-base-colors, label) {
+	.kt-label-font-color-#{$name} {
+		color: $color !important; 
+	}
+
+	.kt-label-bg-color-#{$name} {
+		background-color: $color !important; 
+	}
+}
+
+@each $name, $color in kt-get($kt-base-colors, shape) {
+	.kt-shape-font-color-#{$name} {
+		color: $color !important; 
+	}
+
+	.kt-shape-bg-color-#{$name} {
+		background-color: $color !important; 
+	}
+}
+
+// Responsive Helpers
+.kt-visible-desktop,
+.kt-visible-desktop-inline-block,
+.kt-visible-desktop-inline,
+.kt-visible-desktop-table,
+.kt-visible-desktop-table-cell,
+
+.kt-visible-tablet,
+.kt-visible-tablet-inline-block,
+.kt-visible-tablet-inline,
+.kt-visible-tablet-table,
+.kt-visible-tablet-table-cell,
+
+.kt-visible-tablet-and-mobile,
+.kt-visible-tablet-and-mobile-inline-block,
+.kt-visible-tablet-and-mobile-inline,
+.kt-visible-tablet-and-mobile-table,
+.kt-visible-tablet-and-mobile-table-cell,
+
+.kt-visible-mobile,
+.kt-visible-mobile-inline-block,
+.kt-visible-mobile-inline,
+.kt-visible-mobile-table,
+.kt-visible-mobile-table-cell {
+	display: none !important;
+}
+
+@include kt-desktop {
+	.kt-visible-desktop {
+		display: block !important;
+	}
+
+	.kt-visible-desktop-inline-block {
+		display: inline-block !important;
+	}
+
+	.kt-visible-desktop-inline {
+		display: inline !important;
+	}
+
+	.kt-visible-desktop-table {
+		display: table !important;
+	}	
+
+	.kt-visible-desktop-table-cell {
+		display: table-cell !important;
+	}	
+
+	.kt-hidden-desktop {
+		display: none !important;
+	}
+}
+
+@include kt-tablet {
+	.kt-visible-tablet {
+		display: block !important;
+	}
+
+	.kt-visible-tablet-inline-block {
+		display: inline-block !important;
+	}
+
+	.kt-visible-tablet-inline {
+		display: inline !important;
+	}
+
+	.kt-visible-tablet-table {
+		display: table !important;
+	}	
+
+	.kt-visible-tablet-table-cell {
+		display: table-cell !important;
+	}	
+
+	.kt-hidden-tablet {
+		display: none !important;
+	}
+}
+
+@include kt-tablet-and-mobile {
+	.kt-visible-tablet-and-mobile {
+		display: block !important;
+	}
+
+	.kt-visible-tablet-and-mobile-inline-block {
+		display: inline-block !important;
+	}
+
+	.kt-visible-tablet-and-mobile-inline {
+		display: inline !important;
+	}
+
+	.kt-visible-tablet-and-mobile-table {
+		display: table !important;
+	}	
+
+	.kt-visible-tablet-and-mobile-table-cell {
+		display: table-cell !important;
+	}	
+
+	.kt-hidden-tablet-and-mobile {
+		display: none !important;
+	}
+}
+
+@include kt-mobile {
+	.kt-visible-mobile {
+		display: block !important;
+	}
+
+	.kt-visible-mobile-inline-block {
+		display: inline-block !important;
+	}
+
+	.kt-visible-mobile-inline {
+		display: inline !important;
+	}
+
+	.kt-visible-mobile-table {
+		display: table !important;
+	}	
+
+	.kt-visible-mobile-table-cell {
+		display: table-cell !important;
+	}	
+
+	.kt-hidden-mobile {
+		display: none !important;
+	}
+}
+
+// Flexbox helpers
+
+.kt-space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+// Rounded
+.kt-rounded {
+	border-radius: $kt-border-radius !important;
+}
+
+// Negative Spacing
+.kt-negative-spacing {
+	@for $i from 1 through 10 {		
+		&--#{$i}{
+			margin-top: -#{$i}0px;
+		}
+	} 
+}

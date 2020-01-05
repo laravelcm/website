@@ -1,0 +1,189 @@
+//
+// Bootstrap Daterangepicker
+//
+
+
+
+// Base
+.daterangepicker {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    box-shadow: $kt-dropdown-shadow;
+    border-radius: $kt-border-radius;
+    border: 0;
+    font-family: #{kt-get($kt-font-families, regular)};
+    z-index: $kt-dropdown-zindex;
+
+    .modal-open & {
+        z-index: $kt-modal-zindex + 1;
+    }
+
+    &:after,
+    &:before {
+        display: none;
+    }
+
+    @include kt-not-rounded {
+        border-radius: 0 !important;
+    }
+
+    .ranges {
+        ul {
+            padding: 1rem 0;
+            width: 170px;
+        }
+
+        li {
+            padding: 0.7rem 1.75rem;
+            font-weight: 400;
+            font-size: 1rem;
+            color: kt-base-color(label, 3);
+            transition: color 0.3s ease;
+
+            &:hover,
+            &.active {
+                background-color: kt-base-color(grey, 1);
+                color: kt-brand-color();
+                transition: color 0.3s ease;
+            }
+        }
+    }
+
+    &.show-calendar {
+        .ranges {
+            border-right: 1px solid kt-base-color(grey, 2);
+        }
+    }
+
+    &.show-ranges {
+        .drp-calendar.left {
+            border-left: 0;
+        }
+    }
+
+    &.show-calendar {
+        .ranges {
+            margin-top: 0;
+        }
+    }
+
+    .drp-buttons {
+        padding: 1rem 1.75rem;
+        border-top: 1px solid kt-base-color(grey, 2);
+
+       .btn {
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 0.5rem 1rem;
+            border-radius: 0;
+
+            @include kt-rounded {
+                border-radius: $kt-border-radius;
+            }
+        }
+    }
+
+    .drp-calendar {
+        &.left,
+        &.right {
+            padding: 1rem 1.5rem 1rem 1.5rem;
+        }
+
+        &.left {
+            border-left: 0 !important;
+        }
+
+        th {
+            font-weight: 500;
+            font-size: 1rem;
+            color: kt-base-color(label, 3);
+
+            &.month {
+                font-weight: 400;
+                color: kt-base-color(label, 2);
+            }
+
+            &.next,
+            &.prev {
+                span {
+                    border-width: 0 1px 1px 0;
+                    border-color: kt-base-color(label, 2);
+                }
+            }
+
+            &.next {
+                span {
+                    margin-right: 1px;
+                }
+            }
+
+            &.prev {
+                span {
+                    margin-left: 1px;
+                }
+            }
+        }
+
+        td {
+            font-size: 1rem;
+            color: kt-base-color(label, 3);
+
+            &.available.off {
+                color: kt-base-color(label, 1);
+            }
+
+            &.active {
+                background-color: kt-brand-color();
+                color: kt-brand-color(inverse);
+                border-radius: 0;
+
+                @include kt-rounded {
+                    border-radius: $kt-border-radius;
+                }
+
+                &.start-date {
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+
+                &.end-date {
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+
+                &.start-date.end-date {
+                    @include kt-rounded {
+                        border-radius: $kt-border-radius;
+                    }
+                }
+            }
+
+            &.today,
+            &.today.active {
+                border-radius: 0;
+
+                @include kt-rounded {
+                    border-radius: $kt-border-radius;
+                }
+
+                background: rgba(kt-state-color(brand, base), 0.7) !important;
+                color: kt-state-color(brand, inverse) !important;
+            }
+
+            &.in-range.available:not(.active):not(.off):not(.today) {
+                background-color: kt-base-color(grey, 1);
+                color: kt-base-color(label, 3);
+            }
+        }
+    }
+
+    select {
+        @include kt-rounded {
+            border-radius: $kt-border-radius;
+        }
+        background: transparent !important;
+        border-color: kt-base-color(grey, 2);
+        color: kt-base-color(label, 3);
+    }
+}

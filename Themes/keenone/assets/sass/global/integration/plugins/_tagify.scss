@@ -1,0 +1,167 @@
+//
+// Tagify
+//
+
+
+
+
+.tagify {
+    @include kt-rounded {
+        border-radius: $input-border-radius;
+    }
+
+    border-color: $input-border-color;
+    //padding: $input-btn-padding-y $input-btn-padding-x;
+
+    &:hover {
+        border-color: $input-border-color;
+    }
+
+    &.tagify--focus {
+        border: 1px solid $input-focus-border-color;
+    }
+
+    .tagify__input {
+        color: $input-plaintext-color;
+
+        &:before {
+            margin-top: 2px;
+        }
+    }
+
+    .tagify__tag {
+        background-color: kt-base-color(grey, 2);
+        display: inline-flex;
+        align-items: center;
+        padding: 0 0.5rem;
+
+        @include kt-rounded {
+            border-radius: $kt-border-radius;
+        }
+
+        div {
+            order: 1;
+            padding-right: 0.25rem;
+
+            .tagify__tag-text {
+                color: kt-base-color(label, 2);
+                font-weight: 400;
+            }
+
+            &:before {
+                box-shadow: none !important;
+                animation: none;
+                transition: none;
+            }
+        }
+
+        .tagify__tag__removeBtn {
+            line-height: 1;
+            order: 2;
+            transform: none;
+            position: static;
+            border-radius: 0;
+            margin-top: -2px;
+
+            &:after {
+                @include kt-flaticon2-icon(kt-get($kt-action-bold-icons, close));
+                font-size: 0.6rem;
+                color: kt-base-color(label, 1);
+            }
+
+            &:hover {
+                background: transparent;
+                color: kt-brand-color();
+
+                & + div > span {
+                    opacity: .4;
+                }
+            }
+        }
+
+        // State colors
+        @each $name, $color in $kt-state-colors {
+            &.tagify__tag--#{$name} {
+                 background-color: rgba(kt-get($color, base), 0.1);
+
+                 div {
+                     .tagify__tag-text {
+                         color: kt-get($color, base);
+                     }
+                 }
+
+                 .tagify__tag__removeBtn {
+                     &:after {
+                         color: kt-get($color, base);
+                     }
+
+                     &:hover {
+                         background: transparent;
+                         color: kt-get($color, inverse);
+
+                         & + div > span {
+                             opacity: .3;
+                         }
+                     }
+                 }
+            }
+        }
+    }
+}
+
+.tagify--outside{
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 5px 0 10px 0 !important;
+
+    tag {
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.tagify__input.form-control {
+    margin: 0;
+
+    &:before {
+        top: 6px;
+    }
+}
+
+.tagify__input--outside{
+    display: block;
+    max-width: 600px;
+    border: 1px solid #DDD;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.tagify__dropdown {
+    box-shadow: $dropdown-box-shadow;
+    background: #fff;
+    border: 0 !important;
+    padding: 0.75rem 0;
+    z-index: $kt-dropdown-zindex;
+
+    .modal-open & {
+        z-index: $kt-modal-zindex + 1;
+    }
+
+    @include kt-rounded {
+        border-radius: $kt-border-radius;
+    }
+
+    .tagify__dropdown__item {
+        color: kt-base-color(label, 2);
+        border-radius: 0;
+        padding: 0.75rem 1.5rem;
+        margin: 0;
+        box-shadow: none;
+
+        &.tagify__dropdown__item--active {
+            background: kt-base-color(grey, 1);
+            color: kt-brand-color();
+        }
+    }
+}

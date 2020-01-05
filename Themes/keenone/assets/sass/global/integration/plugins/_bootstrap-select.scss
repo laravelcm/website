@@ -1,0 +1,287 @@
+//
+// Bootstrap Select
+//
+
+
+
+
+// Base
+@mixin kt-bootstrap-select-base() {
+    $kt-general-padding: 10px 15px;
+    $kt-title-padding: 10px 15px;
+
+    // Bootstrap select base
+   .bootstrap-select {
+        > .dropdown-toggle {
+            position: relative;
+            outline: none !important;
+            padding: $input-btn-padding-y $input-btn-padding-x;
+
+            @include kt-rounded {
+                border-radius: $input-border-radius !important;
+            }
+
+            &:focus {
+                outline: none !important;
+            }
+
+            &:after {
+                border: 0;
+                margin-right: -2px;
+                font-size: 0.6rem;
+                display: inline-block;
+                @include kt-flaticon2-icon(kt-get($kt-action-bold-icons, down));
+            }
+
+            &:before {
+                width: auto;
+            }
+        }
+
+        .dropdown-menu.inner {
+            display: block;
+
+            > li {
+                > a {
+                    display: block;
+                    position: relative;
+                    outline: none !important;
+                    padding: $kt-general-padding;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    // icons
+                    @include kt-icons-size((fontawesome: 1.2rem, lineawesome: 1.2rem, flaticon: 1.1rem));
+
+                    i {
+                        vertical-align: middle;
+                    }
+                }
+
+                &.selected {
+                    > a {
+                        span.check-mark {
+                            @include kt-la-icon('\f17b');
+                            top: 50%;
+                            position: absolute;
+                            margin-top: - (0.85rem / 2);
+                            font-size: 0.85rem;
+                            right: $input-btn-padding-x;
+                            display: inline-block;
+
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                &.divider {
+                    margin: 10px 0;
+                }
+
+                &.hidden {
+                    display: none;
+                }
+
+                &.no-results {
+                    padding: $kt-general-padding;
+                }
+            }
+        }
+
+        .popover-title {
+            padding: $kt-title-padding;
+            margin-bottom: 5px;
+
+            .close {
+                display: none;
+            }
+        }
+
+        .bs-searchbox,
+        .bs-actionsbox,
+        .bs-donebutton {
+            padding: $kt-title-padding;
+        }
+    }
+}
+
+// Skin
+@mixin kt-bootstrap-select-skin() {
+    // Bootstrap select base
+   .bootstrap-select {
+        // dropdown button
+        > .dropdown-toggle {
+
+            &.btn-light,
+            &.btn-secondary {
+                background: #fff;
+                color: $input-plaintext-color;
+                border-color: $input-border-color;
+                box-shadow: none;
+
+                &:focus,
+                &.active {
+                    background-color: transparent;
+                    border-color: $input-focus-border-color;
+                }
+
+                &.disabled,
+                &:disabled {
+                    background: $input-disabled-bg;
+                    border-color: $input-disabled-bg
+                }
+
+                .filter-option {
+                    @include kt-icons {
+                        color: kt-base-color(label, 2);
+                    }
+                }
+            }
+
+            &.bs-placeholder {
+                color:  $input-placeholder-color;
+
+                // state colors
+                @each $name, $color in $kt-state-colors {
+                    &.btn-#{$name} {
+                        color: kt-get($color, inverse);
+
+                        > .filter-option {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+
+        // menu shown state
+        &.show {
+            > .dropdown-toggle {
+                &.btn-light,
+                &.btn-secondary {
+                    border-color: $input-focus-border-color;
+                    box-shadow: none;
+                }
+            }
+        }
+
+        // Validation
+        &.is-invalid {
+            .btn.dropdown-toggle {
+                border-color: kt-state-color(danger, base);
+
+            }
+        }
+
+        &.is-valid {
+            .btn.dropdown-toggle {
+                border-color: kt-state-color(success, base);
+            }
+        }
+
+        // menu dropdown
+        .dropdown-menu.inner {
+            > li {
+                > a {
+                    .text {
+                        color: kt-base-color(label, 3);
+
+                        small {
+                            color: kt-base-color(label, 1);
+                        }
+                    }
+
+                    span.check-mark {
+                        color: kt-base-color(label, 2);
+                    }
+
+                    @include kt-icons {
+                        color: kt-base-color(label, 1);
+                    }
+                }
+
+                &.selected,
+                &:hover {
+                    > a {
+                        background: kt-base-color(grey, 1);
+
+                        .text {
+                            color: kt-base-color(label, 3);
+                        }
+
+                        @include kt-icons {
+                            color: kt-base-color(label, 1);
+                        }
+
+                        span.check-mark {
+                            color: kt-base-color(label, 2);
+                        }
+                    }
+                }
+
+                &.dropdown-header {
+                     color: kt-base-color(label, 2);
+                }
+
+                &.selected {
+                    > a {
+                        background: kt-base-color(grey, 1);
+                    }
+                }
+
+                &.disabled {
+                    > a {
+                        opacity: 0.6;
+                    }
+                }
+
+                &.divider {
+                    border-bottom: 1px solid kt-base-color(grey, 1);
+                }
+
+                &.active:not(.selected) {
+                    > a {
+                        background: kt-state-color(primary, base);
+
+                        .text {
+                            color: kt-state-color(primary, inverse);
+                        }
+
+                        @include kt-icons {
+                            color: kt-state-color(primary, inverse);
+                        }
+
+                        span.check-mark {
+                            color: kt-state-color(primary, inverse);
+                        }
+                    }
+                }
+
+                &.no-results {
+                    color: kt-base-color(label, 2);
+                }
+            }
+        }
+
+        // menu header
+        .popover-title {
+            background: kt-base-color(grey, 1);
+            border: 0;
+        }
+
+        .dropdown-menu {
+            margin-top: 1px;
+        }
+    }
+}
+
+
+// Base
+@include kt-bootstrap-select-base();
+
+// Skin
+@include kt-bootstrap-select-skin();

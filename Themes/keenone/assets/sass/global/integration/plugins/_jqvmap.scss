@@ -1,0 +1,20 @@
+//
+// jQVMap
+//
+
+
+
+
+.m-jqvmap {
+    position: relative; 
+    overflow: hidden;
+
+    .jqvmap-zoomout,
+    .jqvmap-zoomin {
+        height: 16px;
+        width: 16px;
+        line-height: 12px;
+        vertical-align: middle;
+        background-color: m-base-color(label, 3);
+    }
+}

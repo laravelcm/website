@@ -1,0 +1,122 @@
+//
+// Sticky Toolbar
+//
+
+
+
+.kt-sticky-toolbar {
+    width: 46px;
+    position: fixed;
+    top: 30%;
+    right: 0;
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    z-index: 50;
+    background: #fff;
+    box-shadow: $kt-dropdown-shadow;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    @include kt-rounded {
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kt-sticky-toolbar__item {
+        margin:0;
+        padding: 5px;
+        text-align: center; 
+
+        > a {      
+            background: #f4f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+
+            @include kt-rounded {
+                border-radius: 3px;
+            }
+
+            @include kt-transition();
+            
+            > i {
+                @include kt-transition();
+                font-size: 1.3rem;
+            }          
+
+            &:hover {
+                @include kt-transition();
+
+                > i {
+                    @include kt-transition();
+                }
+            }
+        }
+
+        &.kt-sticky-toolbar__item--builder {
+            > a {   
+                > i {
+                    color: kt-state-color(success);
+                }
+            }
+
+            &:hover {
+                > a {
+                    background: kt-state-color(success);
+
+                    > i {                        
+                        color: kt-state-color(success, inverse);
+                    }
+                }
+            }
+        }
+
+        &.kt-sticky-toolbar__item--docs {
+            > a {   
+                > i {
+                    color: darken(#f4f4f8, 30%);
+                }
+            }
+
+            &:hover {
+                > a {
+                    background: darken(#f4f4f8, 30%);
+
+                    > i {                        
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        &.kt-sticky-toolbar__item--demo-toggle {
+            > a {
+                padding: 8px 0;
+                height: 90px;
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+                font-size: 1.3rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: kt-brand-color();
+                letter-spacing: 2px;
+
+                > i {
+                    color: kt-state-color(brand);
+                }
+            }
+
+            &:hover {
+                > a {
+                    background: kt-state-color(brand);
+                    color: kt-state-color(brand, inverse);
+                }
+            }
+        }
+    }
+}

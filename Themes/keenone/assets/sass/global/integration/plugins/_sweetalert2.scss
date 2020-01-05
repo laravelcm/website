@@ -1,0 +1,91 @@
+//
+// SweetAlert2
+//
+
+
+
+
+// Base
+@mixin kt-sweetalert-base() {
+	html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown),
+	body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    	overflow-y: initial !important;
+
+    	&:not(.kt-sweetalert2--nopadding) {
+    		padding-right: 0 !important;
+    	}
+
+    	@include kt-hack-ie {
+			overflow: visible;
+		}
+	}
+
+	.swal2-popup {
+		padding: 2rem;
+
+		@include kt-rounded {
+			border-radius: $kt-border-radius;
+		}
+
+		.swal2-icon {
+			margin: 2rem 0 0rem 0;
+		}
+
+		.swal2-title {
+			font-weight: 500;
+			font-size: 1.3rem;
+			margin: 2rem 0 0 0;
+		}
+
+		.swal2-content {
+			font-weight: normal;
+			font-size: 1.1rem;
+			margin-top: 1.5rem;
+		}
+
+		.btn {
+			margin: 15px 5px 0;
+		}
+
+		.swal2-styled {
+			&:focus {
+				box-shadow: none;
+			}
+		}
+
+		.swal2-actions {
+			margin: 1.5rem auto 1rem auto;
+		}
+	}
+
+	.swal2-container {
+		overflow-y: hidden !important;
+	}
+
+	body.swal2-height-auto {
+		height: 100% !important;
+	}
+}
+
+@mixin kt-sweetalert-skin() {
+	.swal2-container.swal2-shown {
+    	background-color: rgba(0, 0, 0, 0.2);
+	}
+
+    .swal2-popup {
+		.swal2-title {
+			color: kt-base-color(label, 4);
+		}
+
+		.swal2-content {
+			color: kt-base-color(label, 2);
+		}
+	}
+}
+
+// Build
+// Base
+@include kt-sweetalert-base();
+
+// Skin
+@include kt-sweetalert-skin();

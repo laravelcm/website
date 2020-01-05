@@ -1,0 +1,94 @@
+//
+// Widget 16
+//
+
+
+
+
+.kt-widget-16{
+	padding-top: 0.7rem;
+
+	.kt-widget-16__item{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 3rem;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+
+		.kt-widget-16__labels {
+			flex:1;
+
+			.kt-widget-16__title{
+				font-size: 1.1rem;
+				font-weight: 500;
+				color: kt-base-color(label, 4);
+				@include kt-transition();
+
+				&:hover {
+					@include kt-transition();
+					color: kt-brand-color();
+				}
+			}
+
+			.kt-widget-16__desc{
+				color: kt-base-color(label, 2);
+				font-weight: 500;
+			}
+		}
+
+		.kt-widget-16__data{
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+
+			.kt-widget-16__numbers{
+				margin-left: 1.25rem;
+				text-align: center;
+
+				@include kt-mobile-sm{
+					margin-left: 0.5rem;
+				}
+
+				.kt-widget-16__numbers-total{
+					font-size: 1.1rem;
+					font-weight: 600;
+					color: kt-base-color(label, 3);
+				}
+
+				.kt-widget-16__numbers-change{
+					background-color: rgba(kt-state-color(brand, base), 0.1);
+					color: kt-state-color(brand, base);
+					font-weight: 500;
+					padding: 0.2rem 0.5rem;
+					border-radius: 5px;
+				}
+			}
+		}
+
+		// States
+		@each $name, $color in $kt-state-colors {
+	 		&.kt-widget-16__item--#{$name}{
+	 			.kt-widget-16__labels{
+	 				.kt-widget-16__title{
+		 				&:hover{
+		 					color: kt-get($color, base);
+		 				}
+		 			}
+	 			}
+
+	 			.kt-widget-16__data{
+	 				.kt-widget-16__numbers{
+	 					.kt-widget-16__numbers-change{
+	 						background-color: rgba(kt-get($color, base), 0.1);
+							color: kt-get($color, base);
+	 					}
+	 				}		 			
+				}
+	 		}
+		}	
+	}
+}

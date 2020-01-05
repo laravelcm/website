@@ -1,0 +1,402 @@
+//
+// Invoice v1
+//
+
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+// Component config
+$kt-invoice1-font-color: #aaabf7;
+$kt-invoice1-body-title: #babac6;
+$kt-invoice1-body-content: #464457;
+
+.kt-invoice-1 {
+	
+	@include kt-rounded {
+		border-top-left-radius: $kt-border-radius;
+		border-top-right-radius: $kt-border-radius;
+	}	
+
+	.kt-invoice__container {
+		width: 100%;
+		margin: 0;
+		padding: 0 30px;
+	}
+
+	.kt-invoice__head {
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: 8rem 0;
+
+		@include kt-rounded {
+			border-top-left-radius: $kt-border-radius;
+			border-top-right-radius: $kt-border-radius;
+		}
+		
+		background-size:cover;
+		background-position: center;		 
+
+		.kt-invoice__brand{				 		 
+			margin-bottom: 5rem;
+			border-bottom: 1px solid rgba(255,255,255,0.11);
+
+			.kt-invoice__title{
+				font-size: 5.5rem;
+				font-weight: 700;
+				margin-bottom: 5rem;
+				color: kt-state-color(brand, inverse);
+				text-align: center;				 
+			}
+
+			.kt-invoice__logo{
+				display: flex;		 
+				padding-bottom: 5rem;
+				justify-content: center;
+				align-items: center;				 
+				
+				img {
+					display: block;
+					width: 9rem;
+					margin-right:2rem;
+				}				 
+
+				.kt-invoice__desc{
+					color: $kt-invoice1-font-color;
+					font-size: 1.25rem;
+					font-weight: 500;
+					display: flex;
+					flex-direction: column;				
+				}
+			}			 
+		}
+
+		.kt-invoice__items {
+			display: flex;
+			flex-wrap: wrap;		
+			align-items: center;		
+			justify-content: space-between;			
+
+			.kt-invoice__item {
+				.kt-invoice__subtitle {
+					font-weight: 700;
+					font-size: 1.25rem;
+					color: kt-state-color(brand, inverse);
+					margin-bottom: 1.25rem;					
+				}	
+
+				.kt-invoice__desc {
+					display: flex;
+					flex-direction: column;
+					color: $kt-invoice1-font-color;
+					font-size: 1.25rem;
+					font-weight: 500;
+					padding-top: 1.5rem;
+				}
+
+				.kt-invoice__text{
+					color: $kt-invoice1-font-color;
+					font-size: 1.25rem;
+					font-weight: 500;
+				}
+
+				.kt-invoice__info {
+					.kt-invoice__text{
+						float: right;
+						padding-left: 4rem;
+					}	
+					
+					&:last-child {
+						padding-top: 1.7rem;
+					}
+				}
+
+				&:first-child {
+					margin-right: 1rem;
+				}
+			}
+		} 
+	}
+
+	.kt-invoice__body{
+		padding: 4rem 0;	
+			
+			table {
+				background-color: transparent;
+	
+				thead {
+					tr {
+						th{
+							background-color: transparent;
+                        	padding: 1rem 1rem 0.5rem 0;
+                        	border-top: none;
+                        	color: kt-base-color(label, 3);
+							border-bottom: 1px solid #eaebec;	
+							font-weight: 500;						
+							 
+	
+							&:not(:first-child) {
+								text-align: right;
+							}
+
+							&:last-child {								
+								padding-right: 0;
+							}
+						}
+					}
+				}
+				tbody {
+					tr {
+						td {
+							background-color: transparent;
+							padding: 1rem 1rem 1rem 0;
+							border-top: none;
+							font-weight: 700;
+							font-size: 1.1rem;
+							color: kt-base-color(label, 3);
+							
+							&:not(:first-child) {
+								text-align: right;
+							}
+							
+							&:last-child {
+								color: kt-state-color(brand, base);
+								font-size: 1.2rem;
+								padding-right: 0;
+							}
+						}
+						
+						&:first-child td {
+							padding-top: 1.8rem;
+						}
+					}
+				}
+			}					 
+	}
+
+	.kt-invoice__footer {
+		padding: 3rem 0;   		 
+	
+		.kt-invoice__container {
+            display: flex;
+            flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;			
+        }
+	
+		.kt-invoice__bank {
+			margin-right: 10px;
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+
+			.kt-invoice__title {
+				font-size: 1.2rem;
+				text-transform: capitalize;
+				font-weight: 600;
+				color: kt-base-color(label, 2);
+			}
+
+			.kt-invoice__item {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin-top: 10px;
+
+				.kt-invoice__label {
+					font-size: 1.1rem;
+					font-weight: 500;
+					margin-right: 40px;
+					color: kt-base-color(label, 3);
+					text-align: left;
+				}
+
+				.kt-invoice__value {
+					font-size: 1.1rem;
+					font-weight: 400;
+					color: kt-base-color(label, 2);
+					text-align: right;
+				}
+
+				&:first-child { 
+					margin-right: 1rem;
+				}
+			}			
+		}
+		
+		.kt-invoice__total {
+			display: flex;
+			flex-direction: column;
+			text-align: right;
+			
+			.kt-invoice__title {
+				font-size: 1.2rem;
+				text-transform: capitalize;
+				font-weight: 600;
+				color: kt-base-color(label, 2);
+			}
+
+			.kt-invoice__price {
+                color: kt-state-color(brand, base);
+				font-weight: 700;
+				font-size: 24px;
+			}
+			
+			.kt-invoice__notice {
+                font-size: 1rem;
+				font-weight: 500;
+				color: kt-base-color(label, 2);
+            }
+		}
+	}
+	
+	.kt-invoice__actions {
+		padding: 2rem 0;
+		background-color: kt-base-color(grey, 1);   
+	
+		.kt-invoice__container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+	}
+}
+
+@include kt-desktop {
+	.kt-invoice-1 {
+		.kt-invoice__container {
+			width: 80%;
+			margin: 0 auto;
+		}
+	}
+}
+ 
+
+@include kt-tablet-and-mobile() {
+	.kt-invoice-1 {
+		.kt-invoice__head {
+			padding: 3rem 0;
+
+			.kt-invoice__container {
+				width: 100%;
+				margin: 0;
+				padding: 40px 20px;
+			}
+			
+			.kt-invoice__brand {
+				.kt-invoice__title{					 
+					font-size: 4rem;
+				}
+			}
+
+			.kt-invoice__items {
+				.kt-invoice__item {
+					&:last-child {
+						padding-top: 2rem;
+					}
+				}
+			}
+		}
+
+		.kt-invoice__body{
+			padding: 30px 20px;
+		}
+		
+		.kt-invoice__footer {
+			padding: 20px;
+
+			.kt-invoice__container {
+				flex-direction: column;
+			}
+		
+			.kt-invoice__bank {	
+				margin-right: 0;
+
+				.kt-invoice__item {	
+					.kt-invoice__label {
+						margin-right: 20px;
+					}
+				}
+			}
+			
+			.kt-invoice__total {
+				margin-top: 30px;
+				text-align: left;
+			}
+		}
+
+		.kt-invoice__actions {
+			padding: 2rem 20px;
+		
+			.kt-invoice__container {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+		}
+	}		
+}
+
+// Print media
+@media print {
+	// Hide partials
+	.kt-header,
+    .kt-header-mobile,
+    .kt-aside,
+    .kt-aside-secondary,
+    .kt-footer,
+    .kt-subheader,
+    .kt-scrolltop,
+    .kt-quick-panel,
+    .kt-demo-panel,
+    .kt-sticky-toolbar {
+        display: none !important;
+    }
+
+	// Parent containers
+    body,
+    .kt-wrapper,
+    .kt-body,
+    .kt-content {		
+		background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+	}
+		
+	// Invoice
+	.kt-invoice-1 {
+		@include kt-rounded {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+
+		.kt-invoice__head {
+			@include kt-rounded {
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
+
+			.kt-invoice__container {
+				@include kt-rounded {
+					border-top-left-radius: 0;
+					border-top-right-radius: 0;
+				}
+			}
+		}
+
+		.kt-invoice__actions {
+			display: none !important;
+		}
+
+		.kt-invoice__container {
+			width: 100%;
+			padding: 0 10px;
+		}
+	}
+}

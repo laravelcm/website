@@ -1,0 +1,126 @@
+//
+// Widget 12
+//
+
+
+
+
+.kt-widget-12 {
+
+	.kt-widget-12__body{
+
+		.kt-widget-12__head{
+			display:flex;
+			flex-direction: row;
+			flex-wrap:wrap;
+			align-items: center;
+			margin-bottom: 1.5rem;
+
+			.kt-widget-12__date {
+				width:5rem;
+				height:5rem;
+				border-radius: 50%;
+				overflow: hidden;
+				background-color: rgba(kt-state-color(brand, base), 0.1);
+				color: kt-state-color(brand, base);
+				display:flex;
+				flex: 0 0 5rem;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin-right:1.25rem;
+				text-transform: uppercase;
+				line-height: 1.3rem;
+
+				.kt-widget-12__day{
+					font-weight: 600;
+					font-size: 1.6rem;
+					margin-top: 0.2rem;
+				}
+
+				.kt-widget-12__month{
+					font-weight: 500;
+				}
+
+				// States
+				@each $name, $color in $kt-state-colors {
+			 		&.kt-widget-12__date--#{$name}{
+			 			background-color: rgba(kt-get($color, base), 0.1);
+						color: kt-get($color, base);
+			 		}
+				}	
+			}
+
+			.kt-widget-12__label {
+				flex:1;
+
+				.kt-widget-12__title{
+					font-size: 1.4rem;
+					font-weight: 500;
+					color: kt-base-color(label, 4);
+				}
+
+				.kt-widget-12__desc{
+					font-size: 1rem;
+					font-weight: 500;
+					color: kt-base-color(label, 2);
+				}
+			}
+		}		
+
+		.kt-widget-12__info{
+			font-size: 1rem;
+			font-weight: 400;
+			color: kt-base-color(label, 2);
+		}
+	}
+
+	.kt-widget-12__members{
+		flex:1;
+		display:flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+
+		.kt-widget-12__member{
+			border-radius:50%;
+			width:2.7rem;
+			height:2.7rem;
+			overflow:hidden;
+			margin-left:-0.7rem;
+			border:1px solid kt-state-color(brand, inverse);
+			background-color: kt-base-color(shape, 1);
+			color: kt-base-color(label, 2);
+			display:flex;
+			align-items:center;
+			justify-content: center;
+			font-weight: 500;
+			position: relative;
+
+			&:first-child{
+				margin-left:0;
+			}
+
+			img {
+				width:100%;
+			}
+
+			&.kt-widget-12__member--last {
+				padding-right: 0.2rem;
+				@include kt-transition();
+
+				&:hover {
+					@include kt-transition();
+					background-color: kt-brand-color();
+					color:kt-brand-color(inverse);
+				}
+			}
+		}
+
+		@for $i from 1 through 6{
+			.kt-widget-12__member:nth-child(#{$i}){
+				z-index: #{$i};
+			}
+		}
+	}	 	
+}

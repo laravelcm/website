@@ -1,0 +1,70 @@
+//
+// Aside Dark Blue Skin
+//
+
+
+
+// Include framework config
+@import "../../../../config";
+
+// Include demo config
+@import "../../config";
+
+// Include header config
+@import "../../header/config";
+
+// Include aside config
+@import "../../aside/config";
+
+// Build Aside Skin
+.kt-aside {
+	background-color: kt-get($kt-layout-skins, navy);
+
+	// Scrollbar
+	@include kt-perfect-scrollbar-skin(#637099);
+
+	// Footer
+	.kt-aside__footer {
+		background-color: #1f2231;
+
+		.btn {
+			@include kt-transition();
+			background-color: transparent;
+			
+			i {
+				@include kt-transition();
+				color: #364b8b;
+			}
+		}
+
+		.show .btn,
+		.btn:hover {
+			@include kt-transition();
+			background-color: #191b27;
+
+			i {
+				@include kt-transition();
+				color: kt-brand-color();
+			}
+		}
+	}
+}
+
+// Build Aside Menu Skin
+@include kt-menu-ver-build-skin(kt-get($kt-aside-config, menu), navy);
+
+// Modify icon color for flaticon2 icons
+.kt-aside {
+	.kt-aside-menu {
+		> .kt-menu__nav {
+			.kt-menu__item {
+				> .kt-menu__link {
+					[class^="flaticon2-"],
+					[class*=" flaticon2-"] {
+						color: #434d6b;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,86 @@
+//
+// Widget 5
+//
+// General Mode
+.kt-widget-5 {
+    .kt-widget-5__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        margin: 2.5rem 0;
+        
+        .kt-widget-5__item-info {
+            padding-left: 1.4rem;
+            padding-right: 0.5rem;
+            flex: 1 0 0px;
+        
+            .kt-widget-5__item-title {
+                text-decaration: none;
+                font-weight: 500;
+                font-size: 1.1rem;
+                color: kt-base-color(label, 4);
+                @include kt-transition();
+
+                &:hover {
+                    @include kt-transition();
+                    color: kt-brand-color();
+                }
+            }
+        
+            .kt-widget-5__item-datetime {
+                font-weight: 500;
+                font-size: 0.9rem;
+                color: kt-base-color(label, 2);
+            }
+        }
+
+        .kt-widget-5__item-check {
+            .kt-radio {
+                padding: 0 0 0.3rem 1.43rem;
+            }
+        }
+
+        &:first-child {
+        	margin-top: 0;
+        }
+
+        &:last-child {
+        	margin-bottom: 0;
+        }
+    }
+
+    .kt-widget-5__item:before {
+        position: absolute;
+        display: block;
+        width: 0.2rem;
+        height: 100%;
+        top: 0.45rem;
+        height: calc(100% - 0.8rem);
+        content: "";
+
+        @include kt-rounded {
+            border-radius: 0.2rem;
+        }
+    }
+
+    // States
+    @each $name, $color in $kt-state-colors {
+        .kt-widget-5__item {
+            &.kt-widget-5__item--#{$name} {
+                &:before {
+                    background: kt-get($kt-state-colors, $name, base);
+                }
+            }
+            .kt-widget-5__item-info {
+                > a {
+                    &:hover {
+                        .kt-widget-5__item-title {
+                            color: kt-state-color(brand, base);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

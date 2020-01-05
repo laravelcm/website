@@ -1,0 +1,14 @@
+{
+    "name": "Setting",
+    "alias": "setting",
+    "description": "Setting module. Handles all the site settings",
+    "keywords": [],
+    "order": 0,
+    "active": 1,
+    "providers": [
+        "Modules\\Setting\\Providers\\SettingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

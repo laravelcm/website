@@ -1,0 +1,118 @@
+//
+// Scroll Mixins
+//
+
+
+
+// Skin
+@mixin kt-perfect-scrollbar-skin($color) {
+    .ps {
+        > .ps__rail-x {
+            background: transparent;
+
+            &:hover,
+            &:focus {
+                opacity: 1;
+                background: transparent;
+
+                > .ps__thumb-x {
+                    opacity: 1;
+                }
+            } 
+
+            > .ps__thumb-x {
+                background: $color;
+                opacity: 1;
+                
+
+                &:hover,
+                &:focus {
+                    opacity: 1;
+                    background: $color;
+                } 
+            }
+        }
+
+        > .ps__rail-y {
+            background: transparent;
+
+            &:hover,
+            &:focus {
+                background: transparent;
+                opacity: 1;
+
+                > .ps__thumb-y {
+                    opacity: 1;
+                }
+            } 
+
+            > .ps__thumb-y {
+                background: $color;
+                opacity: 1;
+
+                &:hover,
+                &:focus {
+                    opacity: 1;
+                    background: $color;
+                } 
+            }
+        }
+    }
+}
+
+@mixin kt-perfect-scrollbar-ver-size($size) {
+    .ps {
+        > .ps__rail-y {
+            //right: $size;
+            width: $size;
+
+            &:hover,
+            &:focus {
+                width: $size;
+            } 
+
+            > .ps__thumb-y {
+                //right: 0;
+                width: $size;
+                border-radius: $kt-border-radius;
+                @include kt-not-rounded {
+                    border-radius: 0;
+                }
+
+                &:hover,
+                &:focus {
+                    //right: 0;
+                    width: $size;
+                } 
+            }           
+        }
+    }
+}
+
+@mixin kt-perfect-scrollbar-hor-size($size) {
+    .ps {
+        > .ps__rail-x {
+            height: $size;
+
+            &:hover,
+            &:focus {
+                height: $size;
+            } 
+
+            > .ps__thumb-x {
+                top: 0;
+                height: $size;
+                border-radius: $kt-border-radius;
+                @include kt-not-rounded {
+                    border-radius: 0;
+                }
+
+                &:hover,
+                &:focus {
+                    top: 0;
+                    height: $size;
+                } 
+            }
+        }
+    }
+}

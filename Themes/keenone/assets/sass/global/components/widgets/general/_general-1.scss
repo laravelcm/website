@@ -1,0 +1,93 @@
+//
+// Widget - General - 1
+//
+
+
+
+.kt-widget.kt-widget--general-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .kt-media {
+        margin-right: 1rem;
+    }
+
+    .kt-widget__wrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        flex: 1;
+
+        .kt-widget__label {
+            display: flex;
+            flex-direction: column;
+            flex: 1;    
+            margin-right: 0.5rem;
+
+            .kt-widget__title {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: kt-base-color(label, 3);
+                transition: color 0.3s ease;
+
+                &:hover {
+                    transition: color 0.3s ease;
+                    color: kt-brand-color();
+                }
+            }
+
+            .kt-widget__desc {
+                font-size: 1rem;
+                font-weight: 400;
+                color: kt-base-color(label, 2);
+            }
+        }
+
+        .kt-widget__toolbar {
+            align-items: center;
+            padding: 0.5rem 0;
+    
+            .btn {
+                margin-right: 0.25rem;
+                
+                &:last-child {
+                    margin-right: 0.25rem;
+                }
+            }
+
+            &.kt-widget__toolbar--top {
+                margin-top: -1.25rem;
+            }            
+        }
+    }    
+}
+
+@include kt-mobile {
+    .kt-widget.kt-widget--general-1 {
+        .kt-media {
+            margin-right: 0.5rem;
+        }
+    
+        .kt-widget__wrapper {    
+            .kt-widget__label {
+                margin-right: 0.25rem;
+    
+                .kt-widget__title {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                }
+    
+                .kt-widget__desc {
+                    font-size: 1rem;
+                    font-weight: 400;
+                }
+            }
+    
+            .kt-widget__toolbar {
+                align-items: center;
+                padding: 0.25rem 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,282 @@
+//
+// Switch
+//
+
+
+
+
+// Component Base
+@mixin kt-switch-base() {
+    .kt-switch  {
+        // Base
+        display: inline-block;
+        font-size: 1rem;
+
+        input:empty {
+            margin-left: -999px;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            position: absolute;
+            opacity: 0;
+        } 
+
+        input:empty ~ span {
+            display: inline-block;
+            position: relative;
+            float: left;
+            width: 1px;
+            text-indent: 0;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input:empty ~ span:before, 
+        input:empty ~ span:after {
+            position: absolute;
+            display: block;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            content: ' ';
+            -webkit-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+        }
+
+        // State icons
+        &.kt-switch--icon {
+            input:empty ~ span:after {
+                @include kt-la-icon-self('\f342');
+            }
+
+            input:checked ~ span:after {
+                content: '\f17b';
+            }
+        }
+
+        // State icons
+        &.kt-switch--icon-check {
+            input:checked ~ span:after {
+                @include kt-la-icon-self('\f17b');
+            }
+        }        
+
+        // Default size
+        & {
+            $kt-switch-margin: 2px 0;
+            $kt-switch-width: 54px;
+            $kt-switch-height: 30px;
+            $kt-switch-line-height: 26px;
+            $kt-switch-space: 3px;
+            $kt-switch-checked-tick-pos: 26px;
+            $kt-switch-icon-font-size: 0.9em;
+
+            @include kt-switch-size(
+                $kt-switch-margin,
+                $kt-switch-width,
+                $kt-switch-height,
+                $kt-switch-line-height,
+                $kt-switch-space,
+                $kt-switch-checked-tick-pos,
+                $kt-switch-icon-font-size
+            );
+        }
+
+        // Large size
+        &.kt-switch--lg {
+            $kt-switch-margin: 2px 0;
+            $kt-switch-width: 72px;
+            $kt-switch-height: 40px;
+            $kt-switch-line-height: 34px;
+            $kt-switch-space: 3px;
+            $kt-switch-checked-tick-pos: 34px;
+            $kt-switch-icon-font-size: 1em;
+
+            @include kt-switch-size(
+                $kt-switch-margin,
+                $kt-switch-width,
+                $kt-switch-height,
+                $kt-switch-line-height,
+                $kt-switch-space,
+                $kt-switch-checked-tick-pos,
+                $kt-switch-icon-font-size
+            );
+        }
+
+        // Small size
+        &.kt-switch--sm {
+            $kt-switch-margin: 2px 0;
+            $kt-switch-width: 38px;
+            $kt-switch-height: 24px;
+            $kt-switch-line-height: 20px;
+            $kt-switch-space: 2px;
+            $kt-switch-checked-tick-pos: 16px;
+            $kt-switch-icon-font-size: 0.8em;
+
+            @include kt-switch-size(
+                $kt-switch-margin,
+                $kt-switch-width,
+                $kt-switch-height,
+                $kt-switch-line-height,
+                $kt-switch-space,
+                $kt-switch-checked-tick-pos,
+                $kt-switch-icon-font-size
+            );
+        }
+
+        // Form group
+        .form-group.row & {
+            margin-top: 0.15rem;
+
+            &.kt-switch--lg {
+                margin-top: 0rem;
+                position: relative;
+                top: -0.3rem;
+            }
+
+            &.kt-switch--sm {
+                margin-top: 0.3rem;
+            }
+        }     
+    }
+}
+
+// Component Size
+@mixin kt-switch-size($margin, $width, $height, $line-height, $space, $checked-tick-pos, $icon-font-size) {
+    input:empty ~ span {
+        line-height: $height;                
+        margin: $margin;
+        height: $height;
+        width: $width + $space;
+        border-radius: ($height/2); 
+    }
+
+    input:empty ~ span:before, 
+    input:empty ~ span:after {
+        width: $width;
+        border-radius: ($height/2); 
+    }
+
+    input:empty ~ span:after {
+        height: $height - 2 * $space;
+        width: $height - 2 * $space;
+        line-height: $line-height;
+        top: $space;
+        bottom: $space;
+        margin-left: $space;
+        font-size: $icon-font-size;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    input:checked ~ span:after {
+        margin-left: $checked-tick-pos;
+    }
+}
+
+// Component Skin
+@mixin kt-switch-skin() {
+    $base-color: #e8ebf1;
+
+    .kt-switch {
+        // Panel bg
+        input:empty ~ span:before {
+            background-color: $base-color;
+        }
+
+        // Tick bg
+        input:empty ~ span:after {
+            color: lighten($base-color, 5%); 
+            background-color: #ffffff; 
+        }
+
+        // Checked state 
+        input:checked {
+            // Panel bg
+            ~ span:before {
+                background-color: $base-color;
+                //box-shadow: 0px 3px 20px 0px rgba($base-color, 0.41);
+            }
+
+            // Tick bg
+            ~ span:after {
+                background-color: kt-state-color(brand, base);
+                color: kt-state-color(brand, inverse);
+                //box-shadow: 0px 3px 20px 0px rgba($base-color, 0.41);
+            }
+        }
+
+        input[disabled] {
+            cursor: not-allowed;
+
+            ~ span:after,
+            ~ span:before {
+                cursor: not-allowed;
+                opacity: 0.7;
+            }        
+        }
+
+        // States
+        @each $name, $color in $kt-state-colors {
+            // states 
+            &.kt-switch--#{$name}:not(.kt-switch--outline) {
+                input:empty ~ span:before {
+                    background-color: kt-get($color, base);
+                }
+
+                input:empty ~ span:after {
+                    color: kt-get($color, base);
+                    background-color: kt-get($color, inverse);
+                    opacity: 0.4;
+                }
+
+                input:checked {
+                    // Panel bg
+                    ~ span:before {
+                        background-color: kt-get($color, base);
+                    }
+
+                    // Tick bg
+                    ~ span:after {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            // outline style states
+            &.kt-switch--outline.kt-switch--#{$name} {
+                input:empty ~ span:before {
+                    border: 2px solid darken($base-color, 3%);
+                    background-color: $base-color;
+                }
+
+                input:empty ~ span:after {
+                    color: kt-get($color, inverse);
+                    background-color: kt-get($color, panel);
+                }
+
+                input:checked {
+                    // Panel bg
+                    ~ span:before {
+                        background-color: kt-get($color, inverse);
+                    }
+
+                    // Tick bg
+                    ~ span:after {
+                        background-color: kt-get($color, base);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Component Base
+@include kt-switch-base();
+
+// Component Skin
+@include kt-switch-skin();

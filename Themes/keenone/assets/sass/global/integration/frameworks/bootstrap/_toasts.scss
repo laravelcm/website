@@ -1,0 +1,110 @@
+//
+// Toast
+//
+
+
+
+// Base
+.toast {
+    // Absolute positioned toast
+    &.toast-custom {
+        display: none;
+        position: absolute;
+        z-index: $toast-zindex;
+        top: $toast-spacing;
+        right: $toast-spacing;
+        width: $toast-width;
+        border: 0;
+
+        &.toast-left {
+            left: $toast-spacing;
+            right: auto;
+        }
+
+        &.toast-bottom {
+            top: auto;
+            bottom: $toast-spacing;
+        }
+
+        &.toast-top {
+            bottom: auto;
+            top: $toast-spacing;
+        }
+
+        &.toast-center-v {
+            top: 45%;
+            bottom: auto;
+        }
+
+        &.toast-center-h {
+            right: auto;
+            left: 50%;
+            margin-left: -($toast-width/2);
+        }
+
+        .toast-header {
+            padding: 0.5rem 1rem;
+        }
+
+        .toast-body {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        &.show {
+            display: block;
+        }
+
+        &.toast-fill {
+            background-color: #fff;
+        }
+    }
+
+    // Title
+    .toast-title {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: kt-base-color(label, 3);
+        margin-right: auto !important;       
+    }
+
+    // Time
+    .toast-time {
+        margin-left: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: kt-base-color(label, 3);
+    }
+
+    // Icon
+    .toast-icon {
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+        color: kt-base-color(label, 2);
+    }
+
+    // Close
+    .toast-close {
+        @include kt-button-reset();
+        
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            font-size: 1.1rem; 
+            color: kt-base-color(label, 2);
+            &:before {
+                line-height: 0;
+                vertical-align: middle;
+            }            
+        }
+
+        &:hover {
+            i {
+                color: kt-brand-color();
+            }
+        }
+    }    
+}

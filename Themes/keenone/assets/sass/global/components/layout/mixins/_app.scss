@@ -1,0 +1,32 @@
+//
+// App Mixins
+//
+
+
+
+
+// App aside mixins
+@mixin kt-app-aside-width($width) {
+    // Media range 1024px and above(see: $kt-media-breakpoints in sass/theme/_config.scss and sass/themes/core/_mixins.scss)
+    @include kt-desktop {
+        width: $width; 
+    }
+
+    // If beliw given width
+    @include kt-media-below($width + 50px) {
+        width: $width - 50px;
+    }
+}
+
+// App aside mixins
+@mixin kt-app-detail-width($width) {
+    // Media range 1024px and above(see: $kt-media-breakpoints in sass/theme/_config.scss and sass/themes/core/_mixins.scss)
+    @include kt-desktop {
+        width: $width; 
+    }
+
+    // If beliw given width
+    @include kt-media-below($width + 50px) {
+        width: $width - 50px;
+    }
+}

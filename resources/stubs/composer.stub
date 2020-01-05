@@ -1,0 +1,35 @@
+{
+    "name": "$VENDOR$/$LOWER_NAME$-module",
+    "description": "",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "$AUTHOR_NAME$",
+            "email": "$AUTHOR_EMAIL$",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3",
+        "composer/installers": "~1.0"
+    },
+    "type": "laravel-modules",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Providers\\$STUDLY_NAME$ServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

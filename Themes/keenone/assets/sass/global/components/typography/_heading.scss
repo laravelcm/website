@@ -1,0 +1,77 @@
+//
+// Heading
+//
+
+
+
+.kt-heading {
+	font-size: 1.3rem;
+	font-weight: 500;
+	padding: 0;
+	margin: 1.75rem 0;
+	color: kt-base-color(label, 4);
+
+	&.kt-heading--center {
+		text-align: center;
+	}
+
+	&.kt-heading--right {
+		text-align: right;
+	}
+
+	&.kt-heading--space-sm {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	&.kt-heading--space-md {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	&.kt-heading--space-lg {
+		margin-top: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	&.kt-heading--space-xl {
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+	}
+
+	&.kt-heading--sm {
+		font-size: 1.2rem;
+	}
+
+	&.kt-heading--md {
+		font-size: 1.4rem;
+	}
+
+	&.kt-heading--lg {
+		font-size: 1.6rem;
+	}
+
+	&.kt-heading--xl {
+		font-size: 2rem;
+	}
+
+	&.kt-heading--medium{
+		font-weight: 600;
+	}
+	&.kt-heading--bold{
+		font-weight: 700;
+	}
+	&.kt-heading--bolder{
+		font-weight: 900;
+	}
+	&.kt-heading--thin{
+		font-weight: 300;
+	}
+
+	&.kt-heading--no-top-margin{
+		margin-top: 0;
+	}
+	&.kt-heading--no-bottom-margin{
+		margin-bottom: 0;
+	}
+}

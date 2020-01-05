@@ -1,0 +1,70 @@
+//
+// Separator
+//
+
+
+
+
+.kt-separator {
+	margin: 0;
+	height: 0;
+
+	// Border
+	&.kt-separator--border-solid {
+		border-bottom: 1px solid kt-base-color(grey, 2);
+	}
+
+	&.kt-separator--border-dashed {
+		border-bottom: 1px dashed kt-base-color(grey, 2);
+	}
+
+	&.kt-separator--border-2x {
+		border-bottom-width: 2px;
+	}
+
+	// Sizing
+	&.kt-separator--space-xs {
+		margin: 0.5rem 0;
+	}
+	&.kt-separator--space-sm {
+		margin: 1rem 0;
+	}
+
+	&.kt-separator--space-md {
+		margin: 2rem 0;
+	}
+
+	&.kt-separator--space-lg {
+		margin: 2.5rem 0;
+	}
+
+	&.kt-separator--space-xl {
+		margin: 3rem 0;
+	}
+
+	&.kt-separator--height-xs{
+		height:1rem;
+	}
+	&.kt-separator--height-sm{
+		height:2rem;
+	}
+	&.kt-separator--height-md{
+		height:4rem;
+	}
+	&.kt-separator--height-lg{
+		height:5rem;
+	}
+	&.kt-separator--height-xl{
+		height:6rem;
+	}
+
+	&.kt-separator--portlet-fit {
+		margin-left: -(kt-get($kt-portlet, space, desktop));
+		margin-right: -(kt-get($kt-portlet, space, desktop));
+
+		@include kt-tablet-and-mobile {
+			margin-left: -(kt-get($kt-portlet, space, mobile));
+			margin-right: -(kt-get($kt-portlet, space, mobile));
+		}
+	}
+}

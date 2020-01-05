@@ -1,0 +1,35 @@
+{
+  "name": "mckenziearts/setting-module",
+  "description": "Setting module. Handles all the site settings.",
+  "keywords": [],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arthur Monney",
+      "email": "monneylobe@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3",
+    "composer/installers": "~1.0"
+  },
+  "type": "laravel-modules",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Modules\\Setting\\Providers\\SettingServiceProvider"
+      ],
+      "aliases": {
+
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Setting\\": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -1,0 +1,54 @@
+//
+// Button Group Customization
+// 
+
+
+.btn-group{
+
+	&.btn-pill{
+		border-radius: 2rem;
+		overflow: hidden;
+
+		@each $name, $color in $kt-state-colors {
+			.btn-#{$name}{
+				@if $name == 'metal'{
+					color: kt-get($color, base);
+		  			background-color: kt-get($color, inverse);
+		  			border-color: kt-get($color, inverse);
+				} 			
+				border-width: 1px;
+				border-style: solid;				
+
+				.show > &,
+			  	&.active,
+			  	&:active,
+			  	&:hover {
+			  		@if $name == 'metal'{
+			  			color: kt-get($color, inverse);
+						background-color: kt-get($color, base);
+						border-color: kt-get($color, base);
+			  		}
+			  	}
+			}
+		}
+	}
+
+	&.btn-elevated{
+		box-shadow: $btn-elevate-shadow-1;
+	}
+
+	@include kt-mobile{
+		&.btn-pill{
+			border-radius: 0;
+
+			.nav{
+				justify-content: center;
+			}
+
+			.btn{
+				margin-bottom: 0.5rem;
+				border-radius: 2rem;
+			}
+		}
+	}
+}

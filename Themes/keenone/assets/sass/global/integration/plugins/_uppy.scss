@@ -1,0 +1,373 @@
+//
+// Uppy
+//
+
+
+
+
+// Base
+.kt-uppy {
+	.uppy-Root {
+		font-family: kt-get($kt-font-families, regular);
+
+		&.uppy-DragDrop--is-dragdrop-supported {
+			border: 2px dashed kt-base-color(grey, 2);
+		}
+	}
+
+	.uppy-Dashboard-inner {
+		background-color: kt-base-color(grey, 1);
+		border: 1px solid kt-base-color(grey, 2);
+
+		.uppy-DashboardContent-bar,
+		.uppy-Dashboard-AddFilesPanel,
+		.uppy-DashboardContent-panel,
+		.uppy-DashboardItem-progress,
+		.uppy-DashboardItem-action,
+		.uppy-DashboardItem-previewLink{
+			z-index: 1;
+		}
+
+		.uppy-DashboardContent-title {
+			color: kt-base-color(label, 2);
+			font-size: 1rem;
+			font-weight: 500;
+		}
+
+		.uppy-DashboardTabs {
+			.uppy-Dashboard-dropFilesTitle {
+				color: kt-base-color(label, 2);
+				font-size: 1.3rem;
+				font-weight: 500;
+			}
+
+			.uppy-DashboardTab-name{
+				color: kt-base-color(label, 2);
+			}
+		}
+
+		.uppy-DashboardItem.is-complete .progress{
+			stroke: kt-state-color(success, base);
+			fill: kt-state-color(success, base);
+		}
+
+		.uppy-StatusBar-statusSecondary {
+			overflow: visible;
+		}
+	}
+
+	.uppy-DashboardAddFiles-info {
+		bottom: 20px !important;
+	}
+
+	.uppy-Dashboard-note {
+		color: kt-base-color(label, 2);
+		font-size: 0.9rem;
+		font-weight: 400;
+	}
+
+	.uppy-c-btn-primary {
+		font-size: 1rem;
+		font-weight: 400;
+		background: kt-brand-color();
+		color: kt-brand-color(inverse);
+		outline: none !important;
+
+		&:focus,
+		&:hover {
+			background-color: darken(kt-brand-color(), 6%);
+		}
+	}
+
+	.uppy-DashboardContent-back {
+		font-size: 1rem;
+		font-weight: 500;
+		color: kt-brand-color();
+		outline: none !important;
+		&:focus,
+		&:hover {
+			color: darken(kt-brand-color(), 6%);
+		}
+	}
+
+	.uppy-Dashboard-browse {
+		color: kt-state-color(brand, base);
+
+		&:focus,
+		&:hover {
+			color: darken(kt-brand-color(), 6%);
+		}
+	}
+
+	.uppy-DashboardContent-addMore {
+		svg {
+			stroke: kt-state-color(brand, base);
+			fill: kt-state-color(brand, base);
+		}
+	}
+
+	.uppy-ProgressBar{
+		z-index: 1;
+		.uppy-ProgressBar-inner {
+			background-color: kt-brand-color();
+			box-shadow: none;
+		}
+
+		.uppy-ProgressBar-percentage {
+			color: kt-base-color(label, 2);
+			font-size: 0.9rem;
+			font-weight: 400;
+		}
+	}
+
+	.uppy-DragDrop-label {
+		font-size: 1rem;
+		font-weight: 500;
+		color: kt-base-color(label, 2);
+
+		.uppy-DragDrop-dragText {
+			color: kt-state-color(brand, base);
+			&:focus,
+			&:hover {
+				color: darken(kt-brand-color(), 6%);
+			}
+		}
+	}
+
+	.uppy-StatusBar{
+		z-index: 1;
+
+		.uppy-StatusBar-status{
+			overflow-x: visible;
+			display: none;
+		}
+
+		.uppy-StatusBar-progress{
+			background-color: kt-state-color(brand, base);
+		}
+
+		.uppy-StatusBar-content {
+			.uppy-StatusBar-statusPrimary {
+				font-size: 0.9rem;
+				font-weight: 400;
+				color: kt-base-color(label, 2);
+			}
+
+			.uppy-StatusBar-spinner {
+				svg {
+					fill: kt-state-color(brand, base);
+				}
+			}
+		}
+
+		.uppy-StatusBar-actions {
+			.uppy-StatusBar-actionCircleBtn {
+				.UppyIcon {
+					circle {
+						transition: all 0.3s ease;
+						fill: kt-base-color(grey, 2);
+					}
+
+					path {
+						transition: all 0.3s ease;
+						fill: kt-base-color(label, 2);
+					}
+
+					&:hover {
+						circle {
+							transition: all 0.3s ease;
+							fill: kt-brand-color();
+						}
+
+						path {
+							transition: all 0.3s ease;
+							fill: kt-brand-color(inverse);
+						}
+					}
+				}
+			}
+		}
+
+		&.is-complete{
+			.uppy-StatusBar-progress{
+				background-color: kt-state-color(success, base);
+			}
+		}
+
+		&.uppy-Root {
+			.uppy-StatusBar-content {
+				padding-left: 0 !important;
+			}
+
+			.uppy-StatusBar-actions {
+				right: 0 !important;
+			}
+		}
+	}
+
+	.uppy.uppy-Informer {
+		p {
+			background-color: rgba(kt-state-color(danger, base), 0.1);
+			color: kt-state-color(danger, base);
+			border-radius: 0;
+
+			@include kt-rounded {
+				border-radius: $kt-border-radius;
+			}
+		}
+	}
+
+	.kt-uppy__progress{
+		position: relative;
+		display:flex;
+		align-items: center;
+	}
+
+	.kt-uppy__status{
+		@include transition;
+
+		&.kt-uppy__status--ongoing{
+			height: 40px;
+			opacity: 1;
+		}
+
+		&.kt-uppy__status--hidden{
+			display: none;
+		}
+	}
+
+	.kt-uppy__btn{
+		margin-top: 10px;
+	}
+
+	.kt-uppy__thumbnails{
+		display: flex;
+		position: relative;
+		width: 100%;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.kt-uppy__thumbnail-container{
+			width: calc(50% - 5px);
+			margin: 10px 5px 0;
+			position: relative;
+			display: flex;
+			align-items: center;
+			height: 50px;
+			background-color: kt-base-color(grey, 1);
+			border-radius: $kt-border-radius;
+			overflow: hidden;
+
+			.kt-uppy__thumbnail{
+				width: 60px;
+				height: 50px;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+
+				img{
+					height: 100%;
+					width: auto;
+				}
+			}
+
+			.kt-uppy__thumbnail-label{
+				font-weight: 400;
+				color: kt-base-color(label, 2);
+				margin-left: 10px;
+				padding-right: 10px;
+			}
+
+			.kt-uppy__remove-thumbnail{
+				margin: auto 10px auto auto;
+				cursor: pointer;
+			}
+
+			&:nth-child(odd){
+				margin-left: 0;
+			}
+
+			&:nth-child(even){
+				margin-right: 0;
+			}
+
+			@include kt-minimal-desktop-and-below{
+				width: 100%;
+				margin: 10px 0 0;
+			}
+		}
+	}
+
+	.kt-uppy__list{
+		.kt-uppy__list-item{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.5rem 1rem;
+			background-color: kt-base-color(grey, 1);
+			margin-top: 0.75rem;
+			border-radius: $kt-border-radius;
+
+			&:last-child {
+				margin-bottom: 0.75rem;
+			}
+
+			.kt-uppy__list-label{
+				font-weight: 500;
+				color: kt-base-color(label, 2);
+			}
+
+			.kt-uppy__list-remove{
+				cursor: pointer;
+				margin-left: 1rem;
+
+				i {
+					transition: color 0.3s ease;
+					font-size: 0.7rem;
+					color: kt-base-color(label, 1);
+				}
+
+				&:hover {
+					i {
+						transition: color 0.3s ease;
+						color: kt-brand-color();
+					}
+				}
+			}
+		}
+	}
+
+	.kt-uppy__wrapper {
+		.uppy-FileInput-container {
+			margin-bottom: 0rem;
+		}
+	}
+
+	.kt-uppy__input-control {
+		position: relative;
+		z-index: 1;
+		height: 0;
+		width: 0;
+		opacity: 0;
+	}
+
+	.kt-uppy__informer--min {
+		.uppy-Informer {
+			position: static !important;
+			top: auto;
+			bottom: auto;
+
+			&[aria-hidden="true"] {
+				display: none;
+			}
+
+			transform: none;
+			z-index: 0;
+
+			p {
+				display: block;
+				max-width: none;
+			}
+		}
+	}
+}

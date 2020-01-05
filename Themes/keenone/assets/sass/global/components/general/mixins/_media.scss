@@ -1,0 +1,37 @@
+//
+// User Pics
+//
+
+
+
+@mixin kt-media-size($image-size, $font-size) {
+    img {
+        width: 100%;
+        max-width: $image-size; 
+        height: $image-size;
+    }
+
+    span {
+        width: $image-size;
+        height: $image-size;
+
+        @if $font-size {
+            font-size: $font-size;
+        }
+    }
+
+    &.kt-media--fixed {
+        width: $image-size; 
+        height: $image-size;
+
+        img {
+            width: $image-size; 
+            height: $image-size;
+            max-width: auto;
+        }
+    }
+}
+
+
+
+ 

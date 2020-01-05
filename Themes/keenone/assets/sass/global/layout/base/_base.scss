@@ -1,0 +1,169 @@
+//
+// Page
+//
+
+
+
+
+// Page body
+body {
+	background-color: $kt-page-bg-color;
+}
+
+// Base
+.kt-subheader {
+	&.kt-subheader--clear {
+		margin-bottom: 0 !important;
+	}
+}
+
+// Desktop mode
+@include kt-desktop {
+	// Wrapper
+	.kt-wrapper {
+		transition: kt-get($kt-aside-config, base, minimize, transition);
+
+		// Fixed Aside
+		.kt-aside--fixed & {
+			padding-left: kt-get($kt-aside-config, base, default, width);
+		}
+
+		// Minimize Aside
+		.kt-aside--fixed.kt-aside--minimize & {
+			padding-left: kt-get($kt-aside-config, base, minimize, width);
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+		}
+	}
+
+	// Page
+	.kt-page {
+		// Fixed Header
+		.kt-header--fixed & {
+			padding-top: kt-get($kt-header-config, base, desktop, default, height);
+		}
+
+		// Fixed Content Head
+		.kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled & {
+			padding-top: kt-get($kt-header-config, base, desktop, default, height) + kt-get($kt-subheader-config, fixed, height, desktop);
+		}
+	}
+
+	// Subheader
+	.kt-subheader {
+		// Fixed subheader mode
+		.kt-subheader--fixed & {
+			position: fixed;
+			height: kt-get($kt-subheader-config, fixed, height, desktop);
+			top: kt-get($kt-header-config, base, desktop, default, height);
+			left: 0;
+			right: 0;
+			transition: all 0.3s ease;
+			z-index: kt-get($kt-header-config, base, desktop, fixed, zindex) - 1;
+			box-shadow: 0px 10px 30px 0px rgba(82,63,105, 0.08);
+			background-color: #fff;
+			padding-top: 0;
+			padding-bottom: 0;
+			margin: 0;
+		}
+
+		.kt-aside--enabled.kt-subheader--fixed & {
+			left: kt-get($kt-aside-config, base, default, width);
+		}
+
+		// Fixed header, minimized header and fixed subheader
+		.kt-header--fixed.kt-header--minimize.kt-subheader--fixed & {
+			top: kt-get($kt-header-config, base, desktop, fixed, minimizeHeight);
+			transition: top 0.3s ease;
+		}
+
+		.kt-subheader--fixed.kt-aside--minimize-hover &,
+		.kt-subheader--fixed.kt-aside--minimize & {
+			left: kt-get($kt-aside-config, base, minimize, width);
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+		}
+
+		.kt-subheader--fixed.kt-aside-secondary--enabled & {
+			transition: all 0.3s ease;
+			right: kt-get($kt-aside-secondary-config, self, width, default);
+		}
+
+		.kt-subheader--fixed.kt-aside-secondary--expanded.kt-aside-secondary--enabled & {
+			transition: all 0.3s ease;
+			right: kt-get($kt-aside-secondary-config, self, width, expanded);
+		}
+
+		// Aside secondary integration
+		.kt-aside-secondary--enabled:not(.kt-subheader--fixed) & {
+			//margin-right: kt-get($kt-aside-secondary-config, self, width, default);
+			transition: all 0.3s ease;
+		}
+
+		.kt-aside-secondary--expanded.kt-aside-secondary--enabled:not(.kt-subheader--fixed) & {
+			transition: all 0.3s ease;
+		}
+	}
+
+	// Container
+	.kt-container {
+		padding: 0 kt-get($kt-page-padding, desktop);
+	}
+
+	// Content & fixed subheader mode
+	.kt-subheader--enabled:not(.kt-subheader--fixed) {
+		.kt-content {
+			padding-top: 0;
+		}
+	}
+}
+
+//
+// Fixed container width change to fluid
+// Aside removed
+body:not(.kt-aside--enabled) {
+	@include kt-media-range( lg, $kt-page-container-width + (2 * kt-get($kt-page-padding, desktop)) ) {
+		.kt-container:not(.kt-container--fluid) {
+			width: 100%;
+		}
+	}
+}
+
+// Default Aside
+.kt-aside--enabled:not(.kt-aside--minimize) {
+	@include kt-media-range( lg, $kt-page-container-width + $kt-aside-default-width + (2 * kt-get($kt-page-padding, desktop)) ) {
+		.kt-container:not(.kt-container--fluid) {
+			width: 100%;
+		}
+	}
+}
+
+// Minimized Aside
+.kt-aside--enabled.kt-aside--minimize {
+	@include kt-media-range( lg, $kt-page-container-width + $kt-aside-minimize-width + (2 * kt-get($kt-page-padding, desktop)) ) {
+		.kt-container:not(.kt-container--fluid) {
+			width: 100%;
+		}
+	}
+}
+
+// Tablet and mobile mode
+@include kt-tablet-and-mobile {
+	// Content & fixed subheader mode
+	.kt-subheader--enabled.kt-subheader--solid {
+		.kt-content {
+			padding-top: 0;
+		}
+	}
+
+	// Page
+	.kt-page {
+		// Fixed Header
+		.kt-header-mobile--fixed & {
+			padding-top: kt-get($kt-header-config, base, mobile, self, default, height);
+		}
+	}
+
+	// Container
+	.kt-container {
+		padding: 0 kt-get($kt-page-padding, mobile);
+	}
+}

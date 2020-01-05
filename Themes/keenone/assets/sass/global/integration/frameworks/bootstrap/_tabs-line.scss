@@ -1,0 +1,257 @@
+//
+// Tabs
+//
+
+
+
+
+// Base
+@mixin kt-nav-tabs-line-base() {
+    .nav-tabs.nav-tabs-line {
+        @include kt-clearfix();
+
+        margin: 0 0 25px 0;   
+
+        .nav-item {
+            margin-right: 20px;
+            margin-bottom: -1px;
+
+            @include kt-media-below(xl) {
+                margin-right: 15px;         
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .nav-link {
+            border: 0;
+            border-bottom: 1px solid transparent;
+            padding: 12px 0;
+            font-size: 1rem;
+            font-weight: 400;
+
+            @include kt-icons-style(font-size, (fontawesome: 1.2rem, lineawesome: 1.3rem, flaticon: 1.2rem) );
+
+            i {
+                vertical-align: middle;
+                line-height: 0;
+                display: inline-block;  
+                margin-right: 0.5rem;
+            }     
+
+            // svg icons
+            svg {
+                margin-right: 0.5rem;
+            }
+        }
+
+        &.nav-tabs-line-left {
+            float: left;
+        }
+
+        &.nav-tabs-line-right {
+            float: right;
+        }
+
+        // Portlet Tabs
+        .kt-portlet--tabs & {
+            margin: 0 0 -1px 0.5rem;
+            border-color: transparent !important;
+
+            &.nav-tabs-line-2x {
+                margin: 0 0 -2px 0;
+            }
+            
+            .nav-item {
+                display: flex;
+                align-items: stretch;
+
+                .nav-link {
+                    display: flex;
+                    align-items: center; 
+                }
+            }
+        }
+
+        // Bold tab links
+        &.nav-tabs-bold {
+            .nav-item {
+                .nav-link {
+                    font-weight: 500;
+                }
+            }
+        }
+
+        // Bolder tab links
+        &.nav-tabs-bolder {
+            .nav-item {
+                .nav-link {
+                    font-weight: 600;
+                }
+            }
+        }
+
+        // Bold tab links
+        &.nav-tabs-lg {
+            .nav-item {
+                margin-right: 30px;
+
+                @include kt-media-below(xl) {
+                    margin-right: 15px;         
+                }
+    
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                .nav-link {
+                    padding: 12px 0;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        // Double line style
+        &.nav-tabs-line-2x {
+            border-bottom-width: 2px !important;
+
+            .nav-item {
+                margin-bottom: -2px;
+            }
+
+            a.nav-link {
+                border-bottom-width: 2px !important;
+            }
+        }
+
+        // Double line style
+        &.nav-tabs-line-3x {
+            border-bottom-width: 3px !important;
+
+            .nav-item {
+                margin-bottom: -3px;
+            }
+
+            a.nav-link {
+                border-bottom-width: 3px !important;
+            }
+        }
+
+        // Spacing
+        &.nav-tabs-space-lg {
+            .nav-item {
+                margin-right: 40px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                @include kt-tablet-and-mobile {
+                    margin-right: 20px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        &.nav-tabs-space-xl {
+            .nav-item {
+                margin-right: 50px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                @include kt-tablet-and-mobile {
+                    margin-right: 20px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Skin
+@mixin kt-nav-tabs-line-skin() {
+    .nav-tabs.nav-tabs-line {
+        border-bottom: 1px solid kt-base-color(grey, 2);
+
+        &.nav.nav-tabs .nav-link,
+        a.nav-link {
+            background-color: transparent;
+            color: kt-base-color(label, 3);
+            
+            i {
+                color: kt-base-color(label, 1);
+            }
+
+            &:disabled {
+                opacity: 0.7;
+            }
+
+            // svg icons
+            @include kt-svg-icon-color(kt-base-color(label, 2));
+
+            &:hover,
+            &.active {
+                background-color: transparent;
+                color: kt-base-color(label, 3);
+                border-bottom: 1px solid kt-state-color(brand, base);
+
+                > i {
+                    color: kt-state-color(brand, base);
+                }
+
+                // svg icons
+                @include kt-svg-icon-color(kt-state-color(brand, base));
+            }
+        }
+
+        // state colors
+        @each $name, $color in $kt-state-colors {
+            &.nav-tabs-line-#{$name} {      
+                &.nav.nav-tabs .nav-link,
+                a.nav-link {
+                    &:hover {
+                        border-bottom: 1px solid kt-get($color, base);
+                    }
+
+                    &:hover,
+                    &.active {
+                        color: kt-get($color, base);
+                        border-bottom: 1px solid kt-get($color, base);
+
+                        > i {
+                            color: lighten(kt-get($color, base), 5%);
+                        }
+                    }
+                }
+
+                // Double line style
+                &.nav-tabs-line-2x,
+                &.nav-tabs-line-3x {
+                    border-bottom-color: rgba(kt-get($color, base), 0.1);
+                }
+            }
+        }
+
+        // Clear base border
+        &.nav-tabs-clear {
+            border-bottom-color: transparent !important;
+        }
+    }     
+}
+
+// Build
+// Base
+@include kt-nav-tabs-line-base();
+
+// Skin
+@include kt-nav-tabs-line-skin();

@@ -1,0 +1,232 @@
+//
+// Quick Panel
+//
+
+
+
+// Config
+$kt-offcanvas-panel-space: 1.5rem;
+
+$kt-offcanvas-panel: (
+	self: (
+		bg-color: #fff,
+		shadow: 0px 0px 28px 0px rgba(82,63,105,0.13),
+
+		offcanvas: (
+			layout: (
+				self: (
+					zindex: 1001,
+					direction: right,
+					transition:	all .3s ease,
+					width: 425px
+				),
+
+				close: (
+					size: 25px,
+					font-size: 1.4rem
+				)
+			),
+
+			skin: (
+				overlay: (
+					bg-color: rgba(#000000, 0.1),
+				)
+			)
+		)
+	)
+);
+
+// Base
+.kt-offcanvas-panel {
+	background-color: kt-get($kt-offcanvas-panel, self, bg-color);
+	box-shadow: kt-get($kt-offcanvas-panel, self, shadow);
+
+	// Close
+	.kt-offcanvas-panel__close {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 28px;
+		height: 28px;
+		background-color: kt-base-color(grey, 1);
+		@include kt-transition();
+
+		i {
+			@include kt-transition();
+			font-size: 0.8rem;
+			color: kt-base-color(label, 2);
+		}
+
+		@include kt-rounded {
+			border-radius: $kt-border-radius;
+		}
+
+		&:hover {
+			@include kt-transition();
+			background-color: kt-brand-color();
+
+			i {
+				@include kt-transition();
+				color: kt-brand-color(inverse);
+			}
+		}
+	}
+
+	// Head
+	.kt-offcanvas-panel__head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: $kt-offcanvas-panel-space;
+
+		.kt-offcanvas-panel__title {
+			font-size:  1.4rem;
+			font-weight: 500;
+			color: kt-base-color(label, 4);
+			margin: 0;
+			padding: 0;
+
+			small {
+				color: kt-base-color(label, 2);
+				font-size: 1rem;
+			}
+		}
+	}	
+
+	// Nav
+	.kt-offcanvas-panel__nav {
+		display: flex;
+		position: relative;
+		align-items: center;
+		border-bottom: 1px solid kt-base-color(grey, 2);
+		padding: $kt-offcanvas-panel-space;
+		margin-bottom: $kt-offcanvas-panel-space;
+	
+		.nav {
+			margin: 0;
+				
+			.nav-item {
+				margin-right: 0.5rem;
+	
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+	
+			.nav-link {
+				background: kt-base-color(grey, 1);
+				color: kt-base-color(label, 2);
+				font-size: 0.9rem;
+				font-weight: 500;
+				text-transform: uppercase;
+				padding: 0.75rem 1rem;
+	
+				@include kt-transition();
+	
+				&:hover {
+					@include kt-transition();
+					background: kt-base-color(grey, 2);
+					color: kt-base-color(label, 3);
+				}
+	
+				&.active {
+					@include kt-transition();
+					background: kt-brand-color();
+					color: kt-brand-color(inverse);
+				}
+			}
+		}
+	
+		// Close
+		.kt-offcanvas-panel__close {
+			right: 1.5rem !important;
+			position: absolute;
+			cursor: pointer;
+			line-height: 0;
+			border: 0;
+		}
+	}
+
+	// Body
+	.kt-offcanvas-panel__body {
+		position: relative;
+		padding: $kt-offcanvas-panel-space;
+		padding-top: 0;
+
+		// Section
+		.kt-offcanvas-panel__section {
+			padding: 0;
+			font-size: 1.3rem;
+			font-weight: 500;
+			color: kt-base-color(label, 3);
+			margin: $kt-offcanvas-panel-space 0;
+
+			&.kt-offcanvas-panel__section--first {
+				margin-top: 0;
+			}
+		}
+
+		// Scroll content
+		.kt-offcanvas-panel__content {
+			margin-right: -($kt-offcanvas-panel-space);
+			padding-right: $kt-offcanvas-panel-space;
+
+			&.ps {
+				> .ps__rail-y {
+					right: 5px !important;
+				}
+			}
+		}
+	}
+}
+
+// Build offcanvas mode
+@include kt-offcanvas-build(kt-offcanvas-panel, default, kt-get($kt-offcanvas-panel, self, offcanvas) );
+
+// Mobile view
+@include kt-tablet-and-mobile {
+	.kt-offcanvas-panel {
+		// Head
+		.kt-offcanvas-panel__head {
+
+		}
+
+		// Nav
+		.kt-offcanvas-panel__nav {
+			padding: 1rem;
+
+			.nav {
+				.nav-item {
+					margin-right: 0.5rem;
+				}
+
+				.nav-link {
+					padding: 0.75rem 0.75rem;
+					font-size: 0.9rem;
+					font-weight: 500;
+					text-transform: uppercase;
+				}
+			}
+
+			// Close
+			.kt-offcanvas-panel__close {
+				i {
+					font-size: 1.1rem;
+				}
+			}
+		}
+
+		// Body
+		.kt-offcanvas-panel__body {
+		
+			// Content
+			.kt-offcanvas-panel__content {
+				padding: 1rem 0.5rem 1rem 1rem;
+
+				.tab-pane {
+					padding-right: 0.5rem;
+				}
+			}
+		}
+	}
+}

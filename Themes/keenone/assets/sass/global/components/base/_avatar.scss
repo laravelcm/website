@@ -1,0 +1,136 @@
+//
+// Avatar
+//
+
+
+
+// Base
+.kt-avatar {
+	position: relative;
+	display: inline-block;
+
+	.kt-avatar__holder {
+		width: 120px;
+		height: 120px;
+		border-radius: 3px;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.kt-avatar__upload {
+		cursor: pointer;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		right: -10px;
+		top: -10px;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background-color: #ffffff;
+		box-shadow: 0px 0px 13px 0px rgba(#000000, 0.1);
+
+		input {
+			width: 0 !important;
+			height: 0 !important;
+			overflow: hidden;
+			opacity: 0;
+		}
+
+		i {
+			color: kt-brand-color();
+			font-size: 0.9rem;
+		}
+
+
+		@include kt-transition();
+		&:hover{
+			@include kt-transition();
+			background-color: kt-brand-color();
+
+			i {
+				color: kt-brand-color(inverse);
+			}
+		}
+	}
+
+	.kt-avatar__cancel {
+		cursor: pointer;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: auto;
+		right: -10px;
+		bottom: -5px;
+		width: 22px;
+		height: 22px;
+		border-radius: 50%;
+		background-color: #ffffff;
+		box-shadow: 0px 0px 13px 0px rgba(#000000, 0.1);
+		display: none;
+
+		i {
+			@include kt-transition();
+			color: kt-base-color(label, 2);
+			font-size: 0.9rem;
+		}
+		
+		&:hover{
+			i {
+				@include kt-transition();
+				color: kt-brand-color();
+			}
+		}
+	}
+
+	&.kt-avatar--changed {
+		.kt-avatar__cancel {
+			display: flex;
+		}
+	}
+
+	// States
+	@each $name, $color in $kt-state-colors {
+		&.kt-avatar--#{$name} {
+			.kt-avatar__upload {
+				i {
+					color: kt-get($color, base);
+				}
+
+				&:hover{
+					background-color: kt-get($color, base);
+
+					i {
+						color: kt-get($color, inverse);
+					}
+				}
+			}	
+		}
+	}
+
+	// Circle style
+	&.kt-avatar--circle {
+		.kt-avatar__holder {
+			border-radius: 50%;
+		}
+
+		.kt-avatar__upload {
+			right: 0px;
+			top: 5px;
+		}
+
+		.kt-avatar__cancel {
+			right: 3px;
+			bottom: 10px;
+		}
+	}
+
+	// Bordered style
+	&.kt-avatar--outline {
+		.kt-avatar__holder {
+			border: 3px solid #ffffff;
+			box-shadow: 0px 0px 13px 0px rgba(#000000, 0.1);
+		}
+	}
+}

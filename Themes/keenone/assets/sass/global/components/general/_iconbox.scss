@@ -1,0 +1,92 @@
+//
+// Iconbox
+//
+
+
+
+
+// General
+.kt-iconbox {
+	text-align:center;
+	padding:3.25rem 1.7rem 2rem 1.7rem;
+	background-color: #fff;
+	border: 2px solid;
+	border-color: transparent;
+	@include kt-hover-transition;
+
+	@include kt-rounded {
+		border-radius: 0.35rem;
+	}
+
+	&.kt-iconbox--elevate {
+		box-shadow: $kt-elevate-shadow;
+	}
+
+	&.kt-iconbox--active{
+		border-color: kt-state-color(brand, base);
+	}
+
+	&:hover {
+		box-shadow: $kt-elevate-shadow;
+	}
+
+	&.kt-iconbox--no-hover{
+
+		&:hover{
+			box-shadow: none;
+		}
+	}
+
+	.kt-iconbox__icon{
+		margin-bottom: 2.7rem;
+		color: kt-state-color(brand, base);
+		font-size: 5rem;
+		position:relative;
+
+		.kt-iconbox__icon-bg{
+    		background-image: url(./../media/misc/iconbox_bg.png);
+    		background-size: contain;
+    		background-position: center;
+    		background-repeat: no-repeat;
+    		width: 12rem;
+    		height: 12rem;
+    		display:block;
+    		position:absolute;
+    		top: -2.5rem;
+    		left: 0;
+    		right: 0;
+    		margin: auto;
+    		opacity: 0.06;
+    		z-index: 0;    		
+		}
+
+		> i{
+			position: relative;
+			z-index: 1;
+		}
+	}
+
+	.kt-iconbox__title{
+		margin-bottom: 1.2rem;
+		color: #464457;
+		font-size:1.2rem;
+		font-weight: 500;
+	}
+
+	.kt-iconbox__content{
+		
+	}
+
+	// State colors
+	@each $name, $color in $kt-state-colors {
+		&.kt-iconbox--#{$name} {
+			&.kt-iconbox--active{
+				border-color: kt-get($color, base);
+			}
+
+			.kt-iconbox__icon{
+				color: kt-get($color, base);
+			}
+		}
+	}
+}

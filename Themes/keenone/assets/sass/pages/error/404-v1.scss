@@ -1,0 +1,64 @@
+//
+// Error 404 v1
+//
+
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+
+// Component config
+$kt-error404-v1-title-color: #fb2f73;
+
+.kt-error404-v1{
+	display:flex;
+	flex:1;
+	justify-content:center;
+	align-items:center;
+	flex-wrap:wrap;
+
+	@include kt-mobile{
+		padding: 2rem;
+		align-items:stretch;
+	}	
+
+	.kt-error404-v1__content{
+		display: flex;
+		justify-content: flex-start;
+		flex-direction:column;
+
+		@include kt-mobile{
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.kt-error404-v1__title{
+			font-size: 12rem;
+			color: $kt-error404-v1-title-color;
+			font-weight: 700;
+		}
+
+		.kt-error404-v1__desc{
+			font-size: 1.5rem;
+		}
+	}
+
+	.kt-error404-v1__image{
+		width:50%;
+		position:relative;
+
+		@include kt-mobile{
+			width:100%;
+			flex-basis: 100%;
+		}
+
+		.kt-error404-v1__image-content{
+			width:100%;
+		}
+	}
+}

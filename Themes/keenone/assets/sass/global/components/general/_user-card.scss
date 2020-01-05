@@ -1,0 +1,89 @@
+//
+// Head
+//
+
+$kt-user-card-height: 65px;
+$kt-user-card-height-mobile: 50px;
+
+.kt-user-card {
+	position: relative;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+  	align-items: center;
+  	justify-content: center;
+
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1rem 1rem;
+    min-height: $kt-user-card-height;
+    margin-bottom: $kt-user-card-height/2;
+	   
+    .kt-user-card__wrapper {
+        left: 0;
+        right: 0;
+        position: absolute;
+        display: flex;
+        align-items: stretch;
+        height: 100%;
+        bottom: -($kt-user-card-height/2);
+        padding: 0 1.75rem;
+
+        .kt-user-card__pic {
+            display: flex;
+            align-items: center;
+
+            img {
+                border-radius: 50%;
+                max-height: $kt-user-card-height - 10px;
+                max-width: $kt-user-card-height - 10px;
+            }
+
+            padding-right: 1rem;
+        }
+
+        .kt-user-card__details {
+            display: flex;
+            flex-direction: column;
+
+            .kt-user-card__name {
+                display: flex;
+                align-items: flex-end;
+                font-size: 1.2rem;
+                height: 50%;
+                font-weight: 500;
+                padding-bottom: 0.25rem;
+                color: #fff;
+            }                
+
+            .kt-user-card__position {
+                padding-top: 0.25rem;
+                display: flex;
+                height: 50%;
+                align-items: flex-start;
+                font-size: 0.9rem;
+                font-weight: 400;
+                color: kt-base-color(label, 2);
+            }
+        }
+    }    
+}
+
+@include kt-tablet-and-mobile {
+	.kt-user-card {
+    	min-height: $kt-user-card-height-mobile;
+        margin-bottom: $kt-user-card-height-mobile/2;
+
+        .kt-user-card__wrapper {
+            bottom: -($kt-user-card-height-mobile/2);
+
+            .kt-user-card__pic {
+                img {
+                    max-height: $kt-user-card-height-mobile;
+                    max-width: $kt-user-card-height-mobile;
+                }
+            }
+        }
+	}
+}

@@ -1,0 +1,112 @@
+//
+// Content
+//
+
+
+
+.kt-footer {
+	padding: 20px 0;
+	background: #ffffff;
+
+	.kt-container {		
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.kt-footer__copyright {
+		display: flex;
+		margin: 0;
+		padding: 0 1.25rem 0 0;
+		font-size: 1rem;
+		font-weight: 400;
+		justify-content: flex-start;
+		color: kt-base-color(label, 2);
+		
+		.kt-link {
+			@include kt-link-color(kt-base-color(label, 2), kt-brand-color());
+		}
+	}
+
+	.kt-footer__menu {
+		display: flex;
+		justify-content: flex-end;
+		padding: 0 0 0 0.75rem;
+		margin: 0;
+
+		.kt-footer__menu-link {
+			margin: 0 0 0 1.25rem;
+			padding: 0;
+			font-size: 1rem;
+			font-weight: 400;
+			@include kt-link-color(kt-base-color(label, 3), kt-brand-color());
+		}
+	}
+}
+
+@include kt-desktop {
+	.kt-footer {
+		.kt-footer--fixed & {
+			position: fixed;
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+			height: kt-get($kt-footer-config, self, fixed, height);
+			z-index: kt-get($kt-footer-config, self, fixed, z-index);
+			bottom: 0;
+			right: 0;
+			left: kt-get($kt-aside-config, base, default, width);
+			box-shadow: 0px 0px 28px 0px rgba(82,63,105,0.13)
+		}
+
+		.kt-aside--minimize-hover.kt-footer--fixed &,
+		.kt-aside--minimize.kt-footer--fixed & {
+			transition: kt-get($kt-aside-config, base, minimize, transition);
+			left: kt-get($kt-aside-config, base, minimize, width);
+		}
+
+		// Aside secondary integration
+		.kt-aside-secondary--enabled & {
+			transition: all 0.3s ease;
+			margin-right: kt-get($kt-aside-secondary-config, self, width, default);
+			transition: all 0.3s ease;
+		}
+
+		.kt-aside-secondary--expanded.kt-aside-secondary--enabled & {
+			transition: all 0.3s ease;
+			margin-right: kt-get($kt-aside-secondary-config, self, width, expanded);
+		}
+	}
+}
+
+@include kt-tablet-and-mobile {
+	.kt-footer {
+		padding: 15px 0;
+	}
+}
+
+@include kt-mobile {
+	.kt-footer {
+		.kt-container {					
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.kt-footer__copyright {
+			justify-content: center;
+			padding: 0;
+			order: 2;
+		}
+
+		.kt-footer__menu {
+			justify-content: center;
+			order: 1;
+			padding: 0;
+			margin:  0 0 0.75rem 0;
+
+			.kt-footer__menu-link {
+				&:first-child {
+					padding-left: 0;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+}

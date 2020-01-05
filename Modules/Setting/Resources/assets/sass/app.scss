@@ -1,0 +1,58 @@
+/**
+* Setting Module style
+*/
+
+.setting {
+  color: #0f0f0f;
+  margin-bottom: 20px;
+  border-bottom: 5px solid $primary;
+
+  a {
+    color: inherit;
+
+    &:hover {
+      .setting-icon.env { box-shadow: 2px 8px 16px 2px rgba(#FEBC45, 0.35); }
+      .setting-icon.global { box-shadow: 2px 8px 16px 2px rgba(#54D46C, 0.35); }
+      .setting-icon.mail { box-shadow: 2px 8px 16px 2px rgba(#927BC0, 0.35); }
+      .setting-icon.translate { box-shadow: 2px 8px 16px 2px rgba(#5B69C3, 0.35); }
+      .setting-icon.log { box-shadow: 2px 8px 16px 2px rgba(#94AFC1, 0.35); }
+      .setting-icon.user { box-shadow: 2px 8px 16px 2px rgba(#CB66AB, 0.35); }
+      .setting-icon.theme { box-shadow: 2px 8px 16px 2px rgba(#24BFD5, 0.35); }
+      .setting-icon.module { box-shadow: 2px 8px 16px 2px rgba(#2079FB, 0.35); }
+    }
+  }
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 20px;
+    box-shadow: none;
+    transition: all ease-in-out 200ms;
+
+    &.env { background-color: #FEBC45; }
+    &.global { background-color: #54D46C; }
+    &.mail { background-color: #927BC0; }
+    &.translate { background-color: #5B69C3; }
+    &.log { background-color: #94AFC1; }
+    &.user { background-color: #CB66AB; }
+    &.theme { background-color: #24BFD5; }
+    &.module { background-color: #2079FB; }
+  }
+
+  &-title {
+    font-size: 15px;
+    margin-bottom: 7px;
+    font-weight: 500;
+  }
+
+  &-description {
+    color: #8c8c8c;
+    font-size: 13px;
+  }
+}

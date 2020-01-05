@@ -1,0 +1,152 @@
+//
+// Summernote
+//
+
+
+
+// Base
+@mixin kt-summernote-base() {
+    .note-popover {
+        display: none;
+    }   
+
+    .note-editor {
+        position: static;
+
+        .note-toolbar {
+            position: static;
+        }
+        
+        @include kt-rounded {
+            border-radius: $kt-border-radius;
+        }
+
+        .modal {
+            .modal-header {
+                .close {
+                    position: absolute;
+                    right: 25px; 
+                    top: 20px;
+                    font-size: 0;
+                }
+            }
+        } 
+
+        .panel-heading.note-toolbar {
+            padding: 5px 10px 10px 10px;
+            
+            @include kt-rounded {
+                border-top-left-radius: $kt-border-radius;
+                border-top-right-radius: $kt-border-radius;
+            }
+
+            .btn {
+                outline: none !important;
+            }
+
+            .dropdown-menu {
+                min-width: 185px;
+            }
+
+            .note-color .dropdown-menu {
+                min-width: 350px;
+                padding: 10px; 
+
+                > li {
+                    display: table;
+                    table-layout: fixed;
+
+                    > .btn-group {
+                        display: table-cell !important;
+
+                        &:first-child {
+                            padding-right: 10px;
+                        }
+
+                        .note-color-reset {
+                            margin: 5px 0 10px 0;
+                        }
+
+                        .note-palette-title {
+                            margin: 5px 0;
+                            text-align: left;
+                            border: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+    }
+}
+
+// Skin
+@mixin kt-summernote-skin() {
+    .note-editor {
+        &.note-frame {
+            border: 1px solid $input-border-color; 
+
+            .panel-heading.note-toolbar {
+                background: kt-base-color(grey, 1);
+            }
+        
+            .note-statusbar {
+                background: kt-base-color(grey, 1);
+            }
+        }
+
+        .note-toolbar {
+            .note-btn-group {
+                .btn {
+                    background: white;
+                    border: 1px solid kt-base-color(grey, 2);
+
+                    i {
+                        vertical-align: initial;
+                        line-height: initial;
+                        padding-right: 0;
+                        color: kt-base-color(label, 2);
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &.active {
+                        background: transparent;
+                        color: kt-base-color(label, 3);
+                    }
+                }
+            }
+        }
+    }
+
+    .note-editable {
+        .table.table-bordered {
+            th,td {
+                border: 1px solid kt-base-color(grey, 3);
+            }
+        }
+    }
+
+    // Validation
+    .is-valid {
+        .note-editor {
+            border-color: kt-state-color(success, base);
+        }
+    }
+
+    .is-invalid {
+        .note-editor {
+            border-color: kt-state-color(danger, base);
+        }
+    }
+}
+
+// Base
+@include kt-summernote-base();
+
+// Skin
+@include kt-summernote-skin();

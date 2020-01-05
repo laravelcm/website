@@ -1,0 +1,25 @@
+//
+// Aside Brand Config
+//
+
+
+
+$kt-brand-config: (
+	self: (
+		bg-color: #272631,
+		shadow: 0px 1px 9px -3px rgba(0,0,0,0.2)		
+	),
+	aside-toggler: (
+		width: 26px,
+		height: 26px,  
+		transition-duration: 0.4s,
+		thickness: 2px,
+		space: 6px, 
+		radius: 2px,
+		color: (
+			default: #4e4c5f,
+			hover: kt-brand-color(),
+			active: kt-brand-color()
+		)
+	)
+);

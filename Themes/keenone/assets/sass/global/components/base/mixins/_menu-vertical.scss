@@ -1,0 +1,1288 @@
+//
+// Vertical Menu Generator Helpers
+//
+
+
+
+// Item
+@mixin kt-menu-ver-item-base($item) {
+	// item
+	@include kt-attr(margin, kt-get($item, self, margin));
+	@include kt-attr(padding, kt-get($item, self, padding));
+
+	// item link and heading
+	> .kt-menu__heading,
+	> .kt-menu__link {
+		cursor: pointer;
+
+		// link height
+		min-height: kt-get($item, link, self, height);
+
+		// link margin
+		@include kt-attr(margin, kt-get($item, link, self, margin));
+
+		// menu item link's text part
+		.kt-menu__link-text {
+			font-weight: kt-get($item, link, text, font-weight);
+			font-size: kt-get($item, link, text, font-size);
+			text-transform: kt-get($item, link, text, font-transform);
+		}
+
+		// menu item link's icon
+		.kt-menu__link-icon {
+			text-align: kt-get($item, link, icon, align);
+			flex: 0 0 kt-get($item, link, icon, width);
+			font-size: kt-get($item, link, icon, font-size);
+
+			// duo-tone svg icon
+			svg {
+				@include kt-attr(height, kt-get($item, link, icon, svg-width));
+				@include kt-attr(width, kt-get($item, link, icon, svg-width));
+				margin-left: -2px;
+			}
+		}
+
+		// menu item link's bullet
+		.kt-menu__link-bullet {
+			vertical-align: middle;
+			text-align: left;
+			flex: 0 0 kt-get($item, link, bullet, self, width);
+
+			> span {
+				vertical-align: middle;
+				display: inline-block;
+			}
+
+			&.kt-menu__link-bullet--dot {
+				> span {
+					width: kt-get($item, link, bullet, dot, size);
+					height: kt-get($item, link, bullet, dot, size);
+					border-radius: 100%;
+				}
+			}
+
+			&.kt-menu__link-bullet--line {
+				> span {
+					width: kt-get($item, link, bullet, line, width);
+					height: kt-get($item, link, bullet, line, height);
+				}
+			}
+		}
+
+		// menu item link's icon part
+		.kt-menu__link-badge {
+			padding: kt-get($item, link, badge, padding);
+			text-align: kt-get($item, link, badge, align);
+		}
+
+		// menu item link's arrow part
+		.kt-menu__ver-arrow {
+			text-align: kt-get($item, link, arrow, align);
+			flex: 0 0 kt-get($item, link, arrow, width);
+			font-size: kt-get($item, link, arrow, font-size);
+
+			&:before {
+				display: inline-block;
+				transition: kt-get($item, link, arrow, transition);
+
+				[direction="rtl"] & {
+					content: "#{kt-get($kt-action-icons, left)}" !important;
+				}
+			}
+		}
+
+		// menu root level "here" arrow
+		.kt-menu__item-here {
+			display: none;
+		}
+
+		// link border radius
+		@include kt-rounded {
+			@include kt-attr(border-radius, kt-get($item, link, self, border-radius));
+		}
+	}
+
+	// item link open state
+	&.kt-menu__item--open {
+		> .kt-menu__heading,
+		> .kt-menu__link {
+			// menu item link's arrow part
+			.kt-menu__ver-arrow {
+				&:before {
+					transition: kt-get($item, link, arrow, transition);
+				}
+			}
+		}
+	}
+}
+
+@mixin kt-menu-ver-item-skin($item) {
+	// item
+	@include kt-attr(background-color, kt-get($item, self, bg-color, default));
+
+	// item link and heading
+	> .kt-menu__heading,
+	> .kt-menu__link {
+		// menu item link's text part
+		.kt-menu__link-text {
+			@include kt-attr(color, kt-get($item, link, text, font-color, default));
+			@if kt-has($item, link, text, font-weight) {
+				font-weight: kt-get($item, link, text, font-weight);
+			}
+		}
+
+		// menu item link's icon
+		.kt-menu__link-icon {
+			@include kt-attr(color, kt-get($item, link, icon, font-color, default));
+
+			// Due-tone icon
+			svg {
+				@include kt-svg-icon-color(kt-get($item, link, icon, font-color, default));
+			}
+		}
+
+		// menu item link's bullet
+		.kt-menu__link-bullet {
+
+			&.kt-menu__link-bullet--dot {
+				> span {
+					@include kt-attr(background-color, kt-get($item, link, bullet, dot, bg-color, default));
+				}
+			}
+
+			&.kt-menu__link-bullet--line {
+				> span {
+					@include kt-attr(background-color, kt-get($item, link, bullet, line, bg-color, default));
+				}
+			}
+		}
+
+		// menu item link's arrow part
+		.kt-menu__ver-arrow {
+			@include kt-attr(color, kt-get($item, link, arrow, font-color, default));
+		}
+	}
+
+	// item link open state
+	&.kt-menu__item--open {
+		transition: background-color 0.3s;
+		@include kt-attr(background-color, kt-get($item, self, bg-color, open));
+
+		> .kt-menu__heading,
+		> .kt-menu__link {
+			@include kt-attr(background-color, kt-get($item, link, self, bg-color, open));
+
+			// menu item link's text part
+			.kt-menu__link-text {
+				@include kt-attr(color, kt-get($item, link, text, font-color, open));
+			}
+
+			// menu item link's icon part
+			.kt-menu__link-icon {
+				@include kt-attr(color, kt-get($item, link, icon, font-color, open));
+
+				// Due-tone icon
+				svg {
+					@include kt-svg-icon-color(kt-get($item, link, icon, font-color, open));
+				}
+			}
+
+			// menu item link's bullet
+			.kt-menu__link-bullet {
+				&.kt-menu__link-bullet--dot {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, dot, bg-color, open));
+					}
+				}
+
+				&.kt-menu__link-bullet--line {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, line, bg-color, open));
+					}
+				}
+			}
+
+			// menu item link's arrow part
+			.kt-menu__ver-arrow {
+				@include kt-attr(color, kt-get($item, link, arrow, font-color, open));
+			}
+		}
+	}
+
+	// item link open state
+	&.kt-menu__item--here {
+		transition: background-color 0.3s;
+		@include kt-attr(background-color, kt-get($item, self, bg-color, here));
+
+		> .kt-menu__heading,
+		> .kt-menu__link {
+			@include kt-attr(background-color, kt-get($item, link, self, bg-color, here));
+
+			// menu item link's text part
+			.kt-menu__link-text {
+				@include kt-attr(color, kt-get($item, link, text, font-color, here));
+			}
+
+			// menu item link's icon part
+			.kt-menu__link-icon {
+				@include kt-attr(color, kt-get($item, link, icon, font-color, here));
+
+				// Due-tone icon
+				svg {
+					@include kt-svg-icon-color(kt-get($item, link, icon, font-color, here));
+				}
+			}
+
+			// menu item link's bullet
+			.kt-menu__link-bullet {
+				&.kt-menu__link-bullet--dot {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, dot, bg-color, here));
+					}
+				}
+
+				&.kt-menu__link-bullet--line {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, line, bg-color, here));
+					}
+				}
+			}
+
+			// menu item link's arrow part
+			.kt-menu__ver-arrow {
+				@include kt-attr(color, kt-get($item, link, arrow, font-color, here));
+			}
+		}
+	}
+
+	// item link active state
+	&.kt-menu__item--active {
+		transition: background-color 0.3s;
+		@include kt-attr(background-color, kt-get($item, self, bg-color, active));
+
+		> .kt-menu__heading,
+		> .kt-menu__link {
+			@include kt-attr(background-color, kt-get($item, link, self, bg-color, active));
+
+			// menu item link's text part
+			.kt-menu__link-text {
+				@include kt-attr(color, kt-get($item, link, text, font-color, active));
+			}
+
+			// menu item link's icon part
+			.kt-menu__link-icon {
+				@include kt-attr(color, kt-get($item, link, icon, font-color, active));
+
+				// Due-tone icon
+				svg {
+					@include kt-svg-icon-color(kt-get($item, link, icon, font-color, active));
+				}
+			}
+
+			// menu item link's bullet
+			.kt-menu__link-bullet {
+				&.kt-menu__link-bullet--dot {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, dot, bg-color, active));
+					}
+				}
+
+				&.kt-menu__link-bullet--line {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, line, bg-color, active));
+					}
+				}
+			}
+
+			// menu item link's arrow part
+			.kt-menu__ver-arrow {
+				@include kt-attr(color, kt-get($item, link, arrow, font-color, active));
+			}
+		}
+	}
+
+	// item link hover state
+	&:not(.kt-menu__item--parent):not(.kt-menu__item--open):not(.kt-menu__item--here):not(.kt-menu__item--active):hover {
+		transition: background-color 0.3s;
+		@include kt-attr(background-color, kt-get($item, self, bg-color, hover));
+
+		> .kt-menu__heading,
+		> .kt-menu__link {
+			@include kt-attr(background-color, kt-get($item, link, self, bg-color, hover));
+
+			// menu item link's text part
+			.kt-menu__link-text {
+				@include kt-attr(color, kt-get($item, link, text, font-color, hover));
+			}
+
+			// menu item link's icon part
+			.kt-menu__link-icon {
+				@include kt-attr(color, kt-get($item, link, icon, font-color, hover));
+
+				// Due-tone icon
+				svg {
+					@include kt-svg-icon-color(kt-get($item, link, icon, font-color, hover));
+				}
+			}
+
+			// menu item link's bullet
+			.kt-menu__link-bullet {
+				&.kt-menu__link-bullet--dot {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, dot, bg-color, hover));
+					}
+				}
+
+				&.kt-menu__link-bullet--line {
+					> span {
+						@include kt-attr(background-color, kt-get($item, link, bullet, line, bg-color, hover));
+					}
+				}
+			}
+
+			// menu item link's arrow part
+			.kt-menu__ver-arrow {
+				@include kt-attr(color, kt-get($item, link, arrow, font-color, hover));
+			}
+		}
+	}
+}
+
+// Section
+@mixin kt-menu-ver-section-base($section) {
+	margin: kt-get($section, self, margin);
+	height: kt-get($section, self, height);
+
+	.kt-menu__section-text {
+		font-size: kt-get($section, text, font-size);
+		font-weight: kt-get($section, text, font-weight);
+		text-transform: kt-get($section, text, font-transform);
+		letter-spacing: kt-get($section, text, letter-spacing);
+	}
+
+	@if kt-has($section, icon) {
+		.kt-menu__section-icon {
+			padding: kt-get($section, icon, padding);
+		}
+	}
+}
+
+@mixin kt-menu-ver-section-skin($section) {
+	.kt-menu__section-text {
+		@include kt-attr(color, kt-get($section, text, font-color));
+	}
+
+	@if kt-has($section, icon) {
+		.kt-menu__section-icon {
+			@include kt-attr(color, kt-get($section, icon, font-color));
+		}
+	}
+}
+
+// Separator
+@mixin kt-menu-ver-separator-base($separator) {
+	margin: kt-get($separator, margin);
+
+	.kt-menu__separator--marginles {
+		margin: 0;
+	}
+}
+
+@mixin kt-menu-ver-separator-skin($separator) {
+	@include kt-attr(border-bottom, kt-get($separator, border));
+}
+
+// Minimize Parent Item
+@mixin kt-menu-ver-minimize-parent-item-base($item) {
+	// item
+	margin: kt-get($item, self, margin);
+
+	// item link and heading
+	> .kt-menu__link {
+		height: kt-get($item, link, self, height);
+		padding: kt-get($item, link, self, padding);
+
+		// menu item link's text part
+		.kt-menu__link-text {
+			font-weight: kt-get($item, link, text, font-weight);
+			font-size: kt-get($item, link, text, font-size);
+			text-transform: kt-get($item, link, text, font-transform);
+			cursor: text !important;
+		}
+
+		// menu item link's icon part
+		.kt-menu__link-badge {
+			padding: kt-get($item, link, badge, padding);
+			text-align: kt-get($item, link, badge, align);
+		}
+	}
+}
+
+@mixin kt-menu-ver-minimize-parent-item-skin($item) {
+	// item
+	@include kt-attr(background-color, kt-get($item, self, bg-color, default));
+
+	// item link and heading
+	> .kt-menu__link {
+		// menu item link's text part
+		> .kt-menu__link-text {
+			@include kt-attr(color, kt-get($item, link, text, font-color, default));
+		}
+	}
+}
+
+// Base
+@mixin kt-menu-ver-base($base-config, $layout) {
+	.#{kt-get($base-config, class)} {
+		// menu nav
+		.kt-menu__nav {
+			margin: 0;
+			list-style: none;
+			padding: kt-get($layout, default, self, padding);
+
+			// Base markup
+			.kt-menu__scroll {
+				position: relative;
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+			}
+
+			.kt-menu__subnav {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				padding: 0;
+				margin: 0;
+				list-style: none !important;
+			}
+
+			// general submenu
+			.kt-menu__inner,
+			.kt-menu__submenu {
+				display: none;
+				float: none;
+				margin: 0;
+				padding: 0;
+
+				@if kt-get($base-config, mode) == "tablet-and-mobile" or kt-get($base-config, mode) == "mobile" {
+					width: auto !important;
+				}
+
+				// Content
+				.kt-menu__content {
+					padding: 0;
+					margin: 0;
+
+					> .kt-menu__item {
+						padding: 0;
+						margin: 0;
+						list-style: none;
+
+						&.kt-menu--no-heading {
+							> .kt-menu__inner {
+								display: flex;
+
+								> li > .kt-menu__link {
+	   								margin: 0;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// general item
+			.kt-menu__item {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				float: none;
+				padding: 0;
+
+				// item link and heading
+				> .kt-menu__heading,
+				> .kt-menu__link {
+					display: flex;
+					flex-grow: 1;
+					align-items: stretch;
+					margin: 0;
+					padding: 0;
+					text-decoration: none;
+					position: relative;
+					outline: none;
+
+					&:hover {
+						text-decoration: none;
+						cursor: pointer;
+					}
+
+					.kt-menu__link-text {
+						display: flex;
+						align-items: center;
+						flex-grow: 1;
+						padding: 0;
+					}
+
+					.kt-menu__link-badge {
+						display: flex;
+						align-items: center;
+						white-space: nowrap;
+					}
+
+					// menu item link's icon part
+					.kt-menu__link-icon {
+						display: flex;
+						align-items: center;
+						line-height: 0;
+					}
+
+					// menu item link's icon part
+					.kt-menu__link-bullet {
+						display: flex;
+						align-items: center;
+						line-height: 0;
+					}
+
+					// menu item link's arrow part
+					.kt-menu__ver-arrow {
+						display: flex;
+						align-items: center;
+						justify-content: flex-end;
+						line-height: 0;
+
+						&:before {
+							-webkit-transform: translate3d(0,0,0);
+						}
+					}
+
+					.kt-menu__hor-arrow {
+						display: none;
+					}
+				}
+
+				// item link open state
+				&.kt-menu__item--open {
+					> .kt-menu__heading,
+					> .kt-menu__link {
+						// menu item link's arrow part
+						> .kt-menu__ver-arrow {
+							&:before {
+								transform: rotateZ(90deg)#{'/*rtl:ignore*/'};
+
+								[direction="rtl"] & {
+									transform: rotateZ(-90deg)#{'/*rtl:ignore*/'};
+								}
+							}
+						}
+					}
+
+					> .kt-menu__submenu,
+					> .kt-menu__inner {
+						display: flex;
+						flex-grow: 1;
+						flex-direction: column;
+					}
+				}
+
+				// submenu items
+				.kt-menu__submenu {
+					// submenu item
+					.kt-menu__item {
+						// item link and heading
+						> .kt-menu__heading,
+						> .kt-menu__link {
+							padding: kt-get($layout, default, item, submenu, item, link, padding);
+						}
+					}
+
+					// parent item used for minimized menu's dropdown submenus
+					.kt-menu__item--parent {
+						display: none;
+					}
+				}
+			}
+
+			// general section
+			.kt-menu__section {
+				display: flex;
+				padding: kt-get($layout, default, section, self, padding);
+
+				&.kt-menu__section--first {
+					margin-top: 0 !important;
+				}
+
+				.kt-menu__section-text {
+					display:flex;
+					margin: 0;
+					padding: 0;
+					align-items: center;
+				}
+
+				.kt-menu__section-icon {
+					display: none;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+
+			// general separator
+			.kt-menu__separator {
+				height: 0;
+				overflow: hidden;
+
+				&.kt-menu__separator--marginles {
+					margin: 0;
+				}
+			}
+
+			// Custom markup
+			// menu item
+			> .kt-menu__item {
+				position: relative;
+				@include kt-menu-ver-item-base(kt-get($layout, default, item));
+
+				.kt-menu__submenu {
+					.kt-menu__subnav {
+						@include kt-attr(margin, kt-get($layout, default, item, submenu, self, margin));
+						@include kt-attr(padding, kt-get($layout, default, item, submenu, self, padding));
+					}
+
+					// menu item
+					.kt-menu__item {
+						@include kt-menu-ver-item-base(kt-get($layout, default, item, submenu, item));
+					}
+
+					// menu section
+					.kt-menu__section {
+						@include kt-menu-ver-section-base(kt-get($layout, default, item, submenu, section));
+					}
+
+					// menu item separator
+					.kt-menu__separator {
+						@include kt-menu-ver-separator-base(kt-get($layout, default, item, submenu, separator));
+					}
+				}
+			}
+
+			// menu section
+			> .kt-menu__section {
+				@include kt-menu-ver-section-base(kt-get($layout, default, section));
+			}
+
+			// menu item separator
+			> .kt-menu__separator {
+				@include kt-menu-ver-separator-base(kt-get($layout, default, separator));
+			}
+
+			// submenu link paddings and indentions
+			// item
+			$item-link-padding: kt-get($layout, default, item, link, self, padding);
+			$item-section-padding: kt-get($layout, default, section, self, padding);
+
+			// item submenu
+			$item-submenu-padding-left: kt-get($layout, default, item, submenu, item, link, self, padding-x);
+
+			$item-submenu-indent: kt-get($layout, default, item, submenu, self, indent);
+			$item-submenu-link-padding: kt-get($layout, default, item, submenu, item, link, self, padding);
+
+			$item-submenu-section-indent: kt-get($layout, default, item, submenu, section, self, indent);
+			$item-submenu-section-padding: kt-get($layout, default, item, submenu, section, padding);
+
+			> .kt-menu__item {
+				> .kt-menu__link {
+					padding: $item-link-padding;
+				}
+
+				> .kt-menu__submenu {
+					.kt-menu__subnav {
+						// item link paddings
+						.kt-menu__content {
+							.kt-menu__heading {
+								padding: $item-submenu-link-padding;
+								padding-left: $item-submenu-padding-left + (1 * $item-submenu-section-indent);
+							}
+
+							.kt-menu__inner {
+								padding: 0;
+								margin: 0;
+
+								.kt-menu__link {
+									padding: $item-submenu-link-padding;
+									padding-left: $item-submenu-padding-left + (2 * $item-submenu-section-indent);
+								}
+							}
+						}
+
+						> .kt-menu__item {
+							> .kt-menu__link {
+								padding: $item-submenu-link-padding;
+								padding-left: $item-submenu-padding-left + (1 * $item-submenu-indent);
+							}
+
+							> .kt-menu__submenu {
+								padding: 0;
+
+								.kt-menu__subnav {
+									padding: 0;
+
+									> .kt-menu__item {
+										> .kt-menu__link {
+											padding: $item-submenu-link-padding;
+											padding-left: $item-submenu-padding-left + (2 * $item-submenu-indent);
+										}
+
+										> .kt-menu__submenu {
+											padding: 0;
+
+											.kt-menu__subnav {
+												> .kt-menu__item {
+													> .kt-menu__link {
+														padding: $item-submenu-link-padding;
+														padding-left: $item-submenu-padding-left + (3 * $item-submenu-indent);
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+
+						// section paddings
+						> .kt-menu__section {
+							padding: $item-submenu-section-padding;
+							padding-left:$item-submenu-padding-left + (1 * $item-submenu-section-indent);
+						}
+
+						> .kt-menu__item {
+							> .kt-menu__submenu {
+								padding: 0;
+								.kt-menu__subnav {
+									> .kt-menu__section {
+										padding: $item-submenu-section-padding;
+										padding-left: $item-submenu-padding-left + (2 * $item-submenu-section-indent);
+									}
+
+									> .kt-menu__item {
+										> .kt-menu__submenu {
+											padding: 0;
+											.kt-menu__subnav {
+												> .kt-menu__section {
+													padding: $item-submenu-section-padding;
+													padding-left:$item-submenu-padding-left + (3 * $item-submenu-section-indent);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin kt-menu-ver-skin($base-config, $layout) {
+	.#{kt-get($base-config, class)} {
+		@include kt-attr(background-color, kt-get($layout, default, self, bg-color));
+
+		.kt-menu__nav {
+			// menu item
+			> .kt-menu__item {
+				@include kt-menu-ver-item-skin(kt-get($layout, default, item));
+
+				> .kt-menu__arrow {
+					color: kt-get($layout, default, self, bg-color);
+				}
+			}
+
+			// menu section
+			> .kt-menu__section {
+				@include kt-menu-ver-section-skin(kt-get($layout, default, section));
+			}
+
+			// menu item separator
+			> .kt-menu__separator {
+				@include kt-menu-ver-separator-skin(kt-get($layout, default, separator));
+			}
+
+			// menu item
+			> .kt-menu__item {
+				.kt-menu__submenu {
+					.kt-menu__subnav {
+						@include kt-attr(background-color, kt-get($layout, default, item, submenu, self, bg-color, default));
+					}
+					// menu item
+					.kt-menu__item {
+						@include kt-menu-ver-item-skin(kt-get($layout, default, item, submenu, item));
+					}
+
+					// menu section
+					.kt-menu__section {
+						@include kt-menu-ver-section-skin(kt-get($layout, default, item, submenu, section));
+					}
+
+					// menu item separator
+					.kt-menu__separator {
+						@include kt-menu-ver-separator-skin(kt-get($layout, default, item, submenu, separator));
+					}
+				}
+			}
+		}
+	}
+}
+
+// Dropdown
+@mixin kt-menu-ver-dropdown-base($base-config, $layout) {
+	// base dropdown submenu
+	.#{kt-get($base-config, parent-class)}--minimize .#{kt-get($base-config, class)},
+	.#{kt-get($base-config, class)}.#{kt-get($base-config, class)}--dropdown {
+		.kt-menu__nav {
+			.kt-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+				> .kt-menu__link {
+					> .kt-menu__ver-arrow {
+						&:before {
+							@include kt-fix-animation-lags();
+						}
+					}
+				}
+
+				> .kt-menu__submenu {
+					display: none !important;
+					@include kt-fix-animation-lags();
+				}
+
+				&.kt-menu__item--hover {
+					position: relative;
+
+					> .kt-menu__submenu {
+						top: kt-get($layout, dropdown, item, submenu, self, offset, inner, default);
+						position: absolute;
+						z-index: kt-get($layout, dropdown, item, self, zindex);
+						display: flex !important;
+						width: kt-get($layout, dropdown, item, submenu, self, width);
+						margin-left: kt-get($layout, dropdown, item, submenu, self, width);
+
+						@include kt-rounded {
+							border-radius: kt-get($layout, dropdown, item, submenu, self, border-radius);
+						}
+
+						&.kt-menu__submenu--up {
+							bottom: 0;
+							top: auto;
+						}
+
+					 	animation:#{kt-get($base-config, class)}-submenu-fade-in .3s ease 1, #{kt-get($base-config, class)}-submenu-move-up .3s ease-out 1;
+
+					 	&.kt-menu__submenu--up {
+					 		top: auto;
+					 		bottom: kt-get($layout, dropdown, item, submenu, self, offset, inner, up);
+					 		animation: #{kt-get($base-config, class)}-submenu-fade-in .3s ease 1, #{kt-get($base-config, class)}-submenu-move-down .3s ease-out 1;
+
+	                    	@include kt-hack-ie {
+	                        	animation: none;
+	                    	}
+					 	}
+
+						.kt-menu__subnav {
+							padding: kt-get($layout, dropdown, item, submenu, self, padding);
+
+							> .kt-menu__item {
+								.kt-menu__link {
+									justify-content: flex-start;
+									padding: kt-get($layout, dropdown, item, submenu, item, link, self, padding);
+
+									.kt-menu__link-title {
+										display: flex;
+									}
+
+									.kt-menu_link-text {
+										@include kt-fix-animation-lags();
+									}
+
+									.kt-menu__link-icon {
+										display: flex;
+									}
+
+									.kt-menu__link-bullet {
+										display: flex;
+									}
+
+									.kt-menu__link-badge {
+										display: flex;
+									}
+
+									.kt-menu__ver-arrow {
+										display: flex;
+									}
+								}
+
+								.kt-menu__submenu {
+									.kt-menu__subnav {
+										padding: kt-get($layout, dropdown, item, submenu, self, padding);
+
+										> .kt-menu__item {
+											> .kt-menu__link {
+												padding: kt-get($layout, dropdown, item, submenu, item, link, self, padding);
+											}
+
+											.kt-menu__submenu {
+												.kt-menu__subnav {
+													padding: kt-get($layout, dropdown, item, submenu, self, padding);
+
+													> .kt-menu__item {
+														> .kt-menu__link {
+															padding: kt-get($layout, dropdown, item, submenu, item, link, self, padding);
+														}
+													}
+												}
+											}
+										}
+
+										> .kt-menu__section {
+											padding: kt-get($layout, dropdown, item, submenu, section, self, padding);
+										}
+									}
+								}
+
+								@include kt-menu-ver-item-base(kt-get($layout, dropdown, item, submenu, item));
+							}
+
+							> .kt-menu__section {
+								@include kt-menu-ver-section-base( kt-get($layout, dropdown, item, submenu, section) );
+							}
+
+							> .kt-menu__separator {
+								@include kt-menu-ver-separator-base( kt-get($layout, dropdown, item, submenu, separator) );
+							}
+						}
+					}
+				}
+			}
+
+			> .kt-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+				&.kt-menu__item--hover {
+					> .kt-menu__submenu {
+						margin-left: kt-get($layout, dropdown, item, submenu, self, parent-width);
+						top: kt-get($layout, dropdown, item, submenu, self, offset, root, default);
+
+						&.kt-menu__submenu--up {
+							bottom: kt-get($layout, dropdown, item, submenu, self, offset, root, up);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin kt-menu-ver-dropdown-skin($base-config, $layout) {
+	.#{kt-get($base-config, parent-class)}--minimize .#{kt-get($base-config, class)},
+	.#{kt-get($base-config, class)}.#{kt-get($base-config, class)}--dropdown {
+		.kt-menu__nav {
+			.kt-menu__item:not([data-ktmenu-submenu-mode=accordion]) {
+				&.kt-menu__item--hover {
+					> .kt-menu__submenu {
+						background-color: kt-get($layout, dropdown, item, submenu, self, bg-color);
+						box-shadow: kt-get($layout, dropdown, item, submenu, self, box-shadow);
+
+						.kt-menu__subnav {
+							.kt-menu__item {
+								@include kt-menu-ver-item-skin( kt-get($layout, dropdown, item, submenu, item) );
+							}
+
+							.kt-menu__section {
+								@include kt-menu-ver-section-skin( kt-get($layout, dropdown, item, submenu, section) );
+							}
+
+							.kt-menu__separator {
+								@include kt-menu-ver-separator-skin( kt-get($layout, dropdown, item, submenu, separator) );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Minimize
+@mixin kt-menu-ver-minimize-base($base-config, $layout) {
+	.#{kt-get($base-config, class)} {
+		.kt-menu__nav {
+			padding: kt-get($layout, minimize, self, padding);
+
+			> .kt-menu__item {
+				> .kt-menu__link {
+					.kt-menu__link-icon {
+						width: 100%;
+					}
+
+					.kt-menu__link-bullet {
+						display: none;
+					}
+
+					.kt-menu__link-text {
+						display: none;
+					}
+
+					.kt-menu__link-badge {
+						padding: 0;
+						position: relative;
+						right: kt-get($layout, minimize, item, link, badge, right);
+
+						.kt-badge {
+							text-indent: -9999px;
+							position: relative;
+							padding: 0;
+							min-width: kt-get($layout, minimize, item, link, badge, size);
+							width: kt-get($layout, minimize, item, link, badge, size);
+							min-height: kt-get($layout, minimize, item, link, badge, size);
+							height: kt-get($layout, minimize, item, link, badge, size);
+						}
+					}
+
+					.kt-menu__ver-arrow {
+						display: none;
+					}
+				}
+
+				> .kt-menu__submenu {
+					display: none !important;
+				}
+
+				&.kt-menu__item--here {
+					> .kt-menu__arrow {
+						display: inline-block;
+					}
+				}
+
+				&.kt-menu__item--hover {
+					position: relative;
+					z-index: kt-get($layout, minimize, item, self, zindex);
+					width: kt-get($layout, minimize, item, self, width);
+
+					&.kt-menu__item--open {
+						background: transparent;
+					}
+
+					> .kt-menu__link {
+						width: kt-get($layout, minimize, self, width);
+
+						.kt-menu__link-title {
+							display: none;
+						}
+					}
+
+					> .kt-menu__submenu {
+						top: 0;
+						bottom: auto;
+						display: flex !important;
+						margin-left: kt-get($layout, minimize, item, submenu, self, margin-left) !important;
+
+						@if kt-has($layout, minimize, item, submenu) {
+							.kt-menu__subnav {
+								> .kt-menu__item.kt-menu__item--parent {
+									display: flex;
+									@include kt-menu-ver-minimize-parent-item-base( kt-get($layout, minimize, item, submenu, parent-item) );
+
+									& + .kt-menu__item {
+										margin-top: kt-get($layout, minimize, item, submenu, parent-item, link, self, margin-bottom);
+									}
+								}
+							}
+						}
+					}
+
+					> .kt-menu__arrow {
+						display: none;
+					}
+				}
+			}
+
+			> .kt-menu__section {
+				justify-content: center;
+
+				.kt-menu__section-text {
+					display: none;
+				}
+
+				.kt-menu__section-icon {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: kt-get($layout, minimize, section, icon, padding);
+					animation: kt-animate-fade-in .7s;
+				}
+			}
+		}
+	}
+}
+
+@mixin kt-menu-ver-minimize-skin($base-config, $layout) {
+	.#{kt-get($base-config, class)} {
+		// base vertical menu
+		.kt-menu__nav {
+			> .kt-menu__item {
+				background: transparent;
+
+				> .kt-menu__link {
+					background-color: kt-get($layout, minimize, item, link, self, bg-color, default);
+
+					> .kt-menu__link-icon {
+						color: kt-get($layout, minimize, item, link, icon, font-color, default);
+					}
+				}
+
+				&.kt-menu__item--hover,
+				&.kt-menu__item--open {
+					background: transparent !important;
+
+					> .kt-menu__link {
+						background-color: kt-get($layout, minimize, item, link, self, bg-color, open);
+
+						> .kt-menu__link-icon {
+							@include kt-attr(color, kt-get($layout, minimize, item, link, icon, font-color, open));
+						}
+					}
+				}
+
+				&.kt-menu__item--here,
+				&.kt-menu__item--active {
+					background: transparent !important;
+
+					> .kt-menu__link {
+						background-color: kt-get($layout, minimize, item, link, self, bg-color, active);
+
+						> .kt-menu__link-icon {
+							@include kt-attr(color, kt-get($layout, minimize, item, link, icon, font-color, active));
+						}
+					}
+				}
+
+				&:hover {
+					background: transparent;
+
+					> .kt-menu__link {
+						background-color: kt-get($layout, minimize, item, link, self, bg-color, hover);
+
+						> .kt-menu__link-icon {
+							@include kt-attr(color, kt-get($layout, minimize, item, link, icon, font-color, hover), !important);
+						}
+					}
+				}
+
+				@if kt-has($layout, minimize, item, submenu) {
+					&.kt-menu__item--hover > .kt-menu__submenu {
+						.kt-menu__subnav > .kt-menu__item.kt-menu__item--parent {
+							display: flex;
+							@include kt-menu-ver-minimize-parent-item-skin( kt-get($layout, minimize, item, submenu, parent-item) );
+						}
+					}
+				}
+			}
+
+			> .kt-menu__section {
+				.kt-menu__section-icon {
+					color: kt-get($layout, minimize, section, icon, font-color);
+				}
+			}
+		}
+	}
+}
+
+// Build
+// Custom Skin
+@mixin kt-menu-ver-build-skin($config, $skin) {
+	$skin-config: ();
+
+	@if ($skin == default) {
+		$skin-config: kt-get($config, build, skin);
+	} @else {
+		$skin-config: kt-get($config, build, skins, $skin);
+	}
+
+	@if (kt-get($config, base, mode) == general) {
+		@include kt-menu-ver-skin((class: kt-get($config, base, class)), $skin-config);
+	} @else if (kt-get($config, base, mode) == tablet-and-mobile) {
+		@include kt-tablet-and-mobile {
+			@include kt-menu-ver-skin((class: kt-get($config, base, class)), $skin-config);
+		}
+	} @else if (kt-get($config, base, mode) == mobile) {
+		@include kt-mobile {
+			@include kt-menu-ver-skin((class: kt-get($config, base, class)), $skin-config);
+		}
+	}
+
+	@if (kt-has($skin-config, minimize)) {
+		@include kt-desktop {
+			.#{kt-get($config, base, parent-class)}--minimize {
+				@include kt-menu-ver-minimize-skin((class: kt-get($config, base, class), parent-class: kt-get($config, base, parent-class)), $skin-config);
+			}
+		}
+	}
+
+	@if (kt-has($skin-config, dropdown)) {
+		@include kt-desktop {
+			@include kt-menu-ver-dropdown-skin((class: kt-get($config, base, class), parent-class: kt-get($config, base, parent-class)), $skin-config);
+		}
+	}
+}
+
+// Build Layout
+@mixin kt-menu-ver-build-layout( $config ) {
+	// Base menu
+	@if (kt-get($config, base, mode) == general) {
+		@include kt-menu-ver-base( kt-get($config, base), kt-get($config, build, layout) );
+	} @else if (kt-get($config, base, mode) == tablet-and-mobile) {
+		@include kt-tablet-and-mobile {
+			@include kt-menu-ver-base( kt-get($config, base), kt-get($config, build, layout) );
+		}
+	} @else if (kt-get($config, base, mode) == mobile) {
+		@include kt-mobile {
+			@include kt-menu-ver-base( kt-get($config, base), kt-get($config, build, layout) );
+		}
+	}
+
+	// Base dropdown menu submenu mode
+	@if (kt-has($config, build, layout, dropdown)) {
+		// Desktop only dropdown vertical menu
+		@include kt-desktop {
+			@include kt-menu-ver-dropdown-base( kt-get($config, base), kt-get($config, build, layout) );
+		}
+
+		// Dropdown Submenu Animations
+		@keyframes #{kt-get($config, base, class)}-submenu-fade-out {
+		    from   { opacity: 1; }
+		    to { opacity: 0; }
+		}
+
+		@keyframes #{kt-get($config, base, class)}-submenu-fade-in {
+		    from   { opacity: 0; }
+		    to { opacity: 1; }
+		}
+
+		@keyframes #{kt-get($config, base, class)}-submenu-move-up {
+		    from   { margin-top: kt-get($config, build, layout, dropdown, item, submenu, self, animation, offset); }
+		    to { margin-top: 0; }
+		}
+
+		@keyframes #{kt-get($config, base, class)}-submenu-move-down {
+		    from   { margin-bottom: kt-get($config, build, layout, dropdown, item, submenu, self, animation, offset); }
+		    to { margin-bottom: 0; }
+		}
+	}
+
+	// Base minimize menu mode
+	@if (kt-has($config, build, layout, minimize)) {
+		@include kt-desktop {
+			.#{kt-get($config, base, parent-class)}--minimize {
+				@include kt-menu-ver-minimize-base( kt-get($config, base), kt-get($config, build, layout) );
+			}
+		}
+	}
+}

@@ -1,0 +1,55 @@
+//
+// Grid Customization
+//
+
+
+
+.row {
+	// Paddingless row
+	&.row-no-padding {
+    	margin-left: 0;
+    	margin-right: 0;
+
+    	> div {
+        	padding-left: 0;
+        	padding-right: 0;
+    	}
+    }
+
+    // Full height row
+    &.row-full-height {
+    	height: 100%;
+    }
+
+    // Stretch column
+    .col-stretch {
+    	display: flex;
+		align-items: stretch;
+    } 
+
+    // row separator
+    &[class*="row-col-separator-"] {
+        > div {
+            border-bottom: 1px solid kt-base-color(grey, 2);
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    @each $name, $value in $kt-media-breakpoints {
+        @include kt-media-above($value) {
+            &.row-col-separator-#{$name} {
+                > div {
+                    border-bottom:0;
+                    border-right: 1px solid kt-base-color(grey, 2);
+
+                    &:last-child {
+                        border-right: 0;
+                    }
+                }    
+            }
+        }        
+    }    
+}

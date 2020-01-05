@@ -1,0 +1,884 @@
+//
+// KTDatatable
+//
+
+
+
+
+// Base
+@mixin kt-datatable-base() {
+	// Pagination
+	$page-size: 2.25rem;
+	$table-space: kt-get($kt-portlet, space, desktop);
+	$table-space-mobile: kt-get($kt-portlet, space, mobile);
+
+	.kt-datatable {
+		display: none;
+	}
+
+	.kt-datatable.kt-datatable--default {
+		display: block;
+		margin-bottom: $table-space;
+
+		// Base
+		> .kt-datatable__table {
+			border-collapse: collapse;
+			overflow: hidden;
+			display: none;
+			width: 100%;
+
+			> .kt-datatable__head,
+			> .kt-datatable__body,
+			> .kt-datatable__foot {
+				visibility: hidden;
+				display: block;
+
+				.kt-datatable__row {
+					width: 100%;
+
+					> .kt-datatable__cell {
+						// Row cell base
+						vertical-align: middle;
+						padding: 10px;
+						font-size: 1rem;
+
+						&:first-child {
+							padding-left: $table-space;
+						}
+
+						&:last-child {
+							padding-right: $table-space;
+						}
+
+						i {
+							//font-size: 1.4rem;
+						}
+
+						&.kt-datatable__cell--left {
+							text-align: left;
+							> span {
+								text-align: left;
+							}
+						}
+
+						&.kt-datatable__cell--right {
+							text-align: right;
+							> span {
+								text-align: right;
+								> i {
+									right: 0;
+								}
+							}
+						}
+
+						&.kt-datatable__cell--center {
+							text-align: center;
+							> span {
+								text-align: center;
+							}
+						}
+
+						&.kt-datatable__cell--sort {
+							cursor: pointer;
+
+							i {
+								font-size: 0.6rem;
+							}
+						}
+
+						&.kt-datatable__cell--resizing {
+							cursor: col-resize;
+						}
+
+						> span {
+							display: block;
+							overflow: hidden;
+							text-overflow: ellipsis;
+						}
+
+						// Row checkbox
+						&.kt-datatable__cell--check {
+							text-align: center;
+
+							> span {
+								overflow: visible;
+
+								> .kt-checkbox {
+									top: 2px;
+									padding: 0;
+									margin: 0 0 0 0;
+								}
+							}
+						}
+
+						// Row details 
+						&.kt-datatable__toggle-detail {
+							> span {
+								width: 12px;
+							}
+							> .kt-datatable__toggle-detail {
+								display: inline-block;
+								text-align: right;
+
+								> i {
+									font-size: 1.4rem;
+									width: 12px;
+								}
+							}
+						}
+
+						// Cell dropdown menu
+						.dropdown {
+							display: inline-block;
+
+							.dropdown-menu {
+								margin-top: 0.5rem;
+							}
+
+							&.dropup {
+								.dropdown-menu {
+									margin-top: auto;
+									margin-bottom: 0.5rem;
+								}
+							}
+
+							.dropdown-menu.dropdown-menu-right {
+								margin-right: -0.8rem;
+								/*rtl:ignore*/
+								margin-left: 65px;
+							}
+
+							.dropdown-menu.dropdown-menu-left {
+								margin-left: -10rem;
+							}
+						}
+					}
+				}
+
+				> .kt-datatable__lock {
+					border: 0;
+				}
+			}
+
+			> .kt-datatable__head,
+			> .kt-datatable__foot {
+				.kt-datatable__row {
+					> .kt-datatable__cell {
+						> span {
+							font-weight: 500;
+							vertical-align: middle;
+						}
+					}
+				}
+			}
+
+			> .kt-datatable__head {
+				.kt-datatable__row {
+					> .kt-datatable__cell {
+						padding: 16px 10px;
+
+						> span {
+							> i {
+								display: inline-block;
+								position: relative;
+								right: -10px;
+								line-height: 0;
+								vertical-align: middle;
+								font-size: 1.1rem;
+							}
+						}
+					}
+				}
+			}
+
+			> .kt-datatable__body {
+				&.ps {
+					padding-bottom: 0;
+				}
+
+				.kt-datatable__row {
+					> .kt-datatable__cell {
+						font-weight: regular;
+
+						&.kt-datatable__cell--check {
+							> span {
+								> .kt-checkbox {
+									top: 1px;
+								}
+							}
+						}
+					}
+				}
+
+				.kt-datatable__row-detail {
+					display: block;
+					.kt-datatable__detail {
+						display: block;
+						padding: 0 ($table-space + 35px);
+
+						.kt-datatable__row {
+							display: table-row;
+
+							> .kt-datatable__cell {
+								padding: 8px 12px;
+								text-align: left;
+								vertical-align: top;
+
+								> span {
+									width: auto !important;
+								}
+
+								&:first-child {
+									font-weight: 500;
+								}
+
+								&:last-child {
+									font-weight: regular;
+									padding-left: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Error message
+		&.kt-datatable--error {
+			.kt-datatable__body {
+				padding: 30px;
+				text-align: center;
+			}
+		}
+
+		// Lock state
+		&.kt-datatable--lock {
+			> .kt-datatable__table {
+				> .kt-datatable__head,
+				> .kt-datatable__body,
+				> .kt-datatable__foot {
+					> .kt-datatable__lock {
+						display: inline-block;
+						position: relative;
+						vertical-align: top;
+						overflow: hidden;
+					}
+				}
+			}
+		}
+
+		// Loaded state
+		&.kt-datatable--loaded {
+			display: block;
+
+			> .kt-datatable__table {
+				display: block;
+
+				> .kt-datatable__head,
+				> .kt-datatable__body,
+				> .kt-datatable__foot {
+					visibility: visible;
+					display: block;
+					position: relative;
+
+					.kt-datatable__row {
+						display: table;
+						table-layout: initial;
+
+						> .kt-datatable__cell {
+							//display: table-cell;
+						}
+					}
+				}
+			}
+		}
+
+		// Scrollable state
+		&.kt-datatable--scroll {
+			> .kt-datatable__table {
+				display: block;
+
+				> .kt-datatable__head,
+				> .kt-datatable__body,
+				> .kt-datatable__foot {
+				}
+
+				> .kt-datatable__head,
+				> .kt-datatable__foot {
+					overflow: hidden;
+
+					.kt-datatable__row {
+						position: relative;
+					}
+				}
+
+				> .kt-datatable__body {
+					overflow: hidden;
+				}
+			}
+		}
+
+		> .kt-datatable__pager {
+			margin: 0px;
+			padding: $table-space;
+			padding-bottom: 0;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+			&.kt-datatable__pager--top {
+				margin-bottom: 20px;
+			}
+
+			> .kt-datatable__pager-nav {
+				margin: 0;
+				padding: 0;
+				display: flex;
+
+				> li {
+					padding: 0;
+					margin-right: 5px;
+					display: inline-block;
+
+					&:last-child {
+						margin-right: 0;
+					}
+
+					> .kt-datatable__pager-link {
+						cursor: pointer;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						height: $page-size;
+						min-width: $page-size;	
+						padding: 0.5rem;
+						border-radius: 3px;
+
+						@include kt-not-rounded {
+							border-radius: 0;
+						}
+
+						position: relative;
+						font-size: 1rem;
+						line-height: 1rem;
+						font-weight: 500;
+
+						> i {
+							font-size: 0.6rem;
+							text-align: center;
+							display: inline-block;
+						}
+
+						&.kt-datatable__pager-link--more-prev,
+						&.kt-datatable__pager-link--more-next {
+							font-weight: 600;
+						}
+					}
+
+					> .kt-pager-input {
+						height: $page-size;
+						width: 3.5rem;
+						text-align: center;
+
+						@include kt-rounded {
+							border-radius: 3px !important;
+						}
+					}
+				}
+			}
+
+			> .kt-datatable__pager-info {
+				display: flex;
+				align-items: center;
+
+				.kt-datatable__pager-size {
+					margin-right: 10px;
+
+					.btn.dropdown-toggle {
+						//border-radius: 3px !important;
+						height: $page-size;
+						padding: 0.45rem 1rem;
+
+						@include kt-not-rounded {
+							border-radius: 0 !important;
+						}
+					}
+
+					.dropdown-menu.inner > li.selected > a span.check-mark {
+						margin-top: -0.6rem;
+					}
+				}
+			}
+		}
+
+		// Subtable
+		&.kt-datatable--subtable {
+			> .kt-datatable__table {
+				margin-bottom: 0;
+				
+				> .kt-datatable__head,
+				> .kt-datatable__body,
+				> .kt-datatable__foot {
+					.kt-datatable__row {
+						//width: 100%;
+					}
+
+					.kt-datatable__toggle-subtable {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						
+						> i {
+							line-height: 0;
+							font-size: 1.4rem;
+						}
+
+						&:hover {
+							text-decoration: none;
+						}
+					}
+
+					.kt-datatable__row-subtable {
+						display: table;
+						width: 100%;
+
+						> .kt-datatable__subtable {
+							padding: 20px;
+
+							> .kt-datatable {
+								> .kt-datatable__pager {
+									padding-top: 10px;
+									padding-bottom: 10px;
+								}
+							}							
+						}
+					}
+				}
+			}			
+		}
+	}
+
+	@include kt-mobile {
+		.kt-datatable.kt-datatable--default {
+			margin-bottom: $table-space-mobile;
+
+			> .kt-datatable__table {
+				> .kt-datatable__head,
+				> .kt-datatable__body,
+				> .kt-datatable__foot {
+					.kt-datatable__row {
+						> .kt-datatable__cell {
+							&:first-child {
+								padding-left: $table-space-mobile;
+							}
+
+							&:last-child {
+								padding-right: $table-space-mobile;
+							}
+						}
+					}
+				}
+			}
+
+			> .kt-datatable__pager {
+				margin: 0;
+				padding: $table-space-mobile $table-space-mobile $table-space-mobile/2 $table-space-mobile;
+
+				.kt-datatable__pager-nav,
+				.kt-datatable__pager-info {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
+
+// Skin
+@mixin kt-datatable-skin() {
+	.kt-datatable {
+		// Base color
+		$base_color: #f9fbfe;
+
+		// Scrollbar
+		$scrollbar_color: darken(kt-base-color(shape, 2), 3%);
+
+		// Table
+		$base_bg: #fff;
+
+		// Head
+		$head_cell_bg: transparent;
+		$head_cell_color: kt-base-color(label, 3);
+		$head_cell_sorted_color: kt-state-color(brand);
+		$head_cell_icon_color: kt-state-color(brand);
+
+		// Checkbox
+		$checkbox_bg: kt-base-color(shape, 1);
+		$checkbox_checked_bg: kt-base-color(shape, 2);
+
+		// Row colors
+		$row-border-color: kt-base-color(shape, 1);
+		$row-even: transparent;
+		$row-hover: transparent;
+		$row-active: kt-base-color(grey, 1);
+
+		// Body cell
+		$body_cell_font_color: kt-base-color(label, 3);
+
+		// Lock table shadow
+		$lock-shadow: 0px 0px 17px 5px rgba(113, 106, 202, 0.14);
+
+		// Subtable
+		$subtable_toggle_icon: kt-state-color(brand);
+		$subtable_expanded: $row-active;
+		$subtable_pager_pagel: $base-color;
+		$subtable_shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.1);
+
+		$detail_icon_color: kt-state-color(brand); //kt-base-color(shape, 2);
+	    $detail_icon_color_hover: kt-state-color(brand);
+
+		// Pagination colors
+		$page-default: kt-base-color(shape, 1);
+		$page-default-font: kt-base-color(shape, 3);
+		$page-hover: kt-state-color(brand);
+		$page-hover-font: kt-state-color(brand, inverse);
+		$page-active: kt-state-color(brand);
+		$page-active-font: kt-state-color(brand, inverse);
+
+		$page-info: kt-base-color(shape, 1);
+		$page-info-font: kt-base-color(shape, 3);
+		$page-info-hover: kt-state-color(brand);
+		$page-info-hover-font: kt-state-color(brand, inverse);
+
+		// Base Table
+		> .kt-datatable__table {
+			background-color: $base_bg;
+			//border-bottom: 1px solid $row-border-color;
+
+			// General
+			> .kt-datatable__head,
+			> .kt-datatable__body,
+			> .kt-datatable__foot {
+				> .kt-datatable__lock {
+					&.kt-datatable__lock--left {
+						z-index: 1;
+						box-shadow: $lock-shadow;
+					}
+
+					&.kt-datatable__lock--right {
+						box-shadow: $lock-shadow;
+					}
+
+					&.kt-datatable__lock--scroll {
+						position: relative;
+					}
+				}
+
+				.kt-datatable__row {
+					border-bottom: 1px solid $row-border-color;
+
+					> .kt-datatable__cell {
+						.kt-checkbox.kt-checkbox--solid > span {
+							background: $checkbox_bg;
+						}
+
+						.kt-checkbox.kt-checkbox--solid > input:checked ~ span {
+							background: $checkbox_checked_bg;
+						}
+					}
+				}
+			}
+
+			// Body
+			> .kt-datatable__body {
+				.kt-datatable__toggle-detail {
+					vertical-align: middle;
+					i {
+						transition: color 0.3s ease; 
+						color: $detail_icon_color;
+
+						&:before {
+							line-height: 0;
+							vertical-align: middle;
+						}
+					}
+
+					&:hover,
+					&.kt-datatable__toggle-detail--active {
+						i {
+							transition: color 0.3s ease;  
+							color: $detail_icon_color_hover; 
+						}
+					}
+				}
+
+				.kt-datatable__row-detail {
+					.kt-datatable__detail {
+						table {
+							border-left: 1px solid $row-border-color;
+							border-right: 1px solid $row-border-color;
+						}
+					}
+				}
+			}
+
+			// Head & Foot
+			> .kt-datatable__head,
+			> .kt-datatable__foot {
+				.kt-datatable__row {
+					> .kt-datatable__cell {
+						background: $head_cell_bg;
+
+						> span {
+							color: $head_cell_color;
+						}
+					}
+				}
+			}
+
+			// Head
+			> .kt-datatable__head {
+				.kt-datatable__row {
+					> .kt-datatable__cell {
+						> span {
+							> i {
+								color: $head_cell_icon_color;
+							}
+						}
+					}
+				}
+			}
+
+			// Error message
+			&.kt-datatable--error {
+				.kt-datatable__body {
+					.kt-datatable__error {
+
+					}
+				}
+			}
+		}
+
+		// Pagination
+		> .kt-datatable__pager {
+			> .kt-datatable__pager-nav {
+				> li {
+					> .kt-datatable__pager-link {
+						color: $page-default-font;
+
+						@include kt-transition();
+
+						&.kt-datatable__pager-link--first,
+						&.kt-datatable__pager-link--prev,
+						&.kt-datatable__pager-link--next,
+						&.kt-datatable__pager-link--last {
+							background: $page-default;
+
+							&:hover {
+								background: $page-hover;
+								color: $page-hover-font;
+							}
+						}
+
+						&:hover {
+							@include kt-transition();
+							background: $page-hover;
+							color: $page-hover-font;
+						}
+
+						&.kt-datatable__pager-link--active {
+							background: $page-active;
+							color: $page-active-font;
+						}
+
+						&.kt-datatable__pager-link--disabled,
+						&.kt-datatable__pager-link--disabled:hover {
+							color: $page-default-font;
+							background: $page-default;
+							opacity: 0.3;
+						}
+					}
+
+					> .kt-pager-input {
+						@include kt-transition();
+						background: $page-default;
+						border-color: $page-default;
+
+						&:focus {
+							@include kt-transition();
+							background: $page-hover;
+							border-color: $page-hover;
+						}
+					}
+				}
+			}
+
+			> .kt-datatable__pager-info {
+				.kt-datatable__pager-size {
+					.btn.dropdown-toggle {
+						font-size: 1rem;
+						font-weight: 500;
+						border: 0 !important;
+						color: $page-info-font;
+						background: $page-info;
+
+						i {
+							color: $page-info-hover-font;
+						}
+					}
+
+					.btn.dropdown-toggle:focus,
+					.btn.dropdown-toggle:hover,
+					&.show > .btn.dropdown-toggle {
+						border: 0 !important;
+						color: $page-info-hover-font !important;
+						background: $page-info-hover;
+
+						i {
+							color: $page-info-hover-font !important;
+						}
+					}
+
+					.dropdown-menu {
+						z-index: 100;
+
+						.modal & {
+							z-index: $kt-modal-zindex + 1;
+						}
+					}
+				}
+			}
+		}
+
+		// Subtable
+		&.kt-datatable--subtable {
+			> .kt-datatable__table {
+				> .kt-datatable__body {
+					.kt-datatable__toggle-subtable {
+						> i {
+							color: $subtable_toggle_icon;
+						}
+					}
+
+					.kt-datatable__row-subtable {
+						border-top: 0;
+
+						.kt-datatable__pager {
+							//background: $subtable_pager_pagel;
+						}
+					}
+				}
+			}
+		}
+
+		// Default Skin
+		&.kt-datatable--default {
+			// Base Table
+			> .kt-datatable__table {
+				> .kt-datatable__body {
+					.kt-datatable__row {
+						> .kt-datatable__cell {
+							transition: background 0.3s ease;
+
+							> span {
+								color: $body_cell_font_color;
+							}
+
+							&.kt-datatable__cell--hover {
+								transition: background 0.3s ease;
+								background: $row-hover;
+							}
+						}
+
+						&.kt-datatable__row--even {
+							> .kt-datatable__cell {
+								background: $row-even;
+							}
+						}
+
+						&.kt-datatable__row--active {
+							> .kt-datatable__cell {
+								background: $row-active;
+							}
+						}
+
+						&.kt-datatable__row--hover:not(.kt-datatable__row--active) {
+							transition: background 0.3s ease;
+							
+							> .kt-datatable__cell {
+								transition: background 0.3s ease;
+								background: $row-hover;
+							}
+						}
+					}
+				}
+
+				> .kt-datatable__head,
+				> .kt-datatable__foot {
+					.kt-datatable__row {
+						> .kt-datatable__cell {
+							&.kt-datatable__cell--sorted {
+								> span {
+									color: $head_cell_sorted_color;
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+			// Subtable
+			&.kt-datatable--subtable {
+				> .kt-datatable__table {
+					> .kt-datatable__body {
+						.kt-datatable__row {
+							&.kt-datatable__row--subtable-expanded {
+								> .kt-datatable__cell {
+									background: $subtable_expanded !important;
+								}
+							}
+						}
+
+						.kt-datatable__row-subtable {
+							background: $row-even;
+
+							> .kt-datatable__subtable {
+								> .kt-datatable {
+									box-shadow: $subtable_shadow;
+								}
+							}
+
+							&.kt-datatable__row-loading {
+								> .kt-datatable__subtable {
+									> .kt-datatable {
+										> .kt-datatable__table {
+											background: $row-even;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Scrollbar
+		.ps > .ps__rail-y > .ps__thumb-y,
+		.ps > .ps__rail-x > .ps__thumb-x {
+		    background: $scrollbar_color;
+
+		    &:hover,
+		    &:focus {
+		    	background: $scrollbar_color;
+		    } 
+		}
+	}
+}
+
+// Build
+// Base
+@include kt-datatable-base();
+
+// Skin
+@include kt-datatable-skin();

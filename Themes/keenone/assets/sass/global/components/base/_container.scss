@@ -1,0 +1,37 @@
+//
+// Container
+//
+
+
+
+// Base
+.kt-container {
+    &,
+    &.kt-container--fluid {
+        width: 100%;
+        margin: 0;
+    }
+
+    &.kt-container--fit {
+        padding: 0 !important;
+    }
+
+    &.kt-container--fit-left {
+        padding-left: 0 !important;
+    }
+
+    &.kt-container--fit-right {
+        padding-right: 0 !important;
+    }
+}
+@media (min-width: #{$kt-page-container-width + (2 * kt-get($kt-page-padding, desktop)) - 1px}) {
+    .kt-container {
+        width: $kt-page-container-width;
+        margin: 0 auto;
+
+        &.kt-container--fluid {
+            width: 100%;
+            margin: 0;
+        }
+    }
+}

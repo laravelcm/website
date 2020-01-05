@@ -1,0 +1,77 @@
+//
+// Form
+//
+
+
+
+.kt-form {
+	.kt-form__group {
+		&.kt-form__group--inline {
+			display: table;
+			padding: 0;
+
+			> .kt-form__label {
+				display: table-cell;
+				vertical-align: middle;
+				margin: 0;
+				padding-right: 1rem;
+
+				&.kt-form__label-no-wrap {
+					white-space:nowrap;
+				}
+
+				> label {
+					margin: 0;
+				}
+			}
+
+			> .kt-form__control {
+				display: table-cell;
+				vertical-align: middle;
+				margin: 0;
+				width: 100%;
+			}
+		}
+	}
+
+	// Action bar
+	.kt-form__actions {
+		&.kt-form__actions--right {
+			text-align: right;
+		}
+
+		&.kt-form__actions--center {
+			text-align: center;
+		}
+	}
+
+	&.kt-form--center{
+		width: 60%;
+		margin: 0 auto;
+	}
+}
+
+// Validation feedback
+.is-valid {
+	.valid-feedback {
+		display: inline-block;
+	}
+}
+
+.is-invalid {
+	.invalid-feedback {
+		display: inline-block;
+	}
+}
+
+@include kt-desktop {
+	.kt-form {
+		&.kt-form--label-right {
+			.form-group {
+				label:not(.kt-checkbox):not(.kt-radio):not(.kt-option) {
+					text-align: right;
+				}
+			}
+		}
+	}
+}

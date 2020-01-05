@@ -1,0 +1,103 @@
+//
+// NoUiSlider
+//
+
+
+
+
+// Base
+@mixin kt-nouislider-base() {
+    .noUi-target {
+        @include kt-not-rounded {
+           border-radius: 0 !important;
+        }
+        
+        &.noUi-horizontal {
+            height: 15px;
+
+            .noUi-handle {
+                width: 24px;
+                height: 24px;
+                left: -17px;
+                top: -6px;
+                border-radius: 50%;
+                outline: none;
+
+                &::before {
+                    display: none;
+                }
+
+                &::after {
+                    display: none;
+                }                
+            }
+        }
+
+        &.noUi-vertical {
+            height: 150px;
+            width: 15px;
+
+            .noUi-handle {
+                width: 24px;
+                height: 24px;
+                left: -5.5px;
+                top: -6px;
+                border-radius: 50%;
+                outline: none;
+
+                &::before {
+                    display: none;
+                }
+
+                &::after {
+                    display: none;
+                }                
+            }
+        }
+
+
+        // State colors
+        &.nouislider {
+            @each $name, $color in $kt-state-colors {
+                &.nouislider-connect-#{$name} {
+                    .noUi-connect {
+                        background: kt-get($color, base);
+                    }
+                }
+
+                &.nouislider-handle-#{$name} {
+                    .noUi-handle {
+                        border: 0;
+                        background: kt-get($color, base);
+                        box-shadow: 0 3px 6px -3px kt-get($color, base);
+                    }
+                }
+            }   
+        }
+    }
+}
+
+// Skin
+@mixin kt-nouislider-skin() {
+    .noUi-target {
+        border: 1px solid $input-border-color;  
+        background: kt-base-color(grey, 1);
+        box-shadow:none; 
+
+        .noUi-connect {
+            background: kt-state-color(brand, base);
+        }  
+
+        .noUi-handle {
+            border: 1px solid kt-base-color(grey, 1);
+            box-shadow: 0 3px 6px -3px rgba(#000, 0.7);
+        }
+    }    
+}
+
+
+// Base
+@include kt-nouislider-base();
+
+// Skin
+@include kt-nouislider-skin();
