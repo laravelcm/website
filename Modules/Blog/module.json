@@ -1,0 +1,14 @@
+{
+    "name": "Blog",
+    "alias": "blog",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "active": 1,
+    "providers": [
+        "Modules\\Blog\\Providers\\BlogServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
