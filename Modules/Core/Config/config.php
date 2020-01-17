@@ -26,11 +26,8 @@ return [
 
     'theme' => [
         'backend'   => 'keenone',
-        'frontend'  => 'tailwind',
+        'frontend'  => 'bootstrap',
     ],
-
-    'backend_active'     => 'keenone',
-    'frontend_active'     => 'bootstrap',
 
     /*
     |--------------------------------------------------------------------------

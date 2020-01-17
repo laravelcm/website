@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
+require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +13,52 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css');
+mix.setPublicPath('public')
+  .sass('resources/assets/sass/application.scss', 'css')
+  .react('resources/assets/ts/app.tsx', 'js')
+  .options({
+    processCssUrls: false,
+    postCss: [ tailwindcss('./tailwind.config.js') ]
+  })
+  .webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader",
+          exclude: /node_modules/
+        }
+      ]
+    },
+    resolve: {
+      extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
+      alias: {
+        '@': path.resolve('assets/ts')
+      }
+    }
+  })
+  .sourceMaps();
+
+if (mix.inProduction()) {
+  mix.version()
+    .purgeCss({
+      enabled: true,
+      extensions: ['js', 'php', 'ts'],
+      globs: [
+        './resources/views/**/*.blade.php',
+        './resources/assets/ts/**/*.ts'
+      ],
+      whitelistPatterns: [/nprogress/]
+    })
+    .options({
+      // optimize js minification process
+      terser: {
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }
+    });
+} else {
+  // Uses inline source-maps on development
+  mix.webpackConfig({ devtool: 'inline-source-map' });
+}

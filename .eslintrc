@@ -4,14 +4,13 @@
         "browser": true,
         "jest/globals": true
     },
-    "plugins": ["@typescript-eslint", "react-hooks", "jest", "prettier"],
+    "plugins": ["@typescript-eslint", "react-hooks", "jest"],
     "extends": [
         "airbnb",
         "plugin:@typescript-eslint/recommended",
         "plugin:import/typescript",
         "plugin:prettier/recommended",
-        "plugin:jest/recommended",
-        "prettier/@typescript-eslint"
+        "plugin:jest/recommended"
     ],
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",

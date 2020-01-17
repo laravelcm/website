@@ -1,11 +1,6 @@
 {
-    "presets": [
-        ["@babel/env", {
-            "forceAllTransforms": true,
-            "targets": {
-                "node": "current"
-            }
-        }]
-    ],
-    "sourceMaps": true
+    "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        "@babel/transform-async-to-generator"
+    ]
 }
