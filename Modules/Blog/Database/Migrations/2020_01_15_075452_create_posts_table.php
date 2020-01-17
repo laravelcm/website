@@ -23,11 +23,10 @@ class CreatePostsTable extends Migration
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
             $table->boolean('featured')->default(0);
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('category_id')->nullable();
+            $table->bigInteger('category_id')->unsigned();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
