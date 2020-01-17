@@ -15,19 +15,20 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('category_id')->nullable();
             $table->string('title');
-            $table->text('body');
+            $table->longText('body');
             $table->string('image')->nullable();
             $table->string('slug')->unique();
-            $table->text('meta_description')->nullable();
-            $table->text('meta_keywords')->nullable();
+            $table->text('summary')->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
             $table->boolean('featured')->default(0);
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('category_id')->nullable();
             $table->timestamp('published_at')->nullable();
-
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 

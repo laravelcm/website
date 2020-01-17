@@ -1,12 +1,12 @@
 {
-    "name": "Tutorials",
-    "alias": "tutorials",
+    "name": "Tutorial",
+    "alias": "tutorial",
     "description": "",
     "keywords": [],
     "order": 0,
     "active": 1,
     "providers": [
-        "Modules\\Tutorials\\Providers\\TutorialsServiceProvider"
+        "Modules\\Tutorial\\Providers\\TutorialServiceProvider"
     ],
     "aliases": {},
     "files": [],

@@ -13,20 +13,23 @@ class CreateTutorialsTags extends Migration
      */
     public function up()
     {
-        Schema::create('tutorials', function (Blueprint $table) {
+        Schema::create('tutorial_tutorials', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned();
             $table->string('title');
-            $table->text('body');
-            $table->string('image')->nullable();
             $table->string('slug')->unique();
-            $table->text('meta_description')->nullable();
-            $table->text('meta_keywords')->nullable();
+            $table->text('summary')->nullable();
+            $table->longText('body');
+            $table->string('video_url');
+            $table->string('image')->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
             $table->boolean('featured')->default(0);
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned();
             $table->timestamp('published_at')->nullable();
-
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('tutorial_categories')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
@@ -37,6 +40,6 @@ class CreateTutorialsTags extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutorials');
+        Schema::dropIfExists('tutorial_tutorials');
     }
 }

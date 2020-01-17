@@ -11,5 +11,5 @@ return [
     |
     */
 
-    'name' => 'Tutorials'
+    'name' => 'Tutorial'
 ];

@@ -16,5 +16,5 @@
 
 Breadcrumbs::for('admin.tutorials.index', function ($trail) {
     $trail->parent('admin.dashboard');
-    $trail->push(__('tutorials::menus.backend.title'), route('admin.tutorials.index'));
+    $trail->push(__('tutorial::menus.backend.title'), route('admin.tutorials.index'));
 });
