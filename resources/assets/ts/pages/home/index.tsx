@@ -7,6 +7,8 @@ const Home = () => {
     <div>
       <Helmet>
         <title>Home</title>
+        <meta name="description" content="Helmet application" />
+        <meta property="og:type" content="article" />
       </Helmet>
       <div className="mt-32 mx-auto flex justify-center flex-col items-center w-1/2 py-32">
         <h1 className="text-4xl text-gray-700 mb-10 font-bold">Laravel Cameroun</h1>
