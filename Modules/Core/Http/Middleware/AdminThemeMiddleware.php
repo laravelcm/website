@@ -16,7 +16,9 @@ class AdminThemeMiddleware
      */
     public function handle($request, Closure $next)
     {
-        \Theme::set(config('core.theme.backend'));
+        if (!is_null(config('core.theme.backend'))) {
+            \Theme::set(config('core.theme.backend'));
+        }
 
         return $next($request);
     }

@@ -80,6 +80,7 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['events']->listen(BuildingSidebar::class, RegisterCoreSidebar::class);
+        $this->app['router']->pushMiddlewareToGroup('web', WebThemeMiddleware::class);
         $this->app['router']->aliasMiddleware('theme', RouteMiddleware::class);
         $this->app['router']->middlewareGroup('admin', [
             'auth',

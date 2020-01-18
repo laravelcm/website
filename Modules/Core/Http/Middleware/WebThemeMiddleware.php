@@ -16,7 +16,9 @@ class WebThemeMiddleware
      */
     public function handle($request, Closure $next)
     {
-        \Theme::set(config('core.theme.frontend'));
+        if (!is_null(config('core.theme.frontend'))) {
+            \Theme::set(config('core.theme.frontend'));
+        }
 
         return $next($request);
     }
