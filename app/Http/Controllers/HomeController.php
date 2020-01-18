@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 class HomeController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function index()
+    public function __invoke()
     {
-        return view('app');
+        return Inertia::render('home/index');
     }
 }

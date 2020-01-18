@@ -19,6 +19,7 @@
     "facade/ignition": "^1.11",
     "fideloper/proxy": "^4.0",
     "hieu-le/active": "^4.0",
+    "inertiajs/inertia-laravel": "^0.2.4",
     "joshbrw/laravel-module-installer": "^0.1.4",
     "laravel/framework": "^6.3",
     "laravel/socialite": "^4.1",

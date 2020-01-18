@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c504167c21060de65f35956fec0885d9",
+    "content-hash": "2127138be6be770273bf39be9703688a",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1269,6 +1269,57 @@
                 "routing"
             ],
             "time": "2019-10-12T03:32:17+00:00"
+        },
+        {
+            "name": "inertiajs/inertia-laravel",
+            "version": "v0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inertiajs/inertia-laravel.git",
+                "reference": "fbd2afcadf96319a0403eb10f0a70b928ea009cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/fbd2afcadf96319a0403eb10f0a70b928ea009cf",
+                "reference": "fbd2afcadf96319a0403eb10f0a70b928ea009cf",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Inertia\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Inertia\\": "src"
+                },
+                "files": [
+                    "./helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Reinink",
+                    "email": "jonathan@reinink.ca",
+                    "homepage": "https://reinink.ca"
+                }
+            ],
+            "description": "The Laravel adapter for Inertia.js.",
+            "keywords": [
+                "inertia",
+                "laravel"
+            ],
+            "time": "2020-01-04T20:38:07+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

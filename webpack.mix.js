@@ -33,7 +33,7 @@ mix.setPublicPath('public')
     resolve: {
       extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
-        '@': path.resolve('assets/ts')
+        '@': path.resolve('resources/assets/ts')
       }
     }
   })
@@ -46,7 +46,7 @@ if (mix.inProduction()) {
       extensions: ['js', 'php', 'ts'],
       globs: [
         './resources/views/**/*.blade.php',
-        './resources/assets/ts/**/*.ts'
+        './resources/assets/ts/**/*.tsx'
       ],
       whitelistPatterns: [/nprogress/]
     })

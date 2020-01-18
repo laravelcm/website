@@ -12,10 +12,13 @@
     <link rel="mask-icon" href="{{ asset('img/favicons/safari-pinned-tab.svg') }}" color="#00795d">
     <meta name="theme-color" content="#fff">
     <meta name="mobile-web-app-capable" content="yes">
+    <link href="{{ mix('/css/application.css') }}" rel="stylesheet" />
+    @include('partials.ga')
 </head>
 <body>
 
+    @inertia
 
-
+    <script src="{{ mix('/js/app.js') }}" defer></script>
 </body>
 </html>

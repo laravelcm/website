@@ -5,7 +5,7 @@
     "jsx": "react",
     "strict": true,
     "moduleResolution": "node",
-    "types": [],
+    "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
