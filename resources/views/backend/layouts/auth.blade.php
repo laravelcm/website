@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-title" content="{{ app_name() }}">
     <meta name="application-name" content="{{ app_name()  }}">
     <meta name="theme-color" content="#ffffff">
-    {{ style(mix('css/login.css')) }}
+    {{ style(asset('css/login.css')) }}
 </head>
 <body class="my-login-page">
 
@@ -25,7 +25,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
             integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
             crossorigin="anonymous"></script>
-    {!! script(mix('js/login.js')) !!}
+    {!! script(asset('js/login.js')) !!}
 
 </body>
 </html>

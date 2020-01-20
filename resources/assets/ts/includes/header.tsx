@@ -1,7 +1,10 @@
 import React from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 
 export default () => {
+  const { auth } = usePage();
+  console.log(auth.user);
+
   return (
     <header className="flex bg-white border-t-4 border-brand-primary fixed top-0 z-100 inset-x-0 shadow-smooth h-18 items-center">
       <div className="w-full max-w-screen-xl relative mx-auto px-6">
@@ -21,7 +24,7 @@ export default () => {
               </nav>
             </div>
           </div>
-          <div className="lg:w-1/2 flex flex-grow lg:pr-6">
+          <div className="lg:w-1/2 flex flex-grow lg:pr-6 items-center">
             <div className="w-full">
               <div className="relative">
                 <span className="relative block" style={{ direction: "ltr" }}>
@@ -45,10 +48,20 @@ export default () => {
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
               </svg>
             </button>
-            <div className="hidden lg:flex items-center pl-4">
-              <InertiaLink href="/login" className="text-brand-primary mr-4">Connexion</InertiaLink>
-              <InertiaLink href="/register" className="btn btn-primary">M'inscrire</InertiaLink>
-            </div>
+            {!auth.user && (
+              <div className="hidden lg:flex items-center pl-4">
+                <InertiaLink href="/login" className="text-brand-primary mr-4">Connexion</InertiaLink>
+                <InertiaLink href="/register" className="btn btn-primary">M'inscrire</InertiaLink>
+              </div>
+            )}
+            {auth.user && (
+              <div className="hidden lg:flex items-center pl-4 text-right">
+                <InertiaLink href="/profile" className="flex items-center group py-1 px-2 rounded-full hover:bg-gray-100">
+                  <span className="text-lg text-gray-800 w-45 group-hover:text-gray-600 mr-4">{auth.user.full_name}</span>
+                  <img src={auth.user.picture} alt="profile" className="h-10 w-10 rounded-full border border-gray-200" />
+                </InertiaLink>
+              </div>
+            )}
           </div>
         </div>
       </div>
