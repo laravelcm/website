@@ -46,7 +46,7 @@ if (mix.inProduction()) {
       extensions: ['js', 'php', 'ts'],
       globs: [
         './resources/views/**/*.blade.php',
-        './resources/assets/ts/**/*.tsx'
+        './resources/assets/ts/**/*.ts'
       ],
       whitelistPatterns: [/nprogress/]
     })
@@ -62,3 +62,7 @@ if (mix.inProduction()) {
   // Uses inline source-maps on development
   mix.webpackConfig({ devtool: 'inline-source-map' });
 }
+
+// mix.browserSync({
+//   proxy: 'laravelcm.test'
+// });

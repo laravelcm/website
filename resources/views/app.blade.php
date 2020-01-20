@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="crsf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
     <link rel="icon" type="image/png" href="{{ asset('img/favicons/favicon-32x32.png') }}" sizes="32x32">
@@ -15,7 +16,7 @@
     <link href="{{ mix('/css/application.css') }}" rel="stylesheet" />
     @include('partials.ga')
 </head>
-<body>
+<body class="bg-gray-200 text-gray-900 leading-normal">
 
     @inertia
 

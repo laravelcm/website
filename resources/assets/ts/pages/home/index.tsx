@@ -1,5 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
+
 import Layout from "@/includes/layout";
 
 const Home = () => {
@@ -14,11 +15,11 @@ const Home = () => {
         <h1 className="text-4xl text-gray-700 mb-10 font-bold">Laravel Cameroun</h1>
 
         <div className="flex">
+          <a className="mr-4 text-base text-gray-600" href="https://linkedin.com/in/arthurmonney">Laravel docs</a>
           <a className="mr-4 text-base text-gray-600" href="https://twitter.com/MonneyArthur">Twitter</a>
-          <a className="mr-4 text-base text-gray-600" href="https://linkedin.com/in/arthurmonney">LinkedIn</a>
-          <a className="mr-4 text-base text-gray-600" href="https://instagram.com/mckenziearts">Instagram</a>
-          <a className="mr-4 text-base text-gray-600" href="https://dribbble.com/mckenziearts">Dribbble</a>
           <a className="mr-4 text-base text-gray-600" href="https://github.com/mckenziearts">GitHub</a>
+          <a className="mr-4 text-base text-gray-600" href="https://instagram.com/mckenziearts">Slack</a>
+          <a className="mr-4 text-base text-gray-600" href="https://dribbble.com/mckenziearts">Meetup</a>
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@
         "import/prefer-default-export": "off",
         "react/jsx-wrap-multilines": "off",
         "react/no-array-index-key": "off",
+        "react/jsx-one-expression-per-line": "off",
         "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"]}],
         "react/prop-types": "off",
         "react-hooks/rules-of-hooks": "error",

@@ -1,0 +1,11 @@
+.btn {
+  @apply transition block px-6 py-2 rounded-md;
+}
+
+.btn-primary {
+  @apply bg-brand-primary text-white;
+
+  &:hover {
+    @apply bg-brand-900;
+  }
+}
