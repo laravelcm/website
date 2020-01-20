@@ -22,21 +22,47 @@ module.exports = {
         '18': '4.5rem',
         '36': '9rem',
         '45': '11.25rem',
+        '87': '21.75rem',
         '116': '29rem',
+        '140': '35rem',
       },
       zIndex: {
         '100': '100',
       },
       fontFamily: {
         body: ["Poppins"],
-      }
-    }
+      },
+      gradients: theme => ({
+        // Array definition (defaults to linear gradients).
+        'gradient-white':  ['180deg', "rgba(255,255,255,1)", "rgba(246,249,252,1)"],
+        'gradient-green':  ['60deg', theme('colors.brand.primary'), "rgba(5,184,143,1)"],
+      }),
+    },
   },
   variants: {
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within'],
     textColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within'],
     fontFamily: ['responsive', 'hover', 'focus'],
-    zIndex: ['responsive', 'focus']
+    zIndex: ['responsive', 'focus'],
+    gradients: ['responsive', 'hover'],
   },
-  plugins: []
+  plugins: [
+    require('tailwindcss-plugins/gradients'),
+    function({ addUtilities, theme, e, variants }) {
+      const spaceX = Object.fromEntries(
+        Object.entries(theme('spacing')).map(([k, v]) => [
+          `.${e(`space-x-${k}`)} > * + *`,
+          { marginLeft: v }
+        ])
+      )
+      const spaceY = Object.fromEntries(
+        Object.entries(theme('spacing')).map(([k, v]) => [
+          `.${e(`space-y-${k}`)} > * + *`,
+          { marginTop: v }
+        ])
+      )
+
+      addUtilities({ ...spaceX, ...spaceY }, variants('space'))
+    },
+  ],
 };
