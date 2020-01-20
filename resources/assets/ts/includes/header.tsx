@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 
 export default () => {
   const { auth } = usePage();
-  console.log(auth.user);
+  const input = useRef<HTMLInputElement>(null);
+
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.code === "Slash") {
+      if (input.current) {
+        const element = input.current;
+        element.focus();
+      }
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener('keydown', onKeyDown);​​​​​​​
+  }, []);
 
   return (
     <header className="flex bg-white border-t-4 border-brand-primary fixed top-0 z-100 inset-x-0 shadow-smooth h-18 items-center">
@@ -29,11 +42,12 @@ export default () => {
               <div className="relative">
                 <span className="relative block" style={{ direction: "ltr" }}>
                   <input
-                    className="transition focus:outline-none border border-transparent focus:bg-gray-100 focus:border-gray-300 placeholder-gray-600 rounded-md bg-gray-200 py-2 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
+                    className="transition font-light focus:outline-none border border-transparent focus:bg-gray-100 focus:border-gray-300 placeholder-gray-600 rounded-md bg-gray-200 py-2 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
                     type="text"
                     placeholder="Search (Press &quot;/&quot; to focus)"
                     autoComplete="off"
                     style={{ position: "relative", verticalAlign: "top" }}
+                    ref={input}
                   />
                 </span>
                 <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
@@ -57,7 +71,7 @@ export default () => {
             {auth.user && (
               <div className="hidden lg:flex items-center pl-4 text-right">
                 <InertiaLink href="/profile" className="flex items-center group py-1 px-2 rounded-full hover:bg-gray-100">
-                  <span className="text-lg text-gray-800 w-45 group-hover:text-gray-600 mr-4">{auth.user.full_name}</span>
+                  <span className="text-lg text-gray-800 w-45 group-hover:text-gray-600 font-normal pr-2">{auth.user.full_name}</span>
                   <img src={auth.user.picture} alt="profile" className="h-10 w-10 rounded-full border border-gray-200" />
                 </InertiaLink>
               </div>

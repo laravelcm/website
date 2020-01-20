@@ -26,12 +26,16 @@ module.exports = {
       },
       zIndex: {
         '100': '100',
+      },
+      fontFamily: {
+        body: ["Poppins"],
       }
     }
   },
   variants: {
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within'],
     textColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within'],
+    fontFamily: ['responsive', 'hover', 'focus'],
     zIndex: ['responsive', 'focus']
   },
   plugins: []
