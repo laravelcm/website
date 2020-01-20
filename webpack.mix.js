@@ -62,7 +62,3 @@ if (mix.inProduction()) {
   // Uses inline source-maps on development
   mix.webpackConfig({ devtool: 'inline-source-map' });
 }
-
-// mix.browserSync({
-//   proxy: 'laravelcm.test'
-// });

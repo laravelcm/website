@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Inertia\Inertia;
 use Modules\Core\Exceptions\GeneralException;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -54,13 +55,25 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        $response = parent::render($request, $exception);
+
         if ($exception instanceof UnauthorizedException) {
             return redirect()
                 ->route(home_route())
                 ->withFlashDanger(__('auth.general_error'));
         }
 
-        return parent::render($request, $exception);
+        if (
+            !(app()->environment('production'))
+            && $request->header('X-Inertia')
+            && in_array($response->status(), [500, 503, 404, 403])
+        ) {
+            return Inertia::render('error/index', ['status' => $response->status()])
+                ->toResponse($request)
+                ->setStatusCode($response->status());
+        }
+
+        return $response;
     }
 
     /**

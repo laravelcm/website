@@ -1,4 +1,5 @@
 import React from "react";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
 export default () => {
   return (
@@ -41,9 +42,9 @@ export default () => {
                 <h5 className="text-gray-600 text-base uppercase mb-4 font-medium">Autres Ressources</h5>
                 <ul>
                   <li className="mb-3"><a href="https://laravel.com/docs" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Laravel Docs</a></li>
-                  <li className="mb-3"><a href="/jobs" className="text-gray-700 hover:text-gray-800">Jobs</a></li>
-                  <li className="mb-3"><a href="/privacy" className="text-gray-700 hover:text-gray-800">Confidentialité</a></li>
-                  <li className="mb-3"><a href="/terms" className="text-gray-700 hover:text-gray-800">Conditions d'utilisation</a></li>
+                  <li className="mb-3"><InertiaLink href="/jobs" className="text-gray-700 hover:text-gray-800">Jobs</InertiaLink></li>
+                  <li className="mb-3"><InertiaLink href="/privacy" className="text-gray-700 hover:text-gray-800">Confidentialité</InertiaLink></li>
+                  <li className="mb-3"><InertiaLink href="/terms" className="text-gray-700 hover:text-gray-800">Conditions d'utilisation</InertiaLink></li>
                 </ul>
               </div>
               <div className="px-6 mb-8 md:w-1/3">
