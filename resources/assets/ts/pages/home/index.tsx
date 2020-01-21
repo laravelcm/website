@@ -90,7 +90,7 @@ const Home = () => {
             </span>
             <span className="block">
               <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Offre d'emploi</h4>
-              <p className="text-xs font-light text-gray-600">Consultez les offres d'emploi les plus récentes et postulez rapidement.</p>
+              <p className="text-xs font-light text-gray-600 lg:text-base">Consultez les offres d'emploi les plus récentes et postulez rapidement.</p>
             </span>
           </InertiaLink>
           <InertiaLink href="/forum" className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-6">
@@ -101,7 +101,7 @@ const Home = () => {
             </span>
             <span className="block">
               <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Forum</h4>
-              <p className="text-xs font-light text-gray-600">Rendez vous sur le forum pour discuter de tout ce qui concerne le code/design.</p>
+              <p className="text-xs font-light text-gray-600 lg:text-base">Rendez vous sur le forum pour discuter de tout ce qui concerne le code/design.</p>
             </span>
           </InertiaLink>
           <InertiaLink href="/slack" className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-6">
@@ -112,7 +112,7 @@ const Home = () => {
             </span>
             <span className="block">
               <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Rejoignez-nous</h4>
-              <p className="text-xs font-light text-gray-600">Rejoignez une communauté de milliers de développeurs comme vous.</p>
+              <p className="text-xs font-light text-gray-600 lg:text-base">Rejoignez une communauté de milliers de développeurs comme vous.</p>
             </span>
           </InertiaLink>
         </div>

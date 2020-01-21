@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('tutorials')->group(function() {
+Route::prefix('tutoriels')->group(function() {
     Route::get('/', 'TutorialController@index');
 });
