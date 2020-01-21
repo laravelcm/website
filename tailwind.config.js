@@ -2,6 +2,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        dot: "#C4C4C4",
+
         brand: {
           100: "#C0EBD2",
           900: "#22543D",
@@ -22,6 +24,9 @@ module.exports = {
         '18': '4.5rem',
         '36': '9rem',
         '45': '11.25rem',
+        '58': '14.5rem',
+        '59': '14.75rem',
+        '62': '15.5rem',
         '87': '21.75rem',
         '116': '29rem',
         '140': '35rem',
@@ -45,6 +50,7 @@ module.exports = {
     fontFamily: ['responsive', 'hover', 'focus'],
     zIndex: ['responsive', 'focus'],
     gradients: ['responsive', 'hover'],
+    space: ['responsive']
   },
   plugins: [
     require('tailwindcss-plugins/gradients'),

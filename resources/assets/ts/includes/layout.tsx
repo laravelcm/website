@@ -16,7 +16,7 @@ export default ({ children }: LayoutProps) => {
         meta={[]}
       />
       <Header />
-      <main className="pt-18 pb-32 w-full">{children}</main>
+      <main className="py-18 w-full">{children}</main>
       <Footer />
     </>
   );
