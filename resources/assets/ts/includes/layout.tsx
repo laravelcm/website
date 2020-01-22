@@ -16,7 +16,7 @@ export default ({ children }: LayoutProps) => {
         meta={[]}
       />
       <Header />
-      <main className="py-18 w-full">{children}</main>
+      <main className="py-18 w-full min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible">{children}</main>
       <Footer />
     </>
   );
