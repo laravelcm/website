@@ -27,7 +27,7 @@ const Home = () => {
             </p>
             <InertiaLink href="/tutorials" className="p-2 bg-brand-100 items-center text-gray-700 rounded-lg md:rounded-full flex lg:inline-flex w-full" role="alert">
               <span className="flex rounded-full bg-brand-900 uppercase px-2 py-1 text-xs font-bold mr-4 text-white">New</span>
-              <span className="font-normal mr-2 text-left flex-auto text-xs">
+              <span className="font-normal mr-2 text-left flex-auto text-xs lg:text-sm">
                 Mise à jour du site Web, nous avons ajouté une section <span className="text-brand-primary">tutoriels</span>. Visitez maintenant!
               </span>
               <svg className="fill-current opacity-75 h-4 w-4 hidden md:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
