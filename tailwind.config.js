@@ -38,7 +38,6 @@ module.exports = {
         body: ["Poppins"],
       },
       gradients: theme => ({
-        // Array definition (defaults to linear gradients).
         'gradient-white':  ['180deg', "rgba(255,255,255,1)", "rgba(246,249,252,1)"],
         'gradient-green':  ['60deg', theme('colors.brand.primary'), "rgba(5,184,143,1)"],
       }),

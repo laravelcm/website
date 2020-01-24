@@ -1,8 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { InertiaLink } from "@inertiajs/inertia-react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 import Layout from "@/includes/layout";
 import Tutorial from "@/components/tutorial";
@@ -37,7 +35,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-8">
+      <div className="container mt-8 md:px-4">
         <div className="w-full space-y-4 mb-10 md:flex flex-grow md:space-y-0 md:space-x-8 lg:space-x-18 lg:-mt-32 lg:mb-14">
           <InertiaLink href="/jobs" className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-10">
             <span className="bg-brand-primary p-3 rounded-full flex items-center justify-center mr-4 md:mr-0 md:mb-3">
@@ -73,8 +71,8 @@ const Home = () => {
             </span>
           </InertiaLink>
         </div>
-        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl lg:mb-8">Les derniers tutoriels</h2>
-        <div className="space-y-5 mb-10 md:space-y-0 md:flex md:-mx-6 flex-grow flex-wrap lg:mb-14">
+        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers tutoriels</h2>
+        <div className="space-y-5 mb-10 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-14">
           <Tutorial
             image="https://cdn.devdojo.com/posts/images/June2019/laravel-on-digital-ocean.jpg?auto=compress&w=228&h=128&dpr=2"
             title="Laravel App on Digital Ocean Ubuntu 19.04 droplet (Step by Step Guide)"
@@ -92,8 +90,8 @@ const Home = () => {
             title="Tips for using Laravel's Scheduler"
           />
         </div>
-        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl lg:mb-8">Les derniers articles</h2>
-        <div className="mb-14 space-y-5 md:space-y-0 md:flex md:-mx-6 flex-grow flex-wrap lg:mb-18">
+        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers articles</h2>
+        <div className="mb-14 space-y-5 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-18">
           <PostSlide
             image="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2019/12/crater-laravel-invoice-app.jpg?fit=2220%2C1125&ssl=1?resize=1400%2C709"
             title="Crater: Open-Source Laravel Invoice App"
