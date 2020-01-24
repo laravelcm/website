@@ -1,18 +1,15 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 import Layout from "@/includes/layout";
+import Seo from "@/includes/seo";
+
 import Post from "@/components/post";
 
 const Blog = () => {
   return (
     <>
-      <Helmet>
-        <title>Blog</title>
-        <meta name="description" content="Bienvenue sur le blog de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun." />
-        <meta property="og:type" content="article" />
-      </Helmet>
+      <Seo title="Blog" description="Lisez quelques-uns des derniers articles liés au développement et à la conception Web." />
       <div className="bg-gradient-white py-6">
         <div className="container">
           <div className="w-full">

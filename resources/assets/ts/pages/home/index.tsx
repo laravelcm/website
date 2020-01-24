@@ -1,19 +1,16 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 import Layout from "@/includes/layout";
+import Seo from "@/includes/seo";
+
 import Tutorial from "@/components/tutorial";
 import PostSlide from "@/components/postSlider";
 
 const Home = () => {
   return (
     <>
-      <Helmet>
-        <title>Accueil</title>
-        <meta name="description" content="Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun." />
-        <meta property="og:type" content="article" />
-      </Helmet>
+      <Seo title="Blog" />
       <div className="pt-10 pb-12 h-87 bg-gradient-white lg:pt-24 lg:pb-56 lg:h-140 relative">
         <img src={require("@/assets/images/illustration.svg")} className="hidden lg:block absolute right-0" style={{ top: "-90px" }} alt="illustration" />
         <div className="container">

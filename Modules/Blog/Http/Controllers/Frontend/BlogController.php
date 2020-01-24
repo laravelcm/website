@@ -10,10 +10,19 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View;
+     * @return \Inertia\Response
      */
     public function index()
     {
         return Inertia::render('blog/index');
+    }
+
+    /**
+     * @param  string $slug
+     * @return \Inertia\Response
+     */
+    public function post(string $slug)
+    {
+        return Inertia::render('blog/post');
     }
 }

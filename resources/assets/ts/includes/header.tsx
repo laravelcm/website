@@ -59,9 +59,9 @@ export default () => {
                   </div>
                 </div>
               </div>
-              <button 
-                type="button" 
-                className="flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700" 
+              <button
+                type="button"
+                className="flex px-6 items-center lg:hidden text-gray-500 focus:outline-none focus:text-gray-700"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <svg className="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
