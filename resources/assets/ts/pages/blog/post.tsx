@@ -26,7 +26,7 @@ const Post = () => {
         ]}
       />
       <Breadcrumb
-        parentLink="/"
+        parentLink="/blog"
         parentTitle="Blog"
         title="Create Flexible Notification with Laravel Notify"
       />

@@ -10,7 +10,7 @@ import PostSlide from "@/components/postSlider";
 const Home = () => {
   return (
     <>
-      <Seo title="Blog" />
+      <Seo title="Accueil" />
       <div className="pt-10 pb-12 h-87 bg-gradient-white lg:pt-24 lg:pb-56 lg:h-140 relative">
         <img src={require("@/assets/images/illustration.svg")} className="hidden lg:block absolute right-0" style={{ top: "-90px" }} alt="illustration" />
         <div className="container">
