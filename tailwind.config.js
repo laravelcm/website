@@ -12,6 +12,14 @@ module.exports = {
           twitter: "#55ACEE",
           linkedin: "#007BB5",
           github: "#333",
+          laravel: "#FF2D20",
+          design: "#FFD039",
+          javascript: "#F7DF1E",
+          react: "#53C1DE",
+          vue: "#41B883",
+          php: "#777BB3",
+          feedback: "#FBDAC1",
+          'html-css': "#F16529"
         }
       },
       boxShadow: {
@@ -27,6 +35,7 @@ module.exports = {
         '58': '14.5rem',
         '59': '14.75rem',
         '62': '15.5rem',
+        '85': '21.25rem',
         '87': '21.75rem',
         '116': '29rem',
         '120': '30rem',

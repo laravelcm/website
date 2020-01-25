@@ -17,7 +17,7 @@
     <link href="{{ mix('/css/application.css') }}" rel="stylesheet" />
     @include('partials.ga')
 </head>
-<body class="bg-gray-200 text-gray-900 leading-normal font-body">
+<body class="bg-gray-200 text-gray-600 leading-normal font-body">
 
     @inertia
 

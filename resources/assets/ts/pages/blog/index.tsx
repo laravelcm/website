@@ -17,8 +17,8 @@ const Blog = () => {
             <p className="text-sm text-gray-600 lg:w-116">Lisez quelques-uns des derniers articles liés au développement et à la conception Web.</p>
           </div>
           <hr className="w-full bg-gray-200 mt-10 mb-6" />
-          <div className="text-center overflow-hidden overflow-x-scroll">
-            <ul className="text-sm inline-flex space-x-7">
+          <div className="text-center overflow-hidden overflow-x-scroll hidden-scrollbar">
+            <ul className="w-full text-sm inline-flex space-x-7">
               <li className="inline-block mr-6"><InertiaLink href="/" className="text-gray-700 hover:text-gray-600 font-semibold">Populaires</InertiaLink></li>
               <li className="inline-block mr-6"><InertiaLink href="/" className="text-gray-700 hover:text-gray-600">Laravel</InertiaLink></li>
               <li className="inline-block mr-6"><InertiaLink href="/" className="text-gray-700 hover:text-gray-600">React</InertiaLink></li>
