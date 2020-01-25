@@ -16,7 +16,7 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return Inertia::render('tutorials/index');
+        return Inertia::render('tutoriels/index');
     }
 
     /**
