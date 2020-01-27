@@ -18,6 +18,8 @@ class BlogController extends Controller
     }
 
     /**
+     * Display s single Post
+     *
      * @param  string $slug
      * @return \Inertia\Response
      */

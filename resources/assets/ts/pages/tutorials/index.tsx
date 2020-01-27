@@ -7,7 +7,7 @@ import Seo from "@/includes/seo";
 import Tutorial from "@/components/tutorial";
 
 
-const Tutoriel = () => {
+const Tutorials = () => {
   return (
     <>
       <Seo
@@ -78,6 +78,6 @@ const Tutoriel = () => {
   );
 };
 
-Tutoriel.layout = (page: React.ReactNode) => <Layout children={page} />;
+Tutorials.layout = (page: React.ReactNode) => <Layout children={page} />;
 
-export default Tutoriel;
+export default Tutorials;

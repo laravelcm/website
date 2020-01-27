@@ -1,13 +1,13 @@
 import React from "react";
 
 import Layout from "@/includes/layout";
-import SEO from "@/includes/seo";
+import Seo from "@/includes/seo";
 import Breadcrumb from "@/includes/breadcrumb";
 
 const Post = () => {
   return (
     <>
-      <SEO
+      <Seo
         title="Create Flexible Notification with Laravel Notify"
         description="Create Flexible Notification with Laravel Notify Description form Laravel News"
         meta={[

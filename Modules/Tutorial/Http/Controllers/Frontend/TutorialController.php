@@ -16,4 +16,17 @@ class TutorialController extends Controller
     {
         return Inertia::render('tutorials/index');
     }
+
+    /**
+     * Display a single tutorial
+     *
+     * @param  string $slug
+     * @return \Inertia\Response
+     */
+    public function show(string $slug)
+    {
+        $tutorial = [];
+
+        return Inertia::render('tutorials/show', compact('tutorial'));
+    }
 }
