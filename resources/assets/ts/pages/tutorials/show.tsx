@@ -73,7 +73,7 @@ const Tutorial = () => {
                   <span>Categorie</span>
                 </h5>
                 <div>
-                  <InertiaLink href="/" className="inline-block text-brand-laravel py-1 px-3 bg-laravel mr-2 rounded-full">Laravel</InertiaLink>
+                  <InertiaLink href="/" className="inline-block text-brand-laravel py-1 px-3 bg-opacity-laravel mr-2 rounded-full">Laravel</InertiaLink>
                 </div>
               </div>
               <div className="w-1/3 lg:w-full lg:mb-4">
@@ -84,7 +84,7 @@ const Tutorial = () => {
                   <span>Tags</span>
                 </h5>
                 <div>
-                  <InertiaLink href="/" className="inline-block text-brand-php py-1 px-3 bg-php mr-2 rounded-full">php</InertiaLink>
+                  <InertiaLink href="/" className="inline-block text-brand-php py-1 px-3 bg-opacity-php mr-2 rounded-full">php</InertiaLink>
                 </div>
               </div>
               <div className="flex items-center w-1/3 lg:w-full space-x-2 mb-3">

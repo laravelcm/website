@@ -1,0 +1,16 @@
+/**
+ * Mixins
+ *
+ * Sass Tailwind Class Generator and other helper functions to customize usefully
+ * Tailwind. Before update or add mixins to this file please look the default file
+ * configuration `tailwind.config.css` this file get the default configuration of the
+ * variables config's file.
+ */
+
+@import "variables";
+
+@each $color, $brand in $brand-colors {
+  .bg-opacity-#{$color} {
+    background-color: rgba($brand, 0.3);
+  }
+}

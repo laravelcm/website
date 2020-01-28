@@ -11,7 +11,7 @@ const Tutorials = () => {
   return (
     <>
       <Seo
-        title="Tutoriel"
+        title="Tutoriels"
         description="Vidéos sur le développement Web (Front et Back-end) et de Design Web (UI/UX) pour vous aidez à faire passer vos compétences au niveau supérieur."
       />
       <div className="bg-gradient-white pt-10 pb-12 lg:pt-24 lg:pb-40">

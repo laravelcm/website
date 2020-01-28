@@ -1,8 +1,22 @@
-@import "~tailwindcss/base";
+/**
+ * Website Application.scss
+ *
+ * Laravel Cameroun stylesheet using Tailwindcss combine with Sass
+ *
+ * @author Arthur Monney <contact@arthurmonney.com>
+ * @version 1.0.0
+ * @since January 2020
+ */
+
+@import "variables";
+
+@tailwind base;
 @import "base";
 
-@import "~tailwindcss/components";
+@tailwind components;
 @import "components";
 
-@import "~tailwindcss/utilities";
+@tailwind utilities;
 @import "utilities";
+
+@import "mixins";
