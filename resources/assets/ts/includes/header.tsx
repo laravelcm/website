@@ -90,10 +90,10 @@ export default () => {
       <div className={`fixed inset-0 pt-18 h-full w-full z-50 bg-white ${isOpen ? "flex": "hidden"}`}>
         <div className="h-full w-full overflow-y-auto scrolling-touch px-6">
           <nav className="mb-8 mt-6 space-y-4">
-            <InertiaLink href="/blog" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Blog</InertiaLink>
-            <InertiaLink href="/tutorials" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Tutoriels</InertiaLink>
-            <InertiaLink href="/forum" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Forum</InertiaLink>
-            <InertiaLink href="/packages" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Packages</InertiaLink>
+            <a href="/blog" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Blog</a>
+            <a href="/tutorials" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Tutoriels</a>
+            <a href="/forum" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Forum</a>
+            <a href="/packages" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Packages</a>
           </nav>
           <div>
             {!auth.user && (
