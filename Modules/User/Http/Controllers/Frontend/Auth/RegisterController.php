@@ -4,6 +4,7 @@ namespace Modules\User\Http\Controllers\Frontend\Auth;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Routing\Controller;
+use Inertia\Inertia;
 use Modules\User\Events\Frontend\UserRegistered;
 use Modules\User\Helpers\SocialiteHelper;
 use Modules\User\Http\Requests\Auth\RegisterRequest;
@@ -41,14 +42,13 @@ class RegisterController extends Controller
     /**
      * Show the application registration form.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function showRegistrationForm()
     {
-        abort_unless(config('access.registration'), 404);
+        abort_unless(config('project.registration'), 404);
 
-        return view('user::frontend.auth.register')
-            ->withSocialiteLinks((new SocialiteHelper)->getSocialLinks());
+        return Inertia::render('auth/register');
     }
 
     /**
@@ -59,17 +59,17 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        abort_unless(config('access.registration'), 404);
+        abort_unless(config('project.registration'), 404);
 
-        $user = $this->userRepository->create($request->only('first_name', 'last_name', 'email', 'password'));
+        $user = $this->userRepository->create($request->only('first_name', 'last_name', 'username', 'email', 'password'));
 
         // If the user must confirm their email or their account requires approval,
         // create the account but don't log them in.
-        if (config('access.users.confirm_email') || config('access.users.requires_approval')) {
+        if (config('project.users.confirm_email') || config('project.users.requires_approval')) {
             event(new UserRegistered($user));
 
             return redirect($this->redirectPath())->withFlashSuccess(
-                config('access.users.requires_approval') ?
+                config('project.users.requires_approval') ?
                     __('exceptions.frontend.auth.confirmation.created_pending') :
                     __('exceptions.frontend.auth.confirmation.created_confirm')
             );

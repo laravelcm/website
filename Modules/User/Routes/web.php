@@ -23,7 +23,7 @@ use Modules\User\Http\Controllers\Frontend\Auth\UpdatePasswordController;
 use Modules\User\Http\Controllers\Frontend\DashboardController;
 use Modules\User\Http\Controllers\Frontend\ProfileController;
 
-/*
+/**
  * Frontend Access Controllers
  * All route names are prefixed with 'frontend.auth'.
  */
@@ -32,10 +32,10 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-        //For when admin is logged in as user from backend
+        //For when admin logged in as user from backend
         Route::get('logout-as', [LoginController::class, 'logoutAs'])->name('logout-as');
 
-        // These routes can not be hit if the password is expired
+        // These routes cannot be hit if the password is expired
         // Change Password Routes
         Route::patch('password/update', [UpdatePasswordController::class, 'update'])
             ->middleware('password_expires')
@@ -48,7 +48,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 
     // These routes require no user to be logged in
     Route::group(['middleware' => 'guest'], function () {
-        // Authentication Routes
+        // Register & Authentication Routes
         Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
         Route::post('login', [LoginController::class, 'login'])->name('login.post');
 
@@ -73,7 +73,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
     });
 });
 
-/*
+/**
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
  * These routes can not be hit if the password is expired
