@@ -76,7 +76,8 @@ export default () => {
             <path d="M10.547 2.188c1.939 0 3.515 1.471 3.515 3.28 0 1.134-1.108 2.165-1.155 2.209L7.5 12.723 2.09 7.674C2.047 7.634.939 6.602.939 5.47c0-1.81 1.576-3.282 3.515-3.282 1.356 0 2.497.79 3.047 1.25.55-.46 1.691-1.25 3.047-1.25z" fill="currentColor" />
           </svg> {" "}
           par <a href="https://arthurmonney.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">Arthur Monney</a> {" "}
-          & Fièrement hébergé par <a href="https://digitalocean.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">DigitalOcean</a>.
+          & Fièrement hébergé par <a href="https://forge.laravel.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">Laravel Forge</a> et  {" "}
+          <a href="https://digitalocean.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">DigitalOcean</a>.
         </p>
       </div>
     </div>
