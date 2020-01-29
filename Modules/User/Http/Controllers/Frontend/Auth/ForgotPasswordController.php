@@ -4,6 +4,7 @@ namespace Modules\User\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Inertia\Inertia;
 
 /**
  * Class ForgotPasswordController.
@@ -15,10 +16,10 @@ class ForgotPasswordController extends Controller
     /**
      * Display the form to request a password reset link.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function showLinkRequestForm()
     {
-        return view('user::frontend.auth.passwords.email');
+        return Inertia::render('auth/email');
     }
 }
