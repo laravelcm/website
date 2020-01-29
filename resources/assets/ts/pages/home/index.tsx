@@ -280,6 +280,6 @@ const Home = () => {
   );
 };
 
-Home.layout = (page: React.ReactNode) => <Layout children={page} />;
+Home.layout = (page: React.ReactNode) => <Layout child={page} />;
 
 export default Home;

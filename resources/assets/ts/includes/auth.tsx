@@ -2,11 +2,11 @@ import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 interface LayoutProps {
-  children: React.ReactNode;
+  child: React.ReactNode;
   description?: string;
 }
 
-export default ({ children, description }: LayoutProps) => {
+export default ({ child, description }: LayoutProps) => {
   const summary = description || `Accédez à des articles, des tutoriels, et au forum. Connectez-vous à votre compte pour accéder
                                   à plusieurs ressources pour les développeurs. Vous pouvez également gagner des lots et surprises
                                   en débloquant des badges et en rejoignant la communauté.`;
@@ -23,7 +23,7 @@ export default ({ children, description }: LayoutProps) => {
         <p className="text-xs text-gray-500">{summary}</p>
       </div>
       <main className="h-screen w-full p-10 flex flex-col justify-between overflow-hidden overflow-y-scroll">
-        {children}
+        {child}
         <div className="flex justify-between">
           <p className="text-xs text-gray-600">© 2018 - {(new Date()).getFullYear()} Laravel Cameroun</p>
           <p className="flex space-x-1 text-xs">

@@ -34,6 +34,6 @@ const Email = () => {
   );
 };
 
-Email.layout = (page: React.ReactNode) => <Layout children={page} />;
+Email.layout = (page: React.ReactNode) => <Layout child={page} />;
 
 export default Email;

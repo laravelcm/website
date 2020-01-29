@@ -81,6 +81,6 @@ const Login = () => {
   );
 };
 
-Login.layout = (page: React.ReactNode) => <Layout children={page} />;
+Login.layout = (page: React.ReactNode) => <Layout child={page} />;
 
 export default Login;

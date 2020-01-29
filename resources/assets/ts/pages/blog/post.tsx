@@ -119,6 +119,6 @@ const Post = () => {
   );
 };
 
-Post.layout = (page: React.ReactNode) => <Layout children={page} />;
+Post.layout = (page: React.ReactNode) => <Layout child={page} />;
 
 export default Post;

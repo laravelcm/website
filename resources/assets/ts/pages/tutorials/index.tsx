@@ -78,6 +78,6 @@ const Tutorials = () => {
   );
 };
 
-Tutorials.layout = (page: React.ReactNode) => <Layout children={page} />;
+Tutorials.layout = (page: React.ReactNode) => <Layout child={page} />;
 
 export default Tutorials;

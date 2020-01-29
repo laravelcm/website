@@ -96,6 +96,6 @@ const Register = () => {
 
 const description = `Créez votre compte gratuitement pour accéder à des articles, des tutoriels, et participer aux sujets de discussion sur le forum. Accéder à plusieurs ressources pour les développeurs. Vous pouvez également gagner des lots et surprises en débloquant des badges et en rejoignant la communauté.`;
 
-Register.layout = (page: React.ReactNode) => <Layout children={page} description={description} />;
+Register.layout = (page: React.ReactNode) => <Layout child={page} description={description} />;
 
 export default Register;

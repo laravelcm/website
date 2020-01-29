@@ -69,6 +69,6 @@ const Blog = () => {
   );
 }
 
-Blog.layout = (page: React.ReactNode) => <Layout children={page} />;
+Blog.layout = (page: React.ReactNode) => <Layout child={page} />;
 
 export default Blog;

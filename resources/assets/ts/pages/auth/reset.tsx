@@ -34,6 +34,6 @@ const Reset = () => {
   );
 };
 
-Reset.layout = (page: React.ReactNode) => <Layout children={page} />;
+Reset.layout = (page: React.ReactNode) => <Layout child={page} />;
 
 export default Reset;
