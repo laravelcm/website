@@ -25,8 +25,8 @@ class SocialLoginController extends Controller
     /**
      * SocialLoginController constructor.
      *
-     * @param UserRepository  $userRepository
-     * @param SocialiteHelper $socialiteHelper
+     * @param  UserRepository  $userRepository
+     * @param  SocialiteHelper $socialiteHelper
      */
     public function __construct(UserRepository $userRepository, SocialiteHelper $socialiteHelper)
     {
@@ -35,8 +35,9 @@ class SocialLoginController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @param $provider
+     * @param  Request $request
+     * @param  $provider
+     *
      * @return \Illuminate\Http\RedirectResponse|mixed
      * @throws \Modules\Core\Exceptions\GeneralException
      */
@@ -50,7 +51,7 @@ class SocialLoginController extends Controller
             return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => e($provider)]));
         }
 
-        /*
+        /**
          * The first time this is hit, request is empty
          * It's redirected to the provider and then back here, where request is populated
          * So it then continues creating the user
@@ -120,7 +121,7 @@ class SocialLoginController extends Controller
     }
 
     /**
-     * @param $provider
+     * @param  $provider
      *
      * @return mixed
      */

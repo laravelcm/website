@@ -17,3 +17,10 @@
 .paging-item {
   margin-right: 8px;
 }
+
+.input-form {
+  @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
+  &:focus {
+    @apply outline-none bg-white;
+  }
+}

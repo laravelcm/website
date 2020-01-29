@@ -43,7 +43,7 @@ return [
         ],
     ],
 
-    /*
+    /**
      * Socialite Credentials
      * Redirect URL's need to be the same as specified on each network you set up this application on
      * as well as conform to the route:
@@ -86,7 +86,7 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT'),
 
-        /*
+        /**
          * Only allows google to grab email address
          * Default scopes array also has: 'https://www.googleapis.com/auth/plus.login'
          * https://medium.com/@njovin/fixing-laravel-socialite-s-google-permissions-2b0ef8c18205

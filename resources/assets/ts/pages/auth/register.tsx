@@ -15,13 +15,13 @@ const Register = () => {
       <div className="w-full md:w-3/4 lg:w-162 mb-16 mt-12 mx-auto">
         <h1 className="text-2xl font-medium text-gray-700 mb-6">Créer son compte sur Laravel Cameroun</h1>
         <div className="flex flex-col md:flex-row justify-between">
-          <a href="/" className="flex bg-brand-github text-base text-white px-10 py-3 rounded-md hover:bg-gray-900 mb-4 md:mb-0">
+          <a href="/login/github" className="flex bg-brand-github text-base text-white px-10 py-3 rounded-md hover:bg-gray-900 mb-4 md:mb-0">
             <svg className="h-5 w-5 text-white mr-3" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.001 0C4.475-.002 0 4.593 0 10.264c0 4.485 2.8 8.297 6.699 9.697.525.135.444-.248.444-.51v-1.778c-3.032.365-3.155-1.696-3.358-2.04-.411-.721-1.383-.905-1.093-1.25.69-.364 1.395.093 2.21 1.33.59.897 1.74.746 2.324.596.127-.539.4-1.021.775-1.395-3.141-.578-4.45-2.548-4.45-4.889 0-1.136.364-2.18 1.079-3.022-.456-1.389.042-2.578.11-2.755 1.297-.119 2.647.955 2.752 1.04.737-.204 1.58-.312 2.522-.312.948 0 1.793.112 2.537.319.252-.197 1.503-1.12 2.71-1.008.065.177.552 1.338.123 2.709.724.844 1.092 1.898 1.092 3.036 0 2.346-1.318 4.317-4.468 4.886.27.273.484.598.63.957.146.358.221.743.22 1.132v2.582c.019.207 0 .411.336.411C17.151 18.63 20 14.79 20 10.266 20 4.593 15.522 0 10.001 0z" fill="currentColor" />
             </svg>
             S'incrire avec Github
           </a>
-          <a href="/" className="flex bg-white shadow-md text-base text-gray-800 px-10 py-3 rounded-md hover:bg-gray-100">
+          <a href="/login/google" className="flex bg-white shadow-md text-base text-gray-800 px-10 py-3 rounded-md hover:bg-gray-100">
             <svg className="h-5 w-5 text-white mr-3" xmlns="http://www.w3.org/2000/svg">
               <path d="M19.99 10.187c0-.82-.069-1.417-.216-2.037H10.2v3.698h5.62c-.113.919-.725 2.303-2.084 3.233l-.02.124 3.028 2.292.21.02c1.926-1.738 3.037-4.296 3.037-7.33z" fill="#4285F4" />
               <path d="M10.2 19.931c2.753 0 5.064-.886 6.753-2.414l-3.218-2.436c-.862.587-2.017.997-3.536.997a6.126 6.126 0 01-5.801-4.141l-.12.01-3.148 2.38-.041.112c1.677 3.256 5.122 5.492 9.11 5.492z" fill="#34A853" />
@@ -94,6 +94,8 @@ const Register = () => {
   )
 };
 
-Register.layout = (page: React.ReactNode) => <Layout children={page} />;
+const description = `Créez votre compte gratuitement pour accéder à des articles, des tutoriels, et participer aux sujets de discussion sur le forum. Accéder à plusieurs ressources pour les développeurs. Vous pouvez également gagner des lots et surprises en débloquant des badges et en rejoignant la communauté.`;
+
+Register.layout = (page: React.ReactNode) => <Layout children={page} description={description} />;
 
 export default Register;

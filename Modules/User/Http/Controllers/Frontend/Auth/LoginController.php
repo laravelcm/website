@@ -5,6 +5,7 @@ namespace Modules\User\Http\Controllers\Frontend\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Inertia\Inertia;
 use Modules\Core\Exceptions\GeneralException;
 use Modules\User\Events\Frontend\UserLoggedIn;
 use Modules\User\Events\Frontend\UserLoggedOut;
@@ -29,12 +30,13 @@ class LoginController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Display Login form view
+     *
+     * @return \Inertia\Response
      */
     public function showLoginForm()
     {
-        return view('user::frontend.auth.login')
-            ->withSocialiteLinks((new SocialiteHelper)->getSocialLinks());
+        return Inertia::render('auth/login');
     }
 
     /**
