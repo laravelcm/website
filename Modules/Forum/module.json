@@ -1,0 +1,14 @@
+{
+  "name": "Forum",
+  "alias": "forum",
+  "description": "",
+  "keywords": [],
+  "order": 0,
+  "active": 1,
+  "providers": [
+    "Modules\\Forum\\Providers\\ForumServiceProvider"
+  ],
+  "aliases": {},
+  "files": [],
+  "requires": []
+}

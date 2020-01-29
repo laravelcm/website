@@ -63,7 +63,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapBackendRoutes()
     {
-        Route::prefix(config('backend.prefix'))
+        Route::prefix(config('project.prefix'))
             ->as('admin.')
             ->middleware(config('backend.middleware.admin'))
             ->namespace($this->moduleNamespace. '\Backend')

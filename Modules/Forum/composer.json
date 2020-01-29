@@ -1,7 +1,7 @@
 {
-  "name": "mckenziearts/blog-module",
-  "description": "",
-  "keywords": [],
+  "name": "mckenziearts/forum-module",
+  "description": "A Laravel Forum inspire from Laracast Forum",
+  "keywords": ["forum", "laravel"],
   "license": "MIT",
   "authors": [
     {
@@ -18,7 +18,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Modules\\Blog\\Providers\\BlogServiceProvider"
+        "Modules\\Forum\\Providers\\ForumServiceProvider"
       ],
       "aliases": {
 
@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Modules\\Blog\\": ""
+      "Modules\\Forum\\": ""
     }
   },
   "minimum-stability": "dev",

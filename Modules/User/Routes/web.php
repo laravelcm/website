@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         //For when admin logged in as user from backend
         Route::get('logout-as', [LoginController::class, 'logoutAs'])->name('logout-as');
 
-        // These routes cannot be hit if the password is expired
+        // These routes cannot be hit if the password has expired
         // Change Password Routes
         Route::patch('password/update', [UpdatePasswordController::class, 'update'])
             ->middleware('password_expires')
@@ -83,10 +83,10 @@ Route::group(['middleware' => 'auth'], function () {
         // User Dashboard Specific
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        // User Account Specific
+        // User's Account Specific
         Route::get('account', [AccountController::class, 'index'])->name('account');
 
-        // User Profile Specific
+        // User's Profile Specific
         Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });
