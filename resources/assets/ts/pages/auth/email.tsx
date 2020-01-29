@@ -16,7 +16,7 @@ const Email = () => {
         </InertiaLink>
         <p className="text-sm text-gray-600">Pas encore membre ? <InertiaLink href="/register" className="link">Créer votre compte</InertiaLink></p>
       </div>
-      <div className="w-full md:w-3/4 lg:w-125 mb-16 mt-24 mx-auto">
+      <div className="w-full md:w-3/4 lg:w-125 mb-16 mt-12 mx-auto">
         <h1 className="text-2xl font-medium text-gray-700 mb-4">Mot de passe oublié?</h1>
         <p className="text-sm text-gray-600 mb-6">
           Saisissez l'adresse e-mail que vous avez utilisée lors de votre inscription et nous vous enverrons
