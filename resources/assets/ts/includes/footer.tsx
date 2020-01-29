@@ -33,13 +33,13 @@ export default () => {
                 </svg>
                 <h4 className="ml-2 text-lg">Laravel Cameroun</h4>
               </div>
-              <p className="mt-4 text-gray-600 text-base lg:w-116 lg:pr-4">
+              <p className="mt-4 text-gray-600 lg:w-116 lg:pr-4">
                 Laravel Cameroun est la plus grande communauté PHP & Laravel au Cameroun. Un rassemblement de milliers de développeurs chaque année.
               </p>
             </div>
             <div className="md:flex w-full lg:w-2/3 lg:pl-24">
               <div className="px-6 mb-8 md:w-1/3">
-                <h5 className="text-gray-600 text-base uppercase mb-8 font-medium">Autres Ressources</h5>
+                <h5 className="text-gray-600 uppercase mb-8 font-medium">Autres Ressources</h5>
                 <ul>
                   <li className="mb-3"><a href="https://laravel.com/docs" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Laravel Docs</a></li>
                   <li className="mb-3"><InertiaLink href="/jobs" className="text-gray-700 hover:text-gray-800">Jobs</InertiaLink></li>
@@ -48,7 +48,7 @@ export default () => {
                 </ul>
               </div>
               <div className="px-6 mb-8 md:w-1/3">
-                <h5 className="text-gray-600 text-base uppercase mb-8 font-medium">Reseaux Sociaux</h5>
+                <h5 className="text-gray-600 uppercase mb-8 font-medium">Reseaux Sociaux</h5>
                 <ul>
                   <li className="mb-3"><a href="https://facebook.com/laravelcm" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Facebook</a></li>
                   <li className="mb-3"><a href="https://twitter.com/laravelcm" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Twitter</a></li>
@@ -57,7 +57,7 @@ export default () => {
                 </ul>
               </div>
               <div className="px-6 md:w-1/3">
-                <h5 className="text-gray-600 text-base uppercase mb-8 font-medium">Rejoignez Nous</h5>
+                <h5 className="text-gray-600 uppercase mb-8 font-medium">Rejoignez Nous</h5>
                 <ul>
                   <li className="mb-3"><a href="https://laravelcm.slack.com" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Slack</a></li>
                   <li className="mb-3"><a href="https://meetup.com/laravelcm" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Meetup</a></li>
@@ -76,7 +76,7 @@ export default () => {
             <path d="M10.547 2.188c1.939 0 3.515 1.471 3.515 3.28 0 1.134-1.108 2.165-1.155 2.209L7.5 12.723 2.09 7.674C2.047 7.634.939 6.602.939 5.47c0-1.81 1.576-3.282 3.515-3.282 1.356 0 2.497.79 3.047 1.25.55-.46 1.691-1.25 3.047-1.25z" fill="currentColor" />
           </svg> {" "}
           par <a href="https://arthurmonney.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">Arthur Monney</a> {" "}
-          & Fièrement hébergé par <a href="https://forge.laravel.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">Laravel Forge</a> et  {" "}
+          & Fièrement hébergé par <a href="https://forge.laravel.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">Laravel Forge</a> et {" "}
           <a href="https://digitalocean.com" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-gray-800">DigitalOcean</a>.
         </p>
       </div>

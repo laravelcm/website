@@ -5,10 +5,10 @@
  */
 const ansiWordBound = (c: any) => {
   return (
-    (' ' === c) ||
-    ('\n' === c) ||
-    ('\r' === c) ||
-    ('\t' === c)
+    (c === ' ') ||
+    (c === '\n') ||
+    (c === '\r') ||
+    (c === '\t')
   );
 };
 
@@ -24,7 +24,7 @@ type options = {
 }
 
 export const readingTime = (text: string, options: options) => {
-  let words = 0, start = 0, end = text.length - 1, wordBound, i;
+  let words = 0, start = 0, end = text.length - 1, i;
 
   options = options || {};
 
@@ -32,7 +32,7 @@ export const readingTime = (text: string, options: options) => {
   options.wordsPerMinute = options.wordsPerMinute || 200;
 
   // use provided function if available
-  wordBound = options.wordBound || ansiWordBound;
+  const wordBound = options.wordBound || ansiWordBound;
 
   // fetch bounds
   while (wordBound(text[start])) start++;
@@ -51,9 +51,11 @@ export const readingTime = (text: string, options: options) => {
   const displayed = Math.ceil(Number(minutes.toFixed(2)));
 
   return {
-    text: displayed + ' min read',
-    minutes: minutes,
-    time: time,
-    words: words
+    text: `${displayed} min de lecture`,
+    minutes,
+    time,
+    words
   }
 };
+
+export const toCapitalize = (s: string) => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase();
