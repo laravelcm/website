@@ -67,7 +67,7 @@ const Blog = () => {
       </div>
     </>
   );
-}
+};
 
 Blog.layout = (page: React.ReactNode) => <Layout child={page} />;
 
