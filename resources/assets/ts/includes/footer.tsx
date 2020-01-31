@@ -4,7 +4,7 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 export default () => {
   return (
     <div className="pb-4 pt-14">
-      <div className="bg-white text-center shadow-bigger rounded-md mb-8 px-6 py-8 w-full md:w-2/3 mx-auto md:px-18 lg:w-3/5 lg:mb-12 lg:px-36 lg:py-10">
+      <div className="bg-white text-center shadow-bigger rounded-md mb-10 px-6 py-8 w-full md:w-2/3 mx-auto md:px-18 lg:w-3/5 lg:mb-12 lg:px-36 lg:py-10">
         <h4 className="text-xl font-medium text-gray-700 mb-4 lg:text-2xl">Restez informés des mises à jour</h4>
         <p className="text-sm mb-8 text-gray-600 lg:text-base">
           Rejoignez notre newsletter hebdomadaire et recevez des tutoriels et des articles sur le
@@ -17,10 +17,10 @@ export default () => {
         <form action="#" className="lg:flex">
           <input
             type="email"
-            className="bg-gray-200 rounded-md py-4 px-5 transition focus:outline-none border border-transparent focus:bg-gray-100 focus:border-gray-200 placeholder-gray-600 w-full mb-3 lg:w-2/3 lg:mb-0"
+            className="bg-gray-200 rounded-md py-3 px-5 transition focus:outline-none border border-transparent focus:bg-gray-100 focus:border-gray-200 placeholder-gray-600 w-full mb-3 lg:w-2/3 lg:mb-0"
             placeholder="Entrer votre adresse email"
           />
-          <button type="submit" className="btn btn-primary font-medium w-full p-4 lg:ml-2 lg:w-1/3">S'enregistrer</button>
+          <button type="submit" className="btn btn-primary font-medium w-full p-3 lg:ml-2 lg:w-1/3">S'enregistrer</button>
         </form>
       </div>
       <footer>

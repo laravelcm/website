@@ -4,6 +4,7 @@ module.exports = {
       colors: {
         brand: {
           100: "#C0EBD2",
+          200: "#38A169",
           900: "#22543D",
           primary: "#007A5E",
           facebook: "#435F9B",

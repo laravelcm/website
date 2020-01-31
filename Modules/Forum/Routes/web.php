@@ -11,6 +11,14 @@
 |
 */
 
+use Modules\Forum\Http\Controllers\Frontend\ForumController;
+
 Route::prefix('forum')->group(function() {
-    Route::get('/', 'ForumController@index');
+    Route::get('/', [ForumController::class, 'index']);
+    Route::redirect('/channels', '/forum');
+    Route::get('/channels/{slug}', [ForumController::class, 'channel']);
+
+    Route::prefix('topics')->group(function () {
+        Route::get('/{slug}', [ForumController::class, 'topic']);
+    });
 });

@@ -16,4 +16,30 @@ class ForumController extends Controller
     {
         return Inertia::render('forum/index');
     }
+
+    /**
+     * Display a channel view
+     *
+     * @param  string $slug
+     * @return \Inertia\Response
+     */
+    public function channel(string $slug)
+    {
+        $channel = [];
+
+        return Inertia::render('forum/channel', compact('channel'));
+    }
+
+    /**
+     * Display a topic
+     *
+     * @param  string $slug
+     * @return \Inertia\Response
+     */
+    public function topic(string $slug)
+    {
+        $topic = [];
+
+        return Inertia::render('forum/topic', compact('topic'));
+    }
 }

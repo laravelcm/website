@@ -1,3 +1,6 @@
+import { SyntheticEvent } from "react";
+import { Inertia } from "@inertiajs/inertia";
+
 /**
  * ansiWordBound
  *
@@ -13,16 +16,25 @@ const ansiWordBound = (c: any) => {
 };
 
 /**
- * Reading Time
+ * Reading Time Options.
  *
  * @param text string
- * @param options object
+ * @param options object.
  */
 type options = {
   wordsPerMinute?: number;
   wordBound?: (c: any) => boolean;
 }
 
+/**
+ * readingTime
+ *
+ * Returns the reading time of the text passed as a parameter.
+ *
+ * @param text string
+ * @param options object
+ * @return object { text, minutes, time, word }
+ */
 export const readingTime = (text: string, options: options) => {
   let words = 0, start = 0, end = text.length - 1, i;
 
@@ -58,4 +70,27 @@ export const readingTime = (text: string, options: options) => {
   }
 };
 
+/**
+ * toCapitalize
+ *
+ * Puts the first letter of the text passed as parameter in uppercase.
+ *
+ * @param s
+ * @return string
+ */
 export const toCapitalize = (s: string) => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase();
+
+/**
+ * navigate
+ *
+ * Inertia navigate to another route.
+ *
+ * @param e SyntheticEvent
+ * @param url string
+ * @param options object.
+ * @return void
+ */
+export const navigate = (e: SyntheticEvent, url: string, options?: object) => {
+  e.stopPropagation();
+  Inertia.visit(url, { method: 'get', ...options });
+};

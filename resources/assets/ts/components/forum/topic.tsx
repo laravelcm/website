@@ -1,6 +1,8 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
+import { navigate } from "@/utils/helpers";
+
 interface TopicProps {
   title: string;
   solved: boolean;
@@ -37,15 +39,19 @@ const Topic = ({ title, solved }: TopicProps) => {
         </div>
       </div>
       <div className="md:pr-10">
-        <h4 className="text-gray-800 font-medium mb-1 md:text-lg md:mb-2">{title}</h4>
-        <p className="text-sm mb-2 md:text-base md:mb-3">Après déploiement de mon site web conçu avec laravel chez l'hébergeur LWS, pour accéder au site je veux utiliser l'adresse www.mondomain....</p>
+        <h4 className="text-gray-800 font-medium mb-1 md:text-lg md:mb-2">
+          <InertiaLink href="/forum/topics/envoyer-didnt-really-restart-forge-managed-queue-workers">{title}</InertiaLink>
+        </h4>
+        <p onClick={(e) => navigate(e, '/forum/topics/envoyer-didnt-really-restart-forge-managed-queue-workers')} className="text-sm mb-2 md:text-base md:mb-3">
+          Après déploiement de mon site web conçu avec laravel chez l'hébergeur LWS, pour accéder au site je veux utiliser l'adresse www.mondomain...
+        </p>
         <div className="text-xs text-gray-500 md:text-sm">
           <InertiaLink href="/@mckenziearts" className="link font-medium">mckenzie</InertiaLink>
           <span> a répondu <span className="text-gray-700 font-medium">il y'a 2h</span></span>
         </div>
       </div>
       <div className="hidden md:flex flex-col">
-        <InertiaLink href="/forum" className="text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-laravel text-brand-laravel md:text-sm md:mb-3">Laravel</InertiaLink>
+        <InertiaLink href="/forum/channels" className="text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-laravel text-brand-laravel md:text-sm md:mb-3">Laravel</InertiaLink>
         <div className="flex items-center text-sm">
           <div className="flex mr-4 text items-center">
             <svg className="h-5 w-5 mr-1" xmlns="http://www.w3.org/2000/svg">
