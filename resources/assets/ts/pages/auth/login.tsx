@@ -1,17 +1,49 @@
 import React, { useState } from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
-import {useTransition, animated} from "react-spring";
+import { Inertia } from "@inertiajs/inertia";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { useTransition, animated } from "react-spring";
 
 import Layout from "@/includes/auth";
 import SEO from "@/includes/seo";
 
+import TextInput from "@/components/textInput";
+import LoaderButton from "@/components/loaderButton";
+
 const Login = () => {
   const [isSocial, setIsSocial] = useState(true);
+  const [sending, setSending] = useState(false);
+  const { errors } = usePage();
   const transitions = useTransition(isSocial, null, {
     from: { opacity: 0, transform: 'translate3d(60px,0,0)' },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
     leave: { opacity: 0, transform: 'translate3d(20px,0,0)' }
   });
+  const [values, setValues] = useState({
+    email: 'monneylobe@gmail.com',
+    password: 'monneylobe',
+    remember: true
+  });
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const key = e.target.name;
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
+    // eslint-disable-next-line no-shadow
+    setValues(values => ({
+      ...values,
+      [key]: value
+    }));
+  }
+
+  function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    console.log(errors);
+    setSending(true);
+    Inertia.post('/login', values).then(() => {
+      setSending(false);
+      console.log(errors);
+    });
+  }
 
   return (
     <>
@@ -55,18 +87,30 @@ const Login = () => {
                 <animated.div key={key} style={props}>
                   <div style={{ position: "absolute", left: 0, right: 0 }}>
                     <div className="p-8 bg-white shadow-smooth rounded-md">
-                      <div className="w-full mb-3">
-                        <label className="block tracking-wide text-gray-800 text-sm mb-2" htmlFor="grid-email">Adresse Email</label>
-                        <input className="input-form" id="grid-email" type="email" placeholder="john.doe@gmail.com" />
-                      </div>
-                      <div className="w-full">
-                        <label className="block tracking-wide text-gray-800 text-sm mb-2" htmlFor="grid-password">Mot de passe</label>
-                        <input className="input-form" id="grid-password" type="password" placeholder="*********" />
-                      </div>
-                      <div className="mt-6 flex flex-col-reverse lg:flex-row justify-between lg:items-center">
-                        <button className="btn btn-primary">Connexion</button>
-                        <InertiaLink href="/password/reset" className="link mb-2 lg:mb-0 text-sm">Mot de passe oublié?</InertiaLink>
-                      </div>
+                      <form onSubmit={handleSubmit}>
+                        <TextInput
+                          label="Adresse Email"
+                          name="email"
+                          type="email"
+                          errors={errors.email}
+                          placeholder="john.doe@gmail.com"
+                          value={values.email}
+                          onChange={handleChange}
+                        />
+                        <TextInput
+                          label="Mot de passe"
+                          name="password"
+                          type="password"
+                          errors={errors.password}
+                          placeholder="*********"
+                          value={values.password}
+                          onChange={handleChange}
+                        />
+                        <div className="mt-6 flex flex-col-reverse lg:flex-row justify-between lg:items-center">
+                          <LoaderButton title="Connexion" loading={sending} type="submit" />
+                          <InertiaLink href="/password/reset" className="link mb-2 lg:mb-0 text-sm">Mot de passe oublié?</InertiaLink>
+                        </div>
+                      </form>
                     </div>
                     <p className="mt-8 text-sm text-center">
                       Vous pouvez aussi utiliser <span className="link cursor-pointer" onClick={() => setIsSocial(true)}>Github ou Google</span>

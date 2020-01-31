@@ -55,8 +55,8 @@ class LoginController extends Controller
      * @param Request $request
      * @param         $user
      *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws GeneralException
-     * @return \Illuminate\Http\RedirectResponse
      */
     protected function authenticated(Request $request, $user)
     {
@@ -86,7 +86,8 @@ class LoginController extends Controller
             auth()->logoutOtherDevices($request->password);
         }
 
-        return redirect()->intended($this->redirectPath());
+        return redirectWithoutInertia($this->redirectPath());
+        // return redirect()->intended($this->redirectPath());
     }
 
     /**
@@ -94,7 +95,7 @@ class LoginController extends Controller
      *
      * @param  Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function logout(Request $request)
     {

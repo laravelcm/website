@@ -1,6 +1,8 @@
 <?php
 
-if (! function_exists('app_name')) {
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+
+if (!function_exists('app_name')) {
     /**
      * Helper to grab the application name.
      *
@@ -12,7 +14,7 @@ if (! function_exists('app_name')) {
     }
 }
 
-if (! function_exists('gravatar')) {
+if (!function_exists('gravatar')) {
     /**
      * Access the gravatar helper.
      */
@@ -22,7 +24,7 @@ if (! function_exists('gravatar')) {
     }
 }
 
-if (! function_exists('home_route')) {
+if (!function_exists('home_route')) {
     /**
      * Return the route to the "home" page depending on authentication/authorization status.
      *
@@ -42,11 +44,11 @@ if (! function_exists('home_route')) {
     }
 }
 
-if (! function_exists('setEnvironmentValue')) {
+if (!function_exists('setEnvironmentValue')) {
     /**
      * Function to set or update .env variable
      *
-     * @param array $values
+     * @param  array $values
      * @return bool
      */
     function setEnvironmentValue(array $values)
@@ -88,5 +90,18 @@ if (! function_exists('setEnvironmentValue')) {
         }
 
         return true;
+    }
+}
+
+if (!function_exists('redirectWithoutInertia')) {
+    /**
+     * Function to redirect to a url without using Inertia
+     *
+     * @param  string $url
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    function redirectWithoutInertia(string $url)
+    {
+        return response('', SymfonyResponse::HTTP_CONFLICT)->header('x-inertia-location', $url);
     }
 }

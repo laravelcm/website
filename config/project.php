@@ -46,7 +46,7 @@ return [
     | Registration
     |--------------------------------------------------------------------------
     |
-    | Whether or not registration is enabled
+    | Whether registration enabled
     |
     */
 
@@ -78,8 +78,8 @@ return [
         'admin_role' => 'administrator',
         'default_role' => 'user',
 
-        /*
-         * Whether or not new users need to be approved by an administrator before logging in
+        /**
+         * Whether new users need to be approved by an administrator before logging in
          * If this is set to true, then confirm_email is not in effect
          */
         'requires_approval' => env('REQUIRES_APPROVAL', false),
@@ -87,21 +87,21 @@ return [
         // Login username to be used by the controller.
         'username' => 'email',
 
-        /*
+        /**
          * When active, a user can only have one session active at a time
-         * That is all other sessions for that user will be deleted when they log in
+         * Is all other sessions for that user will be deleted when they log in
          * (They can only be logged into one place at a time, all others will be logged out)
          * AuthenticateSession middleware must be enabled
          */
         'single_login' => env('SINGLE_LOGIN', true),
 
-        /*
+        /**
          * How many days before users have to change their passwords
          * false is off
          */
         'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 60),
 
-        /*
+        /**
          * The number of most recent previous passwords to check against when changing/resetting a password
          * false is off which doesn't log password changes or check against them
          */
@@ -126,8 +126,8 @@ return [
     | Socialite session variable name
     |--------------------------------------------------------------------------
     |
-    | Contains the name of the currently logged in provider in the users session
-    | Makes it so social logins can not change passwords, etc.
+    | Contains the name of the currently logged in a provider in the user's session
+    | Makes it so social logins cannot change passwords, etc.
     |
     */
 
