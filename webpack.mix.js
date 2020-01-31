@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 const tailwindcss = require('tailwindcss');
 require('laravel-mix-purgecss');
 
@@ -43,7 +44,6 @@ if (mix.inProduction()) {
   mix.version()
     .purgeCss({
       enabled: true,
-      extensions: ['js', 'php', 'ts'],
       globs: [
         './resources/views/**/*.blade.php',
         './resources/assets/ts/**/*.ts'

@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
+     *
+     * @return void
      */
     public function register()
     {
@@ -33,6 +35,11 @@ class AppServiceProvider extends ServiceProvider
         $this->registerLengthAwarePaginator();
     }
 
+    /**
+     * Register Inertia data.
+     *
+     * @return void
+     */
     public function registerInertia()
     {
         Inertia::getVersion(function () {
@@ -64,6 +71,11 @@ class AppServiceProvider extends ServiceProvider
         ]);
     }
 
+    /**
+     * Register Paginator.
+     *
+     * @return void
+     */
     protected function registerLengthAwarePaginator()
     {
         $this->app->bind(LengthAwarePaginator::class, function ($app, $values) {

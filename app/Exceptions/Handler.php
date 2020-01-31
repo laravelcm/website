@@ -36,7 +36,7 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param Exception $exception
+     * @param  Exception $exception
      *
      * @throws Exception
      * @return mixed|void
@@ -77,8 +77,8 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param AuthenticationException  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  AuthenticationException  $exception
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

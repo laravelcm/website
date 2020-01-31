@@ -1,11 +1,11 @@
 import React from "react";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
 import Layout from "@/includes/layout";
 import SEO from "@/includes/seo";
 import Breadcrumb from "@/includes/breadcrumb";
 
 import Sidebar from "@/components/forum/sidebar";
-import {InertiaLink} from "@inertiajs/inertia-react";
 
 const Topic = () => {
   return (
@@ -15,7 +15,7 @@ const Topic = () => {
         homeLink="/forum"
         homeTitle="Forum"
         parentTitle="Laravel"
-        parentLink="/form/channels/laravel"
+        parentLink="/forum/channels/laravel"
         title='problème lié au dossier " public " de laravel'
       />
       <div className="bg-gradient-white py-4 lg:hidden">
