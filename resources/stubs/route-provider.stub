@@ -65,7 +65,7 @@ class $CLASS$ extends ServiceProvider
     {
         Route::prefix(config('project.prefix'))
             ->as('admin.')
-            ->middleware(config('backend.middleware.admin'))
+            ->middleware(config('project.middleware.admin'))
             ->namespace($this->moduleNamespace. '\Backend')
             ->group(__DIR__ . '/../Routes/backend.php');
     }
