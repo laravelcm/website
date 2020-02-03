@@ -104,7 +104,7 @@
                         </div><!--col-->
                     </div><!--form-group-->
 
-                    @if(! config('access.users.requires_approval'))
+                    @if(! config('project.users.requires_approval'))
                         <div class="form-group row">
                             {{ html()->label(__('validation.attributes.backend.access.users.send_confirmation_email') . '<br/>' . '<small>' .  __('strings.backend.access.users.if_confirmed_off') . '</small>')->class('col-md-2 form-control-label')->for('confirmation_email') }}
 
