@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Layout from "@/includes/layout";
 import SEO from "@/includes/seo";
 
-import Job from "@/components/job";
+import ListView from "@/components/listView";
+import GridView from "@/components/gridView";
 
 const Jobs = () => {
+  const [display, setDisplay] = useState(`list`);
+
   return (
     <>
       <SEO
@@ -227,28 +230,28 @@ const Jobs = () => {
                     <path d="M15.3 9.3a1 1 0 011.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4l3.3 3.29 3.3-3.3v.01z" fill="currentColor" />
                   </svg>
                 </button>
-                <button type="button" className="flex items-center justify-center bg-white text-brand-primary hover:text-brand-primary shadow-smooth rounded-md h-8 w-8">
+                <button
+                  type="button"
+                  className={`flex items-center justify-center bg-white ${display === 'list' ? 'text-brand-primary' : 'text-gray-600'} hover:text-brand-primary shadow-smooth rounded-md h-8 w-8`}
+                  onClick={() => setDisplay(`list`)}
+                >
                   <svg className="h-6 w-6 fill-current" fill="fill-current" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.39 13.198c.48 0 .87.378.87.844 0 .465-.39.843-.87.843H5.87a.857.857 0 01-.87-.843c0-.466.39-.844.87-.844h11.52zM5.87 6.688A.857.857 0 015 5.844C5 5.378 5.39 5 5.87 5h8.913c.48 0 .87.378.87.843 0 .467-.39.845-.87.845H5.87zm7.173 10.836c.48 0 .87.377.87.843a.857.857 0 01-.87.844H5.87a.857.857 0 01-.87-.844c0-.466.39-.843.87-.843h7.173zm6.088-8.544c.48 0 .869.377.869.843 0 .465-.39.843-.87.843H5.87A.857.857 0 015 9.823c0-.466.39-.843.87-.843h13.26z" fill="currentColor" />
                   </svg>
                 </button>
-                <button type="button" className="flex items-center justify-center bg-white text-gray-600 hover:text-brand-primary shadow-smooth rounded-md h-8 w-8">
+                <button
+                  type="button"
+                  className={`flex items-center justify-center bg-white ${display === 'grid' ? 'text-brand-primary' : 'text-gray-600'} hover:text-brand-primary shadow-smooth rounded-md h-8 w-8`}
+                  onClick={() => setDisplay(`grid`)}
+                >
                   <svg className="h-6 w-6 fill-current" fill="fill-current" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.667 5c.644 0 1.167.523 1.167 1.167v3.5c0 .644-.523 1.167-1.167 1.167h-3.5A1.167 1.167 0 015 9.667v-3.5C5 5.523 5.523 5 6.167 5h3.5zm8.166 0C18.477 5 19 5.523 19 6.167v3.5c0 .644-.523 1.167-1.167 1.167h-3.5a1.167 1.167 0 01-1.167-1.167v-3.5c0-.644.523-1.167 1.167-1.167h3.5zm-8.166 8.167c.644 0 1.167.523 1.167 1.167v3.5c0 .644-.523 1.166-1.167 1.166h-3.5A1.167 1.167 0 015 17.834v-3.5c0-.644.523-1.167 1.167-1.167h3.5zm8.166 0c.644 0 1.167.523 1.167 1.167v3.5c0 .644-.523 1.166-1.167 1.166h-3.5a1.167 1.167 0 01-1.167-1.166v-3.5c0-.644.523-1.167 1.167-1.167h3.5z" fill="currentColor" />
                   </svg>
                 </button>
               </div>
             </div>
-            <Job
-              company="Kiro'o Games"
-              title="Développeur NodeJS & React"
-              image={require("@/assets/brands/kiroo.png")}
-            />
-            <Job
-              company="Canal 2 international"
-              title="Product Designer"
-              image={require("@/assets/brands/canal2.png")}
-            />
+            {display === `list` && <ListView />}
+            {display === `grid` && <GridView />}
           </div>
         </div>
       </div>
