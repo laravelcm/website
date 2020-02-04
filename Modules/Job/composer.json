@@ -1,5 +1,5 @@
 {
-  "name": "mckenziearts/tutorial-module",
+  "name": "mckenziearts/job-module",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -18,7 +18,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Modules\\Tutorial\\Providers\\TutorialServiceProvider"
+        "Modules\\Job\\Providers\\JobServiceProvider"
       ],
       "aliases": {
 
@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Modules\\Tutorial\\": ""
+      "Modules\\Job\\": ""
     }
   },
   "minimum-stability": "dev",

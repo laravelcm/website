@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   theme: {
     extend: {
@@ -52,7 +54,7 @@ module.exports = {
         '100': '100',
       },
       fontFamily: {
-        body: ["Poppins"],
+        body: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
       gradients: theme => ({
         'gradient-white':  ['180deg', "rgba(255,255,255,1)", "rgba(246,249,252,1)"],
@@ -70,6 +72,7 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-plugins/gradients'),
+    require('@tailwindcss/custom-forms'),
     function({ addUtilities, theme, e, variants }) {
       const spaceX = Object.fromEntries(
         Object.entries(theme('spacing')).map(([k, v]) => [

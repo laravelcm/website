@@ -12,6 +12,7 @@
   "dependencies": {
     "@inertiajs/inertia": "^0.1.7",
     "@inertiajs/inertia-react": "^0.1.4",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "axios": "^0.19",
     "laravel-mix": "^4.0.7",
     "laravel-mix-purgecss": "^4.2.0",
