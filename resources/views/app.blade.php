@@ -16,11 +16,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900">
     <link href="{{ mix('/css/application.css') }}" rel="stylesheet" />
     @include('partials.ga')
+    @notifyCss
 </head>
 <body class="bg-gray-200 text-gray-600 leading-normal font-body">
 
     @inertia
 
     <script src="{{ mix('/js/app.js') }}" defer></script>
+    @include("notify::messages")
+    @notifyJs
 </body>
 </html>

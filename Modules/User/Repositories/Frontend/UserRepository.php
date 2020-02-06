@@ -94,17 +94,18 @@ class UserRepository extends BaseRepository
             $user = parent::create([
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
+                'username' => $data['username'],
                 'email' => $data['email'],
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'active' => true,
                 'password' => $data['password'],
                 // If users require approval or needs to confirm email
-                'confirmed' => ! (config('access.users.requires_approval') || config('access.users.confirm_email')),
+                'confirmed' => ! (config('project.users.requires_approval') || config('project.users.confirm_email')),
             ]);
 
             if ($user) {
                 // Add the default site role to the new user
-                $user->assignRole(config('access.users.default_role'));
+                $user->assignRole(config('project.users.default_role'));
             }
 
             /*
@@ -114,7 +115,7 @@ class UserRepository extends BaseRepository
              *
              * If this is a social account they are confirmed through the social provider by default
              */
-            if (config('access.users.confirm_email')) {
+            if (config('project.users.confirm_email')) {
                 // Pretty much only if account approval is off, confirm email is on, and this isn't a social account.
                 $user->notify(new UserNeedsConfirmation($user->confirmation_code));
             }
@@ -168,7 +169,7 @@ class UserRepository extends BaseRepository
                 }
 
                 // Force the user to re-verify his email address if config is set
-                if (config('access.users.confirm_email')) {
+                if (config('project.users.confirm_email')) {
                     $user->confirmation_code = md5(uniqid(mt_rand(), true));
                     $user->confirmed = false;
                     $user->notify(new UserNeedsConfirmation($user->confirmation_code));
@@ -276,7 +277,7 @@ class UserRepository extends BaseRepository
 
             if ($user) {
                 // Add the default site role to the new user
-                $user->assignRole(config('access.users.default_role'));
+                $user->assignRole(config('project.users.default_role'));
             }
 
             event(new UserProviderRegistered($user));

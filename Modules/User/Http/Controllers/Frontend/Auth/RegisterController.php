@@ -54,8 +54,8 @@ class RegisterController extends Controller
     /**
      * @param RegisterRequest $request
      *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      * @throws \Throwable
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function register(RegisterRequest $request)
     {
@@ -68,11 +68,13 @@ class RegisterController extends Controller
         if (config('project.users.confirm_email') || config('project.users.requires_approval')) {
             event(new UserRegistered($user));
 
-            return redirect($this->redirectPath())->withFlashSuccess(
+            notify()->success(
                 config('project.users.requires_approval') ?
                     __('exceptions.frontend.auth.confirmation.created_pending') :
                     __('exceptions.frontend.auth.confirmation.created_confirm')
             );
+
+            return redirectWithoutInertia($this->redirectPath());
         }
 
         auth()->login($user);

@@ -17,5 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('verify/token', 'UserController@verifyRecaptchaToken')->name('verifyToken');
 Route::get('roles', 'RoleController@index')->name('api.roles.index');
 Route::get('users', 'UserController@index')->name('api.users.index');

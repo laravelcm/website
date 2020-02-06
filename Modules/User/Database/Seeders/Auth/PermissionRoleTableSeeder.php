@@ -28,10 +28,16 @@ class PermissionRoleTableSeeder extends Seeder
             'description' => 'Site administrator with access to developer tools.'
         ]);
 
-        $executive = Role::create([
+        Role::create([
             'name' => 'publisher',
             'display_name' => 'Publisher',
             'description' => 'Site editor with access to publishing tools.'
+        ]);
+
+        Role::create([
+            'name' => 'user',
+            'display_name' => 'User',
+            'description' => 'Site user with simple access to website functionalities.'
         ]);
 
         // Create Permissions
@@ -46,8 +52,7 @@ class PermissionRoleTableSeeder extends Seeder
         // ALWAYS GIVE ADMIN ROLE ALL PERMISSIONS
         $admin->givePermissionTo(Permission::all());
 
-        // Assign Permissions to other Roles
-        $executive->givePermissionTo('view-backend');
+        // Assign Permissions to other Roles Here
 
         $this->enableForeignKeys();
     }

@@ -37,11 +37,9 @@ const Login = () => {
 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    console.log(errors);
     setSending(true);
     Inertia.post('/login', values).then(() => {
       setSending(false);
-      console.log(errors);
     });
   }
 

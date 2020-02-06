@@ -87,7 +87,6 @@ class LoginController extends Controller
         }
 
         return redirectWithoutInertia($this->redirectPath());
-        // return redirect()->intended($this->redirectPath());
     }
 
     /**

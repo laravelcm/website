@@ -39,9 +39,9 @@ return [
     */
 
     'animate' => [
-        'in_class' => 'bounceInRight', // The class to use to animate the notice in.
-        'out_class' => 'bounceOutRight', // The class to use to animate the notice out.
-        'timeout'   => 5000 // Number of seconds before the notice disappears
+        'in_class' => 'bounceInRight', // The class used to animate the notice in.
+        'out_class' => 'bounceOutRight', // The class used to animate the notice out.
+        'timeout'   => 7000 // Number of seconds before the notice disappears
     ],
 
 ];

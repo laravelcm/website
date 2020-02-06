@@ -1,13 +1,66 @@
-import React from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
+import React, { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
+import axios from "axios";
 
 import Layout from "@/includes/Auth";
 import Seo from "@/includes/Seo";
 
+import LoaderButton from "@/components/LoaderButton";
+import TextInput from "@/components/TextInput";
+
 const Register = () => {
+  const { errors } = usePage();
+  const [isRobot, setIsRobot] = useState(true);
+  const [sending, setSending] = useState(false);
+  const [values, setValues] = useState({
+    first_name: '',
+    last_name: '',
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const recaptchaVerifyCallback = async (recaptchaToken: string) => {
+    if (recaptchaToken) {
+      try {
+        const response = await axios.post('/api/verify/token', { token: recaptchaToken });
+        const parsed = JSON.parse(response.data);
+        if (parsed.success) {
+          setIsRobot(false);
+        }
+      } catch (e) {
+        console.error(`Erreur d'identification de votre identité`);
+      }
+    }
+  };
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const key = e.target.name;
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
+    // eslint-disable-next-line no-shadow
+    setValues(values => ({
+      ...values,
+      [key]: value
+    }));
+  }
+
+  function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    if (!isRobot) {
+      setSending(true);
+      Inertia.post('/register', values).then(() => {
+        setSending(false);
+      });
+    }
+  }
+
   return (
-    <>
+    <GoogleReCaptchaProvider reCaptchaKey="6Le5TtYUAAAAAI8sNLAenhAcHFWmOrOUkrc_MweF">
       <Seo title="Création de compte" />
+      <GoogleReCaptcha onVerify={(token: string) => recaptchaVerifyCallback(token)} action="register" />
       <div className="flex justify-between">
         <span />
         <p className="text-sm text-gray-600">Déja membre ? <InertiaLink href="/login" className="link">Se connecter</InertiaLink></p>
@@ -37,52 +90,64 @@ const Register = () => {
           <hr className="w-full bg-gray-400" />
         </div>
         <div className="p-8 bg-white shadow-smooth rounded-md">
-          <div className="w-full">
-            <div className="flex flex-wrap -mx-3 mb-3">
-              <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
-                <label className="block tracking-wide text-gray-800 text-sm mb-2" htmlFor="grid-first-name">Nom</label>
-                <input
-                  className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-                  id="grid-first-name"
-                  type="text"
-                />
-              </div>
-              <div className="w-full md:w-1/2 px-3">
-                <label className="block tracking-wide text-gray-800 text-sm mb-2" htmlFor="grid-last-name">Prénom</label>
-                <input
-                  className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-                  id="grid-last-name"
-                  type="text"
-                />
-              </div>
-            </div>
-            <div className="w-full mb-3">
-              <label className="block tracking-wide text-gray-800 text-sm mb-2" htmlFor="grid-username">Nom d'utilisateur (pseudo)</label>
-              <input
-                className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-                id="grid-username"
-                type="text"
-              />
-              <p className="text-gray-500 text-xs mt-2">Pas d'espaces ni de caractères spéciaux (les tirets “-” sont acceptés)</p>
-            </div>
-            <div className="w-full mb-3">
-              <label className="block tracking-wide text-gray-800 text-sm mb-2" htmlFor="grid-email">Adresse Email</label>
-              <input
-                className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-                id="grid-email"
-                type="email"
-              />
-            </div>
+          <form onSubmit={handleSubmit}>
             <div className="w-full">
-              <label className="block tracking-wide text-gray-800 text-sm mb-2" htmlFor="grid-password">Mot de passe</label>
-              <input
-                className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-                id="grid-password"
-                type="password"
-              />
+              <div className="flex flex-wrap -mx-3 mb-3">
+                <div className="w-full md:w-1/2 px-3 mb-3 md:mb-0">
+                  <TextInput
+                    label="Nom"
+                    name="first_name"
+                    type="text"
+                    errors={errors.first_name}
+                    value={values.first_name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="w-full md:w-1/2 px-3">
+                  <TextInput
+                    label="Prénom"
+                    name="last_name"
+                    type="text"
+                    errors={errors.last_name}
+                    value={values.last_name}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+              <div className="w-full mb-3">
+                <TextInput
+                  label="Nom d'utilisateur (pseudo)"
+                  name="username"
+                  type="text"
+                  errors={errors.username}
+                  value={values.username}
+                  onChange={handleChange}
+                />
+                <p className="text-gray-500 text-xs mt-2">Pas d'espaces ni de caractères spéciaux (les tirets “-” sont acceptés)</p>
+              </div>
+              <div className="w-full mb-3">
+                <TextInput
+                  label="Adresse Email"
+                  name="email"
+                  type="email"
+                  errors={errors.email}
+                  value={values.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="w-full">
+                <TextInput
+                  label="Mot de passe"
+                  name="password"
+                  type="password"
+                  errors={errors.password}
+                  value={values.password}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <button className="btn btn-primary mt-6">Créer mon compte</button>
+            <LoaderButton title="Créer mon compte" className="mt-6" loading={sending} type="submit" />
+          </form>
         </div>
         <p className="mt-8 text-sm">
           Ce formulaire utilise <a className="text-gray-800" href="https://www.google.com/recaptcha/intro/v3.html" target="_blank" rel="noopener noreferrer">reCAPTCHA</a>. L'utilisation de cette fonctionnalité est soumise aux {` `}
@@ -90,7 +155,7 @@ const Register = () => {
           <a className="link" href="https://policies.google.com/terms?hl=fr" target="_blank" rel="noopener noreferrer">Conditions d'utilisation</a> de Google.
         </p>
       </div>
-    </>
+    </GoogleReCaptchaProvider>
   )
 };
 
