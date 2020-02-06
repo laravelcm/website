@@ -258,7 +258,7 @@ class UserRepository extends BaseRepository
          */
         if (! $user) {
             // Registration is not enabled
-            if (! config('access.registration')) {
+            if (! config('project.registration')) {
                 throw new GeneralException(__('exceptions.frontend.auth.registration_disabled'));
             }
 
