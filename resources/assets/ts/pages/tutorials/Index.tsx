@@ -1,10 +1,10 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-import Layout from "@/includes/layout";
-import Seo from "@/includes/seo";
+import Layout from "@/includes/Layout";
+import Seo from "@/includes/Seo";
 
-import Tutorial from "@/components/tutorial";
+import Tutorial from "@/components/Tutorial";
 
 
 const Tutorials = () => {

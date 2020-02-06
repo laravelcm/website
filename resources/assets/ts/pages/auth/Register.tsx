@@ -1,13 +1,13 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-import Layout from "@/includes/auth";
-import SEO from "@/includes/seo";
+import Layout from "@/includes/Auth";
+import Seo from "@/includes/Seo";
 
 const Register = () => {
   return (
     <>
-      <SEO title="Création de compte" />
+      <Seo title="Création de compte" />
       <div className="flex justify-between">
         <span />
         <p className="text-sm text-gray-600">Déja membre ? <InertiaLink href="/login" className="link">Se connecter</InertiaLink></p>

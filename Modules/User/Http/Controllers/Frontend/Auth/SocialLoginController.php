@@ -85,7 +85,7 @@ class SocialLoginController extends Controller
         auth()->login($user, true);
 
         // Set session variable so we know which provider user is logged in as, if ever needed
-        session([config('access.socialite_session_name') => $provider]);
+        session([config('project.socialite_session_name') => $provider]);
 
         event(new UserLoggedIn(auth()->user()));
 

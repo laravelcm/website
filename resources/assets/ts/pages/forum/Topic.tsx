@@ -1,16 +1,16 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-import Layout from "@/includes/layout";
-import SEO from "@/includes/seo";
-import Breadcrumb from "@/includes/breadcrumb";
+import Layout from "@/includes/Layout";
+import Seo from "@/includes/Seo";
+import Breadcrumb from "@/includes/Breadcrumb";
 
-import Sidebar from "@/components/forum/sidebar";
+import Sidebar from "@/components/forum/Sidebar";
 
 const Topic = () => {
   return (
     <>
-      <SEO title='problème lié au dossier " public " de laravel' />
+      <Seo title='problème lié au dossier " public " de laravel' />
       <Breadcrumb
         homeLink="/forum"
         homeTitle="Forum"

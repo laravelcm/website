@@ -1,13 +1,13 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-import Layout from "@/includes/auth";
-import SEO from "@/includes/seo";
+import Layout from "@/includes/Auth";
+import Seo from "@/includes/Seo";
 
 const Reset = () => {
   return (
     <>
-      <SEO title="Réinitialisation du mot de passe" />
+      <Seo title="Réinitialisation du mot de passe" />
       <div className="flex justify-between items-center">
         <span />
         <p className="text-sm text-gray-600">Pas encore membre ? <InertiaLink href="/register" className="link">Créer votre compte</InertiaLink></p>

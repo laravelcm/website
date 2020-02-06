@@ -14,7 +14,7 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return Inertia::render('tutorials/index');
+        return Inertia::render('tutorials/Index');
     }
 
     /**
@@ -27,6 +27,6 @@ class TutorialController extends Controller
     {
         $tutorial = [];
 
-        return Inertia::render('tutorials/show', compact('tutorial'));
+        return Inertia::render('tutorials/Show', compact('tutorial'));
     }
 }

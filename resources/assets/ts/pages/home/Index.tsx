@@ -1,11 +1,11 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-import Layout from "@/includes/layout";
-import Seo from "@/includes/seo";
+import Layout from "@/includes/Layout";
+import Seo from "@/includes/Seo";
 
-import Tutorial from "@/components/tutorial";
-import PostSlide from "@/components/postSlider";
+import Tutorial from "@/components/Tutorial";
+import PostSlide from "@/components/PostSlider";
 
 const Home = () => {
   return (
@@ -23,7 +23,7 @@ const Home = () => {
             <InertiaLink href="/tutorials" className="p-2 bg-brand-100 items-center text-gray-700 rounded-lg md:rounded-full flex lg:inline-flex w-full" role="alert">
               <span className="flex rounded-full bg-brand-900 uppercase px-2 py-1 text-xs font-bold mr-4 text-white">New</span>
               <span className="font-normal mr-2 text-left flex-auto text-xs lg:text-sm">
-                Mise à jour du site Web, nous avons ajouté une section <span className="text-brand-primary">tutoriels</span>. Visitez maintenant!
+                Mise à jour du site Web, nouvelle section <span className="text-brand-primary">tutoriels</span> disponible. Visitez maintenant!
               </span>
               <svg className="fill-current opacity-75 h-4 w-4 hidden md:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />

@@ -48,7 +48,7 @@ class RegisterController extends Controller
     {
         abort_unless(config('project.registration'), 404);
 
-        return Inertia::render('auth/register');
+        return Inertia::render('auth/Register');
     }
 
     /**

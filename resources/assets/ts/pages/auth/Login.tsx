@@ -3,11 +3,11 @@ import { Inertia } from "@inertiajs/inertia";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { useTransition, animated } from "react-spring";
 
-import Layout from "@/includes/auth";
-import SEO from "@/includes/seo";
+import Layout from "@/includes/Auth";
+import Seo from "@/includes/Seo";
 
-import TextInput from "@/components/textInput";
-import LoaderButton from "@/components/loaderButton";
+import TextInput from "@/components/TextInput";
+import LoaderButton from "@/components/LoaderButton";
 
 const Login = () => {
   const [isSocial, setIsSocial] = useState(true);
@@ -47,7 +47,7 @@ const Login = () => {
 
   return (
     <>
-      <SEO title="Connexion" />
+      <Seo title="Connexion" />
       <div className="flex justify-between">
         <span />
         <p className="text-sm text-gray-600">Pas encore membre ? <InertiaLink href="/register" className="link">Créer votre compte</InertiaLink></p>

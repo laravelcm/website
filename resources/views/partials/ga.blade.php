@@ -1,7 +1,7 @@
 @if(
 app()->environment() === 'production' &&
-config('analytics.google-analytics') &&
-config('analytics.google-analytics') !== 'UA-XXXXX-X'
+config('project.google-analytics') &&
+config('project.google-analytics') !== 'UA-XXXXX-X'
 )
     {{-- Google Analytics: change UA-XXXXX-X to be your site's ID. --}}
     <script>
@@ -10,6 +10,6 @@ config('analytics.google-analytics') !== 'UA-XXXXX-X'
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
             e.src='//www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','{{ config('analytics.google-analytics') }}','auto');ga('send','pageview');
+        ga('create','{{ config('project.google-analytics') }}','auto');ga('send','pageview');
     </script>
 @endif

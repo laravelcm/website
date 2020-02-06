@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 
+import AccountDropdown from "@/components/AccountDropdown";
+
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
   const { auth } = usePage();
@@ -83,9 +85,7 @@ export default () => {
                     </svg>
                     <span className="absolute h-5 w-5 flex items-center justify-center bg-brand-primary rounded-full text-white text-xs" style={{ top: "-5px", right: "-4px" }}>1</span>
                   </InertiaLink>
-                  <InertiaLink href="/profile" className="flex items-center group h-10 w-10 rounded-full">
-                    <img src={auth.user.picture} alt="profile" className="block h-10 w-10 rounded-full border border-gray-200" />
-                  </InertiaLink>
+                  <AccountDropdown user={auth.user} />
                 </div>
               )}
             </div>

@@ -1,13 +1,13 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-import Layout from "@/includes/auth";
-import SEO from "@/includes/seo";
+import Layout from "@/includes/Auth";
+import Seo from "@/includes/Seo";
 
 const Email = () => {
   return (
     <>
-      <SEO title="Mot de passe oublié?" />
+      <Seo title="Mot de passe oublié?" />
       <div className="flex justify-between items-center">
         <InertiaLink href="/login">
           <svg className="h-6 w-6 text-gray-700" xmlns="http://www.w3.org/2000/svg">

@@ -14,7 +14,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return Inertia::render('forum/index');
+        return Inertia::render('forum/Index');
     }
 
     /**
@@ -27,7 +27,7 @@ class ForumController extends Controller
     {
         $channel = [];
 
-        return Inertia::render('forum/channel', compact('channel'));
+        return Inertia::render('forum/Channel', compact('channel'));
     }
 
     /**
@@ -40,6 +40,6 @@ class ForumController extends Controller
     {
         $topic = [];
 
-        return Inertia::render('forum/topic', compact('topic'));
+        return Inertia::render('forum/Topic', compact('topic'));
     }
 }

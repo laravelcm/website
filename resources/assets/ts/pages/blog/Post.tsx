@@ -1,8 +1,8 @@
 import React from "react";
 
-import Layout from "@/includes/layout";
-import Seo from "@/includes/seo";
-import Breadcrumb from "@/includes/breadcrumb";
+import Layout from "@/includes/Layout";
+import Seo from "@/includes/Seo";
+import Breadcrumb from "@/includes/Breadcrumb";
 
 const Post = () => {
   return (

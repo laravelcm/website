@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
-import Layout from "@/includes/layout";
-import SEO from "@/includes/seo";
+import Layout from "@/includes/Layout";
+import Seo from "@/includes/Seo";
 
-import ListView from "@/components/listView";
-import GridView from "@/components/gridView";
+import ListView from "@/components/ListView";
+import GridView from "@/components/GridView";
 
 const Jobs = () => {
   const [display, setDisplay] = useState(`list`);
 
   return (
     <>
-      <SEO
+      <Seo
         title="Jobs"
         description="Votre futur dépendra du travail que vous allez obtenir aujourd’hui. Rejoignez plusieurs autres rechercheurs et demandeurs d’emploi. La meilleure façon de trouver un nouveau job."
       />

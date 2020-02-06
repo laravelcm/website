@@ -8,7 +8,7 @@ interface Props {
   meta?: any;
 }
 
-const SEO =  ({ title, description, lang, meta }: Props) => {
+const Seo =  ({ title, description, lang, meta }: Props) => {
   const metaDescription = description || "Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun.";
 
   return (
@@ -58,10 +58,10 @@ const SEO =  ({ title, description, lang, meta }: Props) => {
   );
 };
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   lang: `fr`,
   meta: [],
   description: ``,
 };
 
-export default SEO;
+export default Seo;
