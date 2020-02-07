@@ -38,8 +38,9 @@
                 </div>
                 <div class="mt-10">
                     <p class="text-sm xl:text-base font-medium text-gray-700 mb-3">Abonnez-vous pour etre informé de la prochaine mise en ligne du site.</p>
-                    <form action="#" class="sm:flex relative">
-                        <input type="email" class="bg-white rounded-md py-3 px-5 focus:outline-none focus:shadow-outline sm:max-w-sm w-full" placeholder="Entrer votre adresse email" />
+                    <form action="https://laravelcm.us4.list-manage.com/subscribe/post?u=0642d391e4785535c232a8c66&amp;id=6ff87af677" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="sm:flex relative" target="_blank" novalidate>
+                        <input type="email" value="" name="EMAIL" id="mce-EMAIL" class="bg-white rounded-md py-3 px-5 focus:outline-none focus:shadow-outline sm:max-w-sm w-full" placeholder="Entrer votre adresse email" />
+                        <input type="hidden" name="b_0642d391e4785535c232a8c66_6ff87af677" tabindex="-1" value="">
                         <button type="submit" class="btn btn-primary font-medium w-full mt-4 sm:mt-0 sm:w-auto sm:ml-4 py-3 px-4">S'abonner</button>
                     </form>
                 </div>
