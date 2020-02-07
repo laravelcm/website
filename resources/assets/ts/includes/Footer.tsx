@@ -53,7 +53,7 @@ export default () => {
                   <li className="mb-3"><a href="https://facebook.com/laravelcm" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Facebook</a></li>
                   <li className="mb-3"><a href="https://twitter.com/laravelcm" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Twitter</a></li>
                   <li className="mb-3"><a href="https://github.com/laravelcm" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">Github</a></li>
-                  <li className="mb-3"><a href="https://youtube.com/channel/laravelcm" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                  <li className="mb-3"><a href="https://www.youtube.com/channel/UCbQPQ8q31uQmuKtyRnATLSw" className="text-gray-700 hover:text-gray-800" target="_blank" rel="noopener noreferrer">YouTube</a></li>
                 </ul>
               </div>
               <div className="px-6 md:w-1/3">
