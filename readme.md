@@ -3,6 +3,15 @@
 Laravel Boilerplate provides a very flexible and extensible way of building your custom Laravel 5 applications.
 This project is a fork of [Laravel 5 Boilerplate](https://github.com/rappasoft/laravel-boilerplate) and provide new features with [Keen Admin](https://keenthemes.com/keen) as admin backend.
 
+
+Website : https://laravelcm.com
+
+Facebook: https://www.facebook.com/laravelcm
+
+Twitter: https://twitter.com/laravelcm
+
+Join our Slack chat: https://laravelcm.slack.com
+
 ## Table of Contents
 
 - [Features](#features)
