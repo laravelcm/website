@@ -21,6 +21,7 @@
 <body class="bg-gray-200 text-gray-600 leading-normal font-body">
 
     @inertia
+    @include('cookieConsent::index')
 
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @include("notify::messages")

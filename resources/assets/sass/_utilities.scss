@@ -32,3 +32,36 @@
     display: none;
   }
 }
+
+.underline-animate {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 1rem;
+    left: 0;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    text-decoration: none !important;
+
+    &:after {
+      width: 100%;
+    }
+  }
+
+  &:hover {
+
+    &:after {
+      border-bottom: 1px solid theme('colors.brand.900');
+      opacity: 0.5;
+    }
+  }
+}
