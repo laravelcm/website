@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Inertia\Inertia;
 use Modules\User\Http\Requests\Auth\ResetPasswordRequest;
 use Modules\User\Repositories\Frontend\UserRepository;
 
@@ -36,7 +37,7 @@ class ResetPasswordController extends Controller
      *
      * @param string|null $token
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Inertia\Response
      */
     public function showResetForm($token = null)
     {
@@ -47,13 +48,14 @@ class ResetPasswordController extends Controller
         $user = $this->userRepository->findByPasswordResetToken($token);
 
         if ($user && resolve('auth.password.broker')->tokenExists($user, $token)) {
-            return view('user::frontend.auth.passwords.reset')
-                ->withToken($token)
-                ->withEmail($user->email);
+            return Inertia::render('auth/Reset', [
+                'token' => $token,
+                'email' => $user->email
+            ]);
         }
 
         return redirect()->route('frontend.auth.password.email')
-            ->withFlashDanger(__('exceptions.frontend.auth.password.reset_problem'));
+            ->withError(__('exceptions.frontend.auth.password.reset_problem'));
     }
 
     /**
@@ -111,6 +113,6 @@ class ResetPasswordController extends Controller
      */
     protected function sendResetResponse($response)
     {
-        return redirect()->route(home_route())->withFlashSuccess(e(trans($response)));
+        return redirectWithoutInertia(route(home_route()))->withSuccess(e(trans($response)));
     }
 }

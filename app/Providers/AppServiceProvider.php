@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Carbon\CarbonImmutable;
+use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\UrlWindow;
 use Illuminate\Support\Collection;
@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Date::use(CarbonImmutable::class);
+        Date::use(Carbon::class);
     }
 
     /**

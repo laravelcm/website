@@ -37,7 +37,7 @@ class ConfirmAccountController extends Controller
         $this->user->confirm($token);
 
         return redirect()->route('frontend.auth.login')
-            ->withFlashSuccess(__('exceptions.frontend.auth.confirmation.success'));
+            ->withSuccess(__('exceptions.frontend.auth.confirmation.success'));
     }
 
     /**
@@ -52,12 +52,12 @@ class ConfirmAccountController extends Controller
 
         if ($user->isConfirmed()) {
             return redirect()->route('frontend.auth.login')
-                ->withFlashSuccess(__('exceptions.frontend.auth.confirmation.already_confirmed'));
+                ->withSuccess(__('exceptions.frontend.auth.confirmation.already_confirmed'));
         }
 
         $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
         return redirect()->route('frontend.auth.login')
-            ->withFlashSuccess(__('exceptions.frontend.auth.confirmation.resent'));
+            ->withSuccess(__('exceptions.frontend.auth.confirmation.resent'));
     }
 }

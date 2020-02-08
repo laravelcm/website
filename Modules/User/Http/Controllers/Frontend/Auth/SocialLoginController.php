@@ -48,7 +48,7 @@ class SocialLoginController extends Controller
 
         // If the provider is not an acceptable third party than kick back
         if (! in_array($provider, $this->socialiteHelper->getAcceptedProviders(), true)) {
-            return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => e($provider)]));
+            return redirect()->route(home_route())->withErrors(__('auth.socialite.unacceptable', ['provider' => e($provider)]));
         }
 
         /**
@@ -64,11 +64,11 @@ class SocialLoginController extends Controller
         try {
             $user = $this->userRepository->findOrCreateProvider($this->getProviderUser($provider), $provider);
         } catch (GeneralException $e) {
-            return redirect()->route(home_route())->withFlashDanger($e->getMessage());
+            return redirect()->route(home_route())->withError($e->getMessage());
         }
 
         if ($user === null) {
-            return redirect()->route(home_route())->withFlashDanger(__('exceptions.frontend.auth.unknown'));
+            return redirect()->route(home_route())->withError(__('exceptions.frontend.auth.unknown'));
         }
 
         // Check to see if they are active.

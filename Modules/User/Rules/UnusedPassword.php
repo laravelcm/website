@@ -35,7 +35,7 @@ class UnusedPassword implements Rule
     public function passes($attribute, $value)
     {
         // Option is off
-        if (! config('access.users.password_history')) {
+        if (! config('project.users.password_history')) {
             return true;
         }
 
@@ -53,7 +53,7 @@ class UnusedPassword implements Rule
 
         $histories = $this->user
             ->passwordHistories()
-            ->take(config('access.users.password_history'))
+            ->take(config('project.users.password_history'))
             ->orderBy('id', 'desc')
             ->get();
 
