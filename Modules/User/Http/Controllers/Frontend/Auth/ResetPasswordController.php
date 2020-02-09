@@ -109,10 +109,10 @@ class ResetPasswordController extends Controller
      * Get the response for a successful password reset.
      *
      * @param  string  $response
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     protected function sendResetResponse($response)
     {
-        return redirectWithoutInertia(route(home_route()))->withSuccess(e(trans($response)));
+        return redirectWithoutInertia(route(home_route()));
     }
 }

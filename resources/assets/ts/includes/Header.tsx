@@ -37,7 +37,7 @@ export default () => {
                   <InertiaLink href="/blog" className="text-gray-800 mr-4 hover:text-gray-600">Blog</InertiaLink>
                   <InertiaLink href="/tutorials" className="text-gray-800 mr-4 hover:text-gray-600">Tutoriels</InertiaLink>
                   <InertiaLink href="/forum" className="text-gray-800 mr-4 hover:text-gray-600">Forum</InertiaLink>
-                  <InertiaLink href="/packages" className="text-gray-800 mr-4 hover:text-gray-600">Packages</InertiaLink>
+                  <InertiaLink href="/jobs" className="text-gray-800 mr-4 hover:text-gray-600">Jobs</InertiaLink>
                 </nav>
               </div>
             </div>
