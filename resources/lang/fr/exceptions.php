@@ -1,11 +1,11 @@
 <?php
 
 return array (
-  'backend' => 
+  'backend' =>
   array (
-    'access' => 
+    'access' =>
     array (
-      'users' => 
+      'users' =>
       array (
         'not_found' => 'Cet utilisateur n\'existe pas.',
         'social_delete_error' => 'Un problème est survenu lors de la suppression du compte de réseau social de l\'utilisateur.',
@@ -30,7 +30,7 @@ return array (
         'cant_delete_self' => 'Vous ne pouvez pas supprimer votre propre compte d\'utilisateur.',
         'role_needed' => 'Vous devez sélectionner au moins un rôle.',
       ),
-      'roles' => 
+      'roles' =>
       array (
         'needs_permission' => 'Vous devez sélectionner au moins une permission pour ce rôle.',
         'create_error' => 'Un problème est survenu lors de la création du rôle. Veuillez réessayer.',
@@ -43,17 +43,17 @@ return array (
       ),
     ),
   ),
-  'frontend' => 
+  'frontend' =>
   array (
-    'auth' => 
+    'auth' =>
     array (
       'email_taken' => 'Cet email est déjà utilisé par un compte existant.',
-      'password' => 
+      'password' =>
       array (
         'change_mismatch' => 'L\'ancien mot de passe est incorrect.',
-        'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
+        'reset_problem' => 'Un problème est survenu lors de la réinitialisation de votre mot de passe. Veuillez renvoyer l\'e-mail de réinitialisation du mot de passe.',
       ),
-      'confirmation' => 
+      'confirmation' =>
       array (
         'already_confirmed' => 'Votre compte est déjà confirmé.',
         'mismatch' => 'Votre code de confirmation est invalide.',
@@ -66,7 +66,7 @@ return array (
         'confirm' => 'Confirmez votre compte !',
         'not_found' => 'Votre code de confirmation n\'existe pas.',
       ),
-      'registration_disabled' => 'Registration is currently closed.',
+      'registration_disabled' => 'L\'inscription est actuellement fermée.',
       'deactivated' => 'Votre compte a été désactivé.',
     ),
   ),
