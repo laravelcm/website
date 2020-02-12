@@ -4,6 +4,8 @@ namespace Modules\Blog\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Blog\Events\Handlers\RegisterBlogSidebar;
+use Modules\Core\Events\BuildingSidebar;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -33,7 +35,7 @@ class BlogServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app['events']->listen(BuildingSidebar::class, RegisterBlogSidebar::class);
     }
 
     /**

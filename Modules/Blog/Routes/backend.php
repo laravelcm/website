@@ -10,3 +10,7 @@
 | contains the "admin" middleware group. Now create something great!
 |
 */
+
+Route::group(['prefix' => 'blog'], function () {
+    Route::resource('categories', 'CategoryController');
+});
