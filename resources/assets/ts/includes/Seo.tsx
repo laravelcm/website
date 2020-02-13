@@ -8,8 +8,11 @@ interface Props {
   meta?: any;
 }
 
-const Seo =  ({ title, description, lang, meta }: Props) => {
-  const metaDescription = description || "Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun.";
+const Seo = ({
+  title, description, lang, meta,
+}: Props) => {
+  const metaDescription = description
+    || "Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun.";
 
   return (
     <Helmet

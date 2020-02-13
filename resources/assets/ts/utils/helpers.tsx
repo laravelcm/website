@@ -6,14 +6,7 @@ import { Inertia } from "@inertiajs/inertia";
  *
  * @param c
  */
-const ansiWordBound = (c: any) => {
-  return (
-    (c === ' ') ||
-    (c === '\n') ||
-    (c === '\r') ||
-    (c === '\t')
-  );
-};
+const ansiWordBound = (c: any) => c === " " || c === "\n" || c === "\r" || c === "\t";
 
 /**
  * Reading Time Options.
@@ -24,7 +17,7 @@ const ansiWordBound = (c: any) => {
 type options = {
   wordsPerMinute?: number;
   wordBound?: (c: any) => boolean;
-}
+};
 
 /**
  * readingTime
@@ -36,7 +29,10 @@ type options = {
  * @return object { text, minutes, time, word }
  */
 export const readingTime = (text: string, options: options) => {
-  let words = 0, start = 0, end = text.length - 1, i;
+  let words = 0;
+  let start = 0;
+  let end = text.length - 1;
+  let i;
 
   options = options || {};
 
@@ -66,8 +62,8 @@ export const readingTime = (text: string, options: options) => {
     text: `${displayed} min de lecture`,
     minutes,
     time,
-    words
-  }
+    words,
+  };
 };
 
 /**
@@ -92,5 +88,5 @@ export const toCapitalize = (s: string) => s.substr(0, 1).toUpperCase() + s.subs
  */
 export const navigate = (e: SyntheticEvent, url: string, options?: object) => {
   e.stopPropagation();
-  Inertia.visit(url, { method: 'get', ...options });
+  Inertia.visit(url, { method: "get", ...options });
 };

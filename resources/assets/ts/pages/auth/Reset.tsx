@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 
@@ -15,25 +15,25 @@ const Reset = () => {
   const [values, setValues] = useState({
     email,
     token,
-    password: '',
-    password_confirmation: ''
+    password: "",
+    password_confirmation: "",
   });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const key = e.target.name;
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
 
     // eslint-disable-next-line no-shadow
-    setValues(values => ({
+    setValues((values) => ({
       ...values,
-      [key]: value
+      [key]: value,
     }));
   }
 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     setSending(true);
-    Inertia.post('/password/reset', values).then(() => {
+    Inertia.post("/password/reset", values).then(() => {
       setSending(false);
     });
   }
@@ -43,11 +43,18 @@ const Reset = () => {
       <Seo title="Réinitialisation du mot de passe" />
       <div className="flex justify-between items-center">
         <span />
-        <p className="text-sm text-gray-600">Pas encore membre ? <InertiaLink href="/register" className="link">Créer votre compte</InertiaLink></p>
+        <p className="text-sm text-gray-600">
+          Pas encore membre ?{" "}
+          <InertiaLink href="/register" className="link">
+            Créer votre compte
+          </InertiaLink>
+        </p>
       </div>
       <div className="w-full md:w-3/4 lg:w-125 mb-16 mt-12 mx-auto">
         <FlashMessages />
-        <h1 className="text-2xl font-medium text-gray-700 mb-4">Réinitialisation du mot de passe</h1>
+        <h1 className="text-2xl font-medium text-gray-700 mb-4">
+          Réinitialisation du mot de passe
+        </h1>
         <div className="p-8 bg-white shadow-smooth rounded-md">
           <form onSubmit={handleSubmit}>
             <input type="hidden" name="token" value={values.token} />
@@ -78,7 +85,12 @@ const Reset = () => {
               value={values.password_confirmation}
               onChange={handleChange}
             />
-            <LoaderButton title="Réinitialiser mon mot de passe" className="mt-6" loading={sending} type="submit" />
+            <LoaderButton
+              title="Réinitialiser mon mot de passe"
+              className="mt-6"
+              loading={sending}
+              type="submit"
+            />
           </form>
         </div>
       </div>

@@ -9,23 +9,31 @@ interface BreadcrumbsProps {
   title: string;
 }
 
-const Breadcrumb =  ({ homeLink, homeTitle, parentLink, parentTitle, title }: BreadcrumbsProps) => {
-  return (
-    <div className="bg-gradient-white py-3 text-sm text-gray-600 hidden lg:block">
-      <div className="container">
-        <InertiaLink href={homeLink || '/'} className="hover:text-gray-800">{homeTitle}</InertiaLink>
-        <span className="mx-4">/</span>
-        <InertiaLink href={parentLink} className="hover:text-gray-800">{parentTitle}</InertiaLink>
-        <span className="mx-4">/</span>
-        <span>{title}</span>
-      </div>
+const Breadcrumb = ({
+  homeLink,
+  homeTitle,
+  parentLink,
+  parentTitle,
+  title,
+}: BreadcrumbsProps) => (
+  <div className="bg-gradient-white py-3 text-sm text-gray-600 hidden lg:block">
+    <div className="container">
+      <InertiaLink href={homeLink || "/"} className="hover:text-gray-800">
+        {homeTitle}
+      </InertiaLink>
+      <span className="mx-4">/</span>
+      <InertiaLink href={parentLink} className="hover:text-gray-800">
+        {parentTitle}
+      </InertiaLink>
+      <span className="mx-4">/</span>
+      <span>{title}</span>
     </div>
-  );
-};
+  </div>
+);
 
 Breadcrumb.defaultProps = {
   homeLink: `/`,
-  homeTitle: `Accueil`
+  homeTitle: `Accueil`,
 };
 
 export default Breadcrumb;
