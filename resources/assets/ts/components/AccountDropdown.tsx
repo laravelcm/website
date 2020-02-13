@@ -35,9 +35,10 @@ export default ({ user: { picture, email, full_name } }: UserProps) => {
         aria-label="Menu"
       />
       <div
-        className={`absolute rounded bg-white right-0 w-60 shadow-lg overflow-hidden mt-2 ${
+        className={`absolute rounded bg-white w-60 shadow-lg overflow-hidden mt-2 ${
           isOpen ? "" : "hidden"
         }`}
+        style={{ right: "-12px" }}
       >
         <div className="flex items-center bg-gray-100 px-3 py-4">
           <div className="h-15 w-15 rounded-sm overflow-hidden">
@@ -47,7 +48,7 @@ export default ({ user: { picture, email, full_name } }: UserProps) => {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="pl-4">
+          <div className="pl-4 text-truncate">
             <span className="block text-gray-800 font-medium">{full_name}</span>
             <span className="text-xs text-gray-500">{email}</span>
           </div>
