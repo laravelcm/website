@@ -66,3 +66,7 @@
     @apply font-semibold text-2xl text-gray-800 mb-4;
   }
 }
+
+.tabs .tab-active {
+  @apply text-brand-primary border-brand-primary;
+}
