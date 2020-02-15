@@ -10,10 +10,6 @@
 				<div class="kt-grid-nav-v2__item-icon"><i class="flaticon2-list"></i></div>
 				<div class="kt-grid-nav-v2__item-title">Articles</div>
 			</a>
-			<a href="{{ route('admin.setting.index') }}" class="kt-grid-nav-v2__item">
-				<div class="kt-grid-nav-v2__item-icon"><i class="flaticon2-settings"></i></div>
-				<div class="kt-grid-nav-v2__item-title">{{ __('setting::menus.backend.title') }}</div>
-			</a>
 		</div>
 	</div>
 </div>
