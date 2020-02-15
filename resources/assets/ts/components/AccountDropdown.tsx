@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { InertiaLink } from "@inertiajs/inertia-react";
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { User } from "@/utils/types";
 
-type User = {
-  picture: string;
-  full_name: string;
-  email: string;
-};
-
-interface UserProps {
-  user: User;
-}
-
-export default ({ user: { picture, email, full_name } }: UserProps) => {
+export default () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { auth: { user } } = usePage();
+  const {
+    picture,
+    email,
+    full_name,
+    isAdmin,
+  }: User = user;
 
   return (
     <div className="relative">
@@ -54,6 +52,17 @@ export default ({ user: { picture, email, full_name } }: UserProps) => {
           </div>
         </div>
         <div className="py-2">
+          {
+            isAdmin && (
+              <a
+                href="/console/dashboard"
+                className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100"
+                target="_blank"
+              >
+                Administration
+              </a>
+            )
+          }
           <InertiaLink
             href="/dashboard"
             className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100"

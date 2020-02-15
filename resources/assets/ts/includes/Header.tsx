@@ -145,7 +145,7 @@ export default () => {
                       1
                     </span>
                   </InertiaLink>
-                  <AccountDropdown user={auth.user} />
+                  <AccountDropdown />
                 </div>
               )}
             </div>

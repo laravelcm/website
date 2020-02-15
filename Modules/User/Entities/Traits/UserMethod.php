@@ -2,9 +2,6 @@
 
 namespace Modules\User\Entities\Traits;
 
-/**
- * Trait UserMethod.
- */
 trait UserMethod
 {
     /**
