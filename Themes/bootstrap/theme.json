@@ -1,9 +1,0 @@
-{
-  "name": "bootstrap",
-  "title": "Bootstrap",
-  "description": "Bootstrap Theme",
-  "type": "frontend",
-  "author": "Arthur Monney",
-  "version": "1.0.0",
-  "parent": ""
-}
