@@ -5,15 +5,13 @@ import Seo from "@/includes/Seo";
 
 import Menu from "@/pages/user/Menu";
 
-const Dashboard = () => (
+const Account = () => (
   <>
-    <Seo title="Mon activité" />
-    <div className="bg-gradient-white flex items-end h-28">
-      <Menu current="dashboard" />
-    </div>
+    <Seo title="Mon compte" />
+    <Menu current="account" />
   </>
 );
 
-Dashboard.layout = (page: React.ReactNode) => <Layout child={page} />;
+Account.layout = (page: React.ReactNode) => <Layout child={page} />;
 
-export default Dashboard;
+export default Account;

@@ -83,6 +83,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('account', [AccountController::class, 'index'])->name('account');
         Route::get('notifications', [AccountController::class, 'notifications'])->name('notifications');
+        Route::get('badges', [AccountController::class, 'badges'])->name('badges');
+        Route::get('publishing', [AccountController::class, 'publishing'])->name('publishing');
         Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });

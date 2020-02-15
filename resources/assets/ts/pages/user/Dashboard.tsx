@@ -8,9 +8,7 @@ import Menu from "@/pages/user/Menu";
 const Dashboard = () => (
   <>
     <Seo title="Mon activité" />
-    <div className="bg-gradient-white flex items-end h-28">
-      <Menu current="dashboard" />
-    </div>
+    <Menu current="dashboard" />
   </>
 );
 

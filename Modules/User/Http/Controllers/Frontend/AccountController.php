@@ -27,4 +27,24 @@ class AccountController extends Controller
     {
         return Inertia::render('user/Notifications');
     }
+
+    /**
+     * Return User concern badges
+     *
+     * @return \Inertia\Response
+     */
+    public function badges()
+    {
+        return Inertia::render('user/Badges');
+    }
+
+    /**
+     * Return User concern publishing
+     *
+     * @return \Inertia\Response
+     */
+    public function publishing()
+    {
+        return Inertia::render('user/Publishing');
+    }
 }
