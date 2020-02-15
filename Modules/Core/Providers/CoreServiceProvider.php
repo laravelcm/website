@@ -66,10 +66,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerProviders();
         $this->registerFactories();
         $this->registerHelper();
-
-        if (class_exists('Breadcrumbs')) {
-            require __DIR__ . '/../Routes/breadcrumbs.php';
-        }
     }
 
     /**
@@ -205,7 +201,6 @@ class CoreServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            RouteServiceProvider::class,
             ThemeServiceProvider::class,
             BaseSidebarServiceProvider::class,
             SidebarServiceProvider::class,

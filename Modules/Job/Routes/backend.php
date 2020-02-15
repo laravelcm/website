@@ -12,5 +12,5 @@
 */
 
 Route::prefix('job')->group(function() {
-    Route::get('/', 'JobController@index');
+
 });

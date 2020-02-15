@@ -80,13 +80,9 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
  */
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'password_expires', 'as' => 'user.'], function () {
-        // User Dashboard Specific
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-        // User's Account Specific
         Route::get('account', [AccountController::class, 'index'])->name('account');
-
-        // User's Profile Specific
+        Route::get('notifications', [AccountController::class, 'notifications'])->name('notifications');
         Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });

@@ -3,6 +3,7 @@
 namespace Modules\User\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 
 /**
  * Class AccountController.
@@ -10,10 +11,20 @@ use App\Http\Controllers\Controller;
 class AccountController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Inertia\Response
      */
     public function index()
     {
-        return view('user::frontend.user.account');
+        return Inertia::render('user/Account');
+    }
+
+    /**
+     * Return User concern notifications
+     *
+     * @return \Inertia\Response
+     */
+    public function notifications()
+    {
+        return Inertia::render('user/Notifications');
     }
 }
