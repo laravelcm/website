@@ -283,7 +283,7 @@ const Home = () => (
           </div>
           <div className="w-full lg:w-1/3">
             <h4 className="font-medium text-lg mb-4 lg:mb-8">
-                Packages populaires
+                Tutoriels populaires
             </h4>
             <ul>
               <li className="border-b border-green-700 py-3">
