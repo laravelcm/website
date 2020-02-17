@@ -16,6 +16,6 @@ class ForumDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        $this->call(ChannelsTableSeeder::class);
     }
 }

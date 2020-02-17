@@ -8,14 +8,10 @@ interface SidebarProps {
 const Sidebar = ({ page }: SidebarProps) => (
   <div className="hidden lg:block w-3/12 pr-10">
     {page === `forum` && (
-    <button type="button" className="btn btn-primary mb-8 py-3 w-full">
-          Nouveau sujet
-    </button>
+      <button type="button" className="btn btn-primary mb-8 py-3 w-full">Nouveau sujet</button>
     )}
     {page && page === `show` && (
-    <button type="button" className="btn btn-primary mb-8 py-3 w-full">
-          Suivre ce sujet
-    </button>
+      <button type="button" className="btn btn-primary mb-8 py-3 w-full">Suivre ce sujet</button>
     )}
     <ul>
       <li>
@@ -39,7 +35,7 @@ const Sidebar = ({ page }: SidebarProps) => (
       </li>
       <li>
         <InertiaLink
-          href="/forum"
+          href="/forum?trending=1"
           className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
         >
           <svg
@@ -58,7 +54,7 @@ const Sidebar = ({ page }: SidebarProps) => (
       </li>
       <li>
         <InertiaLink
-          href="/forum"
+          href="/forum?popular=1"
           className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
         >
           <svg
@@ -77,7 +73,7 @@ const Sidebar = ({ page }: SidebarProps) => (
       </li>
       <li>
         <InertiaLink
-          href="/forum"
+          href="/forum?answered=1"
           className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
         >
           <svg
@@ -96,7 +92,7 @@ const Sidebar = ({ page }: SidebarProps) => (
       </li>
       <li>
         <InertiaLink
-          href="/forum"
+          href="/forum?answered=0"
           className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
         >
           <svg
@@ -115,7 +111,7 @@ const Sidebar = ({ page }: SidebarProps) => (
       </li>
       <li>
         <InertiaLink
-          href="/forum"
+          href="/forum?fresh=1"
           className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
         >
           <svg

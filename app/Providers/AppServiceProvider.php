@@ -52,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
                     'user' => auth()->user() ? [
                         'id' => auth()->user()->id,
                         'full_name' => auth()->user()->full_name,
+                        'username' => auth()->user()->username,
                         'email' => auth()->user()->email,
                         'picture' => auth()->user()->picture,
                         'isAdmin' => auth()->user()->isAdmin()

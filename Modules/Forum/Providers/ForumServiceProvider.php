@@ -2,8 +2,11 @@
 
 namespace Modules\Forum\Providers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Inertia\Inertia;
+use Modules\Forum\Entities\Channel;
 
 class ForumServiceProvider extends ServiceProvider
 {
@@ -24,6 +27,14 @@ class ForumServiceProvider extends ServiceProvider
         if (class_exists('Breadcrumbs')) {
             require __DIR__ . '/../Routes/breadcrumbs.php';
         }
+
+        Inertia::share('channels', function () {
+            return \Cache::rememberForever('channels', function () {
+                return Channel::all();
+            });
+        });
+
+        Validator::extend('spamfree', 'Modules\Forum\Rules\SpamFree@passes');
     }
 
     /**
