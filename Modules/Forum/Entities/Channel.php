@@ -17,4 +17,14 @@ class Channel extends Model
     {
         return 'slug';
     }
+
+    /**
+     * A channel consists of threads.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
 }

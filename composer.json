@@ -33,6 +33,7 @@
     "spatie/laravel-html": "^2.4",
     "spatie/laravel-permission": "^3.0",
     "spatie/laravel-searchable": "^1.4",
+    "stevebauman/purify": "^3.0",
     "torann/geoip": "^1.0",
     "typicms/laravel-translatable-bootforms": "^4.1"
   },

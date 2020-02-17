@@ -10,6 +10,7 @@ export default () => {
     email,
     full_name,
     isAdmin,
+    username,
   }: User = user;
 
   return (
@@ -70,7 +71,7 @@ export default () => {
             Dashboard
           </InertiaLink>
           <InertiaLink
-            href="/profil"
+            href={`/profil/@${username}`}
             className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100"
           >
             Mon Profil
