@@ -4,9 +4,25 @@ namespace Modules\Forum\Http\Controllers\Frontend;
 
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
+use Modules\Forum\Repositories\ChannelRepository;
 
 class ForumController extends Controller
 {
+    /**
+     * @var ChannelRepository
+     */
+    protected $channelRepository;
+
+    /**
+     * ForumController constructor.
+     *
+     * @param  ChannelRepository $channelRepository
+     */
+    public function __construct(ChannelRepository $channelRepository)
+    {
+        $this->channelRepository = $channelRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +41,11 @@ class ForumController extends Controller
      */
     public function channel(string $slug)
     {
-        $channel = [];
+        $channel = $this->channelRepository->getByColumn($slug, 'slug');
 
-        return Inertia::render('forum/Channel', compact('channel'));
+        return Inertia::render('forum/Channel', [
+            'channel' => $channel
+        ]);
     }
 
     /**
