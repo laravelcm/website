@@ -12,13 +12,15 @@
 */
 
 use Modules\Forum\Http\Controllers\Frontend\ForumController;
+use Modules\Forum\Http\Controllers\Frontend\ThreadController;
 
 Route::prefix('forum')->group(function() {
-    Route::get('/', [ForumController::class, 'index']);
+    Route::get('/', [ThreadController::class, 'index']);
     Route::redirect('/channels', '/forum');
     Route::get('/channels/{slug}', [ForumController::class, 'channel']);
+    Route::get('/{channel}/{thread}', [ThreadController::class, 'thread']);
 
-    Route::prefix('topics')->group(function () {
-        Route::get('/{slug}', [ForumController::class, 'topic']);
+    Route::middleware('auth')->group(function () {
+
     });
 });

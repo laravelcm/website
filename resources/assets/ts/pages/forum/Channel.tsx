@@ -4,14 +4,20 @@ import { usePage } from "@inertiajs/inertia-react";
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
 
+import Pagination from "@/components/Pagination";
+
 import Header from "@/components/forum/Header";
 import TabBar from "@/components/forum/TabBar";
 import SearchBar from "@/components/forum/SearchBar";
 import Sidebar from "@/components/forum/Sidebar";
 import ListChannels from "@/pages/forum/ListChannels";
+import Thread from "@/components/forum/Thread";
+
+import { ThreadType } from "@/utils/types";
 
 const Channel = () => {
-  const { channel } = usePage();
+  const { channel, threads } = usePage();
+  const { data, links } = threads;
   return (
     <>
       <Seo
@@ -36,7 +42,10 @@ const Channel = () => {
                 <SearchBar />
               </div>
             </div>
-            <div className="mt-10" />
+            <div className="my-10">
+              {data.map((thread: ThreadType) => (<Thread key={thread.id} {...thread} />))}
+            </div>
+            <Pagination links={links} />
           </div>
         </div>
       </div>

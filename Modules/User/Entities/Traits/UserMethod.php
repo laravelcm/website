@@ -53,7 +53,7 @@ trait UserMethod
     }
 
     /**
-     * @param $provider
+     * @param  $provider
      *
      * @return bool
      */
@@ -103,7 +103,7 @@ trait UserMethod
     /**
      * Record that the user has read the given thread.
      *
-     * @param Thread $thread
+     * @param  Thread $thread
      * @throws \Exception
      */
     public function read($thread)

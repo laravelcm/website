@@ -20,46 +20,46 @@ module.exports = {
           react: "#53C1DE",
           vue: "#41B883",
           php: "#777BB3",
-          feedback: "#FBDAC1",
+          feedback: "#c0916f",
           docker: "#1D91B4",
           'digital-ocean': "#0080FF",
-          'html-css': "#F16529"
-        }
+          'html-css': "#F16529",
+        },
       },
       boxShadow: {
         smooth: '0 2px 20px 0 rgba(0, 0, 0, 0.05)',
         bigger: '0 10px 20px 0 rgba(0, 0, 0, 0.01)',
       },
       spacing: {
-        '14': '3.5rem',
-        '15': '3.75rem',
-        '18': '4.5rem',
-        '28': '7rem',
-        '36': '9rem',
-        '45': '11.25rem',
-        '57': '14.25rem',
-        '58': '14.5rem',
-        '59': '14.75rem',
-        '60': '15rem',
-        '62': '15.5rem',
-        '85': '21.25rem',
-        '87': '21.75rem',
-        '96': '24rem',
-        '116': '29rem',
-        '120': '30rem',
-        '125': '31.25rem',
-        '140': '35rem',
-        '162': '40.5rem',
+        14: '3.5rem',
+        15: '3.75rem',
+        18: '4.5rem',
+        28: '7rem',
+        36: '9rem',
+        45: '11.25rem',
+        57: '14.25rem',
+        58: '14.5rem',
+        59: '14.75rem',
+        60: '15rem',
+        62: '15.5rem',
+        85: '21.25rem',
+        87: '21.75rem',
+        96: '24rem',
+        116: '29rem',
+        120: '30rem',
+        125: '31.25rem',
+        140: '35rem',
+        162: '40.5rem',
       },
       zIndex: {
-        '100': '100',
+        100: '100',
       },
       fontFamily: {
         body: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
-      gradients: theme => ({
-        'gradient-white':  ['180deg', "rgba(255,255,255,1)", "rgba(246,249,252,1)"],
-        'gradient-green':  ['60deg', theme('colors.brand.primary'), "rgba(5,184,143,1)"],
+      gradients: (theme) => ({
+        'gradient-white': ['180deg', "rgba(255,255,255,1)", "rgba(246,249,252,1)"],
+        'gradient-green': ['60deg', theme('colors.brand.primary'), "rgba(5,184,143,1)"],
       }),
     },
   },
@@ -69,26 +69,31 @@ module.exports = {
     fontFamily: ['responsive', 'hover', 'focus'],
     zIndex: ['responsive', 'focus'],
     gradients: ['responsive', 'hover'],
-    space: ['responsive']
+    space: ['responsive'],
   },
   plugins: [
     require('tailwindcss-plugins/gradients'),
     require('@tailwindcss/custom-forms'),
-    function({ addUtilities, theme, e, variants }) {
+    function ({
+      addUtilities,
+      theme,
+      e,
+      variants,
+    }) {
       const spaceX = Object.fromEntries(
         Object.entries(theme('spacing')).map(([k, v]) => [
           `.${e(`space-x-${k}`)} > * + *`,
-          { marginLeft: v }
-        ])
-      )
+          { marginLeft: v },
+        ]),
+      );
       const spaceY = Object.fromEntries(
         Object.entries(theme('spacing')).map(([k, v]) => [
           `.${e(`space-y-${k}`)} > * + *`,
-          { marginTop: v }
-        ])
-      )
+          { marginTop: v },
+        ]),
+      );
 
-      addUtilities({ ...spaceX, ...spaceY }, variants('space'))
+      addUtilities({ ...spaceX, ...spaceY }, variants('space'));
     },
   ],
 };

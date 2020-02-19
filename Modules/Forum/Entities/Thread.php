@@ -31,7 +31,10 @@ class Thread extends Model
      *
      * @var array
      */
-    protected $appends = ['isSubscribedTo'];
+    protected $appends = [
+        'isSubscribedTo',
+        'path'
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -63,7 +66,7 @@ class Thread extends Model
      *
      * @return string
      */
-    public function path()
+    public function getPathAttribute()
     {
         return "/forum/{$this->channel->slug}/{$this->slug}";
     }

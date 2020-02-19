@@ -41,23 +41,12 @@ class ForumController extends Controller
      */
     public function channel(string $slug)
     {
-        $channel = $this->channelRepository->getByColumn($slug, 'slug');
+        $channel = $this->channelRepository->with('threads')->getByColumn($slug, 'slug');
+        $threads = $channel->threads()->paginate(25);
 
         return Inertia::render('forum/Channel', [
-            'channel' => $channel
+            'channel' => $channel,
+            'threads' => $threads
         ]);
-    }
-
-    /**
-     * Display a topic
-     *
-     * @param  string $slug
-     * @return \Inertia\Response
-     */
-    public function topic(string $slug)
-    {
-        $topic = [];
-
-        return Inertia::render('forum/Topic', compact('topic'));
     }
 }

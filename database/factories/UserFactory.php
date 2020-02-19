@@ -21,6 +21,7 @@ $factory->define(User::class, function (Generator $faker) {
         'uuid' => Uuid::uuid4()->toString(),
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
+        'username' => $faker->userName,
         'email' => $faker->safeEmail,
         'password' => 'secret',
         'password_changed_at' => null,

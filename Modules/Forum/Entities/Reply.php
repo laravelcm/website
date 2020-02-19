@@ -110,7 +110,7 @@ class Reply extends Model
     {
         $this->attributes['body'] = preg_replace(
             '/@([\w\-]+)/',
-            '<a href="/profil/$1">$0</a>',
+            '<a href="/u/$1">$0</a>',
             $body
         );
     }

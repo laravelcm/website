@@ -71,7 +71,7 @@ export default () => {
             Dashboard
           </InertiaLink>
           <InertiaLink
-            href={`/profil/@${username}`}
+            href={`/u/@${username}`}
             className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100"
           >
             Mon Profil

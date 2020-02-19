@@ -2,29 +2,35 @@ import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 import { navigate } from "@/utils/helpers";
+import { ThreadType } from "@/utils/types";
 
-interface TopicProps {
-  title: string;
-  solved: boolean;
-}
-
-const Topic = ({ title, solved }: TopicProps) => {
-  const solvedClass = solved && solved ? `bg-white border-brand-primary` : `border-transparent`;
+const Thread = (thread: ThreadType) => {
+  const {
+    title,
+    body,
+    best_reply_id,
+    creator,
+    channel,
+    visits,
+    path,
+    replies_count,
+  } = thread;
+  const solvedClass = best_reply_id !== null ? `bg-white border-brand-primary` : `border-transparent`;
 
   return (
-    <div className="cursor-pointer bg-gray-100 px-6 py-4 mb-4 flex flex-col rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
+    <div className="cursor-pointer bg-gray-100 px-6 py-4 flex flex-col rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
       <div className="flex items-center justify-between mb-4 md:mb-0 md:mr-6">
         <div className="flex items-center">
           <div
             className={`h-15 w-15 flex items-center justify-center border-2 relative rounded-full ${solvedClass}`}
           >
-            <InertiaLink href="/@mckenziearts" className="h-12 w-12 relative">
+            <InertiaLink href={`/u/@${creator.username}`} className="h-12 w-12 relative">
               <img
                 className="rounded-full h-12 w-12"
-                src="https://avatars2.githubusercontent.com/u/14105989?s=460&v=4"
-                alt="Arthur Monney"
+                src={creator.picture}
+                alt={creator.full_name}
               />
-              {solved && (
+              {best_reply_id !== null && (
                 <svg
                   className="absolute top-0 h-3 w-3"
                   style={{ right: "-5px" }}
@@ -40,7 +46,7 @@ const Topic = ({ title, solved }: TopicProps) => {
             </InertiaLink>
           </div>
           <span className="text-sm text-gray-800 ml-3 font-medium md:hidden uppercase">
-            mckenzie
+            {creator.username}
           </span>
         </div>
         <div className="flex items-center md:hidden text-sm">
@@ -54,31 +60,30 @@ const Topic = ({ title, solved }: TopicProps) => {
             <span>1</span>
           </div>
           <InertiaLink
-            href="/forum"
-            className="text-xs font-bold py-2 px-3 rounded-full bg-opacity-laravel text-brand-laravel"
+            href={`/forum/channels/${channel.slug}`}
+            className={`text-xs font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug}`}
           >
-            Laravel
+            {channel.name}
           </InertiaLink>
         </div>
       </div>
       <div className="md:pr-10">
         <h4 className="text-gray-800 font-medium mb-1 md:text-lg md:mb-2">
-          <InertiaLink href="/forum/topics/envoyer-didnt-really-restart-forge-managed-queue-workers">
+          <InertiaLink href={path}>
             {title}
           </InertiaLink>
         </h4>
         <p
           onClick={(e) => navigate(
             e,
-            "/forum/topics/envoyer-didnt-really-restart-forge-managed-queue-workers",
+            path,
           )}
-          className="text-sm mb-2 md:text-base md:mb-3"
+          className="text-sm mb-2 md:mb-3"
         >
-          Après déploiement de mon site web conçu avec laravel chez l'hébergeur
-          LWS, pour accéder au site je veux utiliser l'adresse www.mondomain...
+          {body}
         </p>
-        <div className="text-xs text-gray-500 md:text-sm">
-          <InertiaLink href="/@mckenziearts" className="link font-medium">
+        <div className="text-xs text-gray-500">
+          <InertiaLink href="/u/@mckenziearts" className="link font-medium">
             mckenzie
           </InertiaLink>
           <span>
@@ -90,10 +95,10 @@ const Topic = ({ title, solved }: TopicProps) => {
       </div>
       <div className="hidden md:flex flex-col">
         <InertiaLink
-          href="/forum/channels"
-          className="text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-laravel text-brand-laravel md:text-sm md:mb-3"
+          href={`/forum/channels/${channel.slug}`}
+          className={`text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug} md:text-sm md:mb-3`}
         >
-          Laravel
+          {channel.name}
         </InertiaLink>
         <div className="flex items-center text-sm">
           <div className="flex mr-4 text items-center">
@@ -103,7 +108,7 @@ const Topic = ({ title, solved }: TopicProps) => {
                 fill="currentColor"
               />
             </svg>
-            <span>200</span>
+            <span>{replies_count}</span>
           </div>
           <div className="flex items-center">
             <svg
@@ -116,7 +121,7 @@ const Topic = ({ title, solved }: TopicProps) => {
                 fill="currentColor"
               />
             </svg>
-            <span>9000</span>
+            <span>{visits}</span>
           </div>
         </div>
       </div>
@@ -124,8 +129,4 @@ const Topic = ({ title, solved }: TopicProps) => {
   );
 };
 
-Topic.defaultProps = {
-  solved: false,
-};
-
-export default Topic;
+export default Thread;
