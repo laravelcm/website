@@ -16,6 +16,7 @@
     "@tailwindcss/custom-forms": "^0.2.1",
     "axios": "^0.19",
     "classnames": "^2.2.6",
+    "highlight.js": "^9.18.1",
     "laravel-mix": "^4.0.7",
     "laravel-mix-purgecss": "^4.2.0",
     "lodash": "^4.17.13",
@@ -23,12 +24,15 @@
     "react-dom": "^16.12.0",
     "react-google-recaptcha-v3": "^1.4.1",
     "react-helmet": "^5.2.1",
+    "react-markdown": "^4.3.1",
     "react-slick": "^0.25.2",
     "react-spring": "^8.0.27",
     "react-use": "^13.20.0",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^1.2.0-canary.5",
-    "tailwindcss-plugins": "^0.3.0"
+    "tailwindcss-plugins": "^0.3.0",
+    "timeago-react": "^3.0.0",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -39,6 +43,7 @@
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
     "@types/classnames": "^2.2.9",
+    "@types/highlight.js": "^9.12.3",
     "@types/lodash": "^4.14.148",
     "@types/node": "^12.12.14",
     "@types/react": "^16.9.11",

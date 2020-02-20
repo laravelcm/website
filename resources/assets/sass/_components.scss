@@ -70,3 +70,23 @@
 .tabs .tab-active {
   @apply text-brand-primary border-brand-primary;
 }
+
+.content-body {
+  pre > code {
+    @apply rounded-md p-4 text-sm;
+    line-height: 1.5em;
+  }
+
+  p:not(:last-child), ul:not(:last-child) {
+    margin-bottom: 1em;
+  }
+  * + pre {
+    margin-top: 1em;
+    word-wrap: normal;
+    white-space: pre-wrap;
+  }
+
+  pre:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}

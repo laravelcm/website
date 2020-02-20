@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import ReactMarkdown from "react-markdown";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark.css";
 
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
@@ -18,6 +21,14 @@ const Thread = () => {
     visits,
     replies_count,
   }: ThreadType = thread;
+  useEffect(() => {
+    updateCodeSyntaxHighlighting();
+  }, []);
+  function updateCodeSyntaxHighlighting() {
+    document.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightBlock(block);
+    });
+  }
   return (
     <>
       <Seo title={title} />
@@ -78,13 +89,17 @@ const Thread = () => {
                   </div>
                   <InertiaLink
                     href={`/forum/channels/${channel.slug}`}
-                    className={`text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug} md:text-sm md:mb-3`}
+                    className={`text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug} md:text-sm`}
                   >
                     {channel.name}
                   </InertiaLink>
                 </div>
               </div>
-              <div className="mt-6">{body}</div>
+              <div className="mt-6">
+                <div className="content-body text-gray-800 text-base md:text-sm">
+                  <ReactMarkdown source={body} escapeHtml={false} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

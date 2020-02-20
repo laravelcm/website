@@ -33,7 +33,8 @@ class Thread extends Model
      */
     protected $appends = [
         'isSubscribedTo',
-        'path'
+        'path',
+        'resume',
     ];
 
     /**
@@ -59,16 +60,6 @@ class Thread extends Model
         static::created(function ($thread) {
             $thread->update(['slug' => $thread->title]);
         });
-    }
-
-    /**
-     * Get a string path for the thread.
-     *
-     * @return string
-     */
-    public function getPathAttribute()
-    {
-        return "/forum/{$this->channel->slug}/{$this->slug}";
     }
 
     /**
@@ -99,6 +90,16 @@ class Thread extends Model
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    /**
+     * A thread may have a last reply.
+     *
+     * @return Model|\Illuminate\Database\Eloquent\Relations\HasOne|object|null
+     */
+    public function lastReply()
+    {
+        return $this->hasOne(Reply::class)->orderByDesc('created_at');
     }
 
     /**
@@ -180,7 +181,7 @@ class Thread extends Model
     /**
      * Determine if the thread has been updated since the user last read it.
      *
-     * @param User $user
+     * @param  User $user
      * @return bool
      * @throws \Exception
      */
@@ -224,6 +225,26 @@ class Thread extends Model
         }
 
         $this->attributes['slug'] = $slug;
+    }
+
+    /**
+     * Get a string path for the thread.
+     *
+     * @return string
+     */
+    public function getPathAttribute()
+    {
+        return "/forum/{$this->channel->slug}/{$this->slug}";
+    }
+
+    /**
+     * Get a short resume of the body
+     *
+     * @return string
+     */
+    public function getResumeAttribute()
+    {
+        return str_limit(strip_tags($this->body), 200);
     }
 
     /**

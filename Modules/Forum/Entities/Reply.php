@@ -104,7 +104,7 @@ class Reply extends Model
     /**
      * Set the body attribute.
      *
-     * @param string $body
+     * @param  string $body
      */
     public function setBodyAttribute($body)
     {
@@ -122,7 +122,7 @@ class Reply extends Model
      */
     public function isBest()
     {
-        return $this->thread->best_reply_id == $this->id;
+        return $this->thread->best_reply_id === $this->id;
     }
 
     /**

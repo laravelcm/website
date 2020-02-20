@@ -20,16 +20,23 @@ export type ThreadType = {
   replies_count: number;
   body: string;
   path: string;
+  resume: string;
   visits: number;
   locked: boolean;
   best_reply_id: number | null;
   channel: ChannelType;
   creator: User;
+  last_reply: ReplyType | null;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export type ReplyType = {
   id: number;
   body: string;
   thread: ThreadType;
-  user: User;
+  owner: User;
+  favorites: string[];
+  created_at: Date;
+  updated_at: Date;
 }

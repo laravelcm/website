@@ -1,22 +1,46 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-import { navigate } from "@/utils/helpers";
+import { navigate, timeAgo, trimmedString } from "@/utils/helpers";
 import { ThreadType } from "@/utils/types";
 
 const Thread = (thread: ThreadType) => {
   const {
     title,
-    body,
+    resume,
     best_reply_id,
     creator,
     channel,
     visits,
     path,
     replies_count,
+    last_reply,
+    created_at,
   } = thread;
   const solvedClass = best_reply_id !== null ? `bg-white border-brand-primary` : `border-transparent`;
-
+  const author = last_reply === null ? (
+    <div className="text-xs text-gray-500">
+      <InertiaLink href={`/u/@${creator.username}`} className="link font-medium">
+        {creator.username}
+      </InertiaLink>
+      <span>
+        {" "}
+        a posté {" "}
+        <span className="text-gray-700 font-medium">{timeAgo(created_at)}</span>
+      </span>
+    </div>
+  ) : (
+    <div className="text-xs text-gray-500">
+      <InertiaLink href={`/u/@${last_reply.owner.username}`} className="link font-medium">
+        {last_reply.owner.username}
+      </InertiaLink>
+      <span>
+        {" "}
+        a répondu{" "}
+        <span className="text-gray-700 font-medium">{timeAgo(last_reply.created_at)}</span>
+      </span>
+    </div>
+  );
   return (
     <div className="cursor-pointer bg-gray-100 px-6 py-4 flex flex-col rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
       <div className="flex items-center justify-between mb-4 md:mb-0 md:mr-6">
@@ -70,7 +94,7 @@ const Thread = (thread: ThreadType) => {
       <div className="md:pr-10">
         <h4 className="text-gray-800 font-medium mb-1 md:text-lg md:mb-2">
           <InertiaLink href={path}>
-            {title}
+            {trimmedString(title)}
           </InertiaLink>
         </h4>
         <p
@@ -80,18 +104,9 @@ const Thread = (thread: ThreadType) => {
           )}
           className="text-sm mb-2 md:mb-3"
         >
-          {body}
+          {resume}
         </p>
-        <div className="text-xs text-gray-500">
-          <InertiaLink href="/u/@mckenziearts" className="link font-medium">
-            mckenzie
-          </InertiaLink>
-          <span>
-            {" "}
-            a répondu{" "}
-            <span className="text-gray-700 font-medium">il y'a 2h</span>
-          </span>
-        </div>
+        {author}
       </div>
       <div className="hidden md:flex flex-col">
         <InertiaLink

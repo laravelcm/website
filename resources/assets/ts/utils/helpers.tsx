@@ -1,5 +1,11 @@
-import { SyntheticEvent } from "react";
+import React, { SyntheticEvent } from "react";
 import { Inertia } from "@inertiajs/inertia";
+import TimeAgo from "timeago-react";
+import * as timeago from "timeago.js";
+import fr from 'timeago.js/lib/lang/fr';
+
+// register fr.
+timeago.register('fr', fr);
 
 /**
  * ansiWordBound
@@ -90,3 +96,23 @@ export const navigate = (e: SyntheticEvent, url: string, options?: object) => {
   e.stopPropagation();
   Inertia.visit(url, { method: "get", ...options });
 };
+
+/**
+ * trimmedString
+ *
+ * Trim given string with the limit word.
+ *
+ * @param word
+ * @param limit
+ */
+export const trimmedString = (word: string, limit = 55) => (word.length > limit ? `${word.substring(0, limit - 3)}...` : word);
+
+/**
+ * timeAgo
+ *
+ * Return the time ago for a current post.
+ *
+ * @param date
+ * @return string
+ */
+export const timeAgo = (date: Date) => <TimeAgo datetime={date} locale="fr" />;
