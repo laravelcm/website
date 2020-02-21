@@ -28,7 +28,7 @@ const Forum = () => {
         <ListChannels />
         <div className="flex w-full">
           <Sidebar />
-          <div className="w-full lg:pl-12 lg:w-9/12">
+          <div className="w-full lg:w-9/12">
             <div className="flex items-center">
               <div className="w-full lg:w-2/3 items-center">
                 <div className="hidden lg:inline-flex bg-gray-300 text-gray-700 text-sm font-medium py-2 px-4 mr-4 rounded-full">

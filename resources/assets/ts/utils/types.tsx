@@ -29,6 +29,7 @@ export type ThreadType = {
   last_reply: ReplyType | null;
   created_at: Date;
   updated_at: Date;
+  replies: ReplyType[];
 }
 
 export type ReplyType = {

@@ -46,12 +46,14 @@ class ThreadController extends Controller
      * Display a thread
      *
      * @param  string $channel
-     * @param  Thread $thread
+     * @param  string $thread
      * @param  Trending $trending
      * @return \Inertia\Response
      */
-    public function thread($channel, Thread $thread, Trending $trending)
+    public function thread($channel, $thread, Trending $trending)
     {
+        $thread = $this->repository->with('replies')->getByColumn($thread, 'slug');
+
         if (auth()->check()) {
             auth()->user()->read($thread);
         }

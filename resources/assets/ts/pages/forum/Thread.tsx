@@ -9,7 +9,9 @@ import Seo from "@/includes/Seo";
 import Breadcrumb from "@/includes/Breadcrumb";
 
 import Sidebar from "@/components/forum/Sidebar";
-import { ThreadType } from "@/utils/types";
+import Reply from "@/components/forum/Reply";
+import { ReplyType, ThreadType } from "@/utils/types";
+import { timeAgo } from "@/utils/helpers";
 
 const Thread = () => {
   const { thread } = usePage();
@@ -20,6 +22,9 @@ const Thread = () => {
     channel,
     visits,
     replies_count,
+    best_reply_id,
+    created_at,
+    replies,
   }: ThreadType = thread;
   useEffect(() => {
     updateCodeSyntaxHighlighting();
@@ -47,20 +52,25 @@ const Thread = () => {
       <div className="container mt-12">
         <div className="flex w-full">
           <Sidebar page="show" />
-          <div className="w-full lg:pl-12 lg:w-9/12">
-            <div className="bg-gray-100 flex flex-col px-6 py-4 rounded-lg">
+          <div className="w-full lg:w-9/12">
+            <div className="bg-gray-100 flex flex-col px-6 py-4 rounded-lg mb-4">
               <div className="flex items-center justify-between">
-                <InertiaLink
-                  href={`/u/@${creator.username}`}
-                  className="h-10 w-10 flex items-center"
-                >
-                  <img
-                    className="rounded-full bg-cover mr-3"
-                    src={creator.picture}
-                    alt={creator.full_name}
-                  />
-                  <span className="text-gray-800 font-medium">@{creator.username}</span>
-                </InertiaLink>
+                <div className="flex items-center">
+                  <InertiaLink
+                    href={`/u/@${creator.username}`}
+                    className="h-10 w-10 flex items-center mr-4"
+                  >
+                    <img
+                      className="rounded-full bg-cover"
+                      src={creator.picture}
+                      alt={creator.full_name}
+                    />
+                  </InertiaLink>
+                  <p>
+                    <span className="text-gray-800 font-medium">@{creator.username}</span>
+                    <span className="text-gray-500 text-sm ml-2 hidden md:inline-flex">{timeAgo(created_at)}</span>
+                  </p>
+                </div>
                 <div className="flex items-center">
                   <div className="mr-4 text items-center hidden sm:flex">
                     <svg
@@ -101,6 +111,11 @@ const Thread = () => {
                 </div>
               </div>
             </div>
+            {
+              replies.map((reply: ReplyType) => (
+                <Reply key={reply.id} reply={reply} bestReplyId={best_reply_id} />
+              ))
+            }
           </div>
         </div>
       </div>

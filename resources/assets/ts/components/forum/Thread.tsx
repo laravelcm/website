@@ -42,7 +42,7 @@ const Thread = (thread: ThreadType) => {
     </div>
   );
   return (
-    <div className="cursor-pointer bg-gray-100 px-6 py-4 flex flex-col rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
+    <div className="cursor-pointer bg-gray-100 px-6 py-4 flex flex-col justify-between mb-2 rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
       <div className="flex items-center justify-between mb-4 md:mb-0 md:mr-6">
         <div className="flex items-center">
           <div
@@ -91,7 +91,7 @@ const Thread = (thread: ThreadType) => {
           </InertiaLink>
         </div>
       </div>
-      <div className="md:pr-10">
+      <div className="flex-1 md:pr-10">
         <h4 className="text-gray-800 font-medium mb-1 md:text-lg md:mb-2">
           <InertiaLink href={path}>
             {trimmedString(title)}

@@ -10,6 +10,14 @@
   }
 }
 
+.btn-outline-primary {
+  @apply border border-brand-primary text-brand-primary;
+
+  &:hover {
+    @apply bg-brand-primary text-white;
+  }
+}
+
 .btn-spinner,
 .btn-spinner:after {
   border-radius: 50%;
