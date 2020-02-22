@@ -1,7 +1,6 @@
 import React from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
-
-import { navigate } from "@/utils/helpers";
+import { useToast } from "@chakra-ui/core";
 
 interface SidebarProps {
   page?: string;
@@ -9,20 +8,33 @@ interface SidebarProps {
 
 const Sidebar = ({ page }: SidebarProps) => {
   const { auth } = usePage();
+  const toast = useToast();
 
-  function goTo(e: React.SyntheticEvent) {
+  function answer(e: React.SyntheticEvent) {
+    e.preventDefault();
     if (auth.user === null) {
-      navigate(e, '/login');
-    } else {
-      console.log("logged Can anwser");
+      toast({
+        position: `bottom-right`,
+        title: `Attention.`,
+        description: `Vous devez être connecté pour pouvoir commenter ce sujet.`,
+        status: "info",
+        duration: 7000,
+        isClosable: true,
+      });
     }
   }
 
   function follow(e: React.SyntheticEvent) {
+    e.preventDefault();
     if (auth.user === null) {
-      navigate(e, '/login');
-    } else {
-      console.log("Can follow this subject");
+      toast({
+        position: `bottom-right`,
+        title: `Attention.`,
+        description: `Vous devez être connecté pour pouvoir suivre ce sujet.`,
+        status: "info",
+        duration: 7000,
+        isClosable: true,
+      });
     }
   }
 
@@ -33,7 +45,7 @@ const Sidebar = ({ page }: SidebarProps) => {
       )}
       {page && page === `show` && (
         <>
-          <button type="button" className="btn btn-primary mb-2 py-3 w-full" onClick={goTo}>Répondre</button>
+          <button type="button" className="btn btn-primary mb-2 py-3 w-full" onClick={answer}>Répondre</button>
           <button type="button" className="btn btn-outline-primary mb-8 py-3 w-full" onClick={follow}>Suivre ce sujet</button>
         </>
       )}

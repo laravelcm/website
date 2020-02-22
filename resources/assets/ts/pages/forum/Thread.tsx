@@ -26,14 +26,17 @@ const Thread = () => {
     created_at,
     replies,
   }: ThreadType = thread;
+
   useEffect(() => {
     updateCodeSyntaxHighlighting();
   }, []);
+
   function updateCodeSyntaxHighlighting() {
     document.querySelectorAll("pre code").forEach((block) => {
       hljs.highlightBlock(block);
     });
   }
+
   return (
     <>
       <Seo title={title} />
@@ -116,6 +119,7 @@ const Thread = () => {
                 <Reply key={reply.id} reply={reply} bestReplyId={best_reply_id} />
               ))
             }
+            <div className="mt-10" />
           </div>
         </div>
       </div>
