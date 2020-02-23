@@ -5,14 +5,14 @@ export default () => (
   <div className="pb-4 pt-14">
     <div className="bg-white text-center shadow-bigger rounded-md mb-10 px-6 py-8 w-full md:w-2/3 mx-auto md:px-18 lg:w-3/5 lg:mb-12 lg:px-36 lg:py-10">
       <h4 className="text-xl font-medium text-gray-700 mb-4 lg:text-2xl">
-          Restez informés des mises à jour
+        Restez informés des mises à jour
       </h4>
       <p className="text-sm mb-8 text-gray-600 lg:text-base">
-          Rejoignez notre newsletter hebdomadaire et recevez des tutoriels et
-          des articles sur le
+        Rejoignez notre newsletter hebdomadaire et recevez des tutoriels et
+        des articles sur le
         {` `}
         <span className="text-green-600">design </span>
-          et la
+        et la
         {` `}
         <span className="text-blue-500">programmation.</span>
       </p>
@@ -26,7 +26,7 @@ export default () => (
           type="submit"
           className="btn btn-primary font-medium w-full p-3 lg:ml-2 lg:w-1/3"
         >
-            S'enregistrer
+          S'enregistrer
         </button>
       </form>
     </div>
@@ -48,16 +48,14 @@ export default () => (
               <h4 className="ml-2 text-lg">Laravel Cameroun</h4>
             </div>
             <p className="mt-4 text-gray-600 lg:w-116 lg:pr-4">
-                Laravel Cameroun est la plus grande communauté PHP & Laravel au
-                Cameroun. Un rassemblement de milliers de développeurs chaque
-                année.
+              Laravel Cameroun est la plus grande communauté PHP & Laravel au
+              Cameroun. Un rassemblement de milliers de développeurs chaque
+              année.
             </p>
           </div>
           <div className="md:flex w-full lg:w-2/3 lg:pl-24">
             <div className="px-6 mb-8 md:w-1/3">
-              <h5 className="text-gray-600 uppercase mb-8 font-medium">
-                  Autres Ressources
-              </h5>
+              <h5 className="text-gray-600 uppercase mb-8 font-medium">Autres Ressources</h5>
               <ul>
                 <li className="mb-3">
                   <a
@@ -66,7 +64,7 @@ export default () => (
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                      Laravel Docs
+                    Laravel Docs
                   </a>
                 </li>
                 <li className="mb-3">
@@ -74,7 +72,7 @@ export default () => (
                     href="/jobs"
                     className="text-gray-700 hover:text-gray-800"
                   >
-                      Jobs
+                    Jobs
                   </InertiaLink>
                 </li>
                 <li className="mb-3">
@@ -82,7 +80,7 @@ export default () => (
                     href="/privacy"
                     className="text-gray-700 hover:text-gray-800"
                   >
-                      Confidentialité
+                    Confidentialité
                   </InertiaLink>
                 </li>
                 <li className="mb-3">
@@ -90,15 +88,13 @@ export default () => (
                     href="/terms"
                     className="text-gray-700 hover:text-gray-800"
                   >
-                      Conditions d'utilisation
+                    Conditions d'utilisation
                   </InertiaLink>
                 </li>
               </ul>
             </div>
             <div className="px-6 mb-8 md:w-1/3">
-              <h5 className="text-gray-600 uppercase mb-8 font-medium">
-                  Reseaux Sociaux
-              </h5>
+              <h5 className="text-gray-600 uppercase mb-8 font-medium">Reseaux Sociaux</h5>
               <ul>
                 <li className="mb-3">
                   <a
@@ -107,7 +103,7 @@ export default () => (
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                      Facebook
+                    Facebook
                   </a>
                 </li>
                 <li className="mb-3">
@@ -117,7 +113,7 @@ export default () => (
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                      Twitter
+                    Twitter
                   </a>
                 </li>
                 <li className="mb-3">
@@ -127,7 +123,7 @@ export default () => (
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                      Github
+                    Github
                   </a>
                 </li>
                 <li className="mb-3">
@@ -137,15 +133,13 @@ export default () => (
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                      YouTube
+                    YouTube
                   </a>
                 </li>
               </ul>
             </div>
             <div className="px-6 md:w-1/3">
-              <h5 className="text-gray-600 uppercase mb-8 font-medium">
-                  Rejoignez Nous
-              </h5>
+              <h5 className="text-gray-600 uppercase mb-8 font-medium">Rejoignez Nous</h5>
               <ul>
                 <li className="mb-3">
                   <a
@@ -154,18 +148,13 @@ export default () => (
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                      Slack
+                    Slack
                   </a>
                 </li>
                 <li className="mb-3">
-                  <a
-                    href="https://meetup.com/laravelcm"
-                    className="text-gray-700 hover:text-gray-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                      Meetup
-                  </a>
+                  <span className="text-gray-700 hover:text-gray-800 flex items-center">
+                    Meetup <span className="px-2 py-1 text-xs text-brand-primary bg-brand-100 rounded-md ml-2">Bientôt</span>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -176,9 +165,9 @@ export default () => (
     </footer>
     <div className="px-6 text-center w-full md:w-2/3 mx-auto">
       <p className="text-sm text-gray-600 inline">
-          © 2018 - {new Date().getFullYear()} Laravel Cameroun {" | "} Tous
-          droits reservés. <br className="hidden lg:block" />
-          Design fait avec{" "}
+        © 2018 - {new Date().getFullYear()} Laravel Cameroun {" | "} Tous
+        droits reservés. <br className="hidden lg:block" />
+        Design fait avec{" "}
         <svg
           className="h-4 w-4 text-red-500 inline"
           xmlns="http://www.w3.org/2000/svg"
@@ -188,34 +177,33 @@ export default () => (
             fill="currentColor"
           />
         </svg>{" "}
-          par{" "}
+        par{" "}
         <a
           href="https://arthurmonney.com"
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium hover:text-gray-800"
         >
-            Arthur Monney
+          Arthur Monney
         </a>{" "}
-          & Fièrement hébergé par{" "}
+        & Fièrement hébergé par{" "}
         <a
           href="https://forge.laravel.com"
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium hover:text-gray-800"
         >
-            Laravel Forge
+          Laravel Forge
         </a>{" "}
-          et{" "}
+        et{" "}
         <a
           href="https://digitalocean.com"
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium hover:text-gray-800"
         >
-            DigitalOcean
+          DigitalOcean.
         </a>
-          .
       </p>
     </div>
   </div>

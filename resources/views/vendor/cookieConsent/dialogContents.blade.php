@@ -1,5 +1,5 @@
-<div class="js-cookie-consent flex fixed bottom-0 left-0 right justify-center items-center h-24 w-full">
-    <div class="cookie-consent bg-white w-auto px-6 py-3 shadow-xl flex items-center rounded-full text-sm text-gray-700">
+<div class="js-cookie-consent flex fixed bottom-0 left-0 right justify-center items-center md:h-24 w-full">
+    <div class="cookie-consent bg-white w-auto px-6 py-3 shadow-xl flex items-center md:rounded-full text-sm">
 
         <span class="cookie-consent__message mr-4">
             <span class="text-lg mr-1">🍪</span>
