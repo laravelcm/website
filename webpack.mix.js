@@ -19,7 +19,7 @@ mix.setPublicPath('public')
   .react('resources/assets/ts/app.tsx', 'js')
   .options({
     processCssUrls: false,
-    postCss: [ tailwindcss('./tailwind.config.js') ]
+    postCss: [tailwindcss('./tailwind.config.js')],
   })
   .webpackConfig({
     module: {
@@ -27,16 +27,16 @@ mix.setPublicPath('public')
         {
           test: /\.tsx?$/,
           loader: "ts-loader",
-          exclude: /node_modules/
-        }
-      ]
+          exclude: /node_modules/,
+        },
+      ],
     },
     resolve: {
       extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
       alias: {
-        '@': path.resolve('resources/assets/ts')
-      }
-    }
+        '@': path.resolve('resources/assets/ts'),
+      },
+    },
   })
   .sourceMaps();
 
@@ -46,17 +46,17 @@ if (mix.inProduction()) {
       enabled: true,
       globs: [
         './resources/views/**/*.blade.php',
-        './resources/assets/ts/**/*.ts'
+        './resources/assets/ts/**/*.ts',
       ],
-      whitelistPatterns: [/nprogress/]
+      whitelistPatterns: [/nprogress/],
     })
     .options({
       // optimize js minification process
       terser: {
         cache: true,
         parallel: true,
-        sourceMap: true
-      }
+        sourceMap: true,
+      },
     });
 } else {
   // Uses inline source-maps on development
