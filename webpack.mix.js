@@ -22,6 +22,7 @@ mix.setPublicPath('public')
     postCss: [tailwindcss('./tailwind.config.js')],
   })
   .webpackConfig({
+    output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     module: {
       rules: [
         {
@@ -47,6 +48,7 @@ if (mix.inProduction()) {
       globs: [
         './resources/views/**/*.blade.php',
         './resources/assets/ts/**/*.ts',
+        './resources/assets/ts/**/*.tsx',
       ],
       whitelistPatterns: [/nprogress/],
     })
