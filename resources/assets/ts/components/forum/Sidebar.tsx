@@ -6,10 +6,10 @@ import ReplyModal from "@/pages/forum/ReplyModal";
 
 interface SidebarProps {
   page?: string;
-  threadId?: number;
+  threadSlug?: string;
 }
 
-const Sidebar = ({ page }: SidebarProps) => {
+const Sidebar = ({ page, threadSlug }: SidebarProps) => {
   const { auth } = usePage();
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -173,7 +173,7 @@ const Sidebar = ({ page }: SidebarProps) => {
           </InertiaLink>
         </li>
       </ul>
-      <ReplyModal isOpen={isOpen} onClose={onClose} />
+      <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={threadSlug} />
     </div>
   );
 };

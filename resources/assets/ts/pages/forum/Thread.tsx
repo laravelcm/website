@@ -18,7 +18,7 @@ const Thread = () => {
   const { user } = auth;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
-    id,
+    slug,
     title,
     body,
     creator,
@@ -47,7 +47,7 @@ const Thread = () => {
       </div>
       <div className="container mt-12">
         <div className="flex w-full">
-          <Sidebar page="show" threadId={id} />
+          <Sidebar page="show" threadSlug={slug} />
           <div className="w-full lg:w-9/12">
             <div className="bg-gray-100 flex flex-col px-6 py-4 rounded-lg mb-4">
               <div className="flex items-center justify-between">
@@ -135,7 +135,7 @@ const Thread = () => {
                         Laisser un commentaire...
                       </button>
                     </div>
-                    <ReplyModal isOpen={isOpen} onClose={onClose} />
+                    <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={slug} />
                   </>
                 )
               }

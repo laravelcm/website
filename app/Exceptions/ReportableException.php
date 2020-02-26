@@ -5,9 +5,6 @@ namespace App\Exceptions;
 use Exception;
 use Throwable;
 
-/**
- * Class ReportableException.
- */
 class ReportableException extends Exception
 {
     /**

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import ReactMde, { commands } from "react-mde";
 import * as Showdown from "showdown";
 import {
@@ -10,9 +11,18 @@ import {
   ModalFooter,
 } from "@chakra-ui/core";
 
-export default ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+import LoaderButton from "@/components/LoaderButton";
+
+interface ReplyModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  threadSlug?: string;
+}
+
+export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
   const [value, setValue] = useState("");
   const [selectedTab, setSelectedTab] = useState<"write" | "preview">("write");
+  const [sending, setSending] = useState(false);
 
   const converter = new Showdown.Converter({
     tables: true,
@@ -31,9 +41,19 @@ export default ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =
     },
   ];
 
+  function sendReply(e: React.SyntheticEvent) {
+    e.preventDefault();
+    setSending(true);
+
+    Inertia.post(`/forum/thread/${threadSlug}/replies`, { body: value }).then(() => {
+      setSending(false);
+    }).catch((reason) => {
+      console.log(reason);
+    });
+  }
+
   return (
     <Modal
-      blockScrollOnMount={false}
       isOpen={isOpen}
       onClose={onClose}
       isCentered
@@ -52,31 +72,34 @@ export default ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =
           </svg>
           Répondre à la conversation
         </ModalHeader>
-        <ModalBody>
-          <ReactMde
-            value={value}
-            onChange={setValue}
-            selectedTab={selectedTab}
-            onTabChange={setSelectedTab}
-            commands={listCommands}
-            generateMarkdownPreview={(markdown) => Promise.resolve(converter.makeHtml(markdown))}
-          />
-          <p className="text-xs text-gray-500 font-italic font-light mt-3">
-            * Vous pouvez utiliser du Markdown avec des blocs de code du style de{" "}
-            <a
-              href="https://help.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-primary"
-            >
-              GitHub.
-            </a>
-          </p>
-        </ModalBody>
-        <ModalFooter>
-          <button className="btn btn-primary">Commenter</button>
-          <button className="px-4 py-2 rounded-md bg-red-100 border-2 border-red-400 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white ml-3 transition-all" onClick={onClose}>Fermer</button>
-        </ModalFooter>
+        <form onSubmit={sendReply}>
+          <ModalBody>
+            <ReactMde
+              value={value}
+              onChange={setValue}
+              selectedTab={selectedTab}
+              onTabChange={setSelectedTab}
+              commands={listCommands}
+              generateMarkdownPreview={(markdown) => Promise.resolve(converter.makeHtml(markdown))}
+              textAreaProps={{ required: true }}
+            />
+            <p className="text-xs text-gray-500 font-italic font-light mt-3">
+              * Vous pouvez utiliser du Markdown avec des blocs de code du{" "}
+              <a
+                href="https://help.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-primary"
+              >
+                style de GitHub.
+              </a>
+            </p>
+          </ModalBody>
+          <ModalFooter>
+            <LoaderButton title="Commenter" loading={sending} type="submit" />
+            <button className="px-4 py-2 rounded-md bg-red-100 border-2 border-red-400 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white ml-3 transition-all" onClick={onClose}>Fermer</button>
+          </ModalFooter>
+        </form>
       </ModalContent>
     </Modal>
   );

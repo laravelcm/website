@@ -13,6 +13,7 @@
 
 use Modules\Forum\Http\Controllers\Frontend\ForumController;
 use Modules\Forum\Http\Controllers\Frontend\ThreadController;
+use Modules\Forum\Http\Controllers\Frontend\ReplyController;
 
 Route::prefix('forum')->group(function() {
     Route::get('/', [ThreadController::class, 'index']);
@@ -21,6 +22,6 @@ Route::prefix('forum')->group(function() {
     Route::get('/{channel}/{thread}', [ThreadController::class, 'thread']);
 
     Route::middleware('auth')->group(function () {
-
+        Route::post('/thread/{thread}/replies', [ReplyController::class, 'store']);
     });
 });
