@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown";
 import { useDisclosure } from "@chakra-ui/core";
+import hljs from "highlight.js";
 
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
@@ -29,6 +30,16 @@ const Thread = () => {
     created_at,
     replies,
   }: ThreadType = thread;
+
+  useEffect(() => {
+    updateCodeSyntaxHighlighting();
+  }, []);
+
+  function updateCodeSyntaxHighlighting() {
+    document.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightBlock(block);
+    });
+  }
 
   return (
     <>
@@ -103,7 +114,17 @@ const Thread = () => {
               </div>
               <div className="mt-6">
                 <div className="content-body text-gray-800 text-base md:text-sm">
-                  <ReactMarkdown source={body} escapeHtml={false} />
+                  <ReactMarkdown
+                    source={body}
+                    escapeHtml={false}
+                    renderers={{
+                      Link: (props) => {
+                        const { href, children } = props;
+                        return <a href={href}>{children}</a>;
+                      },
+                    }}
+                    skipHtml
+                  />
                 </div>
               </div>
             </div>

@@ -25,11 +25,11 @@ class ReplyController extends FrontendBaseController
             return response()->json(['status' => 'error', 'message' => 'Ce sujet est bloqué impossible de le commenter'], 422);
         }
 
-        $reply = $thread->addReply([
+        $thread->addReply([
             'body' => $request->get('body'),
             'user_id' => auth()->id()
         ])->load('owner');
 
-        return response()->json(['status' => 'success', 'message' => "Votre commentaire a été envoyé", 'reply' => $reply]);
+        return response()->json(['status' => 'success', 'message' => "Votre commentaire a été envoyé"]);
     }
 }

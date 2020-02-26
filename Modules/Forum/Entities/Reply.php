@@ -110,7 +110,7 @@ class Reply extends Model
     {
         $this->attributes['body'] = preg_replace(
             '/@([\w\-]+)/',
-            '<a href="/u/$1">$0</a>',
+            '[$0](/u/@$1)',
             $body
         );
     }
@@ -134,16 +134,5 @@ class Reply extends Model
     public function getIsBestAttribute()
     {
         return $this->isBest();
-    }
-
-    /**
-     * Access the body attribute.
-     *
-     * @param  string $body
-     * @return string
-     */
-    public function getBodyAttribute($body)
-    {
-        return \Purify::clean($body);
     }
 }

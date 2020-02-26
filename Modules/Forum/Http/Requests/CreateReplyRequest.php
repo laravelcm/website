@@ -20,6 +20,16 @@ class CreateReplyRequest extends FormRequest
     }
 
     /**
+     * Determine if the current request is asking for JSON.
+     *
+     * @return bool
+     */
+    public function wantsJson()
+    {
+        return true;
+    }
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool

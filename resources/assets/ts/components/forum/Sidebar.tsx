@@ -23,7 +23,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         title: `Attention.`,
         description: `Vous devez être connecté pour pouvoir commenter ce sujet.`,
         status: "info",
-        duration: 7000,
+        duration: 5000,
         isClosable: true,
       });
     } else {
@@ -40,7 +40,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         title: `Attention.`,
         description: `Vous devez être connecté pour pouvoir suivre ce sujet.`,
         status: "info",
-        duration: 7000,
+        duration: 5000,
         isClosable: true,
       });
     }

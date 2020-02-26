@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Inertia } from "@inertiajs/inertia";
+import axios from "axios";
 import ReactMde, { commands } from "react-mde";
 import * as Showdown from "showdown";
 import {
@@ -9,6 +9,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  useToast,
 } from "@chakra-ui/core";
 
 import LoaderButton from "@/components/LoaderButton";
@@ -23,6 +24,7 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
   const [value, setValue] = useState("");
   const [selectedTab, setSelectedTab] = useState<"write" | "preview">("write");
   const [sending, setSending] = useState(false);
+  const toast = useToast();
 
   const converter = new Showdown.Converter({
     tables: true,
@@ -45,10 +47,25 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
     e.preventDefault();
     setSending(true);
 
-    Inertia.post(`/forum/thread/${threadSlug}/replies`, { body: value }).then(() => {
+    axios.post(`/forum/thread/${threadSlug}/replies`, { body: value }).then((response) => {
       setSending(false);
-    }).catch((reason) => {
-      console.log(reason);
+      console.log(response);
+      setValue("");
+      onClose();
+      window.location.reload();
+    }).catch((error) => {
+      const { errors } = error.response.data;
+      if (errors && errors.length > 0) {
+        toast({
+          position: `top`,
+          title: `Attention.`,
+          description: `Impossible de poster ce commentaire. Peut etre un spam, recommencer plus tard.`,
+          status: "info",
+          duration: 5000,
+          isClosable: true,
+        });
+        console.log('');
+      }
     });
   }
 

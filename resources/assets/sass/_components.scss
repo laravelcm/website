@@ -80,6 +80,12 @@
 }
 
 .content-body {
+  a {
+    @apply text-brand-primary;
+    &:hover {
+      @apply text-brand-900;
+    }
+  }
   pre > code {
     @apply rounded-md p-4 text-sm;
     line-height: 1.5em;
