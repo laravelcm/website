@@ -9,6 +9,7 @@
  */
 
 @import "variables";
+@import "~prismjs/themes/prism-twilight.css";
 
 @tailwind base;
 @import "base";
@@ -16,6 +17,7 @@
 @tailwind components;
 @import "components";
 @import "nprogress";
+@import "editor";
 
 @tailwind utilities;
 @import "utilities";

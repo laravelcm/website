@@ -1,6 +1,11 @@
 {
     "plugins": [
         "@babel/plugin-proposal-class-properties",
-        "@babel/transform-async-to-generator"
+        "@babel/transform-async-to-generator",
+        ["prismjs", {
+            "languages": ["javascript", "css", "html", "php", "sass", "less", "json", "typescript", "jsx", "tsx"],
+            "theme": "twilight",
+            "css": true
+        }]
     ]
 }

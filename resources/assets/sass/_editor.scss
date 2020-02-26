@@ -1,0 +1,387 @@
+// Markdown Editor Custom Style
+
+// Toolbar
+.mde-header {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid $mde-border-color;
+  border-radius: $mde-border-radius $mde-border-radius 0 0;
+  background: $mde-toolbar-color;
+
+  .mde-tabs {
+    display: flex;
+    flex-direction: row;
+
+    button {
+      border-radius: $mde-border-radius;
+      margin-right: 4px;
+      padding: 2px 4px;
+      cursor: pointer;
+      color: theme('colors.gray.600');
+      &.selected {
+        color: theme('colors.gray.900');
+      }
+    }
+  }
+
+  .svg-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: inherit;
+    overflow: visible;
+    vertical-align: -.125em;
+  }
+
+  ul.mde-header-group {
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    > * + * {
+      margin-left: 16px;
+    }
+
+    &.hidden {
+      visibility: hidden;
+    }
+
+    li.mde-header-item {
+      display: inline-block;
+      position: relative;
+      button {
+        text-align: left;
+        height: 22px;
+        padding: 4px;
+        margin: 0;
+        color: $mde-button-color;
+        @keyframes tooltip-appear {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @mixin tooltip-animation {
+          animation-name: tooltip-appear;
+          animation-duration: 0.2s;
+          animation-delay: 0.5s;
+          animation-fill-mode: forwards;
+        }
+
+        &.tooltipped {
+          &:hover::before {
+            @include tooltip-animation();
+            opacity: 0;
+            position: absolute;
+            z-index: 1000001;
+            width: 0;
+            height: 0;
+            color: rgba(0, 0, 0, 0.8);
+            pointer-events: none;
+            content: "";
+            border: 5px solid transparent;
+            top: -5px;
+            right: 50%;
+            bottom: auto;
+            margin-right: -5px;
+            border-top-color: rgba(0, 0, 0, 0.8);
+          }
+          &:hover::after {
+            @include tooltip-animation();
+            font-size: 11px;
+            opacity: 0;
+            position: absolute;
+            z-index: 1000000;
+            padding: 5px 8px;
+            color: #fff;
+            pointer-events: none;
+            content: attr(aria-label);
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 3px;
+            right: 50%;
+            bottom: 100%;
+            transform: translateX(50%);
+            margin-bottom: 5px;
+            white-space: nowrap;
+          }
+        }
+
+      }
+      ul.react-mde-dropdown {
+        position: absolute;
+        left: 0;
+        top: 30px;
+        background-color: white;
+        border: 1px solid $mde-border-color;
+        padding: 5px;
+        z-index: 2;
+        transform: translateX(-9px);
+        li {
+          margin: 0;
+          white-space: nowrap;
+          list-style: none;
+          display: block;
+          button {
+            display: block;
+            height: auto;
+            p {
+              display: block;
+              margin: 0;
+              padding: 0;
+              font-weight: bold;
+              line-height: 1em;
+              background: none;
+              border: 0;
+              text-align: left;
+              &:hover {
+                color: #4078c0;
+              }
+              &.header-1 {
+                font-size: 20px;
+              }
+              &.header-2 {
+                font-size: 18px;
+              }
+              &.header-3 {
+                font-size: 14px;
+              }
+              &.header-4 {
+                font-size: 12px;
+              }
+            }
+          }
+
+        }
+        &::before {
+          position: absolute;
+          content: "";
+          width: 0;
+          height: 0;
+          border: 8px solid transparent;
+          border-bottom-color: rgba(0, 0, 0, 0.15);
+          top: -16px;
+          left: 3px;
+          transform: translateX(50%);
+        }
+        &::after {
+          position: absolute;
+          content: "";
+          width: 0;
+          height: 0;
+          border: 7px solid transparent;
+          border-bottom-color: white;
+          top: -14px;
+          left: 5px;
+          transform: translateX(50%);
+        }
+      }
+    }
+  }
+}
+
+// Editor
+.mde-textarea-wrapper {
+  position: relative;
+
+  textarea.mde-text {
+    width: 100%;
+    border: 0;
+    padding: $mde-editor-padding;
+    vertical-align: top;
+    resize: none;
+    overflow-y: auto;
+  }
+}
+
+// Preview
+.mde-preview {
+  .mde-preview-content {
+    padding: 20px 0;
+
+    p, blockquote, ul, ol, dl, table, pre {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      margin-top: 24px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      line-height: 1.25;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.3em;
+    }
+    h1 {
+      font-size: 1.6em;
+    }
+    h2 {
+      font-size: 1.4em;
+    }
+    h3 {
+      font-size: 1.2em;
+    }
+    ul, ol {
+      padding-left: 2em;
+    }
+
+    a {
+      color: theme('colors.brand.primary');
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    & > *:first-child {
+      margin-top: 0 !important;
+    }
+    & > *:last-child {
+      margin-bottom: 0 !important;
+    }
+    &::after {
+      display: table;
+      clear: both;
+      content: "";
+    }
+
+    code[class*="language-"],
+    pre {
+      color: white;
+      background: none;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-size: 1em;
+      text-align: left;
+      text-shadow: 0 -.1em .2em black;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      line-height: 1.5;
+
+      -moz-tab-size: 4;
+      -o-tab-size: 4;
+      tab-size: 4;
+
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+    }
+
+    pre,
+    :not(pre) > code[class*="language-"] {
+      background: hsl(0, 0%, 8%); /* #141414 */
+    }
+
+    /* Code blocks */
+    pre {
+      border-radius: .5em;
+      border: .3em solid hsl(0, 0%, 33%); /* #282A2B */
+      box-shadow: 1px 1px .5em black inset;
+      margin: .5em 0;
+      overflow: auto;
+      padding: 1em;
+    }
+
+    pre::-moz-selection {
+      /* Firefox */
+      background: hsl(200, 4%, 16%); /* #282A2B */
+    }
+
+    pre::selection {
+      /* Safari */
+      background: hsl(200, 4%, 16%); /* #282A2B */
+    }
+
+    /* Text Selection colour */
+    pre::-moz-selection, pre ::-moz-selection,
+    code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+      text-shadow: none;
+      background: hsla(0, 0%, 93%, 0.15); /* #EDEDED */
+    }
+
+    pre::selection, pre ::selection,
+    code[class*="language-"]::selection, code[class*="language-"] ::selection {
+      text-shadow: none;
+      background: hsla(0, 0%, 93%, 0.15); /* #EDEDED */
+    }
+
+    table {
+      display: block;
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+      thead {
+        th {
+          font-weight: bold;
+        }
+      }
+      th, td {
+        padding: 6px 13px;
+        border: 1px solid $mde-border-color;
+      }
+    }
+  }
+}
+
+// React MDE
+.react-mde {
+  border: 1px solid $mde-border-color;
+  border-radius: $mde-border-radius;
+
+  .grip {
+    border-top: 1px solid $mde-border-color;
+    background-color: $mde-toolbar-color;
+    text-align: center;
+    height: $grip-height;
+    color: black;
+    cursor: s-resize;
+
+    .icon {
+      height: $grip-height;
+    }
+  }
+
+  .invisible {
+    display: none;
+  }
+}
+
+// Suggestions
+ul.mde-suggestions {
+  position: absolute;
+  min-width: 180px;
+  padding: 0;
+  margin: 20px 0 0;
+  list-style: none;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid $mde-border-color;
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(27, 31, 35, .15);
+
+  li {
+    padding: 4px 8px;
+    border-bottom: 1px solid #e1e4e8;
+
+    &:first-child {
+      border-top-left-radius: $mde-border-radius;
+      border-top-right-radius: $mde-border-radius;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: $mde-border-radius;
+      border-bottom-left-radius: $mde-border-radius;
+    }
+
+    &:hover, &[aria-selected=true] {
+      color: $mde-white-color;
+      background-color: $mde-selected-color;
+    }
+  }
+}

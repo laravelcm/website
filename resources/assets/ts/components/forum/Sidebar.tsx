@@ -1,18 +1,23 @@
 import React from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
-import { useToast } from "@chakra-ui/core";
+import { useToast, useDisclosure } from "@chakra-ui/core";
+
+import ReplyModal from "@/pages/forum/ReplyModal";
 
 interface SidebarProps {
   page?: string;
+  threadId?: number;
 }
 
 const Sidebar = ({ page }: SidebarProps) => {
   const { auth } = usePage();
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   function answer(e: React.SyntheticEvent) {
     e.preventDefault();
-    if (auth.user === null) {
+    const { user } = auth;
+    if (user === null) {
       toast({
         position: `bottom-right`,
         title: `Attention.`,
@@ -21,12 +26,15 @@ const Sidebar = ({ page }: SidebarProps) => {
         duration: 7000,
         isClosable: true,
       });
+    } else {
+      onOpen();
     }
   }
 
   function follow(e: React.SyntheticEvent) {
     e.preventDefault();
-    if (auth.user === null) {
+    const { user } = auth;
+    if (user === null) {
       toast({
         position: `bottom-right`,
         title: `Attention.`,
@@ -165,6 +173,7 @@ const Sidebar = ({ page }: SidebarProps) => {
           </InertiaLink>
         </li>
       </ul>
+      <ReplyModal isOpen={isOpen} onClose={onClose} />
     </div>
   );
 };

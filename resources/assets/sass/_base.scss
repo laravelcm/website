@@ -9,3 +9,10 @@ a {
     outline: none;
   }
 }
+
+code, pre {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+  font-family: "Source Code Pro", Monaco, Inconsolata, monospace;
+  line-height: 1.25;
+}

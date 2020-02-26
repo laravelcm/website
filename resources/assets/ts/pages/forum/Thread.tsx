@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown";
-import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-dark.css";
+import { useDisclosure } from "@chakra-ui/core";
 
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
 import Breadcrumb from "@/includes/Breadcrumb";
 
-import Sidebar from "@/components/forum/Sidebar";
-import Reply from "@/components/forum/Reply";
 import { ReplyType, ThreadType } from "@/utils/types";
 import { timeAgo } from "@/utils/helpers";
+import Sidebar from "@/components/forum/Sidebar";
+import Reply from "@/components/forum/Reply";
+import ReplyModal from "@/pages/forum/ReplyModal";
 
 const Thread = () => {
-  const { thread } = usePage();
+  const { thread, auth } = usePage();
+  const { user } = auth;
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const {
+    id,
     title,
     body,
     creator,
@@ -26,16 +29,6 @@ const Thread = () => {
     created_at,
     replies,
   }: ThreadType = thread;
-
-  useEffect(() => {
-    updateCodeSyntaxHighlighting();
-  }, []);
-
-  function updateCodeSyntaxHighlighting() {
-    document.querySelectorAll("pre code").forEach((block) => {
-      hljs.highlightBlock(block);
-    });
-  }
 
   return (
     <>
@@ -54,7 +47,7 @@ const Thread = () => {
       </div>
       <div className="container mt-12">
         <div className="flex w-full">
-          <Sidebar page="show" />
+          <Sidebar page="show" threadId={id} />
           <div className="w-full lg:w-9/12">
             <div className="bg-gray-100 flex flex-col px-6 py-4 rounded-lg mb-4">
               <div className="flex items-center justify-between">
@@ -119,7 +112,34 @@ const Thread = () => {
                 <Reply key={reply.id} reply={reply} bestReplyId={best_reply_id} />
               ))
             }
-            <div className="mt-10" />
+            <div className="mt-10">
+              {
+                user === null && (
+                  <p className="text-center text-gray-800 font-medium">
+                    Veuillez vous <InertiaLink href="/login" className="link">connecter</InertiaLink>{" "}
+                    ou{" "}
+                    <InertiaLink href="/register" className="link">créer un compte</InertiaLink> pour participer à cette conversation.
+                  </p>
+                )
+              }
+              {
+                user !== null && (
+                  <>
+                    <div className="flex items-center">
+                      <img src={user.picture} alt={user.full_name} className="h-12 w-12 rounded-full mr-4" />
+                      <button
+                        className="w-full bg-white text-left shadow text-sm p-6 rounded-md hover:shadow-md"
+                        type="button"
+                        onClick={onOpen}
+                      >
+                        Laisser un commentaire...
+                      </button>
+                    </div>
+                    <ReplyModal isOpen={isOpen} onClose={onClose} />
+                  </>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>

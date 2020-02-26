@@ -19,13 +19,11 @@ const Home = () => (
       />
       <div className="container">
         <div className="w-full lg:w-7/12">
-          <h1 className="text-brand-primary text-3xl mb-6 lg:text-4xl lg:mb-8">
-              Laravel Cameroun
-          </h1>
+          <h1 className="text-brand-primary text-3xl mb-6 lg:text-4xl lg:mb-8">Laravel Cameroun</h1>
           <p className="text-sm mb-10 lg:w-140 lg:text-lg lg:mb-12">
-              Bienvenue sur le site de la communauté des développeurs PHP et
-              Laravel du Cameroun, le plus gros rassemblement de développeurs au
-              Cameroun.
+            Bienvenue sur le site de la communauté des développeurs PHP et
+            Laravel du Cameroun, le plus gros rassemblement de développeurs au
+            Cameroun.
           </p>
           <InertiaLink
             href="/tutorials"
@@ -33,12 +31,12 @@ const Home = () => (
             role="alert"
           >
             <span className="flex rounded-full bg-brand-900 uppercase px-2 py-1 text-xs font-bold mr-4 text-white">
-                New
+              New
             </span>
             <span className="font-normal mr-2 text-left flex-auto text-xs lg:text-sm">
-                Mise à jour du site Web, nouvelle section{" "}
+              Mise à jour du site Web, nouvelle section{" "}
               <span className="text-brand-primary">tutoriels</span>{" "}
-                disponible. Visitez maintenant!
+              disponible. Visitez maintenant!
             </span>
             <svg
               className="fill-current opacity-75 h-4 w-4 hidden md:block"
@@ -69,12 +67,10 @@ const Home = () => (
             </svg>
           </span>
           <span className="block">
-            <h4 className="text-gray-700 font-bold mb-1 md:mb-2">
-                Offre d'emploi
-            </h4>
+            <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Offre d'emploi</h4>
             <p className="text-xs font-light text-gray-600 lg:text-base">
-                Consultez les offres d'emploi les plus récentes et postulez
-                rapidement.
+              Consultez les offres d'emploi les plus récentes et postulez
+              rapidement.
             </p>
           </span>
         </InertiaLink>
@@ -96,13 +92,15 @@ const Home = () => (
           <span className="block">
             <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Forum</h4>
             <p className="text-xs font-light text-gray-600 lg:text-base">
-                Rendez vous sur le forum pour discuter de tout ce qui concerne
-                le code/design.
+              Rendez vous sur le forum pour discuter de tout ce qui concerne
+              le code/design.
             </p>
           </span>
         </InertiaLink>
-        <InertiaLink
-          href="/slack"
+        <a
+          href="https://laravelcm.slack.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-10"
         >
           <span className="bg-brand-primary p-3 rounded-full flex items-center justify-center mr-4 md:mr-0 md:mb-3">
@@ -117,17 +115,15 @@ const Home = () => (
             </svg>
           </span>
           <span className="block">
-            <h4 className="text-gray-700 font-bold mb-1 md:mb-2">
-                Rejoignez-nous
-            </h4>
+            <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Rejoignez-nous</h4>
             <p className="text-xs font-light text-gray-600 lg:text-base">
-                Rejoignez une communauté de milliers de développeurs comme vous.
+              Rejoignez une communauté de milliers de développeurs comme vous.
             </p>
           </span>
-        </InertiaLink>
+        </a>
       </div>
       <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">
-          Les derniers tutoriels
+        Les derniers tutoriels
       </h2>
       <div className="space-y-5 mb-10 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-14">
         <Tutorial
@@ -148,7 +144,7 @@ const Home = () => (
         />
       </div>
       <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">
-          Les derniers articles
+        Les derniers articles
       </h2>
       <div className="mb-14 space-y-5 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-18">
         <PostSlide
@@ -174,7 +170,7 @@ const Home = () => (
         <div className="space-y-8 lg:space-y-0 lg:space-x-6 lg:flex flex-grow">
           <div className="w-full lg:w-1/3">
             <h4 className="font-medium text-lg mb-4 lg:mb-8">
-                Dernières offres d'emploi
+              Dernières offres d'emploi
             </h4>
             <ul>
               <li className="border-b border-green-700 py-3">
@@ -222,9 +218,7 @@ const Home = () => (
                       />
                     </svg>
                   </span>
-                  <span className="text-sm">
-                      Export assets & images as a zip file
-                  </span>
+                  <span className="text-sm">Export assets & images as a zip file</span>
                 </InertiaLink>
               </li>
               <li className="border-b border-green-700 py-3">
@@ -248,9 +242,7 @@ const Home = () => (
                       />
                     </svg>
                   </span>
-                  <span className="text-sm">
-                      Deploy a project to the cloud with aws
-                  </span>
+                  <span className="text-sm">Deploy a project to the cloud with aws</span>
                 </InertiaLink>
               </li>
               <li className="border-b border-green-700 py-3">
@@ -274,17 +266,13 @@ const Home = () => (
                       />
                     </svg>
                   </span>
-                  <span className="text-sm">
-                      Create a team and manage access tokens
-                  </span>
+                  <span className="text-sm">Create a team and manage access tokens</span>
                 </InertiaLink>
               </li>
             </ul>
           </div>
           <div className="w-full lg:w-1/3">
-            <h4 className="font-medium text-lg mb-4 lg:mb-8">
-                Tutoriels populaires
-            </h4>
+            <h4 className="font-medium text-lg mb-4 lg:mb-8">Tutoriels populaires</h4>
             <ul>
               <li className="border-b border-green-700 py-3">
                 <InertiaLink
@@ -303,9 +291,7 @@ const Home = () => (
                       />
                     </svg>
                   </span>
-                  <span className="text-sm">
-                      Design and build a web app from scratch
-                  </span>
+                  <span className="text-sm">Design and build a web app from scratch</span>
                 </InertiaLink>
               </li>
               <li className="border-b border-green-700 py-3">
@@ -345,9 +331,7 @@ const Home = () => (
                       />
                     </svg>
                   </span>
-                  <span className="text-sm">
-                      Node authentication with passport
-                  </span>
+                  <span className="text-sm">Node authentication with passport</span>
                 </InertiaLink>
               </li>
               <li className="border-b border-green-700 py-3">
@@ -373,9 +357,7 @@ const Home = () => (
             </ul>
           </div>
           <div className="w-full lg:w-1/3">
-            <h4 className="font-medium text-lg mb-4 lg:mb-8">
-                Les sujets actifs du Forum
-            </h4>
+            <h4 className="font-medium text-lg mb-4 lg:mb-8">Les sujets actifs du Forum</h4>
             <ul>
               <li className="border-b border-green-700 py-3">
                 <InertiaLink
@@ -395,7 +377,7 @@ const Home = () => (
                     </svg>
                   </span>
                   <span className="text-sm">
-                      How to set up custom dns? by:{" "}
+                    How to set up custom dns? by:{" "}
                     <span className="font-semibold">James Gordon</span>
                   </span>
                 </InertiaLink>
@@ -418,7 +400,7 @@ const Home = () => (
                     </svg>
                   </span>
                   <span className="text-sm">
-                      Check out my latest creation :D by:{" "}
+                    Check out my latest creation :D by:{" "}
                     <span className="font-semibold">Kevin Dark</span>
                   </span>
                 </InertiaLink>
@@ -441,7 +423,7 @@ const Home = () => (
                     </svg>
                   </span>
                   <span className="text-sm">
-                      Is Webble down for you guys? by:{" "}
+                    Is Webble down for you guys? by:{" "}
                     <span className="font-semibold">Neville Griff</span>
                   </span>
                 </InertiaLink>
@@ -464,7 +446,7 @@ const Home = () => (
                     </svg>
                   </span>
                   <span className="text-sm">
-                      How can i add icons to my build? by:{" "}
+                    How can i add icons to my build? by:{" "}
                     <span className="font-semibold">Diane Lay</span>
                   </span>
                 </InertiaLink>
