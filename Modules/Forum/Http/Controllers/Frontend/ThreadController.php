@@ -8,6 +8,7 @@ use Modules\Forum\Entities\Channel;
 use Modules\Forum\Entities\Thread;
 use Modules\Forum\Entities\Trending;
 use Modules\Forum\Filters\ThreadFilters;
+use Modules\Forum\Http\Requests\ThreadRequest;
 use Modules\Forum\Repositories\ThreadRepository;
 
 class ThreadController extends Controller
@@ -63,6 +64,20 @@ class ThreadController extends Controller
         return Inertia::render('forum/Thread', [
             'thread' => $thread
         ]);
+    }
+
+    /**
+     * Store a newly thread in the database
+     *
+     * @param  ThreadRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ThreadRequest $request)
+    {
+        $request->merge(['user_id' => auth()->id()]);
+        $thread = $this->repository->create($request->all());
+
+        return redirect($thread->path);
     }
 
     /**

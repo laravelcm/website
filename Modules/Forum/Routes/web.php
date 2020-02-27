@@ -16,12 +16,13 @@ use Modules\Forum\Http\Controllers\Frontend\ThreadController;
 use Modules\Forum\Http\Controllers\Frontend\ReplyController;
 
 Route::prefix('forum')->group(function() {
-    Route::get('/', [ThreadController::class, 'index']);
+    Route::get('/', [ThreadController::class, 'index'])->name('forum');
     Route::redirect('/channels', '/forum');
-    Route::get('/channels/{slug}', [ForumController::class, 'channel']);
-    Route::get('/{channel}/{thread}', [ThreadController::class, 'thread']);
+    Route::get('/channels/{slug}', [ForumController::class, 'channel'])->name('channel');
+    Route::get('/{channel}/{thread}', [ThreadController::class, 'thread'])->name('threads');
 
     Route::middleware('auth')->group(function () {
-        Route::post('/thread/{thread}/replies', [ReplyController::class, 'store']);
+        Route::post('/thread/{thread}/replies', [ReplyController::class, 'store'])->name('reply.store');
+        Route::post('/threads', [ThreadController::class, 'store'])->name('thread.store');
     });
 });

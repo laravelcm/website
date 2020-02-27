@@ -49,22 +49,24 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
 
     axios.post(`/forum/thread/${threadSlug}/replies`, { body: value }).then((response) => {
       setSending(false);
-      console.log(response);
-      setValue("");
-      onClose();
-      window.location.reload();
+      const { data } = response;
+      if (data.status === 'success') {
+        setValue("");
+        onClose();
+        window.location.reload();
+      }
     }).catch((error) => {
       const { errors } = error.response.data;
-      if (errors && errors.length > 0) {
+      if (errors) {
         toast({
           position: `top`,
           title: `Attention.`,
-          description: `Impossible de poster ce commentaire. Peut etre un spam, recommencer plus tard.`,
-          status: "info",
+          description: `Impossible de poster ce commentaire. Peut etre dû à un spam, recommencer plus tard.`,
+          status: `error`,
           duration: 5000,
           isClosable: true,
         });
-        console.log('');
+        setSending(false);
       }
     });
   }

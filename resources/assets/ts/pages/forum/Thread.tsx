@@ -146,7 +146,7 @@ const Thread = () => {
               {
                 user !== null && (
                   <>
-                    <div className="flex items-center">
+                    <div className="flex items-center px-6">
                       <img src={user.picture} alt={user.full_name} className="h-12 w-12 rounded-full mr-4" />
                       <button
                         className="w-full bg-white text-left shadow text-sm p-6 rounded-md hover:shadow-md"

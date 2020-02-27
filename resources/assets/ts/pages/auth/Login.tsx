@@ -19,8 +19,8 @@ const Login = () => {
     leave: { opacity: 0, transform: "translate3d(20px,0,0)" },
   });
   const [values, setValues] = useState({
-    email: "monneylobe@gmail.com",
-    password: "monneylobe",
+    email: "",
+    password: "",
     remember: true,
   });
 
@@ -103,17 +103,17 @@ const Login = () => {
                       fill="#EB4335"
                     />
                   </svg>
-                    Continuer avec Google
+                  Continuer avec Google
                 </a>
               </div>
               <p className="mt-8 text-sm">
-                  Si vous n'avez pas lié ces comptes, vous pouvez toujours vous
-                  connecter avec votre{" "}
+                Si vous n'avez pas lié ces comptes, vous pouvez toujours vous
+                connecter avec votre{" "}
                 <span
                   className="link cursor-pointer"
                   onClick={() => setIsSocial(false)}
                 >
-                    addresse email.
+                  addresse email.
                 </span>
               </p>
             </div>
