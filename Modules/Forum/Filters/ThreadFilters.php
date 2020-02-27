@@ -11,7 +11,7 @@ class ThreadFilters extends Filters
      *
      * @var array
      */
-    protected $filters = ['by', 'popular', 'fresh'];
+    protected $filters = ['by', 'popular', 'reply'];
 
     /**
      * Filter the query by a given username.
@@ -21,9 +21,13 @@ class ThreadFilters extends Filters
      */
     protected function by($username)
     {
-        $user = User::where('username', $username)->firstOrFail();
+        $user = User::where('username', $username)->first();
 
-        return $this->builder->where('user_id', $user->id);
+        if ($user) {
+            return $this->builder->where('user_id', $user->id);
+        }
+
+        return $this->builder;
     }
 
     /**
@@ -43,7 +47,7 @@ class ThreadFilters extends Filters
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected function fresh()
+    protected function reply()
     {
         return $this->builder->where('replies_count', 0);
     }

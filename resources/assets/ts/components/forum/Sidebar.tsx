@@ -94,7 +94,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
             <>
               <li>
                 <InertiaLink
-                  href="/forum"
+                  href={`/forum?by=${user.username}`}
                   className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
                 >
                   <svg className="mr-2 h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,7 +110,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
               </li>
               <li>
                 <InertiaLink
-                  href="/forum"
+                  href="/forum?participate"
                   className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
                 >
                   <svg className="mr-2 h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +129,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         }
         <li>
           <InertiaLink
-            href="/forum?trending=1"
+            href="/forum?popular=week"
             className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
           >
             <svg
@@ -148,7 +148,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         </li>
         <li>
           <InertiaLink
-            href="/forum?popular=1"
+            href="/forum?popular=all"
             className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
           >
             <svg
@@ -205,7 +205,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         </li>
         <li>
           <InertiaLink
-            href="/forum?fresh=1"
+            href="/forum?reply=no"
             className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
           >
             <svg
