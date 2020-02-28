@@ -14,17 +14,18 @@ class CreateThreadsTable extends Migration
     public function up()
     {
         Schema::create('threads', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('title');
             $table->string('slug')->unique()->nullable();
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('channel_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('channel_id');
             $table->unsignedInteger('replies_count')->default(0);
             $table->unsignedInteger('visits')->default(0);
             $table->text('body');
-            $table->unsignedInteger('best_reply_id')->nullable();
+            $table->unsignedBigInteger('best_reply_id')->nullable();
             $table->boolean('locked')->default(false);
             $table->timestamps();
+            $table->timestamp('last_posted_at')->useCurrent();
 
             $table->foreign('best_reply_id')
                 ->references('id')

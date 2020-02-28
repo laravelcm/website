@@ -30,6 +30,8 @@ class ReplyController extends FrontendBaseController
             'user_id' => auth()->id()
         ])->load('owner');
 
+        $thread->update(['last_posted_at' => now()]);
+
         return response()->json(['status' => 'success', 'message' => "Votre commentaire a été envoyé"]);
     }
 }
