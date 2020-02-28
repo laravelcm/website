@@ -2,6 +2,7 @@
 
 namespace Modules\Forum\Http\Controllers\Frontend;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Modules\Forum\Filters\ThreadFilters;
@@ -38,13 +39,17 @@ class ForumController extends Controller
      * Display a channel view
      *
      * @param  string $slug
-     * @param  ThreadFilters $filters
+     * @param  Request $request
      * @return \Inertia\Response
      */
-    public function channel(string $slug, ThreadFilters $filters)
+    public function channel(string $slug, Request $request)
     {
         $channel = $this->channelRepository->with('threads')->getByColumn($slug, 'slug');
-        $threads = $channel->threads()->with('lastReply')->latest()->filter($filters)->paginate(25);
+        $threads = $channel->threads()
+            ->with('lastReply')
+            ->filter($request)
+            ->orderByDesc('last_posted_at')
+            ->paginate(25);
 
         return Inertia::render('forum/Channel', [
             'channel' => $channel,
