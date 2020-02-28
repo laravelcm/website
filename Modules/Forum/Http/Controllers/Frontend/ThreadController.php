@@ -37,7 +37,10 @@ class ThreadController extends Controller
      */
     public function index(Request $request)
     {
-        $threads = Thread::with('lastReply')->filter($request)->paginate(25);
+        $threads = Thread::with('lastReply')
+            ->filter($request)
+            ->orderByDesc('last_posted_at')
+            ->paginate(25);
 
         return Inertia::render('forum/Index', [
             'threads' => $threads,

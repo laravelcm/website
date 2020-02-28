@@ -167,7 +167,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         </li>
         <li>
           <InertiaLink
-            href="/forum?answered=1"
+            href="/forum?answered=yes"
             className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
           >
             <svg
@@ -186,7 +186,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         </li>
         <li>
           <InertiaLink
-            href="/forum?answered=0"
+            href="/forum?answered=no"
             className="flex w-full py-2 px-4 items-center hover:bg-brand-100 rounded-md hover:text-brand-primary mb-1"
           >
             <svg
