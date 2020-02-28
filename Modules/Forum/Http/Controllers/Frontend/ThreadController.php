@@ -2,6 +2,7 @@
 
 namespace Modules\Forum\Http\Controllers\Frontend;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Modules\Forum\Entities\Channel;
@@ -31,12 +32,12 @@ class ThreadController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  ThreadFilters $filters
+     * @param  Request $request
      * @return \Inertia\Response
      */
-    public function index(ThreadFilters $filters)
+    public function index(Request $request)
     {
-        $threads = $this->getThreads($filters);
+        $threads = Thread::with('lastReply')->filter($request)->paginate(25);
 
         return Inertia::render('forum/Index', [
             'threads' => $threads,
@@ -48,10 +49,9 @@ class ThreadController extends Controller
      *
      * @param  string $channel
      * @param  string $thread
-     * @param  Trending $trending
      * @return \Inertia\Response
      */
-    public function thread($channel, $thread, Trending $trending)
+    public function thread($channel, $thread)
     {
         $thread = $this->repository->with('replies')->getByColumn($thread, 'slug');
 
@@ -78,23 +78,5 @@ class ThreadController extends Controller
         $thread = $this->repository->create($request->all());
 
         return redirect($thread->path);
-    }
-
-    /**
-     * Fetch all relevant threads.
-     *
-     * @param Channel       $channel
-     * @param ThreadFilters $filters
-     * @return mixed
-     */
-    protected function getThreads(ThreadFilters $filters, Channel $channel = null)
-    {
-        $threads = Thread::with('lastReply')->latest()->filter($filters);
-
-        if ($channel && $channel->exists) {
-            $threads->where('channel_id', $channel->id);
-        }
-
-        return $threads->paginate(25);
     }
 }

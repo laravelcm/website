@@ -118,18 +118,6 @@ class Thread extends Model
     }
 
     /**
-     * Apply all relevant thread filters.
-     *
-     * @param  Builder       $query
-     * @param  ThreadFilters $filters
-     * @return Builder
-     */
-    public function scopeFilter($query, ThreadFilters $filters)
-    {
-        return $filters->apply($query);
-    }
-
-    /**
      * Subscribe a user to the current thread.
      *
      * @param int|null $userId
@@ -244,5 +232,18 @@ class Thread extends Model
     public function markBestReply(Reply $reply)
     {
         $this->update(['best_reply_id' => $reply->id]);
+    }
+
+    /**
+     * Apply all relevant thread filters.
+     *
+     * @param  Builder $builder
+     * @param  $request
+     * @param  array $filters
+     * @return Builder
+     */
+    public function scopeFilter(Builder $builder, $request, array $filters = [])
+    {
+        return (new ThreadFilters($request))->add($filters)->filter($builder);
     }
 }
