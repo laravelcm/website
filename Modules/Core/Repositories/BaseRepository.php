@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Core\Exceptions\GeneralException;
 
-/**
- * Class BaseRepository.
- */
 abstract class BaseRepository implements RepositoryContract
 {
     /**
@@ -432,7 +429,7 @@ abstract class BaseRepository implements RepositoryContract
             $this->query->orderBy($orders['column'], $orders['direction']);
         }
 
-        if (isset($this->take) and ! is_null($this->take)) {
+        if (isset($this->take) and !is_null($this->take)) {
             $this->query->take($this->take);
         }
 

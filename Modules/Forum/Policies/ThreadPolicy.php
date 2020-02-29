@@ -3,18 +3,22 @@
 namespace Modules\Forum\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\Forum\Entities\Thread;
+use Modules\User\Entities\User;
 
 class ThreadPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Create a new policy instance.
+     * Determine whether the user can update the thread.
      *
-     * @return void
+     * @param  User   $user
+     * @param  Thread $thread
+     * @return mixed
      */
-    public function __construct()
+    public function update(User $user, Thread $thread)
     {
-        //
+        return $thread->user_id === $user->id;
     }
 }

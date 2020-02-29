@@ -37,7 +37,7 @@ trait RecordsActivity
     /**
      * Record new activity for the model.
      *
-     * @param string $event
+     * @param  string $event
      * @throws \ReflectionException
      */
     protected function recordActivity($event)

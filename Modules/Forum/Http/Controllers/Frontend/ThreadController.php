@@ -5,10 +5,7 @@ namespace Modules\Forum\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
-use Modules\Forum\Entities\Channel;
 use Modules\Forum\Entities\Thread;
-use Modules\Forum\Entities\Trending;
-use Modules\Forum\Filters\ThreadFilters;
 use Modules\Forum\Http\Requests\ThreadRequest;
 use Modules\Forum\Repositories\ThreadRepository;
 

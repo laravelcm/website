@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 use Modules\Forum\Entities\Reply;
 use Modules\Forum\Entities\Thread;
 use Modules\Forum\Policies\ReplyPolicy;
@@ -33,6 +34,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::before(function ($user) {
+            if ($user->isAdmin()) return true;
+        });
     }
 }
