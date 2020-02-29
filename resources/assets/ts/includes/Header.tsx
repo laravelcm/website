@@ -9,7 +9,7 @@ export default () => {
   const input = useRef<HTMLInputElement>(null);
 
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.code === "Slash") {
+    if (e.code === "Backslash") {
       e.preventDefault();
       if (input.current) {
         const element = input.current;
@@ -76,7 +76,7 @@ export default () => {
                     <input
                       className="transition font-light focus:outline-none border border-transparent focus:bg-gray-100 focus:border-gray-300 placeholder-gray-600 rounded-md bg-gray-200 py-2 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
                       type="text"
-                      placeholder='Recherche (Press "/" to focus)'
+                      placeholder='Recherche (Press "\" to focus)'
                       autoComplete="off"
                       style={{ position: "relative", verticalAlign: "top" }}
                       ref={input}
