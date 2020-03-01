@@ -22,7 +22,9 @@ Route::prefix('forum')->group(function() {
     Route::get('/{channel}/{thread}', [ThreadController::class, 'thread'])->name('threads');
 
     Route::middleware('auth')->group(function () {
-        Route::post('/thread/{thread}/replies', [ReplyController::class, 'store'])->name('reply.store');
-        Route::post('/threads', [ThreadController::class, 'store'])->name('thread.store');
+        Route::post('/thread/{thread}/replies', [ReplyController::class, 'store'])->name('replies.store');
+        Route::post('/threads', [ThreadController::class, 'store'])->name('threads.store');
+        Route::delete('/{channel}/{thread}', [ThreadController::class, 'destroy'])->name('threads.destroy');
+        Route::delete('/replies/remove/{reply}', [ReplyController::class, 'destroy'])->name('replies.destroy');
     });
 });

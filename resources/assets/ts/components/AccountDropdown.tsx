@@ -9,7 +9,7 @@ export default () => {
     picture,
     email,
     full_name,
-    isAdmin,
+    is_admin,
     username,
   }: User = user;
 
@@ -54,7 +54,7 @@ export default () => {
         </div>
         <div className="py-2">
           {
-            isAdmin && (
+            is_admin && (
               <a
                 href="/console/dashboard"
                 className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100"

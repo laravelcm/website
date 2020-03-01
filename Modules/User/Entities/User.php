@@ -100,10 +100,6 @@ class User extends Authenticatable implements AuditableInterface
         'full_name',
         'picture',
         'roles_label',
-        'login_as_button',
-        'status_button',
-        'show_button',
-        'edit_button',
-        'change_password_button',
+        'is_admin'
     ];
 }

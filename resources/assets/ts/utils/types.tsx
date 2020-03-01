@@ -4,7 +4,7 @@ export type User = {
   full_name: string;
   username: string;
   email: string;
-  isAdmin: boolean;
+  is_admin: boolean;
 }
 
 export type ChannelType = {
@@ -37,7 +37,9 @@ export type ReplyType = {
   body: string;
   thread: ThreadType;
   owner: User;
-  favorites: string[];
+  isBest: boolean;
+  isFavorited: boolean;
+  favoritesCount: number;
   created_at: Date;
   updated_at: Date;
 }

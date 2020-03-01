@@ -84,6 +84,14 @@ trait UserAttribute
     }
 
     /**
+     * @return mixed
+     */
+    public function getIsAdminAttribute()
+    {
+        return $this->hasRole(config('project.users.admin_role'));
+    }
+
+    /**
      * @return string
      */
     public function getDeletePermanentlyButtonAttribute()

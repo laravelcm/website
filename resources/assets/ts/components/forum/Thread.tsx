@@ -49,24 +49,27 @@ const Thread = (thread: ThreadType) => {
             className={`h-15 w-15 flex items-center justify-center border-2 relative rounded-full ${solvedClass}`}
           >
             <InertiaLink href={`/u/@${creator.username}`} className="h-12 w-12 relative">
-              <img
-                className="rounded-full h-12 w-12"
-                src={creator.picture}
-                alt={creator.full_name}
-              />
-              {best_reply_id !== null && (
-                <svg
-                  className="absolute top-0 h-3 w-3"
-                  style={{ right: "-5px" }}
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="6" cy="6" r="6" fill="#007A5E" />
-                  <path
-                    d="M5.716 8.772a.646.646 0 01-.985 0L3.204 7.066a.845.845 0 010-1.102.646.646 0 01.985 0l.91 1.017c.069.077.18.077.249 0L7.81 4.228a.646.646 0 01.985 0c.13.146.204.344.204.55a.827.827 0 01-.204.551l-3.08 3.443z"
-                    fill="#fff"
-                  />
-                </svg>
-              )}
+              <span className="block mb-2">
+                <img
+                  className="rounded-full h-12 w-12"
+                  src={creator.picture}
+                  alt={creator.full_name}
+                />
+                {best_reply_id !== null && (
+                  <svg
+                    className="absolute top-0 h-3 w-3"
+                    style={{ right: "-5px" }}
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="6" cy="6" r="6" fill="#007A5E" />
+                    <path
+                      d="M5.716 8.772a.646.646 0 01-.985 0L3.204 7.066a.845.845 0 010-1.102.646.646 0 01.985 0l.91 1.017c.069.077.18.077.249 0L7.81 4.228a.646.646 0 01.985 0c.13.146.204.344.204.55a.827.827 0 01-.204.551l-3.08 3.443z"
+                      fill="#fff"
+                    />
+                  </svg>
+                )}
+              </span>
+              {creator.is_admin && <span className="text-brand-200 text-sm">Admin</span>}
             </InertiaLink>
           </div>
           <span className="text-sm text-gray-800 ml-3 font-medium md:hidden uppercase">

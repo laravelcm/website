@@ -69,14 +69,10 @@ export default ({ isOpen, onClose }: ReplyModalProps) => {
       body,
     };
 
-    Inertia.post(`/forum/threads`, form).then((response) => {
+    Inertia.post(`/forum/threads`, form).then(() => {
       setSending(false);
-      console.log(response);
-      // setBody("");
-      // onClose();
-      // window.location.reload();
     }).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 

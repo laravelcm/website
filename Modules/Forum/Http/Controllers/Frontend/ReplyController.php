@@ -34,4 +34,20 @@ class ReplyController extends FrontendBaseController
 
         return response()->json(['status' => 'success', 'message' => "Votre commentaire a été envoyé"]);
     }
+
+    /**
+     * Delete the given reply.
+     *
+     * @param  Reply $reply
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(Reply $reply)
+    {
+        $this->authorize('update', $reply);
+
+        $reply->delete();
+
+        return back()->with('success', 'Votre réponse a été supprimée.');
+    }
 }

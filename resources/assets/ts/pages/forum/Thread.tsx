@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown";
 import { useDisclosure } from "@chakra-ui/core";
+import classNames from "classnames";
 import hljs from "highlight.js";
 
 import Layout from "@/includes/Layout";
@@ -13,11 +14,13 @@ import { timeAgo } from "@/utils/helpers";
 import Sidebar from "@/components/forum/Sidebar";
 import Reply from "@/components/forum/Reply";
 import ReplyModal from "@/pages/forum/ReplyModal";
+import DeleteModal from "@/components/DeleteModal";
 
 const Thread = () => {
   const { thread, auth } = usePage();
   const { user } = auth;
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [show, setShow] = useState(false);
   const {
     slug,
     title,
@@ -26,10 +29,15 @@ const Thread = () => {
     channel,
     visits,
     replies_count,
-    best_reply_id,
     created_at,
     replies,
   }: ThreadType = thread;
+  const className = classNames(
+    `bg-gray-100 flex flex-col px-6 py-4 rounded-lg mb-4`,
+    {
+      'thread-header': (user !== null && user.id === creator.id) || (user !== null && user.is_admin),
+    },
+  );
 
   useEffect(() => {
     updateCodeSyntaxHighlighting();
@@ -60,7 +68,7 @@ const Thread = () => {
         <div className="flex w-full">
           <Sidebar page="show" threadSlug={slug} />
           <div className="w-full lg:w-9/12">
-            <div className="bg-gray-100 flex flex-col px-6 py-4 rounded-lg mb-4">
+            <div className={className}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <InertiaLink
@@ -79,37 +87,49 @@ const Thread = () => {
                   </p>
                 </div>
                 <div className="flex items-center">
-                  <div className="mr-4 text items-center hidden sm:flex">
-                    <svg
-                      className="h-5 w-5 mr-1"
-                      xmlns="http://www.w3.org/2000/svg"
+                  <div className="flex items-center thread-metadata">
+                    <div className="mr-4 text items-center hidden sm:flex">
+                      <svg
+                        className="h-5 w-5 mr-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 9.333H2.667A1.333 1.333 0 011.334 8V2.667c0-.734.6-1.334 1.333-1.334h8A1.333 1.333 0 0112 2.667V4h1.334a1.333 1.333 0 011.333 1.333V14a.666.666 0 01-1.133.467L11.053 12h-5.72A1.333 1.333 0 014 10.667V9.333zM4 8V5.333C4 4.6 4.6 4 5.333 4h5.334V2.667h-8V8H4zm9.334-2.667h-8v5.334h6a.667.667 0 01.466.2l1.534 1.526v-7.06z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <span>{replies_count}</span>
+                    </div>
+                    <div className="mr-4 items-center hidden sm:flex">
+                      <svg
+                        className="h-5 w-5 mr-1"
+                        viewBox="0 0 25 25"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17.56 17.66a8 8 0 01-11.32 0L1.3 12.7a1 1 0 010-1.42l4.95-4.95a8 8 0 0111.32 0l4.95 4.95a1 1 0 010 1.42l-4.95 4.95-.01.01zm-9.9-1.42a6 6 0 008.48 0L20.38 12l-4.24-4.24a6 6 0 00-8.48 0L3.4 12l4.25 4.24h.01zM11.9 16a4 4 0 110-8 4 4 0 010 8zm0-2a2 2 0 100-4 2 2 0 000 4z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <span>{visits}</span>
+                    </div>
+                    <InertiaLink
+                      href={`/forum/channels/${channel.slug}`}
+                      className={`text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug} md:text-sm`}
                     >
+                      {channel.name}
+                    </InertiaLink>
+                  </div>
+                  <button className="ml-4 hidden thread-remove" type="button" onClick={() => setShow(true)}>
+                    <svg className="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
-                        d="M4 9.333H2.667A1.333 1.333 0 011.334 8V2.667c0-.734.6-1.334 1.333-1.334h8A1.333 1.333 0 0112 2.667V4h1.334a1.333 1.333 0 011.333 1.333V14a.666.666 0 01-1.133.467L11.053 12h-5.72A1.333 1.333 0 014 10.667V9.333zM4 8V5.333C4 4.6 4.6 4 5.333 4h5.334V2.667h-8V8H4zm9.334-2.667h-8v5.334h6a.667.667 0 01.466.2l1.534 1.526v-7.06z"
-                        fill="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                       />
                     </svg>
-                    <span>{replies_count}</span>
-                  </div>
-                  <div className="mr-4 items-center hidden sm:flex">
-                    <svg
-                      className="h-5 w-5 mr-1"
-                      viewBox="0 0 25 25"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.56 17.66a8 8 0 01-11.32 0L1.3 12.7a1 1 0 010-1.42l4.95-4.95a8 8 0 0111.32 0l4.95 4.95a1 1 0 010 1.42l-4.95 4.95-.01.01zm-9.9-1.42a6 6 0 008.48 0L20.38 12l-4.24-4.24a6 6 0 00-8.48 0L3.4 12l4.25 4.24h.01zM11.9 16a4 4 0 110-8 4 4 0 010 8zm0-2a2 2 0 100-4 2 2 0 000 4z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    <span>{visits}</span>
-                  </div>
-                  <InertiaLink
-                    href={`/forum/channels/${channel.slug}`}
-                    className={`text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug} md:text-sm`}
-                  >
-                    {channel.name}
-                  </InertiaLink>
+                  </button>
                 </div>
               </div>
               <div className="mt-6">
@@ -130,7 +150,7 @@ const Thread = () => {
             </div>
             {
               replies.map((reply: ReplyType) => (
-                <Reply key={reply.id} reply={reply} bestReplyId={best_reply_id} />
+                <Reply key={reply.id} reply={reply} />
               ))
             }
             <div className="mt-10">
@@ -164,6 +184,13 @@ const Thread = () => {
           </div>
         </div>
       </div>
+      <DeleteModal
+        title="Supprimer le Sujet"
+        description="Voulez-vous vraiment supprimer ce sujet? Toutes les réponses seront définitivement supprimées. Cette action ne peut pas être annulée."
+        show={show}
+        confirmURL={`/forum/${channel.slug}/${slug}`}
+        cancelAction={() => setShow(false)}
+      />
     </>
   );
 };

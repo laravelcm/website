@@ -223,8 +223,14 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
           </InertiaLink>
         </li>
       </ul>
-      <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={threadSlug} />
-      <ThreadModal isOpen={open} onClose={() => setOpen(false)} />
+      {
+        user !== null && (
+          <>
+            <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={threadSlug} />
+            <ThreadModal isOpen={open} onClose={() => setOpen(false)} />
+          </>
+        )
+      }
     </div>
   );
 };

@@ -104,3 +104,42 @@
     margin-bottom: 1em;
   }
 }
+
+.thread-header {
+  transition: all ease-in-out 300ms;
+
+  &-metadata {
+    transform: translateX(0);
+    transition: all ease-in-out 200ms;
+  }
+
+  &-remove {
+    display: none;
+    transition: all ease-in-out 300ms;
+  }
+
+  &:hover {
+    .thread-metadata {
+      transform: translateX(-10px);
+    }
+
+    .thread-remove {
+      display: block;
+    }
+  }
+}
+
+.reply-header {
+  transition: all ease-in-out 300ms;
+
+  &-remove {
+    display: none;
+    transition: all ease-in-out 300ms;
+  }
+
+  &:hover {
+    .reply-remove {
+      display: block;
+    }
+  }
+}

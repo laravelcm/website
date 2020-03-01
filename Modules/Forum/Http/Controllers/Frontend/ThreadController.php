@@ -3,13 +3,13 @@
 namespace Modules\Forum\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Inertia\Inertia;
+use Modules\Core\Http\Controllers\Frontend\FrontendBaseController;
 use Modules\Forum\Entities\Thread;
 use Modules\Forum\Http\Requests\ThreadRequest;
 use Modules\Forum\Repositories\ThreadRepository;
 
-class ThreadController extends Controller
+class ThreadController extends FrontendBaseController
 {
     /**
      * @var ThreadRepository
@@ -78,5 +78,22 @@ class ThreadController extends Controller
         $thread = $this->repository->create($request->all());
 
         return redirect($thread->path);
+    }
+
+    /**
+     * Delete the given thread.
+     *
+     * @param  $channel
+     * @param  Thread $thread
+     * @return mixed
+     * @throws \Exception
+     */
+    public function destroy($channel, Thread $thread)
+    {
+        $this->authorize('update', $thread);
+
+        $thread->delete();
+
+        return redirect()->route('forum');
     }
 }

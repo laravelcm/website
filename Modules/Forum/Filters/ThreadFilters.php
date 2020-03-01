@@ -13,6 +13,7 @@ class ThreadFilters extends AbstractFilters
      */
     protected $filters = [
         'by' => ByFilter::class,
+        'filter_by' => ParticipateFilter::class,
         'popular' => PopularFilter::class,
         'reply' => ReplyFilter::class,
         'answered' => AnsweredFilter::class

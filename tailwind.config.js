@@ -73,7 +73,7 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-plugins/gradients'),
-    require('@tailwindcss/custom-forms'),
+    require('@tailwindcss/ui'),
     function ({
       addUtilities,
       theme,
