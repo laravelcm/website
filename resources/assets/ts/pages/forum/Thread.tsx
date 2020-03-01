@@ -66,7 +66,7 @@ const Thread = () => {
       </div>
       <div className="container mt-12">
         <div className="flex w-full">
-          <Sidebar page="show" threadSlug={slug} />
+          <Sidebar page="show" thread={thread} />
           <div className="w-full lg:w-9/12">
             <div className={className}>
               <div className="flex items-center justify-between">

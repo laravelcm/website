@@ -23,13 +23,14 @@ export type ThreadType = {
   resume: string;
   visits: number;
   locked: boolean;
+  isSubscribedTo: boolean;
   best_reply_id: number | null;
   channel: ChannelType;
   creator: User;
   last_reply: ReplyType | null;
+  replies: ReplyType[];
   created_at: Date;
   updated_at: Date;
-  replies: ReplyType[];
 }
 
 export type ReplyType = {

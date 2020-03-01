@@ -130,7 +130,8 @@ class ForumServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            RouteServiceProvider::class
+            RouteServiceProvider::class,
+            EventServiceProvider::class
         ];
     }
 }

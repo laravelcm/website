@@ -3,6 +3,7 @@
 namespace Modules\Forum\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Forum\Notifications\ThreadWasUpdated;
 use Modules\User\Entities\User;
 
 class ThreadSubscription extends Model
@@ -41,6 +42,6 @@ class ThreadSubscription extends Model
      */
     public function notify($reply)
     {
-        // $this->user->notify(new ThreadWasUpdated($this->thread, $reply));
+        $this->user->notify(new ThreadWasUpdated($this->thread, $reply));
     }
 }

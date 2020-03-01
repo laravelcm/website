@@ -5,6 +5,7 @@ namespace Modules\Forum\Entities;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Forum\Entities\Traits\RecordsActivity;
+use Modules\Forum\Events\ThreadReceivedNewReply;
 use Modules\Forum\Filters\ThreadFilters;
 use Modules\User\Entities\User;
 
@@ -121,7 +122,7 @@ class Thread extends Model
     {
         $reply = $this->replies()->create($reply);
 
-        // event(new ThreadReceivedNewReply($reply));
+        event(new ThreadReceivedNewReply($reply));
 
         return $reply;
     }

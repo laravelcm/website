@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { useToast, useDisclosure } from "@chakra-ui/core";
+import axios from "axios";
 
 import ReplyModal from "@/pages/forum/ReplyModal";
 import ThreadModal from "@/pages/forum/ThreadModal";
+import { ThreadType } from "@/utils/types";
 
 interface SidebarProps {
   page?: string;
-  threadSlug?: string;
+  thread?: ThreadType;
 }
 
-const Sidebar = ({ page, threadSlug }: SidebarProps) => {
+const Sidebar = ({ page, thread }: SidebarProps) => {
   const { auth } = usePage();
   const { user } = auth;
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [open, setOpen] = useState(false);
+  const [subscribe, setSubscribe] = useState(thread?.isSubscribedTo ?? false);
 
   function create(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -60,6 +63,30 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
         duration: 5000,
         isClosable: true,
       });
+    } else {
+      const action = subscribe ? 'delete' : 'post';
+
+      if (action === 'delete') {
+        axios.delete(`${thread?.path}/subscriptions`).then(() => {
+          setSubscribe(false);
+          toast({
+            position: `bottom-right`,
+            description: `Vous ne suivez plus ce sujet.`,
+            status: "info",
+            duration: 4000,
+          });
+        });
+      } else {
+        axios.post(`${thread?.path}/subscriptions`).then(() => {
+          setSubscribe(true);
+          toast({
+            position: `bottom-right`,
+            description: `Vous vous etes abonné ce sujet.`,
+            status: "info",
+            duration: 4000,
+          });
+        });
+      }
     }
   }
 
@@ -71,7 +98,20 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
       {page && page === `show` && (
         <>
           <button type="button" className="btn btn-primary mb-2 py-3 w-full" onClick={answer}>Répondre</button>
-          <button type="button" className="btn btn-outline-primary mb-8 py-3 w-full" onClick={follow}>Suivre ce sujet</button>
+          <button type="button" className="btn btn-outline-primary mb-8 py-3 w-full flex items-center justify-center" onClick={follow}>
+            {
+              subscribe
+                ? (
+                  <>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 mr-2">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Ne plus suivre
+                  </>
+                )
+                : "Suivre ce sujet"
+            }
+          </button>
         </>
       )}
       <ul>
@@ -226,7 +266,7 @@ const Sidebar = ({ page, threadSlug }: SidebarProps) => {
       {
         user !== null && (
           <>
-            <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={threadSlug} />
+            <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={thread?.slug} />
             <ThreadModal isOpen={open} onClose={() => setOpen(false)} />
           </>
         )

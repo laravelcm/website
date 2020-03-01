@@ -36,7 +36,7 @@ const Reply = ({ reply }: ReplyProps) => {
 
   return (
     <>
-      <div className={className}>
+      <div id={`reply-${id}`} className={className}>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="mr-4 text-center">

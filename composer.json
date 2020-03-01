@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^7.2",
+    "php": "^7.4",
     "albertcht/invisible-recaptcha": "^1.9",
     "creativeorange/gravatar": "~1.0",
     "davejamesmiller/laravel-breadcrumbs": "^5.0",

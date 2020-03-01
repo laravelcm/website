@@ -11,9 +11,6 @@ use Modules\Forum\Policies\ThreadPolicy;
 use Modules\Forum\Policies\UserPolicy;
 use Modules\User\Entities\User;
 
-/**
- * Class AuthServiceProvider.
- */
 class AuthServiceProvider extends ServiceProvider
 {
     /**

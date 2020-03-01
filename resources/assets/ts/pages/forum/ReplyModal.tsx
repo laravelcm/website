@@ -47,13 +47,23 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
     e.preventDefault();
     setSending(true);
 
-    axios.post(`/forum/thread/${threadSlug}/replies`, { body: value }).then((response) => {
+    axios.post(`/forum/threads/${threadSlug}/replies`, { body: value }).then((response) => {
       setSending(false);
       const { data } = response;
       if (data.status === 'success') {
-        setValue("");
         onClose();
-        window.location.reload();
+        setValue("");
+        toast({
+          position: `bottom-right`,
+          description: data.message,
+          status: `success`,
+          duration: 2000,
+          isClosable: true,
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
     }).catch((error) => {
       const { errors } = error.response.data;
@@ -63,7 +73,7 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
           title: `Attention.`,
           description: `Impossible de poster ce commentaire. Peut etre dû à un spam, recommencer plus tard.`,
           status: `error`,
-          duration: 5000,
+          duration: 4000,
           isClosable: true,
         });
         setSending(false);

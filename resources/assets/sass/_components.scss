@@ -110,12 +110,12 @@
 
   &-metadata {
     transform: translateX(0);
-    transition: all ease-in-out 200ms;
+    transition: all ease-in-out 300ms;
   }
 
   &-remove {
     display: none;
-    transition: all ease-in-out 300ms;
+    transition: all ease-in-out 350ms;
   }
 
   &:hover {
