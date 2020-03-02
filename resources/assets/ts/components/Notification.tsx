@@ -25,7 +25,7 @@ export default ({ notification, readNotification }: NotificationProps) => {
   }
 
   return (
-    <div className="relative flex p-3 text-sm z-100 border-b border-gray-50 bg-gray-100 hover:bg-gray-200">
+    <div id={`notification-${id}`} className="relative flex p-3 text-sm z-100 border-b border-gray-50 hover:bg-gray-100">
       <span className="w-8 mr-3 mt-3 flex">
         <svg className="h-5 w-5 text-brand-200" stroke="currentColor" fill="none" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={getCurrentPath(action)} />

@@ -27,6 +27,6 @@ class UserNotificationController extends FrontendBaseController
     {
         auth()->user()->notifications()->findOrFail($id)->markAsRead();
 
-        return response()->json(['status' => 'success', 'notifications' => auth()->user()->unreadNotifications()]);
+        return response()->json(['status' => 'success', 'notifications' => auth()->user()->unreadNotifications()->get()]);
     }
 }

@@ -14,6 +14,12 @@ export default () => {
 
   useEffect(() => {
     setNotifications(user.notifications);
+
+    if (user) {
+      setTimeout(() => {
+        setNotifications(user.notifications);
+      }, 2000);
+    }
   }, []);
 
   function readNotifications(e: React.SyntheticEvent, id: number) {
@@ -35,7 +41,7 @@ export default () => {
         duration: 2500,
         isClosable: true,
       });
-      console.error(error.response.data);
+      console.error(error);
     });
   }
 
@@ -72,7 +78,7 @@ export default () => {
           </svg>
           <span className="font-medium">Notifications</span>
         </div>
-        <div className="overflow-y-auto h-80">
+        <div id="notifications" className="overflow-y-auto h-80">
           {
             notifications.length > 0
             && notifications.map((notification: NotificationType) => (
