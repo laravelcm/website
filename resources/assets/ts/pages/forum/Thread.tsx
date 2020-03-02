@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown";
-import { useDisclosure } from "@chakra-ui/core";
+import { useDisclosure, useToast } from "@chakra-ui/core";
 import classNames from "classnames";
 import hljs from "highlight.js";
 
@@ -17,10 +17,11 @@ import ReplyModal from "@/pages/forum/ReplyModal";
 import DeleteModal from "@/components/DeleteModal";
 
 const Thread = () => {
-  const { thread, auth } = usePage();
+  const { thread, auth, flash } = usePage();
   const { user } = auth;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [show, setShow] = useState(false);
+  const toast = useToast();
   const {
     slug,
     title,
@@ -41,6 +42,16 @@ const Thread = () => {
 
   useEffect(() => {
     updateCodeSyntaxHighlighting();
+
+    if (flash.success) {
+      toast({
+        position: `bottom-right`,
+        description: flash.success,
+        status: `success`,
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   }, []);
 
   function updateCodeSyntaxHighlighting() {

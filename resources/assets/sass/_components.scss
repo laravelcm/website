@@ -1,5 +1,5 @@
 .btn {
-  @apply transition block px-6 py-2 rounded-md;
+  @apply transition ease-in-out duration-150 block px-6 py-2 rounded-md;
 }
 
 .btn-primary {
@@ -7,6 +7,36 @@
 
   &:hover {
     @apply bg-brand-900;
+  }
+}
+
+.btn-white {
+  @apply inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm  transition ease-in-out duration-150;
+
+  &:hover {
+    @apply text-gray-500;
+  }
+
+  &:focus {
+    @apply outline-none border-blue-300 shadow-outline;
+  }
+}
+
+.btn-danger {
+  @apply inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm transition ease-in-out duration-150;
+
+  &:hover {
+    @apply bg-red-500;
+  }
+
+  &:focus {
+    @apply border-red-700 shadow-outline-red;
+  }
+}
+
+@screen sm {
+  .btn-danger, .btn-white {
+    @apply text-sm leading-5;
   }
 }
 

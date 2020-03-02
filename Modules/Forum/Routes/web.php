@@ -31,6 +31,7 @@ Route::prefix('forum')->group(function() {
         Route::prefix('threads')->group(function () {
             Route::post('/', [ThreadController::class, 'store'])->name('threads.store');
             Route::post('/{thread}/replies', [ReplyController::class, 'store'])->name('replies.store');
+            Route::post('/replies/{reply}/best', [ReplyController::class, 'best'])->name('replies.best');
         });
 
         Route::delete('/replies/remove/{reply}', [ReplyController::class, 'destroy'])->name('replies.destroy');

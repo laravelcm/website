@@ -50,4 +50,20 @@ class ReplyController extends FrontendBaseController
 
         return back()->with('success', 'Votre réponse a été supprimée.');
     }
+
+    /**
+     * Mark the best reply for a thread.
+     *
+     * @param  Reply $reply
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function best(Reply $reply)
+    {
+        $this->authorize('update', $reply->thread);
+
+        $reply->thread->markBestReply($reply);
+
+        return back()->with('success', 'Vous avez marqué cette réponse comme étant la meilleure.');
+    }
 }

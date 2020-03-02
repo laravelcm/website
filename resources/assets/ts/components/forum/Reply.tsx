@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown";
 import classNames from "classnames";
@@ -34,9 +35,14 @@ const Reply = ({ reply }: ReplyProps) => {
     ? `Voulez-vous vraiment supprimer votre réponse? Cette action ne peut pas être annulée.`
     : (<>Voulez-vous vraiment supprimer la reponse de <span className="text-gray-800 font-medium">{owner.username}</span>? Cette action ne peut pas être annulée.</>);
 
+  function markBestReply(e: React.SyntheticEvent, replyId: number) {
+    e.preventDefault();
+    Inertia.post(`/forum/threads/replies/${replyId}/best`);
+  }
+
   return (
     <>
-      <div id={`reply-${id}`} className={className}>
+      <div id={`reply-${id}`} className={className} scroll-region>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="mr-4 text-center">
@@ -59,9 +65,19 @@ const Reply = ({ reply }: ReplyProps) => {
           </div>
           <div className="flex items-center">
             {
+              ((user && user.id === reply.thread.creator.id) && !isBest) && (
+                <button className="btn-white rounded-full items-center" type="button" onClick={(e) => markBestReply(e, reply.id)}>
+                  <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  meilleure réponse
+                </button>
+              )
+            }
+            {
               (isBest) && (
                 <>
-                  <span className="text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-primary text-brand-primary md:text-sm">
+                  <span className="text-xs text-center py-2 px-3 rounded-full bg-opacity-primary text-brand-primary md:text-sm">
                     Meilleure reponse
                   </span>
                 </>
