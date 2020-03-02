@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 
 import AccountDropdown from "@/components/AccountDropdown";
+import Notifications from "@/components/Notifications";
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -126,26 +127,7 @@ export default () => {
               )}
               {auth.user && (
                 <div className="hidden lg:flex items-center ml-4 space-x-4">
-                  <InertiaLink
-                    href="/notifications"
-                    className="relative text-gray-600 group-hover:text-gray-800 font-normal"
-                  >
-                    <svg
-                      className="text-gray-600 h-8 w-8 hover:text-gray-700"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.75 23.75a3.75 3.75 0 01-7.5 0H5a1.25 1.25 0 010-2.5h1.25v-7.5a8.75 8.75 0 015.025-7.925 3.75 3.75 0 017.45 0 8.75 8.75 0 015.025 7.925v7.5H25a1.25 1.25 0 010 2.5h-6.25zm-5 0a1.25 1.25 0 102.5 0h-2.5zm0-16.125a6.25 6.25 0 00-5 6.125v7.5h12.5v-7.5a6.25 6.25 0 00-5-6.125V6.25a1.25 1.25 0 00-2.5 0v1.375z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    <span
-                      className="absolute h-5 w-5 flex items-center justify-center bg-brand-primary rounded-full text-white text-xs"
-                      style={{ top: "-5px", right: "-4px" }}
-                    >
-                      1
-                    </span>
-                  </InertiaLink>
+                  <Notifications />
                   <AccountDropdown />
                 </div>
               )}

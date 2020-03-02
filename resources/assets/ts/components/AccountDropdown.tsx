@@ -39,7 +39,7 @@ export default () => {
         }`}
         style={{ right: "-12px" }}
       >
-        <div className="flex items-center bg-gray-100 px-3 py-4">
+        <div className="flex items-center bg-gray-50 px-3 py-4">
           <div className="h-15 w-15 rounded-sm overflow-hidden">
             <img
               src={picture}

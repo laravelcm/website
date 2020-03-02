@@ -19,16 +19,6 @@ class AccountController extends Controller
     }
 
     /**
-     * Return User concern notifications
-     *
-     * @return \Inertia\Response
-     */
-    public function notifications()
-    {
-        return Inertia::render('user/Notifications');
-    }
-
-    /**
      * Return User concern badges
      *
      * @return \Inertia\Response

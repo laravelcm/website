@@ -44,3 +44,16 @@ export type ReplyType = {
   created_at: Date;
   updated_at: Date;
 }
+
+export type NotificationType = {
+  id: number;
+  type: string;
+  data: {
+    message: string;
+    action: string;
+    link: string;
+  };
+  read_at: Date;
+  created_at: Date;
+  updated_at: Date;
+}

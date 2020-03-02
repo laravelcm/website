@@ -52,8 +52,9 @@ class ThreadWasUpdated extends Notification
     public function toArray()
     {
         return [
-            'message' => $this->reply->owner->full_name . ' a répondu au sujet ' . $this->thread->title,
-            'link' => $this->reply->path()
+            'message' => '<span class="text-gray-800 font-medium">'.$this->reply->owner->full_name.'</span> a répondu au sujet <span class="text-gray-800 font-medium">'.$this->thread->title.'</span>',
+            'link' => $this->reply->path(),
+            'action' => 'reply'
         ];
     }
 }

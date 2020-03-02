@@ -44,8 +44,9 @@ class YouWereMentioned extends Notification
     public function toArray()
     {
         return [
-            'message' => $this->reply->owner->full_name. ' vous a mentionné dans le sujet '. $this->reply->thread->title,
-            'link' => $this->reply->path()
+            'message' => '<span class="text-gray-800 font-medium">'.$this->reply->owner->full_name.'</span> vous a mentionné dans le sujet <span class="text-gray-800 font-medium">'. $this->reply->thread->title.'</span>',
+            'link' => $this->reply->path(),
+            'action' => 'mention'
         ];
     }
 }

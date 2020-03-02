@@ -55,7 +55,8 @@ class AppServiceProvider extends ServiceProvider
                         'username' => auth()->user()->username,
                         'email' => auth()->user()->email,
                         'picture' => auth()->user()->picture,
-                        'is_admin' => auth()->user()->isAdmin()
+                        'is_admin' => auth()->user()->isAdmin(),
+                        'notifications' => auth()->user()->unreadNotifications()->get()
                     ] : null,
                 ];
             },

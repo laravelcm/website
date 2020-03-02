@@ -22,6 +22,7 @@ use Modules\User\Http\Controllers\Frontend\Auth\SocialLoginController;
 use Modules\User\Http\Controllers\Frontend\Auth\UpdatePasswordController;
 use Modules\User\Http\Controllers\Frontend\DashboardController;
 use Modules\User\Http\Controllers\Frontend\ProfileController;
+use Modules\User\Http\Controllers\Frontend\UserNotificationController;
 
 /**
  * Frontend Access Controllers
@@ -82,7 +83,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'password_expires', 'as' => 'user.'], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('account', [AccountController::class, 'index'])->name('account');
-        Route::get('notifications', [AccountController::class, 'notifications'])->name('notifications');
+        Route::get('notifications', [UserNotificationController::class, 'index'])->name('notifications');
+        Route::delete('notifications/{id}', [UserNotificationController::class, 'destroy'])->name('notifications.markAsRead');
         Route::get('badges', [AccountController::class, 'badges'])->name('badges');
         Route::get('publishing', [AccountController::class, 'publishing'])->name('publishing');
         Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
