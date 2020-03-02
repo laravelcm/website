@@ -22,6 +22,7 @@
     "inertiajs/inertia-laravel": "^0.2.4",
     "joshbrw/laravel-module-installer": "^0.1.4",
     "laravel/framework": "^6.3",
+    "laravel/slack-notification-channel": "^2.0",
     "laravel/socialite": "^4.1",
     "laravel/tinker": "^1.0",
     "maatwebsite/laravel-sidebar": "~2.1",

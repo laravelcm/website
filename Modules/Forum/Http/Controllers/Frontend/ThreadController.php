@@ -8,6 +8,7 @@ use Modules\Core\Http\Controllers\Frontend\FrontendBaseController;
 use Modules\Forum\Entities\Reply;
 use Modules\Forum\Entities\Thread;
 use Modules\Forum\Http\Requests\ThreadRequest;
+use Modules\Forum\Notifications\SendSlackThread;
 use Modules\Forum\Repositories\ThreadRepository;
 
 class ThreadController extends FrontendBaseController
@@ -77,6 +78,8 @@ class ThreadController extends FrontendBaseController
     {
         $request->merge(['user_id' => auth()->id()]);
         $thread = $this->repository->create($request->all());
+
+        $thread->creator->notify(new SendSlackThread($thread));
 
         return redirect($thread->path);
     }
