@@ -266,7 +266,7 @@ const Sidebar = ({ page, thread }: SidebarProps) => {
       {
         user !== null && (
           <>
-            <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={thread?.slug} />
+            <ReplyModal isOpen={isOpen} onClose={onClose} thread={thread} />
             <ThreadModal isOpen={open} onClose={() => setOpen(false)} />
           </>
         )

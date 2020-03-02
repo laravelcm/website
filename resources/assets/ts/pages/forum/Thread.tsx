@@ -176,7 +176,7 @@ const Thread = () => {
                         Laisser un commentaire...
                       </button>
                     </div>
-                    <ReplyModal isOpen={isOpen} onClose={onClose} threadSlug={slug} />
+                    <ReplyModal isOpen={isOpen} onClose={onClose} thread={thread} />
                   </>
                 )
               }

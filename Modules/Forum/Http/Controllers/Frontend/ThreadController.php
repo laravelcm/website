@@ -5,6 +5,7 @@ namespace Modules\Forum\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Modules\Core\Http\Controllers\Frontend\FrontendBaseController;
+use Modules\Forum\Entities\Reply;
 use Modules\Forum\Entities\Thread;
 use Modules\Forum\Http\Requests\ThreadRequest;
 use Modules\Forum\Repositories\ThreadRepository;
@@ -78,6 +79,32 @@ class ThreadController extends FrontendBaseController
         $thread = $this->repository->create($request->all());
 
         return redirect($thread->path);
+    }
+
+    /**
+     * Return the users list on a thread.
+     *
+     * @param  $channel
+     * @param  Thread $thread
+     * @return \Illuminate\Support\Collection
+     */
+    public function users($channel, Thread $thread)
+    {
+        $users = collect();
+
+        if ($thread->creator->id !== auth()->id()) {
+            $users->add($thread->creator);
+        }
+
+        Reply::where('thread_id', $thread->id)->get()->each(function ($reply) use ($users) {
+            if ($reply->owner->id !== auth()->id()) {
+                if (!$users->contains($reply->owner)) {
+                    $users->add($reply->owner);
+                }
+            }
+        });
+
+        return $users;
     }
 
     /**

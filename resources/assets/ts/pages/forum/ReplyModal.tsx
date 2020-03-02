@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ReactMde, { commands } from "react-mde";
+import ReactMde, { commands, Suggestion } from "react-mde";
 import * as Showdown from "showdown";
 import {
   Modal,
@@ -13,14 +13,15 @@ import {
 } from "@chakra-ui/core";
 
 import LoaderButton from "@/components/LoaderButton";
+import { ThreadType, User } from "@/utils/types";
 
 interface ReplyModalProps {
   isOpen: boolean;
   onClose: () => void;
-  threadSlug?: string;
+  thread?: ThreadType;
 }
 
-export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
+export default ({ isOpen, onClose, thread }: ReplyModalProps) => {
   const [value, setValue] = useState("");
   const [selectedTab, setSelectedTab] = useState<"write" | "preview">("write");
   const [sending, setSending] = useState(false);
@@ -43,11 +44,37 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
     },
   ];
 
+  function loadSuggestions(text: string) {
+    return new Promise<Suggestion[]>((accept) => {
+      axios.get(`${thread?.path}/users`)
+        .then((response) => {
+          const { data } = response;
+          const suggestions: Suggestion[] = [];
+
+          // eslint-disable-next-line array-callback-return
+          data.map((user: User) => {
+            const suggestion = {
+              preview: user.username,
+              value: `@${user.username}`,
+            };
+            suggestions.push(suggestion);
+          });
+
+          // @ts-ignore
+          suggestions.filter((i) => i.preview.toLowerCase().includes(text.toLowerCase()));
+          accept(suggestions);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+  }
+
   function sendReply(e: React.SyntheticEvent) {
     e.preventDefault();
     setSending(true);
 
-    axios.post(`/forum/threads/${threadSlug}/replies`, { body: value }).then((response) => {
+    axios.post(`/forum/threads/${thread?.slug}/replies`, { body: value }).then((response) => {
       setSending(false);
       const { data } = response;
       if (data.status === 'success') {
@@ -68,15 +95,15 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
     }).catch((error) => {
       const { errors } = error.response.data;
       if (errors) {
+        setSending(false);
         toast({
           position: `top`,
           title: `Attention.`,
           description: `Impossible de poster ce commentaire. Peut etre dû à un spam, recommencer plus tard.`,
           status: `error`,
-          duration: 4000,
+          duration: 3000,
           isClosable: true,
         });
-        setSending(false);
       }
     });
   }
@@ -111,6 +138,7 @@ export default ({ isOpen, onClose, threadSlug }: ReplyModalProps) => {
               commands={listCommands}
               generateMarkdownPreview={(markdown) => Promise.resolve(converter.makeHtml(markdown))}
               textAreaProps={{ required: true }}
+              loadSuggestions={loadSuggestions}
             />
             <p className="text-xs text-gray-500 font-italic font-light mt-3">
               * Vous pouvez utiliser du Markdown avec des blocs de code du{" "}

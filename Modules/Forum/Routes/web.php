@@ -23,15 +23,16 @@ Route::prefix('forum')->group(function() {
     Route::get('/{channel}/{thread}', [ThreadController::class, 'thread'])->name('threads');
 
     Route::middleware('auth')->group(function () {
-        Route::post('/{channel}/{thread}/subscriptions', [ThreadSubscriptionController::class, 'store'])->name('threads.subscribe');
+        Route::delete('/{channel}/{thread}', [ThreadController::class, 'destroy'])->name('threads.destroy');
         Route::delete('/{channel}/{thread}/subscriptions', [ThreadSubscriptionController::class, 'destroy'])->name('threads.unsubscribe');
+        Route::post('/{channel}/{thread}/subscriptions', [ThreadSubscriptionController::class, 'store'])->name('threads.subscribe');
+        Route::get('/{channel}/{thread}/users', [ThreadController::class, 'users'])->name('threads.users');
 
         Route::prefix('threads')->group(function () {
             Route::post('/', [ThreadController::class, 'store'])->name('threads.store');
             Route::post('/{thread}/replies', [ReplyController::class, 'store'])->name('replies.store');
         });
 
-        Route::delete('/{channel}/{thread}', [ThreadController::class, 'destroy'])->name('threads.destroy');
         Route::delete('/replies/remove/{reply}', [ReplyController::class, 'destroy'])->name('replies.destroy');
     });
 });
