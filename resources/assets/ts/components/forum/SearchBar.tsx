@@ -5,7 +5,7 @@ export default () => (
     <div className="relative">
       <span className="relative block" style={{ direction: "ltr" }}>
         <input
-          className="transition font-light focus:outline-none border border-gray-400 focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-300 py-2 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
+          className="transition font-light focus:outline-none focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-300 py-2 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
           type="text"
           placeholder="Rechercher dans le forum"
           autoComplete="off"

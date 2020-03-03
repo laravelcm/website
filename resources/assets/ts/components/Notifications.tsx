@@ -14,13 +14,7 @@ export default () => {
 
   useEffect(() => {
     setNotifications(user.notifications);
-
-    if (user) {
-      setTimeout(() => {
-        setNotifications(user.notifications);
-      }, 2000);
-    }
-  }, []);
+  }, [user.notifications]);
 
   function readNotifications(e: React.SyntheticEvent, id: number) {
     e.preventDefault();

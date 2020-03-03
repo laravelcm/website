@@ -41,6 +41,13 @@ const Forum = () => {
               </div>
             </div>
             <div className="my-10">
+              {
+                data.length === 0 && (
+                  <div className="w-full flex items-center justify-center">
+                    <img src={require("@/assets/images/no-data.svg")} className="mx-auto w-100" alt="No data" />
+                  </div>
+                )
+              }
               {data.map((thread: ThreadType) => (<Thread key={thread.id} {...thread} />))}
             </div>
             <Pagination links={links} />
