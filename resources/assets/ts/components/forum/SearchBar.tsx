@@ -7,7 +7,7 @@ export default () => {
 
   return (
     <div className="w-full">
-      <form className="relative" method="GET">
+      <form className="relative" action="/forum" method="GET">
         <span className="relative block" style={{ direction: "ltr" }}>
           <input
             className="transition font-light focus:outline-none focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-300 py-2 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
