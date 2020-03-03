@@ -43,6 +43,7 @@ class ThreadController extends FrontendBaseController
 
         return Inertia::render('forum/Index', [
             'threads' => $threads,
+            'filters' => $request->all('search'),
         ]);
     }
 

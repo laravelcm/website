@@ -17,6 +17,7 @@ import Pagination from "@/components/Pagination";
 const Forum = () => {
   const { threads } = usePage();
   const { data, links } = threads;
+
   return (
     <>
       <Seo

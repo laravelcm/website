@@ -12,10 +12,11 @@ class ThreadFilters extends AbstractFilters
      * @var array
      */
     protected $filters = [
+        'answered' => AnsweredFilter::class,
         'by' => ByFilter::class,
         'filter_by' => ParticipateFilter::class,
         'popular' => PopularFilter::class,
         'reply' => ReplyFilter::class,
-        'answered' => AnsweredFilter::class
+        'search' => SearchFilter::class,
     ];
 }

@@ -26,16 +26,6 @@ class ForumController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Inertia\Response
-     */
-    public function index()
-    {
-        return Inertia::render('forum/Index');
-    }
-
-    /**
      * Display a channel view
      *
      * @param  string $slug
@@ -53,7 +43,8 @@ class ForumController extends Controller
 
         return Inertia::render('forum/Channel', [
             'channel' => $channel,
-            'threads' => $threads
+            'threads' => $threads,
+            'filters' => $request->all('search'),
         ]);
     }
 }
