@@ -25,7 +25,7 @@ return [
     */
 
     'theme' => [
-        'backend'   => 'keenone',
+        'backend'   => 'backend',
         'frontend'  => null,
     ],
 

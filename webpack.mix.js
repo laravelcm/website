@@ -17,6 +17,7 @@ require('laravel-mix-purgecss');
 mix.setPublicPath('public')
   .sass('resources/assets/sass/application.scss', 'css')
   .react('resources/assets/ts/app.tsx', 'js')
+  .react('resources/assets/ts/admin/backend.ts', 'js')
   .options({
     processCssUrls: false,
     postCss: [tailwindcss('./tailwind.config.js')],
