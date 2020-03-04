@@ -19,15 +19,17 @@ class CreatePostsTable extends Migration
             $table->longText('body');
             $table->string('image')->nullable();
             $table->string('slug')->unique();
-            $table->text('summary')->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
+            $table->text('summary')->nullable();
             $table->boolean('featured')->default(0);
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('proposed_by')->unsigned()->nullable();
             $table->bigInteger('category_id')->unsigned();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('proposed_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 
