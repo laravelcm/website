@@ -29,7 +29,7 @@
             @include('layouts._sidebar')
 
             <main class="flex-1 flex">
-                <div class="flex-1 overflow-hidden px-12 py-8">
+                <div class="flex-1 overflow-y-auto px-12 py-8">
                     @yield('content')
                 </div>
             </main>
