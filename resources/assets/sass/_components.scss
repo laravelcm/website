@@ -1,5 +1,5 @@
 .btn {
-  @apply transition ease-in-out duration-150 block px-6 py-2 rounded-md;
+  @apply inline-flex justify-center transition ease-in-out duration-150 block px-4 py-2 text-base rounded-md leading-6 font-medium;
 }
 
 .btn-primary {
@@ -11,7 +11,7 @@
 }
 
 .btn-white {
-  @apply inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm  transition ease-in-out duration-150;
+  @apply inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm transition ease-in-out duration-150;
 
   &:hover {
     @apply text-gray-500;
@@ -86,10 +86,7 @@
 }
 
 .input-form {
-  @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
-  &:focus {
-    @apply outline-none bg-white;
-  }
+  @apply form-input w-full;
 }
 
 .forum-category {

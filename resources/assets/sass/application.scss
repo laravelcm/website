@@ -9,7 +9,6 @@
  */
 
 @import "variables";
-@import '~highlight.js/styles/atom-one-dark.css';
 
 @tailwind base;
 @import "base";
@@ -18,6 +17,7 @@
 @import "components";
 @import "nprogress";
 @import "editor";
+@import "libs/libs";
 
 @tailwind utilities;
 @import "utilities";

@@ -1,4 +1,8 @@
+// Global Imports
 import "alpinejs";
+
+// React Components
+import "@/admin/posts/Create";
 
 const openSidebar = document.getElementById('open-sidebar');
 const closeSidebar = document.getElementById('close-sidebar');

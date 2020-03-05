@@ -1,0 +1,22 @@
+// Datepicker custom variables
+
+// Colors
+$datepicker__background-color: #C0EBD2 !default;
+$datepicker__border-color: #C0EBD2 !default;
+$datepicker__highlighted-color: #3dcc4a !default;
+$datepicker__muted-color: #22543D !default;
+$datepicker__selected-color: #007A5E !default;
+$datepicker__text-color: theme('colors.gray.600') !default;
+$datepicker__header-color: theme('colors.gray.900') !default;
+$datepicker__navigation-disabled-color: lighten($datepicker__muted-color, 10%) !default;
+
+// Size
+$datepicker__border-radius: 0.3rem !default;
+$datepicker__day-margin: 0.166rem !default;
+$datepicker__font-size: 0.8rem !default;
+$datepicker__font-family: "Poppins", Helvetica, Arial, sans-serif !default;
+$datepicker__item-size: 1.7rem !default;
+$datepicker__margin: 0.4rem !default;
+$datepicker__navigation-size: 0.45rem !default;
+$datepicker__triangle-size: 13px !default;
+
