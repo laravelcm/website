@@ -4,6 +4,8 @@ namespace Modules\Blog\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Inertia\Inertia;
+use Modules\Blog\Entities\Category;
 use Modules\Blog\Events\Handlers\RegisterBlogSidebar;
 use Modules\Core\Events\BuildingSidebar;
 
@@ -26,6 +28,12 @@ class BlogServiceProvider extends ServiceProvider
         if (class_exists('Breadcrumbs')) {
             require __DIR__ . '/../Routes/breadcrumbs.php';
         }
+
+        Inertia::share('channels', function () {
+            return \Cache::rememberForever('channels', function () {
+                return Category::all();
+            });
+        });
     }
 
     /**
