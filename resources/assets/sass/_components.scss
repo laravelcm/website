@@ -170,3 +170,7 @@
     }
   }
 }
+
+.ce-settings__default-zone:not(:empty) {
+  padding: 0 !important;
+}

@@ -13,4 +13,5 @@
 
 Route::group(['prefix' => 'blog'], function () {
     Route::resource('categories', 'CategoryController');
+    Route::resource('posts', 'PostController');
 });

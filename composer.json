@@ -25,6 +25,7 @@
     "laravel/slack-notification-channel": "^2.0",
     "laravel/socialite": "^4.1",
     "laravel/tinker": "^1.0",
+    "laravelcollective/html": "^6.1",
     "maatwebsite/laravel-sidebar": "~2.1",
     "mckenziearts/laravel-notify": "^1.0",
     "nwidart/laravel-modules": "^6.0",
@@ -39,6 +40,7 @@
     "typicms/laravel-translatable-bootforms": "^4.1"
   },
   "require-dev": {
+    "barryvdh/laravel-debugbar": "^3.2",
     "barryvdh/laravel-ide-helper": "^2.6",
     "beyondcode/laravel-dump-server": "^1.2",
     "codedungeon/phpunit-result-printer": "^0.26.1",

@@ -1,5 +1,46 @@
 /**
  * Useful libs
  */
-@import '~highlight.js/styles/atom-one-dark.css';
+@import "~highlight.js/styles/atom-one-dark.css";
+@import "~react-quill/dist/quill.snow.css";
+@import "~filepond/dist/filepond.min.css";
+@import "~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 @import "picker";
+
+.lc-editor {
+  .ql-container {
+    border: none !important;
+  }
+
+  .ql-editor {
+    min-height: 430px;
+    font-size: theme('fontSize.base');
+  }
+
+  .ql-toolbar {
+    border: none !important;
+  }
+}
+
+.drop-files {
+  cursor: pointer !important;
+}
+
+.drop-files__file {
+  max-width: 100% !important;
+  margin: 0 !important;
+
+  img {
+    height: auto !important;
+  }
+}
+
+.drop-files__explanations {
+  em {
+    font-size: theme('fontSize.xs') !important;
+  }
+
+  strong {
+    font-size: theme('fontSize.sm') !important;
+  }
+}

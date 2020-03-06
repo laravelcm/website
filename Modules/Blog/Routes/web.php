@@ -12,6 +12,7 @@
 */
 
 Route::prefix('blog')->as('blog.')->group(function() {
-    Route::get('/', 'BlogController@index')->name('index');
-    Route::get('/{slug}', 'BlogController@post')->name('post');
+    Route::get('/', 'BlogController@index')->name('blog.index');
+    Route::get('/category/{category}', 'BlogController@category')->name('blog.category');
+    Route::get('/{slug}', 'BlogController@post')->name('blog.post');
 });

@@ -32,7 +32,7 @@
                         2
                     </span>
                 </a>
-                <a href="#" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg">
+                <a href="{{ route('admin.posts.index') }}" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg {{ active_class(Active::checkUriPattern('console/blog*'), 'bg-gray-200') }}">
                     <span class="inline-flex items-center">
                         <svg class="h-6 w-6 fill-current text-gray-500" viewBox="0 0 24 24">
                             <path d="M19.707 4.293a1 1 0 00-1.414 0L10 12.586V14h1.414l8.293-8.293a1 1 0 000-1.414zM16.88 2.879A3 3 0 1121.12 7.12l-8.585 8.586a1 1 0 01-.708.293H9a1 1 0 01-1-1v-2.828a1 1 0 01.293-.708l8.586-8.585zM6 6a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-5a1 1 0 112 0v5a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h5a1 1 0 110 2H6z" />
@@ -43,12 +43,12 @@
                         2
                     </span>
                 </a>
-                <a href="#" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg">
+                <a href="{{ route('admin.auth.user.index') }}" class="mt-2 -mx-3 px-3 py-2 flex items-center justify-between text-sm font-medium hover:bg-gray-200 rounded-lg {{ active_class(Active::checkUriPattern('console/user*'), 'bg-gray-200') }}">
                     <span class="inline-flex items-center">
                         <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
-                        <span class="ml-2 {{ active_class(Active::checkUriPattern('console/admin.auth*'), 'text-gray-900', 'text-gray-700') }}">Utilisateurs</span>
+                        <span class="ml-2 {{ active_class(Active::checkUriPattern('console/user*'), 'text-gray-900', 'text-gray-700') }}">Utilisateurs</span>
                     </span>
                     <span class="inline-block w-9 text-center py-1 leading-none text-xs font-semibold text-gray-700 bg-gray-300 rounded-full">
                         1

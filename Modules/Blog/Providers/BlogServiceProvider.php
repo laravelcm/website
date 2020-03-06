@@ -29,8 +29,8 @@ class BlogServiceProvider extends ServiceProvider
             require __DIR__ . '/../Routes/breadcrumbs.php';
         }
 
-        Inertia::share('channels', function () {
-            return \Cache::rememberForever('channels', function () {
+        Inertia::share('categories', function () {
+            return \Cache::rememberForever('categories', function () {
                 return Category::all();
             });
         });

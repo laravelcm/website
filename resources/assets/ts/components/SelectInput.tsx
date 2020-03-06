@@ -13,8 +13,8 @@ export default ({
 }: SelectInputProps) => (
   <div className={containerClass}>
     {label && (
-      <label className="form-label" htmlFor={name}>
-        {label}:
+      <label className="block text-sm leading-5 font-medium text-gray-700 mb-2" htmlFor={name}>
+        {label}
       </label>
     )}
     <select

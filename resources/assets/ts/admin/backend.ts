@@ -1,9 +1,14 @@
 // Global Imports
 import "alpinejs";
+import "@grafikart/drop-files-element";
 
 // React Components
 import "@/admin/posts/Create";
+import "@/admin/posts/Editor";
 
+/**
+ * Sidebar Toggle action.
+*/
 const openSidebar = document.getElementById('open-sidebar');
 const closeSidebar = document.getElementById('close-sidebar');
 const sidebar: any = document.getElementById('sidebar');

@@ -12,7 +12,7 @@ const TextInput = ({
   <div className="w-full mb-3">
     {label && (
     <label
-      className="block tracking-wide text-gray-800 text-sm mb-2"
+      className="block text-sm leading-5 font-medium text-gray-700 mb-2"
       htmlFor={name}
     >
       {label}

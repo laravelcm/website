@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Modules\Blog\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/blog', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');

@@ -4,6 +4,8 @@ namespace Modules\Blog\Http\Controllers\Frontend;
 
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
+use Modules\Blog\Entities\Category;
+use Modules\Blog\Entities\Post;
 
 class BlogController extends Controller
 {
@@ -18,13 +20,30 @@ class BlogController extends Controller
     }
 
     /**
-     * Display s single Post
+     * Display a category listing posts.
      *
-     * @param  string $slug
+     * @param  Category $category
      * @return \Inertia\Response
      */
-    public function post(string $slug)
+    public function category(Category $category)
     {
-        return Inertia::render('blog/Post');
+        return Inertia::render('blog/Category', [
+            'category' => $category
+        ]);
+    }
+
+    /**
+     * Display s single Post
+     *
+     * @param  Post $post
+     * @return \Inertia\Response
+     */
+    public function post(Post $post)
+    {
+        // $post->increment('visits');
+
+        return Inertia::render('blog/Post', [
+            'post' => $post
+        ]);
     }
 }

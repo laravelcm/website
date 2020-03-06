@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
             $table->text('summary')->nullable();
             $table->boolean('featured')->default(0);
+            $table->unsignedInteger('visits')->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('proposed_by')->unsigned()->nullable();
             $table->bigInteger('category_id')->unsigned();

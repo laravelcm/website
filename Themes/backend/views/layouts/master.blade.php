@@ -16,6 +16,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900">
     <link href="{{ mix('/css/application.css') }}" rel="stylesheet" />
+    @stack('css')
     @notifyCss
 </head>
 <body class="bg-gray-50 text-gray-600 leading-normal font-body">
@@ -41,6 +42,7 @@
     <script src="{{ mix('/js/backend.js') }}" defer></script>
     @include("notify::messages")
     @notifyJs
+    @stack('js')
 
 </body>
 </html>
