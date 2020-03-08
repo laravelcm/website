@@ -10,6 +10,10 @@ class Post extends Model
 {
     use RecordsActivity;
 
+    const STATUS_PUBLISHED = 'PUBLISHED';
+    const STATUS_DRAFT = 'DRAFT';
+    const STATUS_PENDING = 'PENDING';
+
     /**
      * The attributes that aren't mass assignable.
      *
@@ -36,6 +40,18 @@ class Post extends Model
     ];
 
     /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($post) {
+            $post->update(['slug' => $post->title]);
+        });
+    }
+
+    /**
      * Get the route key for the model.
      *
      * @return string
@@ -43,6 +59,20 @@ class Post extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * Set the proper slug attribute.
+     *
+     * @param string $value
+     */
+    public function setSlugAttribute($value)
+    {
+        if (static::where('slug', $slug = str_slug($value))->exists()) {
+            $slug = "{$slug}-{$this->id}";
+        }
+
+        $this->attributes['slug'] = $slug;
     }
 
     /**

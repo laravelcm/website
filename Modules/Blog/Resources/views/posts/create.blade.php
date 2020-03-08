@@ -3,8 +3,16 @@
 
 @section('content')
 
+    @component('components.breadcrumb')
+        <a href="{{ route('admin.posts.index') }}" class="text-gray-500 hover:text-gray-700 focus:outline-none focus:underline transition duration-150 ease-in-out">Tous les articles</a>
+        <svg class="flex-shrink-0 mx-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+        </svg>
+        <span class="text-gray-500">Créer un article</span>
+    @endcomponent
+
     {!! Form::open(['route' => 'admin.posts.store', 'files' => true]) !!}
-        <h1 class="flex items-center font-semibold text-xl mb-8">
+        <h1 class="flex items-center font-semibold text-xl mb-8 mt-2">
             <svg class="h-6 w-6 fill-current text-gray-500 mr-2" viewBox="0 0 24 24">
                 <path d="M19.707 4.293a1 1 0 00-1.414 0L10 12.586V14h1.414l8.293-8.293a1 1 0 000-1.414zM16.88 2.879A3 3 0 1121.12 7.12l-8.585 8.586a1 1 0 01-.708.293H9a1 1 0 01-1-1v-2.828a1 1 0 01.293-.708l8.586-8.585zM6 6a1 1 0 00-1 1v11a1 1 0 001 1h11a1 1 0 001-1v-5a1 1 0 112 0v5a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h5a1 1 0 110 2H6z" />
             </svg>
