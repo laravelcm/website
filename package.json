@@ -47,7 +47,7 @@
     "react-use": "^13.20.0",
     "showdown": "^1.9.1",
     "slick-carousel": "^1.8.1",
-    "tailwindcss": "^1.2.0-canary.5",
+    "tailwindcss": "^1.2.0",
     "tailwindcss-plugins": "^0.3.0",
     "timeago-react": "^3.0.0",
     "timeago.js": "^4.0.2"
