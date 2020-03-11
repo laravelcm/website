@@ -116,3 +116,23 @@ export const trimmedString = (word: string, limit = 55) => (word.length > limit 
  * @return string
  */
 export const timeAgo = (date: Date) => <TimeAgo datetime={date} locale="fr" />;
+
+/**
+ * Share to social network.
+ *
+ * @param url
+ * @param title
+ * @param width
+ * @param height
+ */
+export const popupCenter = (url: string, title: string, width?: number, height?: number) => {
+  const popupWidth = width || 640;
+  const popupHeight = height || 440;
+  const windowLeft = window.screenLeft || window.screenX;
+  const windowTop = window.screenTop || window.screenY;
+  const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  const popupLeft = windowLeft + windowWidth / 2 - popupWidth / 2;
+  const popupTop = windowTop + windowHeight / 2 - popupHeight / 2;
+  window.open(url, title, `scrollbars=yes, width=${popupWidth}, height=${popupHeight}, top=${popupTop}, left=${popupLeft}`);
+};

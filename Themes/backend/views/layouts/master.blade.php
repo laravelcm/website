@@ -31,8 +31,6 @@
 
             <main class="flex-1 flex">
                 <div class="flex-1 overflow-y-auto px-12 py-8">
-                    @include('includes.messages')
-
                     @yield('content')
                 </div>
             </main>

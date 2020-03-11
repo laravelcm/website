@@ -57,3 +57,25 @@ export type NotificationType = {
   created_at: Date;
   updated_at: Date;
 }
+
+export type CategoryType = {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export type PostType = {
+  id: number;
+  title: string;
+  body: string;
+  slug: string;
+  status: string;
+  summary: string;
+  visits: number;
+  image: string;
+  creator?: User;
+  propose?: User;
+  category: CategoryType;
+  created_at: Date;
+  updated_at: Date;
+}

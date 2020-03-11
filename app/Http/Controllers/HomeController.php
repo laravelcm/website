@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Modules\Blog\Entities\Post;
+use Modules\Blog\Repositories\PostRepository;
 use Modules\Forum\Repositories\ThreadRepository;
 
 class HomeController extends Controller
@@ -14,13 +16,20 @@ class HomeController extends Controller
     protected ThreadRepository $threadRepository;
 
     /**
+     * @var PostRepository
+     */
+    protected PostRepository $postRepository;
+
+    /**
      * HomeController constructor.
      *
-     * @param ThreadRepository $threadRepository
+     * @param  ThreadRepository $threadRepository
+     * @param  PostRepository $postRepository
      */
-    public function __construct(ThreadRepository $threadRepository)
+    public function __construct(ThreadRepository $threadRepository, PostRepository $postRepository)
     {
         $this->threadRepository = $threadRepository;
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -36,8 +45,14 @@ class HomeController extends Controller
             ->get()
             ->each(fn($thread) => $thread->title = Str::limit($thread->title, 30));
 
+        $posts = Post::publish()
+            ->orderBy('created_at', 'desc')
+            ->limit(12)
+            ->get();
+
         return Inertia::render('home/Index', [
-            'threads' => $threads
+            'threads' => $threads,
+            'posts' => $posts
         ]);
     }
 

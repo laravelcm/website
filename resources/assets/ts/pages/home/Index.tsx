@@ -6,10 +6,10 @@ import Seo from "@/includes/Seo";
 
 import Tutorial from "@/components/Tutorial";
 import PostSlide from "@/components/PostSlider";
-import { ThreadType } from "@/utils/types";
+import { PostType, ThreadType } from "@/utils/types";
 
 const Home = () => {
-  const { threads } = usePage();
+  const { threads, posts } = usePage();
 
   return (
     <>
@@ -151,22 +151,7 @@ const Home = () => {
           Les derniers articles
         </h2>
         <div className="mb-14 space-y-5 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-18">
-          <PostSlide
-            image="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2019/12/crater-laravel-invoice-app.jpg?fit=2220%2C1125&ssl=1?resize=1400%2C709"
-            title="Crater: Open-Source Laravel Invoice App"
-          />
-          <PostSlide
-            image="https://cdn.devdojo.com/posts/images/June2019/how-to-setup-docker-on-ubuntu-1804.jpg?auto=compress&w=228&h=128&dpr=2"
-            title="How to Setup Docker on Ubuntu 18.04"
-          />
-          <PostSlide
-            image="https://cdn.devdojo.com/episode/images/February2019/larecipe.jpg?auto=compress&w=228&h=128&dpr=2"
-            title="Larecipe Documentation Package"
-          />
-          <PostSlide
-            image="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2019/12/crater-laravel-invoice-app.jpg?fit=2220%2C1125&ssl=1?resize=1400%2C709"
-            title="Crater: Open-Source Laravel Invoice App"
-          />
+          {posts.map((post: PostType) => <PostSlide key={post.id} post={post} />)}
         </div>
       </div>
       <div className="bg-gradient-green text-white py-6 lg:py-16">
@@ -397,7 +382,7 @@ const Home = () => {
       </div>
     </>
   );
-}
+};
 
 Home.layout = (page: React.ReactNode) => <Layout child={page} />;
 

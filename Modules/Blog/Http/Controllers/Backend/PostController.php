@@ -33,9 +33,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->repository->with(['category', 'creator'])->paginate(15);
+        $records = $this->repository->paginate(15);
 
-        return view('blog::posts.index', compact('posts'));
+        return view('blog::posts.index', compact('records'));
     }
 
     /**
@@ -63,7 +63,7 @@ class PostController extends Controller
 
         $this->repository->create([
            'title' => $request->get('title'),
-           'body' => $request->get('title'),
+           'body' => $request->get('body'),
            'status' => $request->get('status') ? Post::STATUS_PUBLISHED: Post::STATUS_DRAFT,
            'user_id' => auth()->id(),
            'category_id' => $request->get('category_id'),
@@ -71,8 +71,24 @@ class PostController extends Controller
             'image' => $request->file('image')->store('posts', 'public')
         ]);
 
-        return redirect()
-            ->route('admin.posts.index')
-            ->with('success', "L'article a été enregistré avec succès");
+        smilify('success', "L'article a été enregistré avec succès");
+
+        return redirect()->route('admin.posts.index');
+    }
+
+    /**
+     * Delete a post form the database.
+     *
+     * @param  Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        smilify('success', "L'article a été supprimé avec succès");
+
+        return redirect()->route('admin.posts.index');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Entities;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Forum\Entities\Traits\RecordsActivity;
 use Modules\User\Entities\User;
@@ -22,6 +23,13 @@ class Post extends Model
     protected $guarded = [];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['category', 'creator', 'propose'];
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -37,6 +45,15 @@ class Post extends Model
      */
     protected $dates = [
       'published_at'
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'status_classname'
     ];
 
     /**
@@ -62,6 +79,19 @@ class Post extends Model
     }
 
     /**
+     * Select all publish post
+     *
+     * @param  Builder $builder
+     * @return Builder
+     */
+    public function scopePublish(Builder $builder)
+    {
+        return $builder
+            ->where('status', self::STATUS_PUBLISHED)
+            ->whereDate('published_at', '<=', now());
+    }
+
+    /**
      * Set the proper slug attribute.
      *
      * @param string $value
@@ -76,11 +106,70 @@ class Post extends Model
     }
 
     /**
+     * Return The post resume
+     *
+     * @param  $value
+     * @return string
+     */
+    public function getSummaryAttribute($value)
+    {
+        return str_limit(strip_tags($this->body), 200);
+    }
+
+    /**
+     * @param  string $value
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    public function getImageAttribute($value)
+    {
+        if ($value) {
+            return url('storage/'. $value);
+        }
+
+        return 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80';
+    }
+
+    /**
+     * Return the current format of status.
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getStatusAttribute($value)
+    {
+        switch ($value) {
+            case self::STATUS_DRAFT:
+                return 'Brouillon';
+            case self::STATUS_PENDING:
+                return 'En Attente';
+            case self::STATUS_PUBLISHED:
+                return 'Publié';
+        }
+    }
+
+    /**
+     * Return the current classname of status.
+     *
+     * @return string
+     */
+    public function getStatusClassnameAttribute()
+    {
+        switch ($this->status) {
+            case 'Brouillon':
+                return 'bg-blue-100 text-blue-800';
+            case 'En Attente':
+                return 'bg-orange-100 text-orange-800';
+            case 'Publié':
+                return 'bg-green-100 text-green-800';
+        }
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Category::class);
     }
 
     /**
