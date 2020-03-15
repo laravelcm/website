@@ -160,7 +160,7 @@ export default () => (
             </div>
           </div>
         </div>
-        <hr className="bg-gray-400 mt-6 mb-4 mx-6" />
+        <hr className="bg-gray-400 mt-6 mb-4" />
       </div>
     </footer>
     <div className="px-6 text-center w-full md:w-2/3 mx-auto">
