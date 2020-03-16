@@ -55,6 +55,12 @@ module.exports = {
       zIndex: {
         100: '100',
       },
+      maxHeight: {
+        xs: '20rem',
+        sm: '30rem',
+        md: '40rem',
+        '(screen-16)': 'calc(100vh - 4rem)',
+      },
       fontFamily: {
         body: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
