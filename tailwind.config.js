@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const rgba = require('hex-to-rgba');
 
 module.exports = {
   theme: {
@@ -26,10 +27,11 @@ module.exports = {
           'html-css': "#F16529",
         },
       },
-      boxShadow: {
+      boxShadow: (theme) => ({
         smooth: '0 2px 20px 0 rgba(0, 0, 0, 0.05)',
         bigger: '0 10px 20px 0 rgba(0, 0, 0, 0.01)',
-      },
+        'outline-brand': `0 0 0 3px ${rgba(theme('colors.brand.primary'), 0.45)}`,
+      }),
       spacing: {
         14: '3.5rem',
         15: '3.75rem',

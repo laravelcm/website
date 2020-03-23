@@ -76,7 +76,7 @@ const Login = () => {
                       fill="currentColor"
                     />
                   </svg>
-                    Continuer avec Github
+                  Continuer avec Github
                 </a>
                 <a
                   href="/login/google"
@@ -109,10 +109,7 @@ const Login = () => {
               <p className="mt-8 text-sm">
                 Si vous n'avez pas lié ces comptes, vous pouvez toujours vous
                 connecter avec votre{" "}
-                <span
-                  className="link cursor-pointer"
-                  onClick={() => setIsSocial(false)}
-                >
+                <span className="link cursor-pointer" onClick={() => setIsSocial(false)}>
                   addresse email.
                 </span>
               </p>
@@ -151,18 +148,18 @@ const Login = () => {
                       href="/password/reset"
                       className="link mb-2 lg:mb-0 text-sm"
                     >
-                        Mot de passe oublié?
+                      Mot de passe oublié?
                     </InertiaLink>
                   </div>
                 </form>
               </div>
               <p className="mt-8 text-sm text-center">
-                  Vous pouvez aussi utiliser{" "}
+                Vous pouvez aussi utiliser{" "}
                 <span
                   className="link cursor-pointer"
                   onClick={() => setIsSocial(true)}
                 >
-                    Github ou Google
+                  Github ou Google
                 </span>
               </p>
             </div>
