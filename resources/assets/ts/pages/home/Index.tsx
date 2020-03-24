@@ -4,8 +4,8 @@ import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
 
-import Tutorial from "@/components/Tutorial";
-import PostSlide from "@/components/PostSlider";
+// import Tutorial from "@/components/Tutorial";
+import Post from "@/components/Post";
 import { PostType, ThreadType } from "@/utils/types";
 
 const Home = () => {
@@ -30,17 +30,17 @@ const Home = () => {
               Cameroun.
             </p>
             <InertiaLink
-              href="/tutorials"
+              href="/preview-tutorials"
               className="p-2 bg-brand-100 items-center text-gray-700 rounded-lg md:rounded-full flex lg:inline-flex w-full"
               role="alert"
             >
-              <span className="flex rounded-full bg-brand-900 uppercase px-2 py-1 text-xs font-bold mr-4 text-white">
-                New
+              <span className="flex rounded-lg md:rounded-full bg-brand-900 uppercase px-2 py-1 text-xs font-bold mr-4 text-white">
+                Soon
               </span>
               <span className="font-normal mr-2 text-left flex-auto text-xs lg:text-sm">
-                Mise à jour du site Web, nouvelle section{" "}
+                Une nouvelle section{" "}
                 <span className="text-brand-primary">tutoriels</span>{" "}
-                disponible. Visitez maintenant!
+                bientôt disponible. Cliquez pour en savoir plus!
               </span>
               <svg
                 className="fill-current opacity-75 h-4 w-4 hidden md:block"
@@ -124,32 +124,20 @@ const Home = () => {
             </span>
           </InertiaLink>
         </div>
-        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">
-          Les derniers tutoriels
-        </h2>
-        <div className="space-y-5 mb-10 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-14">
-          <Tutorial
-            image="https://cdn.devdojo.com/posts/images/June2019/laravel-on-digital-ocean.jpg?auto=compress&w=228&h=128&dpr=2"
-            title="Laravel App on Digital Ocean Ubuntu 19.04 droplet (Step by Step Guide)"
-          />
-          <Tutorial
-            image="https://cdn.devdojo.com/episode/images/February2019/larecipe.jpg?auto=compress&w=228&h=128&dpr=2"
-            title="Larecipe Documentation Package"
-          />
-          <Tutorial
-            image="https://cdn.devdojo.com/posts/images/June2019/how-to-setup-docker-on-ubuntu-1804.jpg?auto=compress&w=228&h=128&dpr=2"
-            title="How to Setup Docker on Ubuntu 18.04"
-          />
-          <Tutorial
-            image="https://cdn.devdojo.com/posts/images/June2019/how-to-setup-docker-on-ubuntu-1804.jpg?auto=compress&w=228&h=128&dpr=2"
-            title="Tips for using Laravel's Scheduler"
-          />
-        </div>
+        {/* eslint-disable-next-line max-len */}
+        {/* <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers tutoriels</h2> */}
+        {/* eslint-disable-next-line max-len */}
+        {/* <div className="space-y-5 mb-10 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-14"> */}
+        {/*  <Tutorial */}
+        {/*    image="https://cdn.devdojo.com/posts/images/June2019/laravel-on-digital-ocean.jpg?auto=compress&w=228&h=128&dpr=2" */}
+        {/*    title="Laravel App on Digital Ocean Ubuntu 19.04 droplet (Step by Step Guide)" */}
+        {/*  /> */}
+        {/* </div> */}
         <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">
           Les derniers articles
         </h2>
         <div className="mb-14 space-y-5 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-18">
-          {posts.map((post: PostType) => <PostSlide key={post.id} post={post} />)}
+          {posts.map((post: PostType) => <Post key={post.id} post={post} />)}
         </div>
       </div>
       <div className="bg-gradient-green text-white py-6 lg:py-16">
@@ -161,16 +149,9 @@ const Home = () => {
               </h4>
               <ul>
                 <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
+                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        viewBox="0 0 14 14"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg className="h-3 w-3 text-white" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M6.758 5.612a.415.415 0 000 .55c.572.629.572 1.653 0 2.283l-3.004 3.307c-.572.63-1.502.63-2.074 0l-.452-.498c-.572-.63-.572-1.653 0-2.283l3.004-3.307a.415.415 0 000-.55.33.33 0 00-.499 0L.73 8.422a2.505 2.505 0 00-.637 1.69c0 .64.224 1.24.637 1.692l.452.497c.423.466.98.699 1.536.699s1.113-.233 1.536-.699l3.004-3.307c.846-.932.846-2.45 0-3.382a.33.33 0 00-.499 0z"
                           fill="currentColor"
@@ -185,10 +166,7 @@ const Home = () => {
                   </InertiaLink>
                 </li>
                 <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
+                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
                       <svg
                         className="h-3 w-3 text-white"
@@ -209,16 +187,9 @@ const Home = () => {
                   </InertiaLink>
                 </li>
                 <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
+                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        viewBox="0 0 14 14"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg className="h-3 w-3 text-white" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M6.758 5.612a.415.415 0 000 .55c.572.629.572 1.653 0 2.283l-3.004 3.307c-.572.63-1.502.63-2.074 0l-.452-.498c-.572-.63-.572-1.653 0-2.283l3.004-3.307a.415.415 0 000-.55.33.33 0 00-.499 0L.73 8.422a2.505 2.505 0 00-.637 1.69c0 .64.224 1.24.637 1.692l.452.497c.423.466.98.699 1.536.699s1.113-.233 1.536-.699l3.004-3.307c.846-.932.846-2.45 0-3.382a.33.33 0 00-.499 0z"
                           fill="currentColor"
@@ -262,16 +233,9 @@ const Home = () => {
               <h4 className="font-medium text-lg mb-4 lg:mb-8">Tutoriels populaires</h4>
               <ul>
                 <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
+                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        viewBox="0 0 15 15"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
                           fill="currentColor"
@@ -282,16 +246,9 @@ const Home = () => {
                   </InertiaLink>
                 </li>
                 <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
+                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        viewBox="0 0 15 15"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
                           fill="currentColor"
@@ -302,16 +259,9 @@ const Home = () => {
                   </InertiaLink>
                 </li>
                 <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
+                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        viewBox="0 0 15 15"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
                           fill="currentColor"
@@ -322,16 +272,9 @@ const Home = () => {
                   </InertiaLink>
                 </li>
                 <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
+                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        viewBox="0 0 15 15"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
                           fill="currentColor"

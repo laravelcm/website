@@ -43,30 +43,11 @@ export default () => {
                   </svg>
                 </InertiaLink>
                 <nav className="hidden lg:block flex pl-15">
-                  <InertiaLink
-                    href="/blog"
-                    className="text-gray-800 mr-4 hover:text-gray-600"
-                  >
-                    Blog
-                  </InertiaLink>
-                  <InertiaLink
-                    href="/tutorials"
-                    className="text-gray-800 mr-4 hover:text-gray-600"
-                  >
-                    Tutoriels
-                  </InertiaLink>
-                  <InertiaLink
-                    href="/forum"
-                    className="text-gray-800 mr-4 hover:text-gray-600"
-                  >
-                    Forum
-                  </InertiaLink>
-                  <InertiaLink
-                    href="/jobs"
-                    className="text-gray-800 mr-4 hover:text-gray-600"
-                  >
-                    Jobs
-                  </InertiaLink>
+                  <InertiaLink href="/blog" className="text-gray-800 mr-4 hover:text-gray-600">Blog</InertiaLink>
+                  {/* eslint-disable-next-line max-len */}
+                  {/* <InertiaLink href="/tutorials" className="text-gray-800 mr-4 hover:text-gray-600">Tutoriels</InertiaLink> */}
+                  <InertiaLink href="/forum" className="text-gray-800 mr-4 hover:text-gray-600">Forum</InertiaLink>
+                  <InertiaLink href="/jobs" className="text-gray-800 mr-4 hover:text-gray-600">Jobs</InertiaLink>
                 </nav>
               </div>
             </div>
@@ -114,15 +95,8 @@ export default () => {
               </button>
               {!auth.user && (
                 <div className="hidden lg:flex items-center pl-4">
-                  <InertiaLink
-                    href="/login"
-                    className="text-brand-primary mr-4 hover:text-brand-900"
-                  >
-                    Connexion
-                  </InertiaLink>
-                  <InertiaLink href="/register" className="btn btn-primary">
-                    M'inscrire
-                  </InertiaLink>
+                  <InertiaLink href="/login" className="text-brand-primary mr-4 hover:text-brand-900">Connexion</InertiaLink>
+                  <InertiaLink href="/register" className="btn btn-primary">M'inscrire</InertiaLink>
                 </div>
               )}
               {auth.user && (
@@ -136,65 +110,29 @@ export default () => {
         </div>
       </header>
       <div
-        className={`fixed inset-0 pt-18 h-full w-full z-50 bg-white ${
+        className={`fixed inset-0 h-full w-full pt-18 z-50 bg-white ${
           isOpen ? "flex" : "hidden"
         }`}
       >
         <div className="h-full w-full overflow-y-auto scrolling-touch px-6">
           <nav className="mb-8 mt-6 space-y-4">
-            <a
-              href="/blog"
-              className="block text-gray-800 mr-4 hover:text-gray-600 py-1"
-            >
-              Blog
-            </a>
-            <a
-              href="/tutorials"
-              className="block text-gray-800 mr-4 hover:text-gray-600 py-1"
-            >
-              Tutoriels
-            </a>
-            <a
-              href="/forum"
-              className="block text-gray-800 mr-4 hover:text-gray-600 py-1"
-            >
-              Forum
-            </a>
-            <a
-              href="/packages"
-              className="block text-gray-800 mr-4 hover:text-gray-600 py-1"
-            >
-              Packages
-            </a>
+            <a href="/blog" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Blog</a>
+            {/* eslint-disable-next-line max-len */}
+            {/* <a href="/tutorials" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Tutoriels</a> */}
+            <a href="/forum" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Forum</a>
+            <a href="/jobs" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Jobs</a>
           </nav>
           <div>
             {!auth.user && (
               <div className="space-y-4">
-                <InertiaLink
-                  href="/login"
-                  className="text-brand-primary block hover:text-brand-900"
-                >
-                  Connexion
-                </InertiaLink>
-                <InertiaLink
-                  href="/register"
-                  className="btn btn-primary inline-flex"
-                >
-                  M'inscrire
-                </InertiaLink>
+                <InertiaLink href="/login" className="text-brand-primary block hover:text-brand-900">Connexion</InertiaLink>
+                <InertiaLink href="/register" className="btn btn-primary inline-flex">M'inscrire</InertiaLink>
               </div>
             )}
             {auth.user && (
               <div className="flex">
-                <InertiaLink
-                  href="/profile"
-                  className="flex items-center group py-1 pr-3 rounded-full hover:bg-gray-100"
-                >
-                  <img
-                    src={auth.user.picture}
-                    alt="profile"
-                    className="h-10 w-10 rounded-full border border-gray-200"
-                  />
+                <InertiaLink href={`/u/@${auth.user.username}`} className="flex items-center group py-1 px-3 rounded-full hover:bg-gray-100">
+                  <img src={auth.user.picture} alt="profile" className="h-10 w-10 rounded-full" />
                   <span className="text-sm text-gray-800 group-hover:text-gray-600 font-normal pl-2">
                     {auth.user.full_name}
                   </span>
