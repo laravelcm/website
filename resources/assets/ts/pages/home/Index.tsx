@@ -101,10 +101,8 @@ const Home = () => {
               </p>
             </span>
           </InertiaLink>
-          <a
-            href="https://laravelcm.slack.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <InertiaLink
+            href="/join-slack"
             className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-10"
           >
             <span className="bg-brand-primary p-3 rounded-full flex items-center justify-center mr-4 md:mr-0 md:mb-3">
@@ -124,7 +122,7 @@ const Home = () => {
                 Rejoignez une communauté de milliers de développeurs comme vous.
               </p>
             </span>
-          </a>
+          </InertiaLink>
         </div>
         <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">
           Les derniers tutoriels

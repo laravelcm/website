@@ -28,7 +28,7 @@ export default () => {
       setStatus(response.data.status);
       setMessage(response.data.message);
       setState(true);
-      setValue('');
+      setValue('email', '');
     });
   });
 
@@ -51,6 +51,7 @@ export default () => {
                 name="email"
                 className="bg-white rounded-md py-3 px-5 focus:outline-none focus:shadow-outline-brand md:max-w-md w-full"
                 placeholder="Entrer votre adresse email"
+                autoComplete="off"
                 ref={register({
                   required: "L'adresse E-mail est requis",
                   pattern: {

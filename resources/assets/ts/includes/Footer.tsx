@@ -142,14 +142,7 @@ export default () => (
               <h5 className="text-gray-600 uppercase mb-8 font-medium">Rejoignez Nous</h5>
               <ul>
                 <li className="mb-3">
-                  <a
-                    href="https://laravelcm.slack.com"
-                    className="text-gray-700 hover:text-gray-800"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Slack
-                  </a>
+                  <InertiaLink href="/join-slack" className="text-gray-700 hover:text-gray-800">Slack</InertiaLink>
                 </li>
                 <li className="mb-3">
                   <span className="text-gray-700 hover:text-gray-800 flex items-center">
