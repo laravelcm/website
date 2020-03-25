@@ -47,6 +47,7 @@ if (mix.inProduction()) {
     .purgeCss({
       enabled: true,
       globs: [
+        './Themes/backend/views/**/*.blade.php',
         './resources/views/**/*.blade.php',
         './resources/assets/ts/**/*.ts',
         './resources/assets/ts/**/*.tsx',

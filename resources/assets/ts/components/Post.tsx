@@ -34,7 +34,7 @@ export default ({ post }: Props) => (
           />
           <span className="flex flex-col">
             <span className="text-sm text-gray-600">{post.creator?.full_name}</span>
-            <small className="text-xs text-gray-400 capitalize">Le {format(new Date(post.created_at), "dd MMMM, y", { locale: fr })}</small>
+            <small className="text-xs text-gray-400 capitalize">Le {format(new Date(post.published_at), "dd MMMM, y", { locale: fr })}</small>
           </span>
         </span>
       </span>

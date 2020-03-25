@@ -76,6 +76,7 @@ export type PostType = {
   creator?: User;
   propose?: User;
   category: CategoryType;
+  published_at: Date;
   created_at: Date;
   updated_at: Date;
 }

@@ -21,19 +21,3 @@ $brand-colors: (
   digital-ocean: #0080FF,
   html-css: #F16529
 ) !default;
-
-// Markdown editor
-$mde-border-radius:                 theme('borderRadius.sm') !default;
-$mde-white-color:                   theme('colors.white') !default;
-$mde-border-color:                  none !default;
-$mde-button-color:                  theme('colors.gray.800') !default;
-$mde-toolbar-color:                 theme('colors.gray.200') !default;
-$mde-selected-color:                #0366d6 !default;
-$mde-toolbar-padding:               10px !default;
-$mde-editor-default-min-height:     200px !default;
-$mde-editor-padding:                10px !default;
-$mde-preview-horizontal-padding:    10px !default;
-$mde-preview-padding:               10px !default;
-$mde-preview-default-min-height:    $mde-editor-default-min-height !default;
-$mde-preview-default-height:        auto !default;
-$grip-height:                       10px;
