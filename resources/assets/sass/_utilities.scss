@@ -65,3 +65,19 @@
     }
   }
 }
+
+.notification-enter {
+  @apply transform ease-out transition translate-y-2 opacity-0;
+}
+
+.notification-enter-active {
+  @apply translate-y-0 opacity-100 duration-300;
+}
+
+.notification-exit {
+  @apply transition ease-in duration-100 opacity-100;
+}
+
+.notification-exit-active {
+  @apply opacity-0;
+}

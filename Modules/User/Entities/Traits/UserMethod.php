@@ -144,8 +144,8 @@ trait UserMethod
      */
     public function profile($key)
     {
-        $keyValue = $this->keyValue($key);
+        $keyValue = $this->GetKeyValue($key);
 
-        return isset($keyValue->value) ? $keyValue->value : '';
+        return $keyValue->value ?? '';
     }
 }

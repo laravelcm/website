@@ -73,7 +73,7 @@ trait UserRelationship
      * @param  string $key
      * @return mixed
      */
-    public function keyValue($key)
+    public function GetKeyValue($key)
     {
         return $this->morphMany(KeyValue::class, 'keyvalue')->where('key', '=', $key)->first();
     }

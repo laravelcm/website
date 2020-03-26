@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { usePage } from "@inertiajs/inertia-react";
 
 export default () => {
-  const { auth: { user }, errors } = usePage();
-  console.log(errors);
+  const { auth: { user } } = usePage();
   const [values, setValues] = useState({
     first_name: user.first_name,
     last_name: user.last_name,

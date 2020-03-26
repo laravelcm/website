@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Modules\User\Helpers\SocialiteHelper;
 
-class UpdateProfileRequest extends FormRequest
+class UpdateInformationRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,11 +16,11 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => [
-                'required',
-                'max:50',
-                Rule::unique('users')->ignore(request()->user()->id),
-            ],
+            'first_name' => ['required', 'max:191'],
+            'last_name' => ['required', 'max:191'],
+            'email' => ['sometimes', 'required', 'email', 'max:191'],
+            'avatar_type' => ['required', 'max:191', Rule::in(array_merge(['gravatar', 'storage'], (new SocialiteHelper)->getAcceptedProviders()))],
+            'avatar_location' => ['sometimes', 'image', 'max:191'],
         ];
     }
 
@@ -32,13 +32,5 @@ class UpdateProfileRequest extends FormRequest
     public function authorize()
     {
         return true;
-    }
-
-    public function messages()
-    {
-        return [
-          'username.required' => 'Votre pseudo est requis',
-          'username.unique' => 'Ce pseudo est déjà utilisé',
-        ];
     }
 }

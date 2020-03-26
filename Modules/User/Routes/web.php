@@ -87,6 +87,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('notifications/{id}', [UserNotificationController::class, 'destroy'])->name('notifications.markAsRead');
         Route::get('badges', [AccountController::class, 'badges'])->name('badges');
         Route::get('publishing', [AccountController::class, 'publishing'])->name('publishing');
-        Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('profile/profile', [ProfileController::class, 'profile'])->name('profile.profile');
+        Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });

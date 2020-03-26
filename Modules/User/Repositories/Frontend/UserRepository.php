@@ -190,6 +190,21 @@ class UserRepository extends BaseRepository
     }
 
     /**
+     * Mise a jour du profil utilisateur.
+     *
+     * @param  int $id
+     * @param  array $input
+     * @return bool
+     */
+    public function updateProfile($id, array $input)
+    {
+        $user = $this->getById($id);
+        $user->username = $input['username'];
+
+        return $user->save();
+    }
+
+    /**
      * @param      $input
      * @param bool $expired
      *

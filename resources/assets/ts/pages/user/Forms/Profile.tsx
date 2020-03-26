@@ -1,13 +1,20 @@
 import React, { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
+import classNames from "classnames";
+
+import LoaderButton from "@/components/LoaderButton";
 
 export default () => {
   const { auth: { user }, errors } = usePage();
-  console.log(errors);
+  const [sending, setSending] = useState(false);
   const [picture, setPicture] = useState(user.picture);
   const [values, setValues] = useState({
     username: user.username,
-    biography: "",
+    biography: user.biography,
+  });
+  const inputClass = classNames('form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5', {
+    'border-red-200': errors.username,
   });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -26,6 +33,10 @@ export default () => {
 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
+    setSending(true);
+    Inertia.put('/profile/profile', values).then(() => {
+      setSending(false);
+    });
   }
 
   return (
@@ -64,18 +75,26 @@ export default () => {
                 <div className="grid grid-cols-3 gap-6 mt-6">
                   <div className="col-span-3">
                     <label htmlFor="username" className="block text-sm font-medium leading-5 text-gray-700">Pseudo (Nom d'utilisateur)</label>
-                    <div className="mt-2 flex w-full rounded-md shadow-sm">
+                    <div className="mt-2 flex w-full rounded-md shadow-sm relative">
                       <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                         laravelcm.com/u/@
                       </span>
                       <input
                         id="username"
-                        className="form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        className={inputClass}
                         name="username"
                         value={values.username}
                         onChange={handleChange}
                       />
+                      {errors.username && (
+                        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                          <svg className="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      )}
                     </div>
+                    {errors.username && <p className="mt-2 text-sm text-red-600">{errors.username[0]}</p>}
                   </div>
                 </div>
 
@@ -89,6 +108,7 @@ export default () => {
                       placeholder="Quelques mots sur vous..."
                       value={values.biography}
                       onChange={handleChange}
+                      name="biography"
                     />
                   </div>
                   <p className="mt-2 text-sm text-gray-500">Brève description de votre profil. Les URL sont liées par un lien hypertexte.</p>
@@ -96,7 +116,12 @@ export default () => {
               </div>
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <span className="inline-flex rounded-md shadow-sm">
-                  <button type="submit" className="inline-flex justify-center btn btn-primary text-sm">Enrégistrer</button>
+                  <LoaderButton
+                    title="Enrégistrer"
+                    type="submit"
+                    loading={sending}
+                    className="text-sm"
+                  />
                 </span>
               </div>
             </div>
