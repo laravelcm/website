@@ -57,6 +57,12 @@ class AppServiceProvider extends ServiceProvider
                         'username' => auth()->user()->username,
                         'email' => auth()->user()->email,
                         'picture' => auth()->user()->picture,
+                        'biography' => auth()->user()->profile('biography'),
+                        'country' => auth()->user()->profile('country'),
+                        'address' => auth()->user()->profile('address'),
+                        'city' => auth()->user()->profile('city'),
+                        'state' => auth()->user()->profile('state'),
+                        'postal_code' => auth()->user()->profile('postal_code'),
                         'is_admin' => auth()->user()->isAdmin(),
                         'notifications' => auth()->user()->unreadNotifications()->get()
                     ] : null,

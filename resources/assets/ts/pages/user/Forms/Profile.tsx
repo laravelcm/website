@@ -10,14 +10,13 @@ export default () => {
     biography: "",
   });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const key = e.target.name;
-    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = e.target;
 
     // eslint-disable-next-line no-shadow
     setValues((values) => ({
       ...values,
-      [key]: value,
+      [name]: value,
     }));
   }
 
@@ -88,6 +87,8 @@ export default () => {
                       rows={3}
                       className="form-textarea mt-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       placeholder="Quelques mots sur vous..."
+                      value={values.biography}
+                      onChange={handleChange}
                     />
                   </div>
                   <p className="mt-2 text-sm text-gray-500">Brève description de votre profil. Les URL sont liées par un lien hypertexte.</p>

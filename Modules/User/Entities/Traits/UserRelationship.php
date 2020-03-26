@@ -2,6 +2,7 @@
 
 namespace Modules\User\Entities\Traits;
 
+use App\Models\KeyValue;
 use Modules\Forum\Entities\Activity;
 use Modules\Forum\Entities\Reply;
 use Modules\Forum\Entities\Thread;
@@ -54,5 +55,26 @@ trait UserRelationship
     public function activity()
     {
         return $this->hasMany(Activity::class);
+    }
+
+    /**
+     * Get All User key Values elements.
+     *
+     * @return mixed
+     */
+    public function keyValues()
+    {
+        return $this->morphMany(KeyValue::class, 'keyvalue');
+    }
+
+    /**
+     * Get a specific key for a user.
+     *
+     * @param  string $key
+     * @return mixed
+     */
+    public function keyValue($key)
+    {
+        return $this->morphMany(KeyValue::class, 'keyvalue')->where('key', '=', $key)->first();
     }
 }

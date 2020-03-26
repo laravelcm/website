@@ -135,4 +135,17 @@ trait UserMethod
     {
         return env('SLACK_WEBHOOK_URL', '');
     }
+
+    /**
+     * Get a user profile custom data.
+     *
+     * @param  string $key
+     * @return string
+     */
+    public function profile($key)
+    {
+        $keyValue = $this->keyValue($key);
+
+        return isset($keyValue->value) ? $keyValue->value : '';
+    }
 }

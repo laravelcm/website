@@ -7,16 +7,20 @@ export default () => {
   const [values, setValues] = useState({
     first_name: user.first_name,
     last_name: user.last_name,
+    country: user.country,
+    address: user.address,
+    city: user.city,
+    state: user.state,
+    postal_code: user.postal_code,
   });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const key = e.target.name;
-    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value } = e.target;
 
     // eslint-disable-next-line no-shadow
     setValues((values) => ({
       ...values,
-      [key]: value,
+      [name]: value,
     }));
   }
 
@@ -73,8 +77,14 @@ export default () => {
                   </div>
 
                   <div className="col-span-6">
-                    <label htmlFor="country" className="block text-sm font-medium leading-5 text-gray-700">Pays / Region</label>
-                    <select id="country" className="mt-2 block form-select w-full py-2 px-3 py-0 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                    <label htmlFor="country" className="block text-sm font-medium leading-5 text-gray-700">Pays</label>
+                    <select
+                      id="country"
+                      className="mt-2 block form-select w-full py-2 px-3 py-0 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      name="country"
+                      onChange={handleChange}
+                      value={values.country}
+                    >
                       <option>United States</option>
                       <option>Canada</option>
                       <option>Mexico</option>
@@ -83,22 +93,46 @@ export default () => {
 
                   <div className="col-span-6">
                     <label htmlFor="street_address" className="block text-sm font-medium leading-5 text-gray-700">Adresse complète</label>
-                    <input id="street_address" className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input
+                      id="street_address"
+                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      name="address"
+                      value={values.address}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                     <label htmlFor="city" className="block text-sm font-medium leading-5 text-gray-700">Ville</label>
-                    <input id="city" className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input
+                      id="city"
+                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      name="city"
+                      value={values.city}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <label htmlFor="state" className="block text-sm font-medium leading-5 text-gray-700">Etat / Province</label>
-                    <input id="state" className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input
+                      id="state"
+                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      name="state"
+                      value={values.state}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <label htmlFor="postal_code" className="block text-sm font-medium leading-5 text-gray-700">ZIP / Postal</label>
-                    <input id="postal_code" className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <input
+                      id="postal_code"
+                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      name="postal_code"
+                      value={values.postal_code}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
               </div>
