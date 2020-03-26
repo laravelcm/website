@@ -73,7 +73,7 @@ module.exports = {
     },
   },
   variants: {
-    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within'],
+    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within', 'disabled'],
     textColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within'],
     fontFamily: ['responsive', 'hover', 'focus'],
     zIndex: ['responsive', 'focus'],

@@ -29,6 +29,7 @@
         "jsx-quotes": ["error", "prefer-double"],
         "quotes": "off",
         "no-param-reassign": 0,
+        "max-len": "off",
         "react/jsx-props-no-spreading": "off",
         "react/jsx-wrap-multilines": "off",
         "react/no-array-index-key": "off",
