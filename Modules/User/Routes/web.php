@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'password_expires', 'as' => 'user.'], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('account', [AccountController::class, 'index'])->name('account');
+        Route::delete('account/deactivate', [AccountController::class, 'deactivate'])->name('deactivate');
         Route::get('notifications', [UserNotificationController::class, 'index'])->name('notifications');
         Route::delete('notifications/{id}', [UserNotificationController::class, 'destroy'])->name('notifications.markAsRead');
         Route::get('badges', [AccountController::class, 'badges'])->name('badges');

@@ -9,10 +9,12 @@ import Menu from "@/pages/user/Menu";
 import Deactivate from "@/pages/user/Forms/Deactivate";
 import PersonalData from "@/pages/user/Forms/PersonalData";
 import Profile from "@/pages/user/Forms/Profile";
+import DeleteModal from "@/components/DeleteModal";
 
 const Account = () => {
   const { flash } = usePage();
   const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -73,8 +75,15 @@ const Account = () => {
           <div className="py-5"><div className="border-t border-gray-300" /></div>
         </div>
 
-        <Deactivate />
+        <Deactivate onClick={() => setVisible(true)} />
       </div>
+      <DeleteModal
+        title="Désactiver votre compte"
+        description="Voulez-vous vraiment désactiver votre compte? Toutes vos informations, articles et sujets seront supprimés au bout de 30 jours si vous ne vous êtes pas reconnecté."
+        show={visible}
+        confirmURL="/account/deactivate"
+        cancelAction={() => setVisible(false)}
+      />
     </>
   );
 };

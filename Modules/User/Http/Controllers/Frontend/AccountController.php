@@ -37,4 +37,9 @@ class AccountController extends Controller
     {
         return Inertia::render('user/Publishing');
     }
+
+    public function deactivate()
+    {
+        dd("Desactivation du compte");
+    }
 }
