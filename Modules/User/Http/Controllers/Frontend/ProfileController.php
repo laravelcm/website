@@ -4,6 +4,7 @@ namespace Modules\User\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\KeyValue;
+use Illuminate\Http\Request;
 use Modules\User\Entities\User;
 use Modules\User\Http\Requests\Frontend\UpdateInformationRequest;
 use Modules\User\Http\Requests\Frontend\UpdateProfileRequest;
@@ -84,11 +85,31 @@ class ProfileController extends Controller
 
             return back()
                 ->with('type', 'profile')
-                ->with('success', 'Informations ont été mise a jour avec succès.');
+                ->with('success', 'Vos informations ont été mise à jour avec succès.');
         }
 
         return back()
             ->with('type', 'profile')
             ->with('error', 'Impossible de mettre à jour votre profil.');
+    }
+
+    /**
+     * Mise a jour de l'avatar d'un utilisateur.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateAvatar(Request $request)
+    {
+        $request->validate(['avatar_location' => ['required', 'image']]);
+
+        $this->userRepository->updateAvatar(
+            $request->user()->id,
+            $request->only('avatar_location')
+        );
+
+        return back()
+            ->with('type', 'profile')
+            ->with('success', 'Votre avatar a été mise à jour avec succès.');
     }
 }

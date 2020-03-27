@@ -14,9 +14,6 @@ use Modules\User\Events\Frontend\UserConfirmed;
 use Modules\User\Events\Frontend\UserProviderRegistered;
 use Modules\User\Notifications\UserNeedsConfirmation;
 
-/**
- * Class UserRepository.
- */
 class UserRepository extends BaseRepository
 {
     /**
@@ -138,53 +135,6 @@ class UserRepository extends BaseRepository
         $user = $this->getById($id);
         $user->first_name = $input['first_name'];
         $user->last_name = $input['last_name'];
-        $user->avatar_type = $input['avatar_type'];
-
-        // Upload profile image if necessary
-        if ($image) {
-            $user->avatar_location = $image->store('/avatars', 'public');
-        } else {
-            // No image being passed
-            if ($input['avatar_type'] === 'storage') {
-                // If there is no existing image
-                if (auth()->user()->avatar_location === '') {
-                    throw new GeneralException('You must supply a profile image.');
-                }
-            } else {
-                // If there is a current image, and they are not using it anymore, get rid of it
-                if (auth()->user()->avatar_location !== '') {
-                    Storage::disk('public')->delete(auth()->user()->avatar_location);
-                }
-
-                $user->avatar_location = null;
-            }
-        }
-
-        if ($user->canChangeEmail()) {
-            //Address is not current address so they need to reconfirm
-            if ($user->email !== $input['email']) {
-                //Emails have to be unique
-                if ($this->getByColumn($input['email'], 'email')) {
-                    throw new GeneralException(__('exceptions.frontend.auth.email_taken'));
-                }
-
-                // Force the user to re-verify his email address if config is set
-                if (config('project.users.confirm_email')) {
-                    $user->confirmation_code = md5(uniqid(mt_rand(), true));
-                    $user->confirmed = false;
-                    $user->notify(new UserNeedsConfirmation($user->confirmation_code));
-                }
-                $user->email = $input['email'];
-                $updated = $user->save();
-
-                // Send the new confirmation e-mail
-
-                return [
-                    'success' => $updated,
-                    'email_changed' => true,
-                ];
-            }
-        }
 
         return $user->save();
     }
@@ -200,6 +150,22 @@ class UserRepository extends BaseRepository
     {
         $user = $this->getById($id);
         $user->username = $input['username'];
+
+        return $user->save();
+    }
+
+    /**
+     * Mise a jour de l'avatar de l'utilisateur.
+     *
+     * @param  $id
+     * @param  array $input
+     * @return bool
+     */
+    public function updateAvatar($id, array $input)
+    {
+        $user = $this->getById($id);
+        $user->avatar_type = 'storage';
+        $user->avatar_location = $input['avatar_location']->store('/avatars', 'public');
 
         return $user->save();
     }

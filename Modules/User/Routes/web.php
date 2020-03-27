@@ -89,5 +89,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('publishing', [AccountController::class, 'publishing'])->name('publishing');
         Route::put('profile/profile', [ProfileController::class, 'profile'])->name('profile.profile');
         Route::put('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
     });
 });

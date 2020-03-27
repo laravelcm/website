@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
 import classNames from "classnames";
+import { useDropzone } from "react-dropzone";
 
 import LoaderButton from "@/components/LoaderButton";
 
@@ -13,8 +14,23 @@ export default () => {
     username: user.username,
     biography: user.biography,
   });
+  const onDrop = useCallback((acceptedFiles) => {
+    const selectFile = acceptedFiles[0];
+    setPicture(URL.createObjectURL(selectFile));
+
+    // Upload file to the server.
+    const formData = new FormData();
+    formData.append('avatar_location', selectFile);
+    Inertia.post(`/profile/avatar`, formData);
+  }, []);
   const inputClass = classNames('form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5', {
     'border-red-200': errors.username,
+  });
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: 'image/jpeg, image/png, image/jpg',
+    maxSize: 1024 * 1500,
+    multiple: false,
   });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -25,10 +41,6 @@ export default () => {
       ...values,
       [name]: value,
     }));
-  }
-
-  function updatePhoto() {
-    setPicture(user.picture);
   }
 
   function handleSubmit(e: React.SyntheticEvent) {
@@ -60,15 +72,15 @@ export default () => {
                     <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                       <img className="h-full w-full rounded-full" src={picture} alt={user.full_name} />
                     </span>
-                    <span className="ml-5 rounded-md shadow-sm">
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} multiple={false} />
                       <button
                         type="button"
-                        className="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-brand-200 focus:shadow-outline-brand active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
-                        onClick={updatePhoto}
+                        className="ml-5 rounded-md shadow-sm py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-brand-200 focus:shadow-outline-brand active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
                       >
                         Changer
                       </button>
-                    </span>
+                    </div>
                   </div>
                 </div>
 
