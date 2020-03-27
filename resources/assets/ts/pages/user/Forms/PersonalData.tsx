@@ -1,15 +1,22 @@
 import React, { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+
+import LoaderButton from "@/components/LoaderButton";
 
 export default () => {
   const { auth: { user } } = usePage();
+  const [sending, setSending] = useState(false);
+  const [locations, setLocations] = useState({
+    country: user.country,
+    state: user.state,
+  });
   const [values, setValues] = useState({
     first_name: user.first_name,
     last_name: user.last_name,
-    country: user.country,
     address: user.address,
     city: user.city,
-    state: user.state,
     postal_code: user.postal_code,
   });
 
@@ -23,8 +30,25 @@ export default () => {
     }));
   }
 
+  function handleChangeLocation(key: string, value: string) {
+    // eslint-disable-next-line no-shadow
+    setLocations((locations) => ({
+      ...locations,
+      [key]: value,
+    }));
+  }
+
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
+    setSending(true);
+    const data = {
+      ...values,
+      ...locations,
+    };
+
+    Inertia.put('/profile/update', data).then(() => {
+      setSending(false);
+    });
   }
 
   return (
@@ -76,21 +100,6 @@ export default () => {
                   </div>
 
                   <div className="col-span-6">
-                    <label htmlFor="country" className="block text-sm font-medium leading-5 text-gray-700">Pays</label>
-                    <select
-                      id="country"
-                      className="mt-2 block form-select w-full py-2 px-3 py-0 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                      name="country"
-                      onChange={handleChange}
-                      value={values.country}
-                    >
-                      <option>United States</option>
-                      <option>Canada</option>
-                      <option>Mexico</option>
-                    </select>
-                  </div>
-
-                  <div className="col-span-6">
                     <label htmlFor="street_address" className="block text-sm font-medium leading-5 text-gray-700">Adresse complète</label>
                     <input
                       id="street_address"
@@ -101,6 +110,29 @@ export default () => {
                     />
                   </div>
 
+                  <div className="col-span-6">
+                    <label htmlFor="country" className="block text-sm font-medium leading-5 text-gray-700">Pays</label>
+                    <CountryDropdown
+                      value={locations.country}
+                      onChange={(val) => handleChangeLocation('country', val)}
+                      name="country"
+                      classes="mt-2 block form-select w-full py-2 px-3 py-0 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      defaultOptionLabel="Selectionner le pays"
+                    />
+                  </div>
+
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label htmlFor="state" className="block text-sm font-medium leading-5 text-gray-700">Etat / Province</label>
+                    <RegionDropdown
+                      country={locations.country}
+                      value={locations.state}
+                      name="state"
+                      onChange={(val) => handleChangeLocation('state', val)}
+                      classes="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      defaultOptionLabel="Selectionner"
+                    />
+                  </div>
+
                   <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                     <label htmlFor="city" className="block text-sm font-medium leading-5 text-gray-700">Ville</label>
                     <input
@@ -108,17 +140,6 @@ export default () => {
                       className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       name="city"
                       value={values.city}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                    <label htmlFor="state" className="block text-sm font-medium leading-5 text-gray-700">Etat / Province</label>
-                    <input
-                      id="state"
-                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                      name="state"
-                      value={values.state}
                       onChange={handleChange}
                     />
                   </div>
@@ -136,7 +157,14 @@ export default () => {
                 </div>
               </div>
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                <button type="submit" className="inline-flex justify-center btn btn-primary text-sm">Enrégistrer</button>
+                <span className="inline-flex rounded-md shadow-sm">
+                  <LoaderButton
+                    title="Enrégistrer"
+                    type="submit"
+                    loading={sending}
+                    className="text-sm"
+                  />
+                </span>
               </div>
             </div>
           </form>

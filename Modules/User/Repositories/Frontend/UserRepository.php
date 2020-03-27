@@ -125,12 +125,10 @@ class UserRepository extends BaseRepository
     /**
      * @param       $id
      * @param array $input
-     * @param bool|UploadedFile  $image
      *
-     * @throws GeneralException
      * @return array|bool
      */
-    public function update($id, array $input, $image = false)
+    public function update($id, array $input)
     {
         $user = $this->getById($id);
         $user->first_name = $input['first_name'];

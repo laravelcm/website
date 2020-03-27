@@ -31,26 +31,41 @@ class ProfileController extends Controller
      * @param  UpdateInformationRequest $request
      *
      * @return mixed
-     * @throws \Modules\Core\Exceptions\GeneralException
      */
     public function update(UpdateInformationRequest $request)
     {
-        $output = $this->userRepository->update(
+        $result = $this->userRepository->update(
             $request->user()->id,
-            $request->only('first_name', 'last_name', 'email', 'avatar_type', 'avatar_location'),
-            $request->has('avatar_location') ? $request->file('avatar_location') : false
+            $request->only('first_name', 'last_name'),
         );
 
-        // E-mail address was updated, user has to reconfirm
-        if (is_array($output) && $output['email_changed']) {
-            auth()->logout();
+        if ($result) {
+            $user = $this->userRepository->getById(auth()->id());
 
-            return redirect()->route('frontend.auth.login')
-                ->withFlashInfo(__('strings.frontend.user.email_changed_notice'));
+            foreach ($request->except(['first_name', 'last_name']) as $key => $value) {
+                if(!is_null($user->GetKeyValue($key))){
+                    KeyValue::where('keyvalue_id', '=', $user->id)
+                        ->where('keyvalue_type', '=', User::class)
+                        ->where('key', '=', $key)
+                        ->update(['value' => $value]);
+                } else {
+                    KeyValue::create([
+                        'key'   => $key,
+                        'value' => $value,
+                        'keyvalue_id'   => $user->id,
+                        'keyvalue_type' => User::class,
+                    ]);
+                }
+            }
+
+            return back()
+                ->with('type', 'data')
+                ->with('success', 'Vos informations ont été mise à jour avec succès.');
         }
 
-        return redirect()->route('frontend.user.account')
-            ->withFlashSuccess(__('strings.frontend.user.profile_updated'));
+        return back()
+            ->with('type', 'data')
+            ->with('error', 'Impossible de mettre à jour vos informations.');
     }
 
     /**
