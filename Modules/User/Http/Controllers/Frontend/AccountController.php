@@ -40,6 +40,6 @@ class AccountController extends Controller
 
     public function deactivate()
     {
-        dd("Desactivation du compte");
+        return back()->with('error', "Cette fonctionnalité n'est pas encore disponible 😓");
     }
 }
