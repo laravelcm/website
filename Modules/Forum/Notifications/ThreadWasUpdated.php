@@ -54,6 +54,8 @@ class ThreadWasUpdated extends Notification
         return [
             'message' => '<span class="text-gray-800 font-medium">'.$this->reply->owner->full_name.'</span> a répondu au sujet <span class="text-gray-800 font-medium">'.$this->thread->title.'</span>',
             'link' => $this->reply->path(),
+            'user_profile' => $this->reply->owner->username,
+            'user_photo' => $this->reply->owner->picture,
             'action' => 'reply'
         ];
     }

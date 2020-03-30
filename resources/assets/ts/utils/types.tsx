@@ -54,6 +54,8 @@ export type NotificationType = {
     message: string;
     action: string;
     link: string;
+    user_profile: string;
+    user_photo: string;
   };
   read_at: Date;
   created_at: Date;

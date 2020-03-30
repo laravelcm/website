@@ -64,7 +64,7 @@ export default () => {
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">
           <form onSubmit={handleSubmit}>
-            <div className="shadow sm:rounded-md sm:overflow-hidden">
+            <div className="shadow rounded-md overflow-hidden">
               <div className="px-4 py-5 bg-white sm:p-6">
                 <div>
                   <label htmlFor="photo" className="block text-sm leading-5 font-medium text-gray-700">Photo</label>

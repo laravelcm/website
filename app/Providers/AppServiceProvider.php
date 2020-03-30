@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
                         'state' => auth()->user()->profile('state'),
                         'postal_code' => auth()->user()->profile('postal_code'),
                         'is_admin' => auth()->user()->isAdmin(),
-                        'notifications' => auth()->user()->unreadNotifications()->get()
+                        'notifications' => auth()->user()->unreadNotifications()->get(),
                     ] : null,
                 ];
             },

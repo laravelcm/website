@@ -12,7 +12,7 @@ export default ({ onClick }: { onClick: () => void }) => (
         </div>
       </div>
       <div className="mt-5 md:mt-0 md:col-span-2">
-        <div className="shadow overflow-hidden sm:rounded-md border border-red-300">
+        <div className="shadow overflow-hidden rounded-md border border-red-300">
           <div className="bg-white">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-lg leading-6 font-medium text-gray-900">Désactiver mon compte</h3>

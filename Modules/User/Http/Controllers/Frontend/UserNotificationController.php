@@ -14,7 +14,11 @@ class UserNotificationController extends FrontendBaseController
      */
     public function index()
     {
-        return Inertia::render('user/Notifications');
+        $notifications = auth()->user()->unreadNotifications()->get();
+
+        return Inertia::render('user/Notifications', [
+            'notifications' => $notifications
+        ]);
     }
 
     /**

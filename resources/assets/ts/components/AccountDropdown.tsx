@@ -39,16 +39,9 @@ export default () => {
         }`}
         style={{ right: "-12px" }}
       >
-        <div className="flex items-center bg-gray-50 px-3 py-4">
-          <div className="h-15 w-15 rounded-sm overflow-hidden">
-            <img
-              src={picture}
-              alt="profile"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="pl-4 text-truncate">
-            <span className="block text-gray-800 font-medium">{full_name}</span>
+        <div className="flex items-center bg-gray-50 p-4">
+          <div className="truncate">
+            <span className="block text-gray-800 font-medium truncate">{full_name}</span>
             <span className="text-xs text-gray-500">{email}</span>
           </div>
         </div>

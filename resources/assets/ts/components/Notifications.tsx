@@ -16,12 +16,12 @@ export default () => {
     setNotifications(user.notifications);
   }, [user.notifications]);
 
-  function readNotifications(e: React.SyntheticEvent, id: number) {
+  function readNotification(e: React.SyntheticEvent, id: number) {
     e.preventDefault();
     axios.delete(`/notifications/${id}`).then((response) => {
       toast({
         position: `bottom-right`,
-        description: `Notification marquée comme lu.`,
+        description: `Notification marquée comme lue.`,
         status: `success`,
         duration: 2500,
         isClosable: true,
@@ -30,7 +30,7 @@ export default () => {
     }).catch((error) => {
       toast({
         position: `bottom-right`,
-        description: `Impossible de marquée cette notification comme lu.`,
+        description: `Impossible de marquée cette notification comme lue.`,
         status: `error`,
         duration: 2500,
         isClosable: true,
@@ -79,7 +79,7 @@ export default () => {
               <Notification
                 key={notification.id}
                 notification={notification}
-                readNotification={readNotifications}
+                readNotification={readNotification}
               />
             ))
           }
