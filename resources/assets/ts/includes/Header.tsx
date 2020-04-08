@@ -114,7 +114,7 @@ export default () => {
         </div>
       </header>
       <div
-        className={`fixed inset-0 h-full w-full pt-18 z-80 bg-white ${
+        className={`fixed inset-0 h-full w-full pt-18 z-80 bg-white lg:hidden ${
           isOpen ? "block" : "hidden"
         }`}
       >

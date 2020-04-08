@@ -72,7 +72,7 @@ class BlogController extends Controller
         $post = $this->postRepository->getByColumn($slug, 'slug');
 
         if(!$post) {
-            abort('404', "L'article que vous demandé n'est plus disponible ou a été supprimé.");
+            abort('404', "L'article que vous demandez n'est plus disponible ou a été supprimé.");
         }
 
         $post->increment('visits');

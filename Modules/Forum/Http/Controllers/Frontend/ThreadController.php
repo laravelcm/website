@@ -58,6 +58,10 @@ class ThreadController extends FrontendBaseController
     {
         $thread = $this->repository->with('replies')->getByColumn($thread, 'slug');
 
+        if(!$thread) {
+            abort('404', "La ressource que vous demandez n'est plus disponible ou a été supprimée.");
+        }
+
         if (auth()->check()) {
             auth()->user()->read($thread);
         }

@@ -35,6 +35,11 @@ class ForumController extends Controller
     public function channel(string $slug, Request $request)
     {
         $channel = $this->channelRepository->with('threads')->getByColumn($slug, 'slug');
+
+        if(!$channel) {
+            abort('404', "La ressource que vous demandez n'est plus disponible ou a été supprimée.");
+        }
+
         $threads = $channel->threads()
             ->with('lastReply')
             ->filter($request)
