@@ -28,12 +28,12 @@ const Reply = ({ reply }: ReplyProps) => {
     {
       'reply-header': (user !== null && user.id === owner.id) || (user !== null && user.is_admin),
       'bg-brand-100': isBest,
-      'hover:bg-gray-100': !isBest,
+      'hover:bg-gray-50': !isBest,
     },
   );
   const message = (user !== null && user.id === owner.id)
-    ? `Voulez-vous vraiment supprimer votre réponse? Cette action ne peut pas être annulée.`
-    : (<>Voulez-vous vraiment supprimer la reponse de <span className="text-gray-800 font-medium">{owner.username}</span>? Cette action ne peut pas être annulée.</>);
+    ? `Voulez-vous vraiment supprimer votre réponse? Vous ne trouvez plus ce commentaire dans votre historique.`
+    : (<>Voulez-vous vraiment supprimer la reponse de <span className="text-gray-800 font-medium">{owner.username}</span>? Ce commentaire ne sera plus lister dans le thread.</>);
 
   function markBestReply(e: React.SyntheticEvent, replyId: number) {
     e.preventDefault();

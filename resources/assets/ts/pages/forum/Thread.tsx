@@ -34,7 +34,7 @@ const Thread = () => {
     replies,
   }: ThreadType = thread;
   const className = classNames(
-    `bg-gray-100 flex flex-col px-6 py-4 rounded-lg mb-4`,
+    `bg-gray-50 shadow flex flex-col px-6 py-4 rounded-lg mb-4`,
     {
       'thread-header': (user !== null && user.id === creator.id) || (user !== null && user.is_admin),
     },

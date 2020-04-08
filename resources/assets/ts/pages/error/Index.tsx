@@ -24,13 +24,17 @@ const Error = ({ status }: { status: any }) => {
     <>
       <Helmet title={title} />
       <div className="flex items-center justify-center">
-        <div className="w-full max-w-7xl flex items-center px-4 sm:px-6 py-10 lg:py-20">
+        <div className="w-full max-w-7xl flex items-center px-4 sm:px-6 py-10 lg:py-14">
           <div className="max-w-lg">
             <h1 className="text-base sm:text-lg md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-5">{title}</h1>
             <p className="mt-8 text-lg lg:text-xl leading-tight">{description}</p>
           </div>
           <div className="hidden md:block ml-6">
-            Illustration
+            <img
+              src={require("@/assets/images/error.svg")}
+              className="h-140"
+              alt="illustration"
+            />
           </div>
         </div>
       </div>

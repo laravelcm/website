@@ -42,7 +42,7 @@ const Thread = (thread: ThreadType) => {
     </div>
   );
   return (
-    <div className="cursor-pointer bg-gray-100 px-6 py-4 flex flex-col justify-between mb-2 rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
+    <div className="cursor-pointer bg-gray-50 px-6 py-4 flex flex-col justify-between mb-2 rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
       <div className="flex items-center justify-between mb-4 md:mb-0 md:mr-6">
         <div className="flex items-center">
           <div className={`h-15 w-15 flex items-center justify-center border-2 relative rounded-full ${solvedClass}`}>
