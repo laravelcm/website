@@ -57,16 +57,16 @@ export default () => {
               </a>
             )
           }
-          <InertiaLink
-            href="/dashboard"
-            className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100"
-          >
+          <InertiaLink href="/dashboard" className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100">
             Dashboard
           </InertiaLink>
-          <InertiaLink
-            href={`/u/@${username}`}
-            className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100"
-          >
+          <a href="#" className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100">
+            Espace Entreprise
+            <span className="inline-flex items-center ml-2 px-1.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-brand-100 text-brand-primary">
+              Soon
+            </span>
+          </a>
+          <InertiaLink href={`/u/@${username}`} className="text-sm block px-4 py-2 hover:text-brand-primary hover:bg-gray-100">
             Mon Profil
           </InertiaLink>
           <div className="py-3 px-4 mt-1 border-t border-gray-200">
@@ -74,7 +74,7 @@ export default () => {
               href="/logout"
               className="text-sm py-2 px-3 inline-block bg-brand-100 rounded text-brand-primary hover:text-white hover:bg-brand-primary"
             >
-              Déconnexion
+              Se déconnecter
             </InertiaLink>
           </div>
         </div>

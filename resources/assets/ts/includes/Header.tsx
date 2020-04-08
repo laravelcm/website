@@ -142,14 +142,20 @@ export default () => {
                   <div className="text-sm font-medium leading-5 text-gray-500">{auth.user.email}</div>
                 </div>
               </div>
-              <div className="mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                <a href="/dashboard" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+              <div className="mt-3 space-y-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                <a href="/dashboard" className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
                   Dashboard
+                </a>
+                <a href="#" className="flex px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+                  Espace Entreprise
+                  <span className="inline-flex ml-2 items-center px-1.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-brand-100 text-brand-primary">
+                    Soon
+                  </span>
                 </a>
                 <a href={`/u/@${auth.user.username}`} className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
                   Mon Profil
                 </a>
-                <InertiaLink href="/logout" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+                <InertiaLink href="/logout" className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
                   Se déconnecter
                 </InertiaLink>
               </div>
