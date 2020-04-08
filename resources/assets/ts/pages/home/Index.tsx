@@ -4,7 +4,7 @@ import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
 
-// import Tutorial from "@/components/Tutorial";
+import Tutorial from "@/components/Tutorial";
 import Post from "@/components/Post";
 import { PostType, ThreadType } from "@/utils/types";
 
@@ -124,15 +124,13 @@ const Home = () => {
             </span>
           </InertiaLink>
         </div>
-        {/* eslint-disable-next-line max-len */}
-        {/* <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers tutoriels</h2> */}
-        {/* eslint-disable-next-line max-len */}
-        {/* <div className="space-y-5 mb-10 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-14"> */}
-        {/*  <Tutorial */}
-        {/*    image="https://cdn.devdojo.com/posts/images/June2019/laravel-on-digital-ocean.jpg?auto=compress&w=228&h=128&dpr=2" */}
-        {/*    title="Laravel App on Digital Ocean Ubuntu 19.04 droplet (Step by Step Guide)" */}
-        {/*  /> */}
-        {/* </div> */}
+        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers tutoriels</h2>
+        <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">
+          <Tutorial
+            image="https://cdn.devdojo.com/posts/images/June2019/laravel-on-digital-ocean.jpg?auto=compress&w=228&h=128&dpr=2"
+            title="Laravel App on Digital Ocean Ubuntu 19.04 droplet (Step by Step Guide)"
+          />
+        </div>
         <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers articles</h2>
         <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">
           {posts.map((post: PostType) => <Post key={post.id} post={post} />)}
@@ -142,9 +140,7 @@ const Home = () => {
         <div className="container">
           <div className="space-y-8 lg:space-y-0 lg:space-x-6 lg:flex flex-grow">
             <div className="w-full lg:w-1/3">
-              <h4 className="font-medium text-lg mb-4 lg:mb-8">
-                Dernières offres d'emploi
-              </h4>
+              <h4 className="font-medium text-lg mb-4 lg:mb-8">Dernières offres d'emploi</h4>
               <ul>
                 <li className="py-3">
                   <InertiaLink href="/" className="flex items-center hover:text-gray-200">
