@@ -40,47 +40,47 @@ const Tutorials = () => (
               href="/"
               className="rounded-full bg-brand-900 font-semibold px-3 py-1"
             >
-                Tous
+              Tous
             </InertiaLink>
           </li>
           <li className="inline-block">
             <InertiaLink href="/" className="hover:text-gray-200">
-                Laravel
+              Laravel
             </InertiaLink>
           </li>
           <li className="inline-block">
             <InertiaLink href="/" className="hover:text-gray-200">
-                React
+              React
             </InertiaLink>
           </li>
           <li className="inline-block">
             <InertiaLink href="/" className="hover:text-gray-200">
-                React Native
+              React Native
             </InertiaLink>
           </li>
           <li className="inline-block">
             <InertiaLink href="/" className="hover:text-gray-200">
-                VueJS
+              VueJS
             </InertiaLink>
           </li>
           <li className="inline-block">
             <InertiaLink href="/" className="hover:text-gray-200">
-                Flutter
+              Flutter
             </InertiaLink>
           </li>
           <li className="inline-block">
             <InertiaLink href="/" className="hover:text-gray-200">
-                Hosting
+              Hosting
             </InertiaLink>
           </li>
           <li className="inline-block">
             <InertiaLink href="/" className="hover:text-gray-200">
-                Design
+              Design
             </InertiaLink>
           </li>
         </ul>
       </div>
-      <div className="space-y-5 mt-12 mb-10 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-14">
+      <div className="mt-12 grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 xl:grid-cols-4 lg:max-w-none sm:mb-18">
         <Tutorial
           image="https://cdn.devdojo.com/posts/images/June2019/laravel-on-digital-ocean.jpg?auto=compress&w=228&h=128&dpr=2"
           title="Laravel App on Digital Ocean Ubuntu 19.04 droplet (Step by Step Guide)"

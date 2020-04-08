@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="crsf-token" content="{{ csrf_token() }}">
+    <meta name="author" content="Arthur Monney">
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
     <link rel="icon" type="image/png" href="{{ asset('img/favicons/favicon-32x32.png') }}" sizes="32x32">
@@ -18,7 +19,7 @@
     @include('partials.ga')
     @notifyCss
 </head>
-<body class="bg-gray-200 text-gray-600 leading-normal font-body">
+<body class="bg-gray-100 text-gray-600 leading-normal font-body">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-549VBWB" height="0" width="0" style="display:none;visibility:hidden"></iframe>

@@ -55,7 +55,7 @@ const Blog = () => {
         </div>
       </div>
       <div className="container mt-12 md:px-4">
-        <div className="space-y-5 mb-10 md:space-y-0 md:flex md:-mx-4 flex-grow flex-wrap lg:mb-14">
+        <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 xl:grid-cols-4 lg:max-w-none sm:mb-18">
           {data.map((post: PostType) => <Post key={post.id} post={post} />)}
         </div>
         <Pagination links={links} />

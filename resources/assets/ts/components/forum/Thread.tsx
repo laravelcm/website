@@ -67,7 +67,7 @@ const Thread = (thread: ThreadType) => {
                   </svg>
                 )}
               </span>
-              {creator.is_admin && <span className="text-brand-200 text-sm">Admin</span>}
+              {creator.is_admin && <span className="hidden md:block text-brand-200 text-sm">Admin</span>}
             </InertiaLink>
           </div>
           <span className="text-sm text-gray-800 ml-3 font-medium md:hidden uppercase">

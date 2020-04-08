@@ -44,14 +44,14 @@ export default () => {
                 </InertiaLink>
                 <nav className="hidden lg:block flex pl-15 space-x-4">
                   <InertiaLink href="/blog" className="text-gray-800 hover:text-gray-600">Blog</InertiaLink>
-                  <InertiaLink href="/preview-tutorials" className="text-gray-800 hover:text-gray-600">
-                    <span className="mr-1">Tutoriels</span>
+                  <InertiaLink href="/tutorials" className="text-gray-800 hover:text-gray-600">Tutoriels</InertiaLink>
+                  <InertiaLink href="/forum" className="text-gray-800 hover:text-gray-600">Forum</InertiaLink>
+                  <InertiaLink href="/jobs" className="text-gray-800 hover:text-gray-600">
+                    <span className="mr-1">Jobs</span>
                     <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-brand-100 text-brand-primary">
                       Soon
                     </span>
                   </InertiaLink>
-                  <InertiaLink href="/forum" className="text-gray-800 hover:text-gray-600">Forum</InertiaLink>
-                  <InertiaLink href="/jobs" className="text-gray-800 hover:text-gray-600">Jobs</InertiaLink>
                 </nav>
               </div>
             </div>
@@ -114,36 +114,47 @@ export default () => {
         </div>
       </header>
       <div
-        className={`fixed inset-0 h-full w-full pt-18 z-50 bg-white ${
-          isOpen ? "flex" : "hidden"
+        className={`fixed inset-0 h-full w-full pt-18 z-80 bg-white ${
+          isOpen ? "block" : "hidden"
         }`}
       >
-        <div className="h-full w-full overflow-y-auto scrolling-touch px-6">
-          <nav className="mb-8 mt-6 space-y-4">
-            <a href="/blog" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Blog</a>
-            {/* eslint-disable-next-line max-len */}
-            {/* <a href="/tutorials" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Tutoriels</a> */}
-            <a href="/forum" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Forum</a>
-            <a href="/jobs" className="block text-gray-800 mr-4 hover:text-gray-600 py-1">Jobs</a>
-          </nav>
-          <div>
-            {!auth.user && (
-              <div className="space-y-4">
-                <InertiaLink href="/login" className="text-brand-primary block hover:text-brand-900">Connexion</InertiaLink>
-                <InertiaLink href="/register" className="btn btn-primary inline-flex">M'inscrire</InertiaLink>
+        <div className="block h-full w-full overflow-y-auto bg-white">
+          <div className="pt-2 pb-3 space-y-1">
+            <a href="/blog" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-brand-200 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-brand-200 transition duration-150 ease-in-out">Blog</a>
+            <a href="/tutorials" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-brand-200 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-brand-200 transition duration-150 ease-in-out">Tutoriels</a>
+            <a href="/forum" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-brand-200 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-brand-200 transition duration-150 ease-in-out">Forum</a>
+            <a href="/jobs" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-brand-200 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-brand-200 transition duration-150 ease-in-out">Jobs</a>
+          </div>
+          {!auth.user && (
+            <div className="space-y-1 pt-4 pb-3 border-t border-gray-200">
+              <InertiaLink href="/login" className="block pl-3 pr-4 py-2 text-base font-medium text-brand-primary hover:text-brand-900 transition duration-150 ease-in-out">Connexion</InertiaLink>
+              <InertiaLink href="/register" className="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:text-brand-900 transition duration-150 ease-in-out">M'inscrire</InertiaLink>
+            </div>
+          )}
+          {auth.user && (
+            <div className="pt-4 pb-3 border-t border-gray-200">
+              <div className="flex items-center px-4">
+                <div className="flex-shrink-0">
+                  <img className="h-10 w-10 rounded-full" src={auth.user.picture} alt={auth.user.full_name} />
+                </div>
+                <div className="ml-3">
+                  <div className="text-base font-medium leading-6 text-gray-800">{auth.user.full_name}</div>
+                  <div className="text-sm font-medium leading-5 text-gray-500">{auth.user.email}</div>
+                </div>
               </div>
-            )}
-            {auth.user && (
-              <div className="flex">
-                <InertiaLink href={`/u/@${auth.user.username}`} className="flex items-center group py-1 px-3 rounded-full hover:bg-gray-100">
-                  <img src={auth.user.picture} alt="profile" className="h-10 w-10 rounded-full" />
-                  <span className="text-sm text-gray-800 group-hover:text-gray-600 font-normal pl-2">
-                    {auth.user.full_name}
-                  </span>
+              <div className="mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                <a href="/dashboard" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+                  Dashboard
+                </a>
+                <a href={`/u/@${auth.user.username}`} className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+                  Mon Profil
+                </a>
+                <InertiaLink href="/logout" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+                  Se déconnecter
                 </InertiaLink>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </>
