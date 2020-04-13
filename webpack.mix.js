@@ -52,7 +52,8 @@ if (mix.inProduction()) {
         './resources/assets/ts/**/*.ts',
         './resources/assets/ts/**/*.tsx',
       ],
-      whitelistPatterns: [/nprogress/],
+      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
+      whitelistPatterns: [/nprogress/, /[\w-/.:]+(?<!:)/],
     })
     .options({
       // optimize js minification process

@@ -16,33 +16,33 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900">
     <link href="{{ mix('/css/application.css') }}" rel="stylesheet" />
-    @stack('css')
+    @stack('styles')
     @notifyCss
 </head>
 <body class="bg-gray-50 text-gray-600 leading-normal font-body">
 
-    <div id="app" class="h-screen flex flex-col">
+    <div id="app" class="h-screen flex flex-col" x-data="{ sidebarOpen: false }" @keydown.window.escape="sidebarOpen = false">
 
-        @include('layouts._header')
+        @include('partials._header')
 
-        <div class="flex-1 flex overflow-hidden">
+        @include('partials._sidebar-mobile')
 
-            @include('layouts._sidebar')
-
-            <main class="flex-1 flex">
-                <div class="flex-1 overflow-y-auto px-12 py-8">
-                    @yield('content')
-                </div>
-            </main>
-
+        <div class="h-screen flex overflow-hidden">
+            @include('partials._sidebar')
+            <div class="flex flex-col w-0 flex-1 overflow-hidden">
+                <main class="flex-1 relative z-0 overflow-y-auto py-6 focus:outline-none" tabindex="0" x-data x-init="$el.focus()">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        @yield('content')
+                    </div>
+                </main>
+            </div>
         </div>
-
     </div>
 
     <script src="{{ mix('/js/backend.js') }}" defer></script>
     @include("notify::messages")
     @notifyJs
-    @stack('js')
+    @stack('scripts')
 
 </body>
 </html>
