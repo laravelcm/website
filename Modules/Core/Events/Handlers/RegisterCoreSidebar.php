@@ -16,8 +16,8 @@ class RegisterCoreSidebar extends AbstractAdminSidebar
      */
     public function extendWith(Menu $menu)
     {
-        $menu->group(trans('menus.backend.sidebar.cms'), function (Group $group) {
-            $group->weight(50);
+        $menu->group('Navigation', function (Group $group) {
+            $group->weight(1);
             $group->authorize(
                 $this->auth->user()->isAdmin()
             );

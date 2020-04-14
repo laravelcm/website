@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Inertia\Inertia;
+use Modules\Core\Events\BuildingSidebar;
 use Modules\Forum\Entities\Channel;
+use Modules\Forum\Events\Handlers\RegisterForumSidebar;
 
 class ForumServiceProvider extends ServiceProvider
 {
@@ -44,7 +46,7 @@ class ForumServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app['events']->listen(BuildingSidebar::class, RegisterForumSidebar::class);
     }
 
     /**

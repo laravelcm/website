@@ -4,6 +4,8 @@ namespace Modules\Job\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Job\Events\Handlers\RegisterJobSidebar;
 
 class JobServiceProvider extends ServiceProvider
 {
@@ -33,7 +35,7 @@ class JobServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app['events']->listen(BuildingSidebar::class, RegisterJobSidebar::class);
     }
 
     /**

@@ -1,10 +1,9 @@
 @if($group->shouldShowHeading())
-    <li class="kt-menu__section">
-        <h4 class="kt-menu__section-text">{{ $group->getName() }}</h4>
-        <i class="kt-menu__section-icon flaticon-more-v2"></i>
-    </li>
+    <h2 class="text-xs font-semibold text-gray-600 uppercase tracking-wide">{{ $group->getName() }}</h2>
 @endif
 
-@foreach($items as $item)
-    {!! $item !!}
-@endforeach
+<div class="space-y-2">
+    @foreach($items as $item)
+        {!! $item !!}
+    @endforeach
+</div>

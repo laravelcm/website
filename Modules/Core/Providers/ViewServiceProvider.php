@@ -22,6 +22,7 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         // Backend
-        view()->creator('partials._aside._menu', \Modules\Core\Composers\SidebarCreator::class);
+        view()->creator('partials._sidebar', \Modules\Core\Composers\SidebarCreator::class);
+        view()->creator('partials._sidebar-mobile', \Modules\Core\Composers\SidebarCreator::class);
     }
 }

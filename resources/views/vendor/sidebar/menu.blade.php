@@ -1,5 +1,5 @@
-<ul class="kt-menu__nav ">
+<nav class="mt-4">
     @foreach($groups as $group)
         {!! $group !!}
     @endforeach
-</ul>
+</nav>

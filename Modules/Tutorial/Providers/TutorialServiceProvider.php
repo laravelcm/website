@@ -4,6 +4,8 @@ namespace Modules\Tutorial\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Tutorial\Events\Handlers\RegisterTutorialSidebar;
 
 class TutorialServiceProvider extends ServiceProvider
 {
@@ -33,7 +35,7 @@ class TutorialServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app['events']->listen(BuildingSidebar::class, RegisterTutorialSidebar::class);
     }
 
     /**
