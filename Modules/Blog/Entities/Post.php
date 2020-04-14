@@ -81,7 +81,7 @@ class Post extends Model
     /**
      * Select all publish post
      *
-     * @param  Builder $builder
+     * @param  Builder  $builder
      * @return Builder
      */
     public function scopePublish(Builder $builder)
@@ -108,7 +108,7 @@ class Post extends Model
     /**
      * Return The post resume
      *
-     * @param  $value
+     * @param  string  $value
      * @return string
      */
     public function getSummaryAttribute($value)
@@ -117,7 +117,7 @@ class Post extends Model
     }
 
     /**
-     * @param  string $value
+     * @param  string  $value
      * @return \Illuminate\Contracts\Routing\UrlGenerator|string
      */
     public function getImageAttribute($value)
@@ -126,13 +126,13 @@ class Post extends Model
             return url('storage/'. $value);
         }
 
-        return 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80';
+        return null;
     }
 
     /**
      * Return the current format of status.
      *
-     * @param string $value
+     * @param  string  $value
      * @return string
      */
     public function getStatusAttribute($value)

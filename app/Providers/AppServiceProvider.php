@@ -9,8 +9,12 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
+use League\Glide\Responses\LaravelResponseFactory;
+use League\Glide\Server;
+use League\Glide\ServerFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerInertia();
+        $this->registerGlide();
         $this->registerLengthAwarePaginator();
     }
 
@@ -81,6 +86,25 @@ class AppServiceProvider extends ServiceProvider
                     : (object) [];
             },
         ]);
+    }
+
+    /**
+     * Register Glide for image manage.
+     *
+     * @return void
+     */
+    public function registerGlide()
+    {
+        $this->app->bind(Server::class, function ($app) {
+            $driver = Storage::disk('public')->getDriver();
+
+            return ServerFactory::create([
+                'response'  => new LaravelResponseFactory(request()),
+                'source' => $driver,
+                'cache'  => $driver,
+                'cache_path_prefix' => '.cache/',
+            ]);
+        });
     }
 
     /**
