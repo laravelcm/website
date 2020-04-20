@@ -70,7 +70,7 @@ const Thread = () => {
         parentLink={`/forum/channels/${channel.slug}`}
         title={title}
       />
-      <div className="bg-gradient-white py-4 lg:hidden">
+      <div className="bg-white py-4 lg:hidden">
         <div className="container">
           <h1 className="text-lg md:text-xl text-gray-800">{title}</h1>
         </div>

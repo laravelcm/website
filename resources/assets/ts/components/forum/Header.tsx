@@ -1,7 +1,7 @@
 import React from "react";
 
 export default () => (
-  <div className="bg-gradient-white py-6">
+  <div className="bg-white py-6">
     <div className="container">
       <div className="w-full">
         <h1 className="text-brand-primary text-xl mb-3">Forum</h1>

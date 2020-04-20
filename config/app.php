@@ -241,8 +241,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         // Package Aliases
-        'Form' => TypiCMS\Form\Facades\Form::class,
-        'BootForm' => TypiCMS\BootForms\Facades\BootForm::class,
-        'TranslatableBootForm' => TypiCMS\LaravelTranslatableBootForms\Facades\TranslatableBootForm::class,
     ],
 ];

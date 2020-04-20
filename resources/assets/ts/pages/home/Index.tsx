@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <Seo title="Accueil" />
-      <div className="pt-10 pb-12 h-87 bg-gradient-white lg:pt-24 lg:pb-56 lg:h-140 relative">
+      <div className="pt-10 pb-12 h-87 bg-white lg:pt-24 lg:pb-56 lg:h-140 relative">
         <img
           src={require("@/assets/images/illustration.svg")}
           className="hidden lg:block absolute right-0"
@@ -30,7 +30,7 @@ const Home = () => {
               Cameroun.
             </p>
             <InertiaLink
-              href="/preview-tutorials"
+              href="/jobs"
               className="p-2 bg-brand-100 items-center text-gray-700 rounded-lg md:rounded-full flex lg:inline-flex w-full"
               role="alert"
             >
@@ -39,7 +39,7 @@ const Home = () => {
               </span>
               <span className="font-normal mr-2 text-left flex-auto text-xs lg:text-sm">
                 Une nouvelle section{" "}
-                <span className="text-brand-primary">tutoriels</span>{" "}
+                <span className="text-brand-primary">Jobs</span>{" "}
                 bientôt disponible. Cliquez pour en savoir plus!
               </span>
               <svg
@@ -54,12 +54,12 @@ const Home = () => {
         </div>
       </div>
       <div className="container mt-8 md:px-4">
-        <div className="w-full space-y-4 mb-10 md:flex md:space-y-0 md:space-x-6 lg:space-x-8 md:-mt-32 md:mb-14">
+        <div className="w-full space-y-4 mb-10 md:flex md:space-y-0 md:space-x-6 lg:space-x-8 md:mb-14 md:-mt-20 lg:-mt-32">
           <InertiaLink
             href="/jobs"
-            className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-10"
+            className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full md:flex-col md:justify-between md:px-6 md:py-8"
           >
-            <span className="bg-brand-primary p-3 rounded-full flex items-center justify-center mr-4 md:mr-0 md:mb-3">
+            <span className="inline-flex w-12 h-12 items-center justify-center bg-brand-primary p-3 rounded-full mr-4 md:mr-0 md:mb-4">
               <svg
                 className="h-5 w-5 text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,9 +80,9 @@ const Home = () => {
           </InertiaLink>
           <InertiaLink
             href="/forum"
-            className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-10"
+            className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full md:flex-col md:justify-between md:px-6 md:py-8"
           >
-            <span className="bg-brand-primary p-3 rounded-full flex items-center justify-center mr-4 md:mr-0 md:mb-3">
+            <span className="inline-flex w-12 h-12 items-center justify-center bg-brand-primary p-3 rounded-full mr-4 md:mr-0 md:mb-4">
               <svg
                 className="h-5 w-5 text-white"
                 xmlns="http://www.w3.org/2000/svg"
@@ -103,9 +103,9 @@ const Home = () => {
           </InertiaLink>
           <InertiaLink
             href="/join-slack"
-            className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full cursor-pointer items-center md:flex-col md:text-center md:w-1/3 md:px-5 lg:py-8 lg:px-10"
+            className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full md:flex-col md:justify-between md:px-6 md:py-8"
           >
-            <span className="bg-brand-primary p-3 rounded-full flex items-center justify-center mr-4 md:mr-0 md:mb-3">
+            <span className="inline-flex w-12 h-12 items-center justify-center bg-brand-primary p-3 rounded-full mr-4 md:mr-0 md:mb-4">
               <svg
                 className="h-5 w-5 text-white"
                 xmlns="http://www.w3.org/2000/svg"

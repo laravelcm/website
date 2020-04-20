@@ -6,7 +6,7 @@ interface MenuProps {
 }
 
 const Menu = ({ current }: MenuProps) => (
-  <div className="bg-gradient-white flex items-end h-28">
+  <div className="bg-white flex items-end h-28">
     <nav className="mx-auto max-w-screen-xl w-full relative px-6 tabs inline-flex lg:flex space-x-4 overflow-hidden overflow-x-scroll hidden-scrollbar">
       <InertiaLink className={`block px-2 py-4 border-b-2 border-transparent hover:text-brand-primary ${current === 'dashboard' ? 'tab-active' : ''}`} href="/dashboard">Mon activité</InertiaLink>
       <InertiaLink className={`block px-2 py-4 border-b-2 border-transparent hover:text-brand-primary ${current === 'account' ? 'tab-active' : ''}`} href="/account">Mon compte</InertiaLink>

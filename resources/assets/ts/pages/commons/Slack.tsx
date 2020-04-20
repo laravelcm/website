@@ -79,7 +79,7 @@ export default () => {
               />
             </div>
           </div>
-          <div className="bg-gradient-white flex items-center h-18">
+          <div className="bg-white flex items-center h-18">
             <div className="container">
               <div className="flex flex-col md:flex-row justify-between items-center">
                 <p className="text-xs mb-4 md:mb-0">© 2018 - {new Date().getFullYear()} Laravel Cameroun | Tous droits reservés.</p>

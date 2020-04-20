@@ -15,7 +15,7 @@ const Jobs = () => {
         title="Jobs"
         description="Votre futur dépendra du travail que vous allez obtenir aujourd’hui. Rejoignez plusieurs autres rechercheurs et demandeurs d’emploi. La meilleure façon de trouver un nouveau job."
       />
-      <div className="pt-10 pb-12 bg-gradient-white lg:pt-20 lg:pb-24 lg:h-125 relative">
+      <div className="pt-10 pb-12 bg-white lg:pt-20 lg:pb-24 lg:h-125 relative">
         <img
           src={require("@/assets/images/job-illustration.svg")}
           className="hidden lg:block absolute right-0"
