@@ -136,3 +136,14 @@ export const popupCenter = (url: string, title: string, width?: number, height?:
   const popupTop = windowTop + windowHeight / 2 - popupHeight / 2;
   window.open(url, title, `scrollbars=yes, width=${popupWidth}, height=${popupHeight}, top=${popupTop}, left=${popupLeft}`);
 };
+
+/**
+ * Group array;
+ *
+ * @param  xs
+ * @param key
+ */
+export const groupBy = (xs: Array<any>, key: string) => xs.reduce((rv, x) => {
+  (rv[x[key]] = rv[x[key]] || []).push(x);
+  return rv;
+}, {});

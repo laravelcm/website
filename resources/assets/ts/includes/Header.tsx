@@ -1,13 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { useClickAway } from "react-use";
+import axios from "axios";
 
 import AccountDropdown from "@/components/AccountDropdown";
 import Notifications from "@/components/Notifications";
+import Transition from "@/components/Transition";
+
+import { groupBy } from "@/utils/helpers";
+
+type Result = {
+  title: string;
+  url: string;
+  type: string;
+}
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
   const { auth } = usePage();
   const input = useRef<HTMLInputElement>(null);
+  const ref = useRef(null);
+  const closeDropdown = () => {
+    setShow(false);
+  };
+  useClickAway(ref, closeDropdown);
 
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.code === "Backslash") {
@@ -19,13 +39,86 @@ export default () => {
     }
   };
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+    setQuery(e.target.value);
+
+    if (value && value.length > 3) {
+      if (value.length % 2 === 0) {
+        setShow(true);
+        setLoader(true);
+        search();
+      }
+    } else {
+      setLoader(false);
+    }
+  }
+
+  function search() {
+    axios.get(`/api/search?search=${query}`)
+      .then((response) => {
+        setLoader(false);
+        setResults(response.data);
+      });
+  }
+
+  function renderArticles(searchResults: Array<any>) {
+    const values = groupBy(searchResults, 'type');
+
+    if (values.Articles && values.Articles.length > 0) {
+      const items = values.Articles;
+      return (
+        <div className="pt-4">
+          <h3 className="text-xs font-semibold text-gray-900 mb-2 leading-5 px-4 sm:px-6">Articles</h3>
+          <div>
+            {
+              items.map((item: Result) => (
+                <a key={item.title} href={item.url} className="text-sm text-gray-600 hover:text-gray-500 focus:text-gray-800 leading-5 flex items-start hover:bg-gray-50 px-4 py-4 sm:px-6">
+                  <span className="font-medium text-brand-primary text-base mr-2">#</span>
+                  {item.title}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
+  function renderForum(searchResults: Array<any>) {
+    const values = groupBy(searchResults, 'type');
+
+    if (values.Forum && values.Forum.length > 0) {
+      const items = values.Forum;
+      return (
+        <div className="pt-4">
+          <h3 className="text-xs font-semibold text-gray-900 mb-2 leading-5 px-4 sm:px-6">Forum</h3>
+          <div>
+            {
+              items.map((item: Result) => (
+                <a key={item.title} href={item.url} className="text-sm text-gray-600 hover:text-gray-500 focus:text-gray-800 leading-5 flex items-start hover:bg-gray-50 px-4 py-4 sm:px-6">
+                  <span className="font-medium text-brand-primary text-base mr-2">#</span>
+                  {item.title}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
   useEffect(() => {
     document.body.addEventListener("keydown", onKeyDown);
   }, []);
 
   return (
     <>
-      <header className="flex bg-white border-t-4 border-brand-primary fixed top-0 z-100 inset-x-0 shadow-smooth h-18 items-center">
+      <header ref={ref} className="flex bg-white border-t-4 border-brand-primary fixed top-0 z-100 inset-x-0 shadow-smooth h-18 items-center">
         <div className="w-full max-w-screen-xl relative mx-auto px-6">
           <div className="flex items-center -mx-6">
             <div className="lg:w-1/2 pl-6 pr-6 lg:pr-8">
@@ -58,25 +151,66 @@ export default () => {
             <div className="lg:w-1/2 flex flex-grow lg:pr-6 items-center">
               <div className="w-full">
                 <div className="relative">
-                  <span className="relative block" style={{ direction: "ltr" }}>
-                    <input
-                      className="transition font-light focus:outline-none border border-transparent focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-200 py-2 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
-                      type="text"
-                      placeholder='Recherche (Press "\" to focus)'
-                      autoComplete="off"
-                      style={{ position: "relative", verticalAlign: "top" }}
-                      ref={input}
-                    />
-                  </span>
-                  <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
-                    <svg
-                      className="fill-current pointer-events-none text-gray-600 w-4 h-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-                    </svg>
+                  <div className="relative">
+                    <span className="flex" style={{ direction: "ltr" }}>
+                      <input
+                        className="transition font-light focus:outline-none border border-transparent focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-200 py-2 pr-8 pl-10 block w-full appearance-none leading-normal ds-input"
+                        type="text"
+                        placeholder='Rechercher (Press "\" to focus)'
+                        autoComplete="off"
+                        style={{ position: "relative", verticalAlign: "top" }}
+                        ref={input}
+                        value={query}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
+                      <svg
+                        className="text-gray-600 w-4 h-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                      </svg>
+                    </div>
+                    {loader && <span className="spinner top-0 right-0 mt-5 mr-6" />}
                   </div>
+                  <Transition
+                    show={show}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <div>
+                      <div className="w-full divide-y divide-gray-100 flex flex-col bg-white absolute z-70 mt-3 text-sm border border-gray-100 rounded-md shadow-lg max-h-sm overflow-auto">
+                        {results.length === 0 && (
+                          <div className="flex flex-col items-center justify-center p-8">
+                            <span className="h-12 w-12 flex-shrink-0">
+                              <svg className="w-full h-full text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
+                              </svg>
+                            </span>
+                            <p className="text-sm font-medium text-gray-600 leading-5 mt-1">Aucun resultat trouvé.</p>
+                          </div>
+                        )}
+
+                        {results.length > 0 && (
+                          <div className="divide-y divide-gray-100">
+                            {renderArticles(results)}
+                            {renderForum(results)}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </Transition>
                 </div>
               </div>
               <button
@@ -85,9 +219,9 @@ export default () => {
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <svg
-                  className="fill-current w-5 h-5"
-                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
                   viewBox="0 0 20 20"
+                  fill="currentColor"
                 >
                   {isOpen && (
                     <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />

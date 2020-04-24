@@ -9,12 +9,12 @@ interface Props {
 export default ({ title, image }: Props) => (
   <div className="w-full">
     <InertiaLink
-      className="block rounded-lg bg-white h-59 shadow-md group hover:shadow-lg hover:text-gray-800"
+      className="block rounded-lg overflow-hidden bg-white h-59 shadow-md group hover:shadow-lg hover:text-gray-800"
       href="/tutorial/laravel-app-on-digital-ocean-ubuntu-1904-droplet-step-by-step-guide"
     >
       <img
         src={image}
-        className="bg-cover w-full h-36 rounded-t-lg"
+        className="object-cover w-full h-36"
         alt="tutorial 1"
       />
       <div className="p-4 relative">

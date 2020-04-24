@@ -8,8 +8,10 @@ use Modules\Forum\Entities\Traits\RecordsActivity;
 use Modules\Forum\Events\ThreadReceivedNewReply;
 use Modules\Forum\Filters\ThreadFilters;
 use Modules\User\Entities\User;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Thread extends Model
+class Thread extends Model implements Searchable
 {
     use RecordsActivity;
 
@@ -55,6 +57,8 @@ class Thread extends Model
     protected $casts = [
         'locked' => 'boolean'
     ];
+
+    public $searchableType = 'Forum';
 
     /**
      * Boot the model.
@@ -255,5 +259,21 @@ class Thread extends Model
     public function scopeFilter(Builder $builder, $request, array $filters = [])
     {
         return (new ThreadFilters($request))->add($filters)->filter($builder);
+    }
+
+    /**
+     * Return search result for post.
+     *
+     * @return SearchResult
+     */
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('threads', ['channel' => $this->channel->slug, 'thread' => $this->slug]);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
     }
 }

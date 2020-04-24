@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Forum\Entities\Traits\RecordsActivity;
 use Modules\User\Entities\User;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Post extends Model
+class Post extends Model implements Searchable
 {
     use RecordsActivity;
 
@@ -55,6 +57,8 @@ class Post extends Model
     protected $appends = [
         'status_classname'
     ];
+
+    public $searchableType = 'Articles';
 
     /**
      * Boot the model.
@@ -186,5 +190,21 @@ class Post extends Model
     public function propose()
     {
         return $this->belongsTo(User::class, 'proposed_id');
+    }
+
+    /**
+     * Return search result for post.
+     *
+     * @return SearchResult
+     */
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('blog.post', ['slug' => $this->slug]);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
     }
 }
