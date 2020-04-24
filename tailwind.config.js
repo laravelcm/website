@@ -75,6 +75,14 @@ module.exports = {
         'gradient-green': ['60deg', theme('colors.brand.primary'), "rgba(5,184,143,1)"],
       }),
     },
+    spinner: (theme) => ({
+      default: {
+        color: theme('colors.brand.primary'), // color you want to make the spinner
+        size: '1em', // size of the spinner (used for both width and height)
+        border: '2px', // border-width of the spinner (shouldn't be bigger than half the spinner's size)
+        speed: '500ms', // the speed at which the spinner should rotate
+      },
+    }),
   },
   variants: {
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'focus-within', 'disabled'],
@@ -82,31 +90,11 @@ module.exports = {
     fontFamily: ['responsive', 'hover', 'focus'],
     zIndex: ['responsive', 'focus'],
     gradients: ['responsive', 'hover'],
-    space: ['responsive'],
+    spinner: ['responsive'],
   },
   plugins: [
     require('tailwindcss-plugins/gradients'),
     require('@tailwindcss/ui'),
-    function ({
-      addUtilities,
-      theme,
-      e,
-      variants,
-    }) {
-      const spaceX = Object.fromEntries(
-        Object.entries(theme('spacing')).map(([k, v]) => [
-          `.${e(`space-x-${k}`)} > * + *`,
-          { marginLeft: v },
-        ]),
-      );
-      const spaceY = Object.fromEntries(
-        Object.entries(theme('spacing')).map(([k, v]) => [
-          `.${e(`space-y-${k}`)} > * + *`,
-          { marginTop: v },
-        ]),
-      );
-
-      addUtilities({ ...spaceX, ...spaceY }, variants('space'));
-    },
+    require('tailwindcss-spinner')(),
   ],
 };
