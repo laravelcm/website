@@ -1,35 +1,31 @@
 // Global Imports
+import axios from "axios";
 import "alpinejs";
-import "@grafikart/drop-files-element";
 
 // React Components
-import "@/admin/posts/Create";
-import "@/admin/posts/Editor";
+import '@/admin/components/Dropzone/Simple';
+import "@/admin/components/Editor";
 
-/**
- * Sidebar Toggle action.
-*/
-const openSidebar = document.getElementById('open-sidebar');
-const closeSidebar = document.getElementById('close-sidebar');
-const sidebar: any = document.getElementById('sidebar');
-const overlay: any = document.getElementById('overlay');
+// Custom Style
+import "../../sass/plugins.scss";
 
-if (openSidebar) {
-  openSidebar.addEventListener('click', (e) => {
-    e.stopPropagation();
+// Remove items on CRUD
+const element = document.getElementById('remove-item');
+if (element) {
+  const span: any = element.firstElementChild;
+  const url: any = element.getAttribute('data-url');
+
+  element.addEventListener('click', (e) => {
     e.preventDefault();
-    overlay.classList.remove('hidden');
-    sidebar.classList.remove('-translate-x-full', 'ease-in', 'transition-medium');
-    sidebar.classList.add('translate-x-0', 'ease-out', 'transition-slow');
-  });
-}
-
-if (closeSidebar) {
-  closeSidebar.addEventListener('click', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    overlay.classList.add('hidden');
-    sidebar.classList.remove('translate-x-0', 'ease-out', 'transition-slow');
-    sidebar.classList.add('-translate-x-full', 'ease-in', 'transition-medium');
+    span.classList.remove('hidden');
+    axios.delete(url, {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    }).then((response) => {
+      setTimeout(() => {
+        window.location.href = response.data.redirect_url;
+      }, 1000);
+    });
   });
 }

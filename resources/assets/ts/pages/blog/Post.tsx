@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown/with-html";
+import hljs from "highlight.js";
 // eslint-disable-next-line import/no-duplicates
 import { format } from "date-fns";
 // eslint-disable-next-line import/no-duplicates
@@ -13,6 +14,10 @@ import { popupCenter } from "@/utils/helpers";
 
 const Post = () => {
   const { post } = usePage();
+
+  useEffect(() => {
+    updateCodeSyntaxHighlighting();
+  }, []);
 
   function share(e: React.SyntheticEvent, provider: string) {
     e.preventDefault();
@@ -40,6 +45,12 @@ const Post = () => {
       default:
         break;
     }
+  }
+
+  function updateCodeSyntaxHighlighting() {
+    document.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightBlock(block);
+    });
   }
 
   return (
@@ -94,10 +105,9 @@ const Post = () => {
               {post.visits} Vues
             </span>
           </div>
-          <div className="w-full lg:h-116 overflow-hidden">
+          <div className="w-full lg:h-116 rounded-lg overflow-hidden shadow-md">
             <img
-              className="bg-cover shadow-2xl rounded-lg"
-              // src="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2019/11/laravel-notify.png?fit=2220%2C1125&ssl=1?resize=2200%2C1125"
+              className="object-cover h-full w-full"
               src={post.image}
               alt={post.title}
             />

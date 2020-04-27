@@ -75,6 +75,18 @@ module.exports = {
         'gradient-green': ['60deg', theme('colors.brand.primary'), "rgba(5,184,143,1)"],
       }),
     },
+    customForms: (theme) => ({
+      default: {
+        'input, textarea, select, multiselect, checkbox, radio': {
+          borderWidth: defaultTheme.borderWidth[2],
+          '&:focus': {
+            outline: 'none',
+            boxShadow: 'none',
+            borderColor: theme('colors.brand.primary'),
+          },
+        },
+      },
+    }),
     spinner: (theme) => ({
       default: {
         color: theme('colors.brand.primary'), // color you want to make the spinner

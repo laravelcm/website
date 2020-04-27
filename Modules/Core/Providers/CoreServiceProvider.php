@@ -57,9 +57,9 @@ class CoreServiceProvider extends ServiceProvider
         // https://laravel-news.com/laravel-5-4-key-too-long-error
         Schema::defaultStringLength(191);
 
-        // Set the default template for Pagination to use the included Bootstrap 4 template
-        \Illuminate\Pagination\AbstractPaginator::defaultView('pagination::bootstrap-4');
-        \Illuminate\Pagination\AbstractPaginator::defaultSimpleView('pagination::simple-bootstrap-4');
+        // Set the default template for Pagination to use the included TailwindUI template
+        \Illuminate\Pagination\AbstractPaginator::defaultView('pagination::default');
+        \Illuminate\Pagination\AbstractPaginator::defaultSimpleView('pagination::simple-default');
 
         $this->registerTranslations();
         $this->registerConfig();

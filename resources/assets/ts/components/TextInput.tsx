@@ -19,7 +19,7 @@ const TextInput = ({
     </label>
     )}
     <input
-      className={`input-form ${errors.length ? `border-red-500` : ``}`}
+      className={`form-input transition duration-150 ease-in-out ${errors.length ? `border-red-500` : ``}`}
       id={name}
       name={name}
       {...rest}

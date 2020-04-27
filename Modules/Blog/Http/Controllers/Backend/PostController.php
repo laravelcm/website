@@ -2,7 +2,9 @@
 
 namespace Modules\Blog\Http\Controllers\Backend;
 
+use App\Repositories\MediaRepository;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Blog\Entities\Category;
 use Modules\Blog\Entities\Post;
@@ -17,13 +19,20 @@ class PostController extends Controller
     protected PostRepository $repository;
 
     /**
+     * @var MediaRepository
+     */
+    protected MediaRepository $mediaRepository;
+
+    /**
      * PostController constructor.
      *
-     * @param PostRepository $repository
+     * @param  PostRepository  $repository
+     * @param  MediaRepository  $mediaRepository
      */
-    public function __construct(PostRepository $repository)
+    public function __construct(PostRepository $repository, MediaRepository $mediaRepository)
     {
         $this->repository = $repository;
+        $this->mediaRepository = $mediaRepository;
     }
 
     /**
@@ -46,8 +55,12 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::pluck('name', 'id');
+        $status = collect([
+            ['value' => Post::STATUS_DRAFT, 'name' => 'Brouillon'],
+            ['value' => Post::STATUS_PUBLISHED, 'name' => 'Publié']
+        ])->pluck('name', 'value');
 
-        return view('blog::posts.create', compact('categories'));
+        return view('blog::posts.create', compact('categories', 'status'));
     }
 
     /**
@@ -59,17 +72,28 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
-        $published_at = new Carbon($request->input('published_at'));
+        $published_at = now();
 
-        $this->repository->create([
-           'title' => $request->get('title'),
-           'body' => $request->get('body'),
-           'status' => $request->get('status') ? Post::STATUS_PUBLISHED: Post::STATUS_DRAFT,
+        if ($request->input('date')) {
+            $published_at = Carbon::createFromFormat('Y-m-d H:i', $request->input('date').' '.($request->input('time') ?? now()->format('H:i')))->toDateTimeString();
+        }
+
+        $post = $this->repository->create([
+           'title' => $request->input('title'),
+           'body' => $request->input('body'),
+           'status' => $request->input('status'),
            'user_id' => auth()->id(),
-           'category_id' => $request->get('category_id'),
+           'category_id' => $request->input('category_id'),
            'published_at' => $published_at,
-            'image' => $request->file('image')->store('posts', 'public')
         ]);
+
+        if ($request->input('media_id') !== "0") {
+            $media = $this->mediaRepository->getById($request->input('media_id'));
+            $media->update([
+                'mediatable_type'   => Post::class,
+                'mediatable_id'     => $post->id
+            ]);
+        }
 
         smilify('success', "L'article a été enregistré avec succès");
 
@@ -77,18 +101,46 @@ class PostController extends Controller
     }
 
     /**
-     * Delete a post form the database.
+     * Affiche la page d'edition de l'article.
      *
-     * @param  Post $post
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  Post  $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Post $post)
+    {
+        $categories = Category::pluck('name', 'id');
+        $status = collect([
+            ['value' => Post::STATUS_DRAFT, 'name' => 'Brouillon'],
+            ['value' => Post::STATUS_PUBLISHED, 'name' => 'Publié']
+        ])->pluck('name', 'value');
+
+        return view('blog::posts.create', compact('categories', 'status', 'post'));
+    }
+
+    /**
+     * Supprimer un article de la base de données.
+     *
+     * @param  Request  $request
+     * @param  Post  $post
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        $post->delete();
+        try {
+            $post->delete();
 
-        smilify('success', "L'article a été supprimé avec succès");
+            smilify('success', "L'article a été supprimé avec succès");
 
-        return redirect()->route('admin.posts.index');
+            if ($request->isXmlHttpRequest()) {
+                return response()->json(['redirect_url' => route('admin.posts.index')]);
+            }
+
+            return redirect()->route('admin.posts.index');
+        } catch (\Exception $e) {
+            smilify('error', "Vous ne pouvez pas supprimer cet article!");
+
+            return back();
+        }
     }
 }

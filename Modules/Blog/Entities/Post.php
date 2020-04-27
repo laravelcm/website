@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Entities;
 
+use App\Traits\Mediatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Forum\Entities\Traits\RecordsActivity;
@@ -11,7 +12,7 @@ use Spatie\Searchable\SearchResult;
 
 class Post extends Model implements Searchable
 {
-    use RecordsActivity;
+    use RecordsActivity, Mediatable;
 
     const STATUS_PUBLISHED = 'PUBLISHED';
     const STATUS_DRAFT = 'DRAFT';
@@ -55,10 +56,16 @@ class Post extends Model implements Searchable
      * @var array
      */
     protected $appends = [
-        'status_classname'
+        'status_classname',
+        'preview_image_link',
     ];
 
-    public $searchableType = 'Articles';
+    /**
+     * Spatie Searcheblable type.
+     *
+     * @var string
+     */
+    public string $searchableType = 'Articles';
 
     /**
      * Boot the model.
@@ -130,6 +137,10 @@ class Post extends Model implements Searchable
             return url('storage/'. $value);
         }
 
+        if ($this->previewImage && !$value) {
+            return $this->preview_image_link;
+        }
+
         return null;
     }
 
@@ -169,6 +180,8 @@ class Post extends Model implements Searchable
     }
 
     /**
+     * Return Category of the current post.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
@@ -177,6 +190,8 @@ class Post extends Model implements Searchable
     }
 
     /**
+     * Return the Post author.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function creator()
@@ -185,6 +200,8 @@ class Post extends Model implements Searchable
     }
 
     /**
+     * Return the post propose author.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function propose()

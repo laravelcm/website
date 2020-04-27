@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="crsf-token" content="{{ csrf_token() }}">
+    <meta name="base-url" content="{{ url('/') }}">
+    <meta name="locale" content="{{ app()->getLocale() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', app_name()) - Laravel Admin</title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
@@ -18,6 +20,7 @@
     <link href="{{ mix('/css/application.css') }}" rel="stylesheet" />
     @stack('styles')
     @notifyCss
+    @livewireStyles
 </head>
 <body class="bg-gray-50 text-gray-600 leading-normal font-body">
 
@@ -31,7 +34,7 @@
             @include('partials._sidebar')
             <div class="flex flex-col w-0 flex-1 overflow-hidden">
                 <main class="flex-1 relative z-0 overflow-y-auto py-6 focus:outline-none" tabindex="0" x-data x-init="$el.focus()">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 md:px-8 lg:px-12">
                         @yield('content')
                     </div>
                 </main>
@@ -42,6 +45,7 @@
     <script src="{{ mix('/js/backend.js') }}" defer></script>
     @include("notify::messages")
     @notifyJs
+    @livewireScripts
     @stack('scripts')
 
 </body>
