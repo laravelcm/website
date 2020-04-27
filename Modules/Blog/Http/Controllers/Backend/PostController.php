@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Blog\Entities\Category;
 use Modules\Blog\Entities\Post;
-use Modules\Blog\Http\Requests\CreatePostRequest;
+use Modules\Blog\Http\Requests\PostRequest;
 use Modules\Blog\Repositories\PostRepository;
 
 class PostController extends Controller
@@ -66,11 +66,11 @@ class PostController extends Controller
     /**
      * Create a new post to the database.
      *
-     * @param  CreatePostRequest $request
+     * @param  PostRequest $request
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function store(CreatePostRequest $request)
+    public function store(PostRequest $request)
     {
         $published_at = now();
 
@@ -90,7 +90,7 @@ class PostController extends Controller
         if ($request->input('media_id') !== "0") {
             $media = $this->mediaRepository->getById($request->input('media_id'));
             $media->update([
-                'mediatable_type'   => Post::class,
+                'mediatable_type'   => $this->repository->model(),
                 'mediatable_id'     => $post->id
             ]);
         }
@@ -114,7 +114,59 @@ class PostController extends Controller
             ['value' => Post::STATUS_PUBLISHED, 'name' => 'Publié']
         ])->pluck('name', 'value');
 
-        return view('blog::posts.create', compact('categories', 'status', 'post'));
+        return view('blog::posts.edit', compact('categories', 'status', 'post'));
+    }
+
+    /**
+     * Mise a jour d'un article.
+     *
+     * @param  PostRequest  $request
+     * @param  Post  $slug
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(PostRequest $request, $slug)
+    {
+        $published_at = now();
+
+        if ($request->input('date')) {
+            $published_at = Carbon::createFromFormat('Y-m-d H:i', $request->input('date').' '.($request->input('time') ?? now()->format('H:i')))->toDateTimeString();
+        }
+
+        $this->repository->getByColumn($slug, 'slug')->update([
+            'title' => $request->input('title'),
+            'body' => $request->input('body'),
+            'status' => $request->input('status'),
+            'user_id' => auth()->id(),
+            'category_id' => $request->input('category_id'),
+            'published_at' => $published_at,
+        ]);
+
+        $post = $this->repository->getByColumn($slug, 'slug')->first();
+
+        if ($request->input('media_id') !== "0") {
+
+            // Get the current Media
+            $media = $this->mediaRepository->getById($request->input('media_id'));
+
+            if ($post->previewImage && $post->previewImage->id !== (int) $request->input('media_id')) {
+                // Remove media from the given collection
+                $post->previewImage()->delete();
+
+                $media->update([
+                    'mediatable_type'   => $this->repository->model(),
+                    'mediatable_id'     => $post->id,
+                ]);
+            }
+
+            $media->update([
+                'mediatable_type'   => $this->repository->model(),
+                'mediatable_id'     => $post->id,
+            ]);
+        }
+
+        smilify('success', "L'article a été modifié avec succès!");
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**

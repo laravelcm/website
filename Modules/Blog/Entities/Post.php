@@ -147,12 +147,11 @@ class Post extends Model implements Searchable
     /**
      * Return the current format of status.
      *
-     * @param  string  $value
      * @return string
      */
-    public function getStatusAttribute($value)
+    public function getStatus()
     {
-        switch ($value) {
+        switch ($this->status) {
             case self::STATUS_DRAFT:
                 return 'Brouillon';
             case self::STATUS_PENDING:
@@ -170,11 +169,11 @@ class Post extends Model implements Searchable
     public function getStatusClassnameAttribute()
     {
         switch ($this->status) {
-            case 'Brouillon':
+            case self::STATUS_DRAFT:
                 return 'bg-blue-100 text-blue-800';
-            case 'En Attente':
+            case self::STATUS_PENDING:
                 return 'bg-orange-100 text-orange-800';
-            case 'Publié':
+            case self::STATUS_PUBLISHED:
                 return 'bg-green-100 text-green-800';
         }
     }

@@ -85,7 +85,7 @@
                                                 <div class="ml-4 truncate">
                                                     <h3 class="text-sm leading-5 font-medium text-gray-900 truncate">{{ $post->title }}</h3>
                                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $post->status_classname }}">
-                                                        {{ $post->status }}
+                                                        {{ $post->getStatus() }}
                                                     </span>
                                                 </div>
                                             </div>
