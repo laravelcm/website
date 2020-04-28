@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Rule;
 
+use Modules\User\Rules\ChangePassword;
 use Tests\TestCase;
-use App\Rules\Auth\ChangePassword;
 
 /**
  * Class ChangePasswordRuleTest.

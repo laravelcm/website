@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Frontend;
 
+use Modules\User\Entities\User;
 use Tests\TestCase;
-use App\Models\Auth\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

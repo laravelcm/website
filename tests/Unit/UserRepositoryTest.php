@@ -2,14 +2,14 @@
 
 namespace Tests\Unit;
 
+use Modules\User\Entities\Role;
+use Modules\User\Entities\User;
+use Modules\User\Events\User\UserCreated;
+use Modules\User\Events\User\UserUpdated;
+use Modules\User\Repositories\UserRepository;
 use Tests\TestCase;
-use App\Models\Auth\Role;
-use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
-use App\Events\Backend\Auth\User\UserCreated;
-use App\Events\Backend\Auth\User\UserUpdated;
-use App\Repositories\Backend\Auth\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserRepositoryTest extends TestCase

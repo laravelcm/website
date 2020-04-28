@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Frontend;
 
+use Modules\User\Entities\Role;
+use Modules\User\Entities\User;
+use Modules\User\Events\Frontend\UserConfirmed;
+use Modules\User\Events\Frontend\UserRegistered;
+use Modules\User\Notifications\UserNeedsConfirmation;
+use Modules\User\Repositories\UserRepository;
 use Tests\TestCase;
-use App\Models\Auth\Role;
-use App\Models\Auth\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
-use App\Events\Frontend\Auth\UserConfirmed;
-use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
-use App\Repositories\Backend\Auth\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 class UserRegistrationTest extends TestCase
 {

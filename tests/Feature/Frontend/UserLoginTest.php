@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Frontend;
 
+use Modules\User\Entities\User;
+use Modules\User\Events\Frontend\UserLoggedIn;
+use Modules\User\Events\Frontend\UserLoggedOut;
 use Tests\TestCase;
-use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
-use App\Events\Frontend\Auth\UserLoggedIn;
-use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

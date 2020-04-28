@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Middleware;
 
+use Modules\User\Entities\Role;
+use Modules\User\Entities\User;
 use Tests\TestCase;
-use App\Models\Auth\Role;
-use App\Models\Auth\User;
 use Illuminate\Http\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
