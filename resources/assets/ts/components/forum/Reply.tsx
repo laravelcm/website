@@ -28,7 +28,7 @@ const Reply = ({ reply }: ReplyProps) => {
     {
       'reply-header': (user !== null && user.id === owner.id) || (user !== null && user.is_admin),
       'bg-brand-100': isBest,
-      'hover:bg-gray-50': !isBest,
+      'hover:bg-gray-100': !isBest,
     },
   );
   const message = (user !== null && user.id === owner.id)

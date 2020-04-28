@@ -5,6 +5,7 @@ namespace Modules\User\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\KeyValue;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Modules\User\Entities\User;
 use Modules\User\Http\Requests\Frontend\UpdateInformationRequest;
 use Modules\User\Http\Requests\Frontend\UpdateProfileRequest;
@@ -18,7 +19,7 @@ class ProfileController extends Controller
     protected UserRepository $userRepository;
 
     /**
-     * ProfileController constructor.
+     * ProfileController new instance.
      *
      * @param  UserRepository $userRepository
      */
@@ -28,8 +29,22 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param  UpdateInformationRequest $request
+     * Affichage du profil d'un utilisateur.
      *
+     * @param  string  $username
+     * @return \Inertia\Response
+     */
+    public function index(string $username)
+    {
+        $user = $this->userRepository->with(['activities'])->getByColumn($username, 'username');
+
+        return Inertia::render('user/Profile', [
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * @param  UpdateInformationRequest $request
      * @return mixed
      */
     public function update(UpdateInformationRequest $request)

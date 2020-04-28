@@ -72,7 +72,7 @@ const Home = () => {
             </span>
             <span className="block">
               <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Offre d'emploi</h4>
-              <p className="text-xs font-light text-gray-600 lg:text-base">
+              <p className="text-sm text-gray-500 lg:text-base">
                 Consultez les offres d'emploi les plus récentes et postulez
                 rapidement.
               </p>
@@ -95,7 +95,7 @@ const Home = () => {
             </span>
             <span className="block">
               <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Forum</h4>
-              <p className="text-xs font-light text-gray-600 lg:text-base">
+              <p className="text-sm text-gray-500 lg:text-base">
                 Rendez vous sur le forum pour discuter de tout ce qui concerne
                 le code/design.
               </p>
@@ -118,7 +118,7 @@ const Home = () => {
             </span>
             <span className="block">
               <h4 className="text-gray-700 font-bold mb-1 md:mb-2">Rejoignez-nous</h4>
-              <p className="text-xs font-light text-gray-600 lg:text-base">
+              <p className="text-sm text-gray-500 lg:text-base">
                 Rejoignez une communauté de milliers de développeurs comme vous.
               </p>
             </span>

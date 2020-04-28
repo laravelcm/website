@@ -3,7 +3,7 @@ import React from "react";
 import Job from "@/components/Job";
 
 export default () => (
-  <div className="-mx-2 w-full flex space-y-4 flex-col md:flex-row md:flex-wrap md:space-y-0">
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-md sm:max-w-none mx-auto">
     <Job
       company="Kiro'o Games"
       title="Développeur NodeJS & React"

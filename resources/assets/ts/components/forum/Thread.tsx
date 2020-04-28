@@ -46,7 +46,7 @@ const Thread = (thread: ThreadType) => {
       <div className="flex items-center justify-between mb-4 md:mb-0 md:mr-6">
         <div className="flex items-center">
           <div className={`h-15 w-15 flex items-center justify-center border-2 relative rounded-full ${solvedClass}`}>
-            <InertiaLink href={`/u/@${creator.username}`} className="h-12 w-12 relative">
+            <InertiaLink href={`/u/@${creator.username}`} className="h-12 w-12 relative text-center">
               <span className="block mb-2">
                 <img
                   className="rounded-full h-12 w-12"
@@ -67,7 +67,7 @@ const Thread = (thread: ThreadType) => {
                   </svg>
                 )}
               </span>
-              {creator.is_admin && <span className="hidden md:block text-brand-200 text-sm">Admin</span>}
+              {creator.is_admin && <span className="hidden md:block text-green-500 text-xs">Admin</span>}
             </InertiaLink>
           </div>
           <span className="text-sm text-gray-800 ml-3 font-medium md:hidden uppercase">

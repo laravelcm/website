@@ -19,7 +19,7 @@
     @include('partials.ga')
     @notifyCss
 </head>
-<body class="bg-gray-100 text-gray-600 leading-normal font-body">
+<body class="bg-gray-50 text-gray-600 leading-normal font-body">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-549VBWB" height="0" width="0" style="display:none;visibility:hidden"></iframe>

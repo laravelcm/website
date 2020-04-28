@@ -52,7 +52,7 @@ trait UserRelationship
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function activity()
+    public function activities()
     {
         return $this->hasMany(Activity::class);
     }

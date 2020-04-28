@@ -93,3 +93,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
     });
 });
+
+// Profile Routes
+Route::get('u/@{username}', [ProfileController::class, 'index'])->name('user.profile');

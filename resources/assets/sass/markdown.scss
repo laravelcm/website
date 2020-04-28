@@ -207,5 +207,6 @@
 
   > pre code, > ul li pre code, > ol li pre code {
     @apply p-4;
+    @apply rounded-md;
   }
 }

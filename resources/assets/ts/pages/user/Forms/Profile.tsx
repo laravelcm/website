@@ -58,7 +58,8 @@ export default () => {
           <div className="px-4 sm:px-0">
             <h3 className="text-lg font-medium leading-6 text-gray-900">Profil</h3>
             <p className="mt-1 text-sm leading-5 text-gray-500">
-              Ces informations seront affichées publiquement, alors faites attention à ce que vous partagez.
+              Remplissez vos informations pour que les autres développeurs puissent savoir qui vous êtes.
+              La communauté peut-être un pôle de recrutement pour plusieurs. Vos réelles informations seront un atout pour vous.
             </p>
           </div>
         </div>

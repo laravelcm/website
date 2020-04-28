@@ -41,7 +41,7 @@ const Jobs = () => {
                       style={{ direction: "ltr" }}
                     >
                       <input
-                        className="transition font-light focus:outline-none border border-transparent focus:bg-gray-100 focus:border-gray-300 placeholder-gray-600 rounded-md bg-gray-200 py-3 pr-4 pl-10 block w-full appearance-none leading-normal ds-input"
+                        className="text-base focus:outline-none focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-200 py-3 pr-4 pl-12 block w-full appearance-none transition duration-150 ease-in-out"
                         type="text"
                         placeholder="par poste, ville ou par société"
                         autoComplete="off"
@@ -49,23 +49,15 @@ const Jobs = () => {
                       />
                     </span>
                     <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
-                      <svg
-                        className="fill-current pointer-events-none text-gray-600 w-4 h-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+                      <svg className="text-gray-600 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                       </svg>
                     </div>
                   </div>
                 </div>
-                <button type="button" className="btn btn-primary py-3">
-                  Rechercher
-                </button>
+                <button type="button" className="btn btn-primary py-3">Rechercher</button>
               </form>
-              <small className="text-xs text-gray-700">
-                Plus de 1000 offres postées par environs 50 sociétes.
-              </small>
+              <small className="text-xs text-gray-700">Plus de 1000 offres postées par environs 30 sociétes.</small>
             </div>
             <div className="flex space-x-2 items-center">
               <img src={require("@/assets/brands/canal2.png")} alt="Canal 2" />
@@ -97,13 +89,11 @@ const Jobs = () => {
               <div>
                 <div className="flex justify-between items-end mb-6">
                   <h5 className="uppercase font-medium">Type d'emploi</h5>
-                  <button className="flex text-sm items-center" type="button">
-                    Effacer
-                  </button>
+                  <button className="flex text-sm items-center" type="button">Effacer</button>
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -112,7 +102,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -123,7 +113,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -132,7 +122,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -141,7 +131,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -157,7 +147,7 @@ const Jobs = () => {
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -166,7 +156,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -175,7 +165,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -186,7 +176,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -195,7 +185,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -211,7 +201,7 @@ const Jobs = () => {
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -220,7 +210,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -229,7 +219,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -245,7 +235,7 @@ const Jobs = () => {
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -254,7 +244,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -263,7 +253,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -281,7 +271,7 @@ const Jobs = () => {
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -290,7 +280,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -299,7 +289,7 @@ const Jobs = () => {
                     </label>
                   </div>
                   <div>
-                    <label className="inline-flex items-center">
+                    <label className="inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox text-brand-primary"
@@ -313,24 +303,13 @@ const Jobs = () => {
           </div>
           <div className="w-full lg:w-8/12 lg:ml-20">
             <div className="flex flex-col justify-between lg:items-center lg:flex-row mb-8">
-              <p>
-                <span className="font-medium text-gray-800">500</span> résultats
-                trouvés
-              </p>
+              <p><span className="font-medium text-gray-800">500</span> résultats trouvés.</p>
               <div className="flex items-center space-x-2">
                 <button type="button" className="flex items-center">
-                  <span className="mr-1">Rangé par :</span>
-                  <span className="text-gray-800 font-medium">
-                    Date de publication
-                  </span>
-                  <svg
-                    className="h-6 w-6 text-gray-600 ml-1"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.3 9.3a1 1 0 011.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4l3.3 3.29 3.3-3.3v.01z"
-                      fill="currentColor"
-                    />
+                  <span>Rangé par :</span>
+                  <span className="text-gray-800 font-medium mx-1">Date de publication</span>
+                  <svg className="h-5 w-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 <button
@@ -340,15 +319,8 @@ const Jobs = () => {
                   } hover:text-brand-primary shadow-smooth rounded-md h-8 w-8`}
                   onClick={() => setDisplay(`list`)}
                 >
-                  <svg
-                    className="h-6 w-6 fill-current"
-                    fill="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M17.39 13.198c.48 0 .87.378.87.844 0 .465-.39.843-.87.843H5.87a.857.857 0 01-.87-.843c0-.466.39-.844.87-.844h11.52zM5.87 6.688A.857.857 0 015 5.844C5 5.378 5.39 5 5.87 5h8.913c.48 0 .87.378.87.843 0 .467-.39.845-.87.845H5.87zm7.173 10.836c.48 0 .87.377.87.843a.857.857 0 01-.87.844H5.87a.857.857 0 01-.87-.844c0-.466.39-.843.87-.843h7.173zm6.088-8.544c.48 0 .869.377.869.843 0 .465-.39.843-.87.843H5.87A.857.857 0 015 9.823c0-.466.39-.843.87-.843h13.26z"
-                      fill="currentColor"
-                    />
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                   </svg>
                 </button>
                 <button
@@ -358,15 +330,8 @@ const Jobs = () => {
                   } hover:text-brand-primary shadow-smooth rounded-md h-8 w-8`}
                   onClick={() => setDisplay(`grid`)}
                 >
-                  <svg
-                    className="h-6 w-6 fill-current"
-                    fill="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.667 5c.644 0 1.167.523 1.167 1.167v3.5c0 .644-.523 1.167-1.167 1.167h-3.5A1.167 1.167 0 015 9.667v-3.5C5 5.523 5.523 5 6.167 5h3.5zm8.166 0C18.477 5 19 5.523 19 6.167v3.5c0 .644-.523 1.167-1.167 1.167h-3.5a1.167 1.167 0 01-1.167-1.167v-3.5c0-.644.523-1.167 1.167-1.167h3.5zm-8.166 8.167c.644 0 1.167.523 1.167 1.167v3.5c0 .644-.523 1.166-1.167 1.166h-3.5A1.167 1.167 0 015 17.834v-3.5c0-.644.523-1.167 1.167-1.167h3.5zm8.166 0c.644 0 1.167.523 1.167 1.167v3.5c0 .644-.523 1.166-1.167 1.166h-3.5a1.167 1.167 0 01-1.167-1.166v-3.5c0-.644.523-1.167 1.167-1.167h3.5z"
-                      fill="currentColor"
-                    />
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
                   </svg>
                 </button>
               </div>
