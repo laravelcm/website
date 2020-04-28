@@ -121,10 +121,10 @@ class PostController extends Controller
      * Mise a jour d'un article.
      *
      * @param  PostRequest  $request
-     * @param  Post  $slug
+     * @param  int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(PostRequest $request, $slug)
+    public function update(PostRequest $request, $id)
     {
         $published_at = now();
 
@@ -132,7 +132,7 @@ class PostController extends Controller
             $published_at = Carbon::createFromFormat('Y-m-d H:i', $request->input('date').' '.($request->input('time') ?? now()->format('H:i')))->toDateTimeString();
         }
 
-        $this->repository->getByColumn($slug, 'slug')->update([
+        $post = $this->repository->updateById($id, [
             'title' => $request->input('title'),
             'body' => $request->input('body'),
             'status' => $request->input('status'),
@@ -140,8 +140,6 @@ class PostController extends Controller
             'category_id' => $request->input('category_id'),
             'published_at' => $published_at,
         ]);
-
-        $post = $this->repository->getByColumn($slug, 'slug')->first();
 
         if ($request->input('media_id') !== "0") {
 
