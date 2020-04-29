@@ -71,7 +71,7 @@ export default () => {
                     <label htmlFor="first_name" className="block text-sm font-medium leading-5 text-gray-700">Prénom</label>
                     <input
                       id="first_name"
-                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      className="mt-2 form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       name="first_name"
                       value={values.first_name}
                       onChange={handleChange}
@@ -82,8 +82,9 @@ export default () => {
                     <label htmlFor="last_name" className="block text-sm font-medium leading-5 text-gray-700">Nom</label>
                     <input
                       id="last_name"
-                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      className="mt-2 form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       name="last_name"
+                      autoComplete="off"
                       value={values.last_name}
                       onChange={handleChange}
                     />
@@ -93,8 +94,9 @@ export default () => {
                     <label htmlFor="email_address" className="block text-sm font-medium leading-5 text-gray-700">Adresse Email</label>
                     <input
                       id="email_address"
-                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm disabled:bg-gray-100 cursor-not-allowed focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      className="mt-2 form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 disabled:bg-gray-100 cursor-not-allowed focus:outline-none transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       value={user.email}
+                      autoComplete="off"
                       disabled
                     />
                   </div>
@@ -103,9 +105,10 @@ export default () => {
                     <label htmlFor="street_address" className="block text-sm font-medium leading-5 text-gray-700">Adresse complète</label>
                     <input
                       id="street_address"
-                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      className="mt-2 form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       name="address"
                       value={values.address}
+                      autoComplete="off"
                       onChange={handleChange}
                     />
                   </div>
@@ -116,7 +119,7 @@ export default () => {
                       value={locations.country}
                       onChange={(val) => handleChangeLocation('country', val)}
                       name="country"
-                      classes="mt-2 block form-select w-full py-2 px-3 py-0 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      classes="mt-2 block form-select w-full py-2 px-3 py-0 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       defaultOptionLabel="Selectionner le pays"
                     />
                   </div>
@@ -128,7 +131,7 @@ export default () => {
                       value={locations.state}
                       name="state"
                       onChange={(val) => handleChangeLocation('state', val)}
-                      classes="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      classes="mt-2 form-select flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       defaultOptionLabel="Selectionner"
                     />
                   </div>
@@ -137,8 +140,9 @@ export default () => {
                     <label htmlFor="city" className="block text-sm font-medium leading-5 text-gray-700">Ville</label>
                     <input
                       id="city"
-                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      className="mt-2 form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       name="city"
+                      autoComplete="off"
                       value={values.city}
                       onChange={handleChange}
                     />
@@ -148,8 +152,9 @@ export default () => {
                     <label htmlFor="postal_code" className="block text-sm font-medium leading-5 text-gray-700">ZIP / Postal</label>
                     <input
                       id="postal_code"
-                      className="mt-2 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                      className="mt-2 form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       name="postal_code"
+                      autoComplete="off"
                       value={values.postal_code}
                       onChange={handleChange}
                     />

@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export default ({ child, description }: LayoutProps) => {
   const summary = description
-    || `Accédez à des articles, des tutoriels, et au forum. Connectez-vous à votre compte pour accéder
+    || `Accédez à des articles, des tutoriels et au forum. Connectez-vous à votre compte pour accéder
                                   à plusieurs ressources pour les développeurs. Vous pouvez également gagner des lots et surprises
                                   en débloquant des badges et en rejoignant la communauté.`;
   return (
