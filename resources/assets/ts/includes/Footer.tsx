@@ -16,16 +16,26 @@ export default () => (
         {` `}
         <span className="text-blue-500">programmation.</span>
       </p>
-      <form action="#" className="lg:flex">
+      <form
+        action="https://laravelcm.us4.list-manage.com/subscribe/post?u=0642d391e4785535c232a8c66&amp;id=6ff87af677"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        className="sm:flex relative"
+        target="_blank"
+        noValidate
+      >
         <input
+          aria-label="Email"
+          value=""
+          name="EMAIL"
+          id="mce-EMAIL"
           type="email"
-          className="bg-gray-200 rounded-md py-3 px-5 transition focus:outline-none border border-transparent focus:bg-gray-100 focus:border-gray-200 placeholder-gray-600 w-full mb-3 lg:w-2/3 lg:mb-0"
+          className="rounded-md py-3 px-5 focus:outline-none border border-gray-100 bg-gray-200 focus:bg-gray-100 focus:border-green-200 focus:shadow-outline-brand placeholder-gray-600 w-full mb-3 lg:w-2/3 lg:mb-0 transition duration-150 ease-in-out"
           placeholder="Entrer votre adresse email"
         />
-        <button
-          type="submit"
-          className="btn btn-primary font-medium w-full p-3 lg:ml-2 lg:w-1/3"
-        >
+        <input type="hidden" name="b_0642d391e4785535c232a8c66_6ff87af677" tabIndex={-1} value="" />
+        <button type="submit" className="btn btn-primary font-medium w-full p-3 lg:ml-2 lg:w-1/3">
           S'enregistrer
         </button>
       </form>
