@@ -35,7 +35,7 @@ Communauté sur Meetup: A venir
 
 ## Caracteristiques Serveur
 Pour pouvoir lancer Laravel Cameroun, vous devez répondre aux exigences suivantes:
-- PHP > 7.1
+- PHP >= 7.4
 - PHP Extensions: PDO, cURL, Mbstring, Tokenizer, Mcrypt, XML, GD
 - Node.js > 6.0
 - Composer > 1.0.0
