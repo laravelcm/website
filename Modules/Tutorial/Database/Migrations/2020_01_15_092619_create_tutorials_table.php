@@ -16,13 +16,16 @@ class CreateTutorialsTable extends Migration
         Schema::create('tutorial_tutorials', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->text('summary')->nullable();
+            $table->string('slug')->nullable()->unique();
             $table->longText('body');
-            $table->string('video_url');
+            $table->text('summary')->nullable();
+            $table->string('provider_id')->nullable();
+            $table->string('provider')->nullable();
+            $table->string('video_link')->nullable();
             $table->string('image')->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');
             $table->boolean('featured')->default(0);
+            $table->unsignedInteger('visits')->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
             $table->timestamp('published_at')->nullable();
