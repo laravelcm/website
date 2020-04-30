@@ -1,6 +1,7 @@
 // Global Imports
 import axios from "axios";
 import "alpinejs";
+import flatpickr from "flatpickr";
 
 // React Components
 import '@/admin/components/Dropzone/Simple';
@@ -29,3 +30,14 @@ if (element) {
     });
   });
 }
+
+flatpickr(".timepicker", {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true
+});
+
+flatpickr(".datepicker", {
+  minDate: "today"
+});

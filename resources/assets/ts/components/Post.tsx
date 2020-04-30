@@ -22,10 +22,15 @@ export default ({ post }: Props) => (
         className="object-cover w-full h-45 lg:h-40"
         alt={post.title}
       />
-      <span className="p-4 flex flex-col justify-between">
-        <span className="h-10 flex text-truncate">
-          <h4 className="text-sm text-gray-700 font-medium text-wrap">{post.title}</h4>
-        </span>
+      <div className="p-4 flex flex-col justify-between">
+        <div className="space-y-1">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-green-100 text-green-800">
+            {post.category.name}
+          </span>
+          <span className="h-10 flex text-truncate">
+            <h4 className="text-sm text-gray-700 font-medium text-wrap">{post.title}</h4>
+          </span>
+        </div>
         <span className="flex mt-6 items-center">
           <img
             src={post.creator?.picture}
@@ -37,7 +42,7 @@ export default ({ post }: Props) => (
             <small className="text-xs text-gray-400 capitalize">Le {format(new Date(post.published_at), "dd MMMM, y", { locale: fr })}</small>
           </span>
         </span>
-      </span>
+      </div>
     </InertiaLink>
   </div>
 );
