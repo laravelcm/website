@@ -2,10 +2,8 @@
 
 namespace Modules\User\Repositories\Frontend;
 
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Modules\Core\Exceptions\GeneralException;
 use Modules\Core\Repositories\BaseRepository;
 use Modules\User\Entities\SocialAccount;

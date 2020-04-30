@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\KeyValue;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Modules\User\Entities\User;
 use Modules\User\Http\Requests\Frontend\UpdateInformationRequest;
 use Modules\User\Http\Requests\Frontend\UpdateProfileRequest;
 use Modules\User\Repositories\Frontend\UserRepository;
@@ -36,10 +35,23 @@ class ProfileController extends Controller
      */
     public function index(string $username)
     {
-        $user = $this->userRepository->with(['activities', 'keyValues'])->getByColumn($username, 'username');
+        $user = $this->userRepository->with(['activities', 'keyValues', 'replies'])->getByColumn($username, 'username');
+
+        if (!$user) {
+            abort('404', "Le profile de cet utilisateur n'est plus disponible ou a été supprimé.");
+        }
+
+        $bestReplies = 0;
+
+        foreach ($user->replies as $reply) {
+            if ($reply->isBest()) {
+                $bestReplies += 1;
+            }
+        }
 
         return Inertia::render('user/Profile', [
-            'user' => $user
+            'user' => $user,
+            'bestReplies' => $bestReplies
         ]);
     }
 
@@ -49,38 +61,30 @@ class ProfileController extends Controller
      */
     public function update(UpdateInformationRequest $request)
     {
-        $result = $this->userRepository->update(
+        $user = $this->userRepository->updateById(
             $request->user()->id,
             $request->only('first_name', 'last_name'),
         );
 
-        if ($result) {
-            $user = $this->userRepository->getById(auth()->id());
-
-            foreach ($request->except(['first_name', 'last_name']) as $key => $value) {
-                if(!is_null($user->GetKeyValue($key))){
-                    KeyValue::where('keyvalue_id', '=', $user->id)
-                        ->where('keyvalue_type', '=', User::class)
-                        ->where('key', '=', $key)
-                        ->update(['value' => $value]);
-                } else {
-                    KeyValue::create([
-                        'key'   => $key,
-                        'value' => $value,
-                        'keyvalue_id'   => $user->id,
-                        'keyvalue_type' => User::class,
-                    ]);
-                }
+        foreach ($request->except(['first_name', 'last_name']) as $key => $value) {
+            if(!is_null($user->GetKeyValue($key))){
+                KeyValue::where('keyvalue_id', '=', $user->id)
+                    ->where('keyvalue_type', '=', $this->userRepository->model())
+                    ->where('key', '=', $key)
+                    ->update(['value' => $value]);
+            } else {
+                KeyValue::create([
+                    'key'   => $key,
+                    'value' => $value,
+                    'keyvalue_id'   => $user->id,
+                    'keyvalue_type' => $this->userRepository->model(),
+                ]);
             }
-
-            return back()
-                ->with('type', 'data')
-                ->with('success', 'Vos informations ont été mise à jour avec succès.');
         }
 
         return back()
             ->with('type', 'data')
-            ->with('error', 'Impossible de mettre à jour vos informations.');
+            ->with('success', 'Vos informations ont été mise à jour avec succès.');
     }
 
     /**
@@ -101,13 +105,13 @@ class ProfileController extends Controller
 
             if(!is_null($user->GetKeyValue('biography'))){
                 KeyValue::where('keyvalue_id', '=', $user->id)
-                    ->where('keyvalue_type', '=', User::class)
+                    ->where('keyvalue_type', '=', $this->userRepository->model())
                     ->where('key', '=', 'biography')
                     ->update(['value' => $request->input('biography')]);
             } else {
                 KeyValue::create([
                     'keyvalue_id' => $user->id,
-                    'keyvalue_type' => User::class,
+                    'keyvalue_type' => $this->userRepository->model(),
                     'key' => 'biography',
                     'value' => $request->input('biography')
                 ]);

@@ -48,6 +48,16 @@ trait UserRelationship
     }
 
     /**
+     * Get all user replies.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    /**
      * Get all activity for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
