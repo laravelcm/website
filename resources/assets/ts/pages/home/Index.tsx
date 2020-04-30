@@ -28,7 +28,7 @@ const Home = () => {
         />
         <div className="container">
           <div className="w-full lg:w-7/12">
-            <h1 className="text-brand-primary text-3xl mb-6 lg:text-4xl lg:mb-8">Laravel Cameroun</h1>
+            <h1 className="text-brand-primary font-semibold text-3xl mb-6 lg:text-4xl lg:mb-8">Laravel Cameroun</h1>
             <p className="text-sm mb-10 lg:w-140 lg:text-lg lg:mb-12">
               Bienvenue sur le site de la communauté des développeurs PHP et
               Laravel du Cameroun, le plus gros rassemblement de développeurs au

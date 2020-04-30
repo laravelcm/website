@@ -31,7 +31,7 @@ export default () => (
           name="EMAIL"
           id="mce-EMAIL"
           type="email"
-          className="rounded-md py-3 px-5 focus:outline-none border border-gray-100 bg-gray-200 focus:bg-gray-100 focus:border-green-200 focus:shadow-outline-brand placeholder-gray-600 w-full mb-3 lg:w-2/3 sm:mb-0 transition duration-150 ease-in-out"
+          className="rounded-md py-3 px-5 focus:outline-none border border-gray-300 bg-gray-50 focus:border-brand-200 focus:shadow-outline-brand placeholder-gray-500 shadow-sm focus:outline-none focus:placeholder-gray-400 w-full mb-3 lg:w-2/3 sm:mb-0 transition duration-150 ease-in-out"
           placeholder="Entrer votre adresse email"
         />
         <input type="hidden" name="b_0642d391e4785535c232a8c66_6ff87af677" tabIndex={-1} value="" />

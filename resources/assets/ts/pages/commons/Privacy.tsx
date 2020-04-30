@@ -111,7 +111,7 @@ const Privacy = () => (
             <p>
               Si vous pensez que nous ne respectons pas cette politique de
               confidentialité, vous devez nous contacter immédiatement par
-              e-mail à help@laravelcm.com.
+              e-mail à <span className="text-brand-primary">support@laravelcm.com</span>.
             </p>
           </div>
         </div>

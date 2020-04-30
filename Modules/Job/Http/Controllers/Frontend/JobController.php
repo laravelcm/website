@@ -16,4 +16,14 @@ class JobController extends Controller
     {
         return Inertia::render('jobs/Index');
     }
+
+    /**
+     * Retourne la page de coming soon.
+     *
+     * @return \Inertia\Response
+     */
+    public function soon()
+    {
+        return Inertia::render('jobs/Soon');
+    }
 }

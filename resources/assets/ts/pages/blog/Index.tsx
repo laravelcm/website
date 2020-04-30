@@ -21,7 +21,7 @@ const Blog = () => {
       <div className="bg-white py-6">
         <div className="container">
           <div className="w-full">
-            <h1 className="text-brand-primary text-xl mb-3">Articles</h1>
+            <h1 className="text-brand-primary text-xl mb-3 font-semibold">Articles</h1>
             <p className="text-sm text-gray-600 lg:w-116">
               Lisez quelques-uns des derniers articles liés au développement et
               à la conception Web.
@@ -30,14 +30,6 @@ const Blog = () => {
           <hr className="w-full bg-gray-200 mt-10 mb-6" />
           <div className="text-center overflow-hidden overflow-x-scroll hidden-scrollbar">
             <ul className="text-sm inline-flex">
-              <li className="inline-block mr-6">
-                <InertiaLink
-                  href="/blog?popular"
-                  className="text-gray-700 hover:text-gray-600 font-semibold"
-                >
-                  Populaires
-                </InertiaLink>
-              </li>
               {
                 categories.map((category: { id: number; name: string; slug: string }) => (
                   <li className="inline-block mr-6" key={category.id}>

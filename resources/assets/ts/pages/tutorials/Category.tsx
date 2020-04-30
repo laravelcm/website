@@ -32,7 +32,7 @@ const Tutorials = () => {
             alt="stacks"
           />
           <div className="w-full lg:w-120">
-            <h1 className="text-brand-primary text-lg mb-4 lg:text-3xl lg:mb-8">Tous les tutoriels</h1>
+            <h1 className="text-brand-primary text-lg mb-4 lg:text-3xl lg:mb-8 font-semibold">Tous les tutoriels</h1>
             <p className="text-sm">
               Vidéos sur le développement Web (Front et Back-end) et de Design
               Web (UI/UX) pour vous aidez à faire passer vos compétences au
