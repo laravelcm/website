@@ -11,6 +11,4 @@
 |
 */
 
-Route::prefix('tutorials')->group(function() {
-
-});
+Route::resource('tutorials', 'TutorialController');

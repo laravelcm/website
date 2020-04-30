@@ -6,6 +6,7 @@ use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
 use Modules\Core\Sidebar\AbstractAdminSidebar;
+use Modules\Tutorial\Entities\Tutorial;
 
 class RegisterTutorialSidebar extends AbstractAdminSidebar
 {
@@ -17,14 +18,19 @@ class RegisterTutorialSidebar extends AbstractAdminSidebar
      */
     public function extendWith(Menu $menu)
     {
-        $menu->group('', function (Group $group) {
+        $count = Tutorial::where('status', '<>', Tutorial::STATUS_PUBLISHED)->count();
+
+        $menu->group('', function (Group $group) use ($count) {
             $group->weight(1);
             $group->authorize(
                 $this->auth->user()->isAdmin()
             );
-            $group->item("Tutoriels", function (Item $item) {
+            $group->item("Tutoriels", function (Item $item) use ($count) {
                 $item->weight(3);
-                // $item->route('admin.posts.index');
+                $item->route('admin.tutorials.index');
+                if ($count > 0) {
+                    $item->badge($count);
+                }
                 $item->icon('
                     <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />

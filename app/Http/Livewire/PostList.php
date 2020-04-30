@@ -11,11 +11,6 @@ class PostList extends Component
     use WithPagination;
 
     /**
-     * @var PostRepository
-     */
-    protected $repository;
-
-    /**
      * @var string
      */
     public $search = '';

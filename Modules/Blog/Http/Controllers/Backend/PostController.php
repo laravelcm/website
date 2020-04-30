@@ -42,9 +42,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $records = $this->repository->paginate(15);
-
-        return view('blog::posts.index', compact('records'));
+        return view('blog::posts.index');
     }
 
     /**

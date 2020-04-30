@@ -114,6 +114,23 @@ class Tutorial extends Model implements Searchable
     }
 
     /**
+     * @param  string  $value
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    public function getImageAttribute($value)
+    {
+        if ($value) {
+            return url('storage/'. $value);
+        }
+
+        if ($this->previewImage && !$value) {
+            return $this->preview_image_link;
+        }
+
+        return null;
+    }
+
+    /**
      * Return the current format of status.
      *
      * @return string

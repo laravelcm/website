@@ -4,7 +4,9 @@ namespace Modules\Tutorial\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Inertia\Inertia;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Tutorial\Entities\Category;
 use Modules\Tutorial\Events\Handlers\RegisterTutorialSidebar;
 
 class TutorialServiceProvider extends ServiceProvider
@@ -26,6 +28,12 @@ class TutorialServiceProvider extends ServiceProvider
         if (class_exists('Breadcrumbs')) {
             require __DIR__ . '/../Routes/breadcrumbs.php';
         }
+
+        Inertia::share('tutorial_categories', function () {
+            return \Cache::rememberForever('tutorial_categories', function () {
+                return Category::all();
+            });
+        });
     }
 
     /**
@@ -61,7 +69,7 @@ class TutorialServiceProvider extends ServiceProvider
             __DIR__.'/../Config/config.php' => config_path('tutorials.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'tutorials'
+            __DIR__.'/../Config/config.php', 'tutorial'
         );
     }
 
@@ -82,7 +90,7 @@ class TutorialServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/tutorials';
-        }, \Config::get('view.paths')), [$sourcePath]), 'tutorials');
+        }, \Config::get('view.paths')), [$sourcePath]), 'tutorial');
     }
 
     /**
@@ -95,9 +103,9 @@ class TutorialServiceProvider extends ServiceProvider
         $langPath = resource_path('lang/modules/tutorials');
 
         if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'tutorials');
+            $this->loadTranslationsFrom($langPath, 'tutorial');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'tutorials');
+            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'tutorial');
         }
     }
 
