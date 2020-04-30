@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62f941c39981dc135488a683b10676d7",
+    "content-hash": "e05670ca26347dd92e050b6fed3cf439",
     "packages": [
+        {
+            "name": "alaouy/youtube",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alaouy/Youtube.git",
+                "reference": "5318c07f8909e006e9f6fd51195ee0d729babedc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alaouy/Youtube/zipball/5318c07f8909e006e9f6fd51195ee0d729babedc",
+                "reference": "5318c07f8909e006e9f6fd51195ee0d729babedc",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alaouy\\Youtube\\YoutubeServiceProvider"
+                    ],
+                    "aliases": {
+                        "Youtube": "Alaouy\\Youtube\\Facades\\Youtube"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Alaouy\\Youtube\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mustapha Alaouy",
+                    "email": "alaouym@gmail.com"
+                }
+            ],
+            "description": "Laravel PHP Facade/Wrapper for the Youtube Data API v3",
+            "keywords": [
+                "alaouy",
+                "api",
+                "laravel",
+                "video",
+                "youtube"
+            ],
+            "time": "2018-06-14T14:20:59+00:00"
+        },
         {
             "name": "albertcht/invisible-recaptcha",
             "version": "v1.9.4",
