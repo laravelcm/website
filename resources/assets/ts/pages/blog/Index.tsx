@@ -54,7 +54,7 @@ const Blog = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-12 md:px-4">
+      <div className="container mt-12">
         <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 xl:grid-cols-4 lg:max-w-none sm:mb-18">
           {data.map((post: PostType) => <Post key={post.id} post={post} />)}
         </div>

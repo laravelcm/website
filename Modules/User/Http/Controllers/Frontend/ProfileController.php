@@ -36,7 +36,7 @@ class ProfileController extends Controller
      */
     public function index(string $username)
     {
-        $user = $this->userRepository->with(['activities'])->getByColumn($username, 'username');
+        $user = $this->userRepository->with(['activities', 'keyValues'])->getByColumn($username, 'username');
 
         return Inertia::render('user/Profile', [
             'user' => $user

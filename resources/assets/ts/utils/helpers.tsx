@@ -147,3 +147,16 @@ export const groupBy = (xs: Array<any>, key: string) => xs.reduce((rv, x) => {
   (rv[x[key]] = rv[x[key]] || []).push(x);
   return rv;
 }, {});
+
+/**
+ * Get a value of and array.
+ *
+ * @param values
+ * @param key
+ * @return string
+ */
+export const profile = (values: Array<any>, key: string) => {
+  const item = values.map((value) => (value.key === key ? value.value : '-'));
+
+  return item[0];
+};

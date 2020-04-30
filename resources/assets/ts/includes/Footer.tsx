@@ -21,7 +21,7 @@ export default () => (
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
-        className="sm:flex relative"
+        className="sm:flex items-center relative"
         target="_blank"
         noValidate
       >
@@ -31,11 +31,11 @@ export default () => (
           name="EMAIL"
           id="mce-EMAIL"
           type="email"
-          className="rounded-md py-3 px-5 focus:outline-none border border-gray-100 bg-gray-200 focus:bg-gray-100 focus:border-green-200 focus:shadow-outline-brand placeholder-gray-600 w-full mb-3 lg:w-2/3 lg:mb-0 transition duration-150 ease-in-out"
+          className="rounded-md py-3 px-5 focus:outline-none border border-gray-100 bg-gray-200 focus:bg-gray-100 focus:border-green-200 focus:shadow-outline-brand placeholder-gray-600 w-full mb-3 lg:w-2/3 sm:mb-0 transition duration-150 ease-in-out"
           placeholder="Entrer votre adresse email"
         />
         <input type="hidden" name="b_0642d391e4785535c232a8c66_6ff87af677" tabIndex={-1} value="" />
-        <button type="submit" className="btn btn-primary font-medium w-full p-3 lg:ml-2 lg:w-1/3">
+        <button type="submit" className="btn btn-primary font-medium w-full p-3 sm:ml-4 lg:w-1/3">
           S'enregistrer
         </button>
       </form>
@@ -182,7 +182,7 @@ export default () => (
         </svg>{" "}
         par{" "}
         <a
-          href="https://arthurmonney.com"
+          href="https://twitter.com/MonneyArthur"
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium hover:text-gray-800"
@@ -205,7 +205,7 @@ export default () => (
           rel="noopener noreferrer"
           className="font-medium hover:text-gray-800"
         >
-          DigitalOcean.
+          Digital Ocean.
         </a>
       </p>
     </div>
