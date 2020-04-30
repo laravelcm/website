@@ -55,6 +55,12 @@ class HomeController extends Controller
             ->get()
             ->each(fn($thread) => $thread->title = Str::limit($thread->title, 30));
 
+        $popularTutorials = $this->tutorialRepository
+            ->orderBy('visits', 'desc')
+            ->publish()
+            ->limit(4)
+            ->get();
+
         $posts = $this->postRepository
             ->orderBy('published_at', 'desc')
             ->publish()
@@ -70,7 +76,8 @@ class HomeController extends Controller
         return Inertia::render('home/Index', [
             'threads' => $threads,
             'posts' => $posts,
-            'tutorials' => $tutorials
+            'tutorials' => $tutorials,
+            'popularTutorials' => $popularTutorials
         ]);
     }
 

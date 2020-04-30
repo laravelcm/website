@@ -9,7 +9,12 @@ import Post from "@/components/Post";
 import { PostType, ThreadType, TutorialType } from "@/utils/types";
 
 const Home = () => {
-  const { threads, posts, tutorials } = usePage();
+  const {
+    threads,
+    posts,
+    tutorials,
+    popularTutorials,
+  } = usePage();
 
   return (
     <>
@@ -137,27 +142,10 @@ const Home = () => {
         <div className="container">
           <div className="space-y-8 lg:space-y-0 lg:space-x-6 lg:flex flex-grow">
             <div className="w-full lg:w-1/3">
-              <h4 className="font-medium text-lg mb-4 lg:mb-8">Dernières offres d'emploi</h4>
+              <h4 className="font-medium text-lg mb-4">Dernières offres d'emploi</h4>
               <ul>
-                <li className="py-3">
-                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
-                    <span className="mr-2">
-                      <svg className="h-3 w-3 text-white" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M6.758 5.612a.415.415 0 000 .55c.572.629.572 1.653 0 2.283l-3.004 3.307c-.572.63-1.502.63-2.074 0l-.452-.498c-.572-.63-.572-1.653 0-2.283l3.004-3.307a.415.415 0 000-.55.33.33 0 00-.499 0L.73 8.422a2.505 2.505 0 00-.637 1.69c0 .64.224 1.24.637 1.692l.452.497c.423.466.98.699 1.536.699s1.113-.233 1.536-.699l3.004-3.307c.846-.932.846-2.45 0-3.382a.33.33 0 00-.499 0z"
-                          fill="currentColor"
-                        />
-                        <path
-                          d="M12.457 1.196L12.005.7c-.847-.932-2.227-.932-3.073 0L5.927 4.006c-.847.931-.847 2.45 0 3.381a.33.33 0 00.499 0 .415.415 0 000-.549c-.573-.63-.573-1.653 0-2.283L9.43 1.248a1.375 1.375 0 012.075 0l.452.498c.572.63.572 1.653 0 2.283L8.953 7.336a.415.415 0 000 .549A.34.34 0 009.2 8a.33.33 0 00.248-.115l3.005-3.307c.41-.451.638-1.052.638-1.69 0-.64-.225-1.24-.635-1.692z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-sm">Creating a new project</span>
-                  </InertiaLink>
-                </li>
-                <li className="py-3">
-                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
+                <li className="py-2">
+                  <InertiaLink href="/jobs" className="flex items-center hover:text-gray-200">
                     <span className="mr-2">
                       <svg
                         className="h-3 w-3 text-white"
@@ -174,115 +162,39 @@ const Home = () => {
                         />
                       </svg>
                     </span>
-                    <span className="text-sm">Export assets & images as a zip file</span>
-                  </InertiaLink>
-                </li>
-                <li className="py-3">
-                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
-                    <span className="mr-2">
-                      <svg className="h-3 w-3 text-white" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M6.758 5.612a.415.415 0 000 .55c.572.629.572 1.653 0 2.283l-3.004 3.307c-.572.63-1.502.63-2.074 0l-.452-.498c-.572-.63-.572-1.653 0-2.283l3.004-3.307a.415.415 0 000-.55.33.33 0 00-.499 0L.73 8.422a2.505 2.505 0 00-.637 1.69c0 .64.224 1.24.637 1.692l.452.497c.423.466.98.699 1.536.699s1.113-.233 1.536-.699l3.004-3.307c.846-.932.846-2.45 0-3.382a.33.33 0 00-.499 0z"
-                          fill="currentColor"
-                        />
-                        <path
-                          d="M12.457 1.196L12.005.7c-.847-.932-2.227-.932-3.073 0L5.927 4.006c-.847.931-.847 2.45 0 3.381a.33.33 0 00.499 0 .415.415 0 000-.549c-.573-.63-.573-1.653 0-2.283L9.43 1.248a1.375 1.375 0 012.075 0l.452.498c.572.63.572 1.653 0 2.283L8.953 7.336a.415.415 0 000 .549A.34.34 0 009.2 8a.33.33 0 00.248-.115l3.005-3.307c.41-.451.638-1.052.638-1.69 0-.64-.225-1.24-.635-1.692z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-sm">Deploy a project to the cloud with aws</span>
-                  </InertiaLink>
-                </li>
-                <li className="py-3">
-                  <InertiaLink
-                    href="/"
-                    className="flex items-center hover:text-gray-200"
-                  >
-                    <span className="mr-2">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        viewBox="0 0 14 14"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6.758 5.612a.415.415 0 000 .55c.572.629.572 1.653 0 2.283l-3.004 3.307c-.572.63-1.502.63-2.074 0l-.452-.498c-.572-.63-.572-1.653 0-2.283l3.004-3.307a.415.415 0 000-.55.33.33 0 00-.499 0L.73 8.422a2.505 2.505 0 00-.637 1.69c0 .64.224 1.24.637 1.692l.452.497c.423.466.98.699 1.536.699s1.113-.233 1.536-.699l3.004-3.307c.846-.932.846-2.45 0-3.382a.33.33 0 00-.499 0z"
-                          fill="currentColor"
-                        />
-                        <path
-                          d="M12.457 1.196L12.005.7c-.847-.932-2.227-.932-3.073 0L5.927 4.006c-.847.931-.847 2.45 0 3.381a.33.33 0 00.499 0 .415.415 0 000-.549c-.573-.63-.573-1.653 0-2.283L9.43 1.248a1.375 1.375 0 012.075 0l.452.498c.572.63.572 1.653 0 2.283L8.953 7.336a.415.415 0 000 .549A.34.34 0 009.2 8a.33.33 0 00.248-.115l3.005-3.307c.41-.451.638-1.052.638-1.69 0-.64-.225-1.24-.635-1.692z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-sm">Create a team and manage access tokens</span>
+                    <span className="text-sm">Coming Soon</span>
                   </InertiaLink>
                 </li>
               </ul>
             </div>
             <div className="w-full lg:w-1/3">
-              <h4 className="font-medium text-lg mb-4 lg:mb-8">Tutoriels populaires</h4>
+              <h4 className="font-medium text-lg mb-4">Tutoriels populaires</h4>
               <ul>
-                <li className="py-3">
-                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
-                    <span className="mr-2">
-                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-sm">Design and build a web app from scratch</span>
-                  </InertiaLink>
-                </li>
-                <li className="py-3">
-                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
-                    <span className="mr-2">
-                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-sm">How to use sketch symbols</span>
-                  </InertiaLink>
-                </li>
-                <li className="py-3">
-                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
-                    <span className="mr-2">
-                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-sm">Node authentication with passport</span>
-                  </InertiaLink>
-                </li>
-                <li className="py-3">
-                  <InertiaLink href="/" className="flex items-center hover:text-gray-200">
-                    <span className="mr-2">
-                      <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span className="text-sm">React Native to do app</span>
-                  </InertiaLink>
-                </li>
+                {
+                  popularTutorials.map((popular: TutorialType) => (
+                    <li className="py-2">
+                      <InertiaLink href={`/tutorial/${popular.slug}`} className="flex items-center hover:text-gray-200">
+                        <span className="mr-2">
+                          <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M9.346.97a3.308 3.308 0 014.682 0c.627.624.972 1.455.972 2.34 0 .886-.345 1.717-.972 2.344l-8.584 8.582a.423.423 0 01-.607 0l-3.459-3.459-.444 3.286 2.276-.306a.432.432 0 11.115.856l-2.838.384C.467 15 .448 15 .429 15a.436.436 0 01-.303-.128.428.428 0 01-.122-.361L.64 9.799a.43.43 0 01.122-.246L9.346.971zm1.608 2.497L9.512 2.026 1.68 9.86l1.441 1.442 7.834-7.835zm-5.81 9.855l-1.41-1.41 7.834-7.834 1.409 1.41-7.834 7.834zm4.985-11.9l3.449 3.449c.36-.438.56-.982.56-1.56 0-.656-.253-1.272-.717-1.733A2.442 2.442 0 0011.69.862c-.575 0-1.122.198-1.56.56z"
+                              fill="currentColor"
+                            />
+                          </svg>
+                        </span>
+                        <span className="text-sm">{popular.title}</span>
+                      </InertiaLink>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
             <div className="w-full lg:w-1/3">
-              <h4 className="font-medium text-lg mb-4 lg:mb-8">Les derniers sujets du Forum</h4>
+              <h4 className="font-medium text-lg mb-4">Les derniers sujets du Forum</h4>
               <ul>
                 {
                   threads.map((thread: ThreadType) => (
-                    <li key={thread.id} className="py-3">
+                    <li key={thread.id} className="py-2">
                       <InertiaLink
                         href={thread.path}
                         className="flex items-center hover:text-gray-200"
