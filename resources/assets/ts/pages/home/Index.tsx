@@ -6,10 +6,10 @@ import Seo from "@/includes/Seo";
 
 import Tutorial from "@/components/Tutorial";
 import Post from "@/components/Post";
-import { PostType, ThreadType } from "@/utils/types";
+import { PostType, ThreadType, TutorialType } from "@/utils/types";
 
 const Home = () => {
-  const { threads, posts } = usePage();
+  const { threads, posts, tutorials } = usePage();
 
   return (
     <>
@@ -126,10 +126,7 @@ const Home = () => {
         </div>
         <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers tutoriels</h2>
         <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">
-          <Tutorial
-            image="https://cdn.devdojo.com/posts/images/June2019/laravel-on-digital-ocean.jpg?auto=compress&w=228&h=128&dpr=2"
-            title="Laravel App on Digital Ocean Ubuntu 19.04 droplet (Step by Step Guide)"
-          />
+          {tutorials.map((tutorial: TutorialType) => <Tutorial key={tutorial.id} tutorial={tutorial} />)}
         </div>
         <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers articles</h2>
         <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">

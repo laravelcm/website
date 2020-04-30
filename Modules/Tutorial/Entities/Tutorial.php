@@ -2,6 +2,7 @@
 
 namespace Modules\Tutorial\Entities;
 
+use Alaouy\Youtube\Facades\Youtube;
 use App\Traits\Mediatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -125,6 +126,16 @@ class Tutorial extends Model implements Searchable
 
         if ($this->previewImage && !$value) {
             return $this->preview_image_link;
+        }
+
+        try {
+            $video = Youtube::getVideoInfo($this->provider_id);
+
+            if ($video) {
+                return $video->snippet->thumbnails->medium->url;
+            }
+        } catch (\Exception $exception) {
+            return null;
         }
 
         return null;

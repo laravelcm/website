@@ -12,5 +12,5 @@
 */
 
 Route::get('/tutorials', 'TutorialController@index');
-Route::get('/tutorials/{category}', 'TutorialController@category');
+Route::get('/tutorial/category/{category}', 'TutorialController@category');
 Route::get('/tutorial/{slug}', 'TutorialController@show');

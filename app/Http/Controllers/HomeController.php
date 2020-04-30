@@ -7,9 +7,9 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
-use Modules\Blog\Entities\Post;
 use Modules\Blog\Repositories\PostRepository;
 use Modules\Forum\Repositories\ThreadRepository;
+use Modules\Tutorial\Repositories\TutorialRepository;
 
 class HomeController extends Controller
 {
@@ -24,15 +24,22 @@ class HomeController extends Controller
     protected PostRepository $postRepository;
 
     /**
-     * HomeController constructor.
-     *
-     * @param  ThreadRepository $threadRepository
-     * @param  PostRepository $postRepository
+     * @var TutorialRepository
      */
-    public function __construct(ThreadRepository $threadRepository, PostRepository $postRepository)
+    protected TutorialRepository $tutorialRepository;
+
+    /**
+     * HomeController new instance.
+     *
+     * @param  ThreadRepository  $threadRepository
+     * @param  PostRepository  $postRepository
+     * @param  TutorialRepository  $tutorialRepository
+     */
+    public function __construct(ThreadRepository $threadRepository, PostRepository $postRepository, TutorialRepository $tutorialRepository)
     {
         $this->threadRepository = $threadRepository;
         $this->postRepository = $postRepository;
+        $this->tutorialRepository = $tutorialRepository;
     }
 
     /**
@@ -48,14 +55,22 @@ class HomeController extends Controller
             ->get()
             ->each(fn($thread) => $thread->title = Str::limit($thread->title, 30));
 
-        $posts = Post::publish()
-            ->orderBy('created_at', 'desc')
-            ->limit(12)
+        $posts = $this->postRepository
+            ->orderBy('published_at', 'desc')
+            ->publish()
+            ->limit(3)
+            ->get();
+
+        $tutorials = $this->tutorialRepository
+            ->orderBy('published_at', 'desc')
+            ->publish()
+            ->limit(9)
             ->get();
 
         return Inertia::render('home/Index', [
             'threads' => $threads,
-            'posts' => $posts
+            'posts' => $posts,
+            'tutorials' => $tutorials
         ]);
     }
 

@@ -19,8 +19,9 @@
         {!! Form::model($tutorial, ['route' => ['admin.tutorials.update', $tutorial], 'files' => true, 'method' => 'PUT']) !!}
             <div class="flex flex-col lg:flex-row">
                 <div class="w-full lg:w-2/3 space-y-5">
-                    <div class="bg-white shadow rounded-md overflow-hidden px-4 py-4 sm:px-6">
-                        <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white shadow rounded-md overflow-hidden">
+                        @include('components.alert')
+                        <div class="grid grid-cols-2 gap-4 px-4 py-4 sm:px-6">
                             <div class="col-span-2">
                                 <label for="title" class="block text-sm font-medium leading-5 text-gray-700">{{ __('Titre') }}</label>
                                 <div class="mt-1 relative rounded-md shadow-sm">

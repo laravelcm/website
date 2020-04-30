@@ -84,3 +84,21 @@ export type PostType = {
   created_at: Date;
   updated_at: Date;
 }
+
+export type TutorialType = {
+  id: number;
+  title: string;
+  body: string;
+  slug: string;
+  status: string;
+  summary: string;
+  provider: string;
+  provider_id: string;
+  visits: number;
+  image: string;
+  user: User;
+  category: CategoryType;
+  published_at: Date;
+  created_at: Date;
+  updated_at: Date;
+}

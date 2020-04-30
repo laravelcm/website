@@ -44,7 +44,7 @@ class TutorialRequest extends AbstractBaseRequest
     public function getUpdateRules(): array
     {
         return [
-            'title' => 'sometimes|required|max:50',
+            'title' => 'sometimes|required',
             'body' => 'sometimes|required',
             'provider' => 'sometimes|required',
             'provider_id' => 'sometimes|required',

@@ -88,7 +88,7 @@ const Post = () => {
               />
               <span className="flex flex-col">
                 <span className="text-lg text-gray-600">{post.creator.full_name}</span>
-                <small className="text-xs text-gray-400 capitalize">Le {format(new Date(post.created_at), "dd MMMM, y", { locale: fr })}</small>
+                <small className="text-xs text-gray-400 capitalize">Publié Le {format(new Date(post.published_at), "dd MMMM, y", { locale: fr })}</small>
               </span>
             </span>
             <span className="text-gray-700 flex items-center text-sm">
