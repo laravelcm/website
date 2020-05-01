@@ -75,7 +75,7 @@ class ProfileController extends Controller
             } else {
                 KeyValue::create([
                     'key'   => $key,
-                    'value' => $value,
+                    'value' => $value ?? '',
                     'keyvalue_id'   => $user->id,
                     'keyvalue_type' => $this->userRepository->model(),
                 ]);
