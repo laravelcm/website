@@ -105,7 +105,7 @@ const Post = () => {
               {post.visits} Vues
             </span>
           </div>
-          <div className="w-full lg:h-116 rounded-lg overflow-hidden shadow-md">
+          <div className="w-full lg:h-140 rounded-lg overflow-hidden shadow-md">
             <img
               className="object-cover h-full w-full"
               src={post.image}

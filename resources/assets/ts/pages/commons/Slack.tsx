@@ -52,7 +52,7 @@ export default () => {
                 <input
                   type="email"
                   name="email"
-                  className="bg-white rounded-md py-3 px-5 focus:outline-none focus:shadow-outline-brand md:max-w-md w-full"
+                  className="appearance-none block w-full border border-gray-300 bg-white rounded-md text-base leading-6 placeholder-gray-500 py-3 px-5 focus:outline-none shadow-sm focus:placeholder-gray-400 focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out md:max-w-md"
                   placeholder="Entrer votre adresse email"
                   autoComplete="off"
                   ref={register({
