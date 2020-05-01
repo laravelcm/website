@@ -6,7 +6,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Modules\User\Events\Frontend\UserRegistered;
-use Modules\User\Helpers\SocialiteHelper;
 use Modules\User\Http\Requests\Auth\RegisterRequest;
 use Modules\User\Repositories\Frontend\UserRepository;
 
