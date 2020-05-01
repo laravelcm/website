@@ -1,5 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/application.css": "/css/application.css",
-    "/js/backend.js": "/js/backend.js"
+    "/js/app.js": "/js/app.js?id=a5ba752f3a90da33c791",
+    "/css/application.css": "/css/application.css?id=d85e430b1fbc9a88075f",
+    "/js/app.js.map": "/js/app.js.map?id=e3aeb16a202e047ac98c",
+    "/js/backend.js": "/js/backend.js?id=7c59749b3fcefacbf131",
+    "/js/backend.js.map": "/js/backend.js.map?id=d49553203524ca57f604"
 }
