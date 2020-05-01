@@ -176,7 +176,7 @@ const Soon = () => (
                 <div className="ml-4">
                   <h5 className="text-lg leading-6 font-medium text-gray-900">Suivi et analyses</h5>
                   <p className="mt-2 text-base leading-6 text-gray-500">
-                    Toutes les informations d'analyse et de suivi des offres seront mise à disposition des entreprise.
+                    Toutes les informations d'analyse et de suivi des offres seront mise à disposition des entreprises.
                   </p>
                 </div>
               </div>
