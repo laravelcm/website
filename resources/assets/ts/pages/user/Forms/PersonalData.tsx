@@ -73,6 +73,7 @@ export default () => {
                       id="first_name"
                       className="mt-2 form-input flex-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       name="first_name"
+                      autoComplete="off"
                       value={values.first_name}
                       onChange={handleChange}
                     />

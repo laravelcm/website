@@ -96,6 +96,7 @@ export default () => {
                         id="username"
                         className={inputClass}
                         name="username"
+                        autoComplete="off"
                         value={values.username}
                         onChange={handleChange}
                       />
@@ -119,6 +120,7 @@ export default () => {
                       rows={3}
                       className="form-textarea mt-1 block w-full focus:shadow-outline-brand focus:border-brand-200 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       placeholder="Quelques mots sur vous..."
+                      autoComplete="off"
                       value={values.biography}
                       onChange={handleChange}
                       name="biography"
