@@ -202,7 +202,7 @@ class Tutorial extends Model implements Searchable
      */
     public function getSearchResult(): SearchResult
     {
-        $url = route('blog.post', ['slug' => $this->slug]);
+        $url = route('tutorials.show', ['slug' => $this->slug]);
 
         return new SearchResult(
             $this,

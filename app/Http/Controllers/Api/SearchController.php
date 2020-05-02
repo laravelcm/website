@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Blog\Repositories\PostRepository;
 use Modules\Forum\Repositories\ThreadRepository;
+use Modules\Tutorial\Repositories\TutorialRepository;
 use Spatie\Searchable\ModelSearchAspect;
 use Spatie\Searchable\Search;
 
@@ -21,10 +22,20 @@ class SearchController extends Controller
      */
     protected PostRepository $postRepository;
 
-    public function __construct(ThreadRepository $threadRepository, PostRepository $postRepository)
+    /**
+     * @var TutorialRepository
+     */
+    protected TutorialRepository $tutorialRepository;
+
+    public function __construct(
+        ThreadRepository $threadRepository,
+        PostRepository $postRepository,
+        TutorialRepository $tutorialRepository
+    )
     {
         $this->threadRepository = $threadRepository;
         $this->postRepository = $postRepository;
+        $this->tutorialRepository = $tutorialRepository;
     }
 
     /**
@@ -37,6 +48,12 @@ class SearchController extends Controller
     {
         $results = (new Search())
             ->registerModel($this->postRepository->model(), function (ModelSearchAspect $modelSearchAspect) {
+                $modelSearchAspect
+                    ->addSearchableAttribute('title')
+                    ->addSearchableAttribute('body')
+                    ->publish();
+            })
+            ->registerModel($this->tutorialRepository->model(), function (ModelSearchAspect $modelSearchAspect) {
                 $modelSearchAspect
                     ->addSearchableAttribute('title')
                     ->addSearchableAttribute('body')
