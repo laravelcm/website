@@ -208,9 +208,9 @@ const Soon = () => (
           </p>
           <div className="mt-8">
             <div className="inline-flex rounded-md shadow">
-              <InertiaLink href="/register" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-gray-900 bg-white hover:text-gray-600 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
+              <a href="/register" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-gray-900 bg-white hover:text-gray-600 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
                 Créer mon compte
-              </InertiaLink>
+              </a>
             </div>
           </div>
         </div>
