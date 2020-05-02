@@ -2,10 +2,6 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const rgba = require('hex-to-rgba');
 
 module.exports = {
-  purge: {
-    enabled: false,
-    content: [],
-  },
   theme: {
     extend: {
       colors: {
