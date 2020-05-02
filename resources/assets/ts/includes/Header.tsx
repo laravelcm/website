@@ -62,6 +62,31 @@ export default () => {
       });
   }
 
+  function renderTutorials(searchResults: Array<any>) {
+    const values = groupBy(searchResults, 'type');
+
+    if (values.Tutoriels && values.Tutoriels.length > 0) {
+      const items = values.Tutoriels;
+      return (
+        <div className="pt-4">
+          <h3 className="text-xs font-semibold text-gray-900 mb-2 leading-5 px-4 sm:px-6">Tutoriels</h3>
+          <div>
+            {
+              items.map((item: Result) => (
+                <a key={item.title} href={item.url} className="text-sm text-gray-600 hover:text-gray-500 focus:text-gray-800 leading-5 flex items-start hover:bg-gray-50 px-4 py-4 sm:px-6">
+                  <span className="font-medium text-brand-primary text-base mr-2">#</span>
+                  {item.title}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
   function renderArticles(searchResults: Array<any>) {
     const values = groupBy(searchResults, 'type');
 
@@ -204,8 +229,9 @@ export default () => {
 
                         {results.length > 0 && (
                           <div className="divide-y divide-gray-100">
-                            {renderArticles(results)}
+                            {renderTutorials(results)}
                             {renderForum(results)}
+                            {renderArticles(results)}
                           </div>
                         )}
                       </div>
