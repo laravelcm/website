@@ -145,7 +145,7 @@ class UserRepository extends BaseRepository
     public function updateProfile($id, array $input)
     {
         $user = $this->getById($id);
-        $user->username = $input['username'];
+        $user->username = $input['username'] ?? null;
 
         return $user->save();
     }
