@@ -15,7 +15,7 @@ composer.phar
 #
 /public/hot
 /public/storage
-/public/Theme
+/public/Themes
 /storage/*.key
 .env
 .env.backup

@@ -143,6 +143,7 @@ const Register = () => {
                     label="Nom"
                     name="first_name"
                     type="text"
+                    autoComplete="off"
                     errors={errors.first_name}
                     value={values.first_name}
                     onChange={handleChange}
@@ -153,6 +154,7 @@ const Register = () => {
                     label="Prénom"
                     name="last_name"
                     type="text"
+                    autoComplete="off"
                     errors={errors.last_name}
                     value={values.last_name}
                     onChange={handleChange}
@@ -164,6 +166,7 @@ const Register = () => {
                   label="Nom d'utilisateur (pseudo)"
                   name="username"
                   type="text"
+                  autoComplete="off"
                   errors={errors.username}
                   value={values.username}
                   onChange={handleChange}
@@ -178,6 +181,7 @@ const Register = () => {
                   label="Adresse Email"
                   name="email"
                   type="email"
+                  autoComplete="off"
                   errors={errors.email}
                   value={values.email}
                   onChange={handleChange}
@@ -188,6 +192,7 @@ const Register = () => {
                   label="Mot de passe"
                   name="password"
                   type="password"
+                  autoComplete="off"
                   errors={errors.password}
                   value={values.password}
                   onChange={handleChange}

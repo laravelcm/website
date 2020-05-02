@@ -79,8 +79,8 @@ const Login = () => {
                   Continuer avec Github
                 </a>
                 <a
-                  href="/login/google"
-                  className="flex bg-white shadow-md text-base text-gray-800 justify-center px-10 py-3 rounded-md hover:bg-gray-100"
+                  href="#"
+                  className="flex items-center bg-white shadow-md text-base text-gray-800 justify-center px-10 py-3 rounded-md hover:bg-gray-100"
                 >
                   <svg
                     className="h-5 w-5 text-white mr-3"
@@ -104,6 +104,9 @@ const Login = () => {
                     />
                   </svg>
                   Continuer avec Google
+                  <span className="inline-flex ml-2 items-center px-1.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-brand-100 text-brand-primary">
+                    validation
+                  </span>
                 </a>
               </div>
               <p className="mt-8 text-sm">
