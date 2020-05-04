@@ -34,7 +34,8 @@ class Reply extends Model
     protected $appends = [
         'favoritesCount',
         'isFavorited',
-        'isBest'
+        'isBest',
+        'local_created_at',
     ];
 
     /**
@@ -51,6 +52,17 @@ class Reply extends Model
         static::deleted(function ($reply) {
             $reply->thread->decrement('replies_count');
         });
+    }
+
+    /**
+     * Donne la bonne date en fonction de la timezone.
+     *
+     * @param  $value
+     * @return \JamesMills\LaravelTimezone\Carbon
+     */
+    public function getLocalCreatedAtAttribute()
+    {
+        return \Timezone::convertFromLocal($this->created_at);
     }
 
     /**

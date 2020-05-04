@@ -38,6 +38,7 @@ class Thread extends Model implements Searchable
         'isSubscribedTo',
         'path',
         'resume',
+        'local_created_at',
     ];
 
     /**
@@ -82,9 +83,9 @@ class Thread extends Model implements Searchable
      * @param  $value
      * @return \JamesMills\LaravelTimezone\Carbon
      */
-    public function getCreatedAtAttribute($value)
+    public function getLocalCreatedAtAttribute()
     {
-        return \Timezone::convertFromLocal($value);
+        return \Timezone::convertFromLocal($this->created_at);
     }
 
     /**

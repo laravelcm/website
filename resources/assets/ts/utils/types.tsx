@@ -31,6 +31,7 @@ export type ThreadType = {
   creator: User;
   last_reply: ReplyType | null;
   replies: ReplyType[];
+  local_created_at: Date;
   created_at: Date;
   updated_at: Date;
 }
@@ -43,6 +44,7 @@ export type ReplyType = {
   isBest: boolean;
   isFavorited: boolean;
   favoritesCount: number;
+  local_created_at: Date;
   created_at: Date;
   updated_at: Date;
 }

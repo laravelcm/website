@@ -15,7 +15,7 @@ const Thread = (thread: ThreadType) => {
     path,
     replies_count,
     last_reply,
-    created_at,
+    local_created_at,
   } = thread;
   const solvedClass = best_reply_id !== null ? `bg-white border-brand-primary` : `border-transparent`;
   const author = last_reply === null ? (
@@ -26,7 +26,7 @@ const Thread = (thread: ThreadType) => {
       <span>
         {" "}
         a posté {" "}
-        <span className="text-gray-700 font-medium">{timeAgo(created_at)}</span>
+        <span className="text-gray-700 font-medium">{timeAgo(local_created_at)}</span>
       </span>
     </div>
   ) : (
@@ -37,7 +37,7 @@ const Thread = (thread: ThreadType) => {
       <span>
         {" "}
         a répondu{" "}
-        <span className="text-gray-700 font-medium">{timeAgo(last_reply.created_at)}</span>
+        <span className="text-gray-700 font-medium">{timeAgo(last_reply.local_created_at)}</span>
       </span>
     </div>
   );
