@@ -17,6 +17,7 @@ composer.phar
 /public/storage
 /public/Themes
 /storage/*.key
+/storage/framework/cache
 .env
 .env.backup
 _ide_helper.php
