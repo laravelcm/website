@@ -16,6 +16,7 @@ export default () => {
       navigate(e, `/forum/channels/${value}`);
     }
   }
+
   return (
     <>
       <div className="inline-block relative lg:hidden mr-4">
