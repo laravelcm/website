@@ -77,6 +77,17 @@ class Thread extends Model implements Searchable
     }
 
     /**
+     * Donne la bonne date en fonction de la timezone.
+     *
+     * @param  $value
+     * @return \JamesMills\LaravelTimezone\Carbon
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return \Timezone::convertFromLocal($value);
+    }
+
+    /**
      * A thread belongs to a creator.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
