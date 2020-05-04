@@ -85,7 +85,7 @@ class Thread extends Model implements Searchable
      */
     public function getLocalCreatedAtAttribute()
     {
-        return \Timezone::convertFromLocal($this->created_at);
+        return $this->created_at;
     }
 
     /**
