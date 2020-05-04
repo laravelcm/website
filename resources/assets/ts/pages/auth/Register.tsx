@@ -30,6 +30,7 @@ const Register = () => {
       try {
         const response = await axios.post("/api/verify/token", {
           token: recaptchaToken,
+          secret: process.env.MIX_INVISIBLE_RECAPTCHA_SECRETKEY,
         });
         const parsed = JSON.parse(response.data);
         if (parsed.success) {
@@ -63,7 +64,7 @@ const Register = () => {
   }
 
   return (
-    <GoogleReCaptchaProvider reCaptchaKey="6Le5TtYUAAAAAI8sNLAenhAcHFWmOrOUkrc_MweF">
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.MIX_INVISIBLE_RECAPTCHA_SITEKEY}>
       <Seo title="Création de compte" />
       <GoogleReCaptcha
         onVerify={(token: string) => recaptchaVerifyCallback(token)}

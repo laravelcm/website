@@ -26,6 +26,20 @@ trait UserAttribute
     }
 
     /**
+     * Set the proper username attribute.
+     *
+     * @param string $value
+     */
+    public function setUsernameAttribute($value)
+    {
+        if (static::where('username', $username = $value)->exists()) {
+            $username = "{$username}_{$this->id}";
+        }
+
+        $this->attributes['username'] = $username;
+    }
+
+    /**
      * @return string
      */
     public function getRolesLabelAttribute()

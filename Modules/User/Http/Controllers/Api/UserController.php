@@ -47,10 +47,11 @@ class UserController extends Controller
     public function verifyRecaptchaToken(Request $request)
     {
         $token = $request->get('token');
+        $secret = $request->get('secret');
 
         $data = [
             'response'  => $token,
-            'secret'    => '6Le5TtYUAAAAAGZHiAeVaApa4pZh8Ioecrpwpg3m',
+            'secret'    => $secret,
         ];
 
         $statusCode = 400;
