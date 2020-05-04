@@ -107,13 +107,13 @@ class ProfileController extends Controller
                 KeyValue::where('keyvalue_id', '=', $user->id)
                     ->where('keyvalue_type', '=', $this->userRepository->model())
                     ->where('key', '=', 'biography')
-                    ->update(['value' => $request->input('biography') ?? '']);
+                    ->update(['value' => $request->input('biography')]);
             } else {
                 KeyValue::create([
                     'keyvalue_id' => $user->id,
                     'keyvalue_type' => $this->userRepository->model(),
                     'key' => 'biography',
-                    'value' => $request->input('biography')
+                    'value' => $request->input('biography') ?? ''
                 ]);
             }
 

@@ -82,7 +82,7 @@ const Thread = (thread: ThreadType) => {
                 fill="currentColor"
               />
             </svg>
-            <span>1</span>
+            <span>{replies_count}</span>
           </div>
           <InertiaLink
             href={`/forum/channels/${channel.slug}`}
