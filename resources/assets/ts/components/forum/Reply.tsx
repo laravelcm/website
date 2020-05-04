@@ -18,7 +18,7 @@ const Reply = ({ reply }: ReplyProps) => {
     body,
     owner,
     isBest,
-    created_at,
+    local_created_at,
   } = reply;
   const { auth } = usePage();
   const { user } = auth;
@@ -60,7 +60,7 @@ const Reply = ({ reply }: ReplyProps) => {
             </div>
             <p>
               <span className="text-gray-800 font-medium">@{owner.username}</span>
-              <span className="text-gray-500 text-sm ml-2 hidden md:inline-flex">{timeAgo(created_at)}</span>
+              <span className="text-gray-500 text-sm ml-2 hidden md:inline-flex">{timeAgo(local_created_at)}</span>
             </p>
           </div>
           <div className="flex items-center">

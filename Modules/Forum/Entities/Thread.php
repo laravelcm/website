@@ -2,6 +2,7 @@
 
 namespace Modules\Forum\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Forum\Entities\Traits\RecordsActivity;
@@ -80,12 +81,11 @@ class Thread extends Model implements Searchable
     /**
      * Donne la bonne date en fonction de la timezone.
      *
-     * @param  $value
-     * @return \JamesMills\LaravelTimezone\Carbon
+     * @return string
      */
     public function getLocalCreatedAtAttribute()
     {
-        return $this->created_at;
+        return timezone()->convertToLocal($this->created_at);
     }
 
     /**

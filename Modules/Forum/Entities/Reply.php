@@ -57,12 +57,11 @@ class Reply extends Model
     /**
      * Donne la bonne date en fonction de la timezone.
      *
-     * @param  $value
-     * @return \JamesMills\LaravelTimezone\Carbon
+     * @return string
      */
     public function getLocalCreatedAtAttribute()
     {
-        return $this->created_at;
+        return timezone()->convertToLocal($this->created_at);
     }
 
     /**
