@@ -21,7 +21,6 @@
     "fideloper/proxy": "^4.0",
     "hieu-le/active": "^4.0",
     "inertiajs/inertia-laravel": "^0.2.4",
-    "jamesmills/laravel-timezone": "^1.9",
     "joshbrw/laravel-module-installer": "^0.1.4",
     "laravel/framework": "^6.3",
     "laravel/slack-notification-channel": "^2.0",

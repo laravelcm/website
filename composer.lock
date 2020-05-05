@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0e496a18e6d3ee69ab2b507f1167eda",
+    "content-hash": "07e28e46d550bdd356ba28234524edfa",
     "packages": [
         {
             "name": "alaouy/youtube",
@@ -1762,60 +1762,6 @@
             "description": "Highlight PHP code in terminal",
             "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
-        },
-        {
-            "name": "jamesmills/laravel-timezone",
-            "version": "1.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jamesmills/laravel-timezone.git",
-                "reference": "06b9a7cd76002eb4db873c6d77bb46317dd98f20"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jamesmills/laravel-timezone/zipball/06b9a7cd76002eb4db873c6d77bb46317dd98f20",
-                "reference": "06b9a7cd76002eb4db873c6d77bb46317dd98f20",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "5.6.* || 5.7.* || 5.8.* || ^6 || ^7",
-                "nesbot/carbon": "^1.0 || ^2.0",
-                "php": ">=7.1",
-                "torann/geoip": "^1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.12"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "JamesMills\\LaravelTimezone\\LaravelTimezoneServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JamesMills\\LaravelTimezone\\": "src/",
-                    "JamesMills\\LaravelTimezone\\Database\\Seeds\\": "database/seeds/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "James Mills",
-                    "email": "james@clicksco.com"
-                }
-            ],
-            "description": "Timezone storage and retrieval for Laravel",
-            "keywords": [
-                "laravel",
-                "timezone"
-            ],
-            "time": "2020-04-14T16:27:03+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
