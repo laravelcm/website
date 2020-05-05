@@ -30,27 +30,33 @@ const Channel = () => {
         <div className="flex w-full">
           <Sidebar />
           <div className="w-full lg:pl-12 lg:w-9/12">
-            <div className="flex items-center">
+            <div className="flex items-center space-x-4 lg:space-x-0">
               <div className="w-full lg:w-2/3 items-center">
                 <div className="hidden lg:inline-flex bg-gray-200 text-gray-700 text-sm font-medium py-2 px-4 mr-4 rounded-lg items-center">
-                  <span className={`block h-3 w-3 rounded-full bg-brand-${channel.slug} mr-2`} />
+                  <span
+                    className={`block h-3 w-3 rounded-full bg-brand-${channel.slug} mr-2`}
+                  />
                   {channel.name}
                 </div>
                 <TabBar />
               </div>
-              <div className="w-full hidden lg:flex lg:w-1/3">
+              <div className="w-full lg:w-1/3">
                 <SearchBar />
               </div>
             </div>
             <div className="my-10">
-              {
-                data.length === 0 && (
-                  <div className="w-full flex items-center justify-center">
-                    <img src={require("@/assets/images/no-data.svg")} className="mx-auto w-100" alt="No data" />
-                  </div>
-                )
-              }
-              {data.map((thread: ThreadType) => (<Thread key={thread.id} {...thread} />))}
+              {data.length === 0 && (
+                <div className="w-full flex items-center justify-center">
+                  <img
+                    src={require("@/assets/images/no-data.svg")}
+                    className="mx-auto w-100"
+                    alt="No data"
+                  />
+                </div>
+              )}
+              {data.map((thread: ThreadType) => (
+                <Thread key={thread.id} {...thread} />
+              ))}
             </div>
             <Pagination links={links} />
           </div>

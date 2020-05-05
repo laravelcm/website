@@ -48,15 +48,15 @@ const Reply = ({ reply }: ReplyProps) => {
             <div className="mr-4 text-center">
               <InertiaLink
                 href={`/u/@${owner.username}`}
-                className="h-10 w-10 block mb-1"
+                className="h-10 w-10 flex flex-shrink-0"
               >
                 <img
-                  className="rounded-full bg-cover"
+                  className="rounded-full h-full w-full object-cover"
                   src={owner.picture}
                   alt={owner.full_name}
                 />
               </InertiaLink>
-              {owner.is_admin && <span className="text-brand-200 text-sm">Admin</span>}
+              {owner.is_admin && <span className="text-brand-200 text-sm mt-1">Admin</span>}
             </div>
             <p>
               <span className="text-gray-800 font-medium">@{owner.username}</span>

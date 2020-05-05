@@ -45,11 +45,11 @@ const Thread = (thread: ThreadType) => {
     <div className="cursor-pointer bg-gray-50 px-6 py-4 flex flex-col justify-between mb-2 rounded-lg md:border-0 md:bg-transparent hover:bg-white md:flex-row md:items-center transition-all">
       <div className="flex items-center justify-between mb-4 md:mb-0 md:mr-6">
         <div className="flex items-center">
-          <div className={`h-15 w-15 flex items-center justify-center border-2 relative rounded-full ${solvedClass}`}>
-            <InertiaLink href={`/u/@${creator.username}`} className="h-12 w-12 relative text-center">
+          <div className={`h-12 w-12 lg:h-15 lg:w-15 flex items-center justify-center border-2 relative rounded-full ${solvedClass}`}>
+            <InertiaLink href={`/u/@${creator.username}`} className="h-10 w-10 lg:h-12 lg:w-12 block flex-shrink-0 relative text-center">
               <span className="block mb-2">
                 <img
-                  className="rounded-full h-12 w-12"
+                  className="rounded-full h-full w-full object-cover"
                   src={creator.picture}
                   alt={creator.full_name}
                 />
@@ -70,8 +70,8 @@ const Thread = (thread: ThreadType) => {
               {creator.is_admin && <span className="hidden md:block text-green-500 text-xs">Admin</span>}
             </InertiaLink>
           </div>
-          <span className="text-sm text-gray-800 ml-3 font-medium md:hidden uppercase">
-            {creator.username}
+          <span className="text-sm text-gray-800 ml-3 font-medium md:hidden">
+            @{creator.username}
           </span>
         </div>
         <div className="flex items-center md:hidden text-sm">
