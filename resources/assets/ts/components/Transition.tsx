@@ -1,63 +1,133 @@
-import React from "react";
-import { CSSTransition } from "react-transition-group";
+import React, {
+  ReactNode,
+  useRef,
+  useEffect,
+  useContext,
+} from "react";
+import { CSSTransition as ReactCSSTransition } from "react-transition-group";
 
 interface TransitionProps {
-  show: boolean;
-  enter: string;
-  enterFrom: string;
-  enterTo: string;
-  leave: string;
-  leaveFrom: string;
-  leaveTo: string;
-  children: React.ReactNode;
+  show?: boolean;
+  enter?: string;
+  enterFrom?: string;
+  enterTo?: string;
+  leave?: string;
+  leaveFrom?: string;
+  leaveTo?: string;
+  appear?: string | boolean;
+  children: ReactNode;
 }
 
-export default ({
+interface ParentContextProps {
+  parent: {
+    show?: boolean;
+    appear?: string | boolean;
+    isInitialRender?: boolean;
+  };
+}
+
+const TransitionContext = React.createContext<ParentContextProps>({
+  parent: {},
+});
+
+function useIsInitialRender() {
+  const isInitialRender = useRef(true);
+  useEffect(() => {
+    isInitialRender.current = false;
+  }, []);
+  return isInitialRender.current;
+}
+
+function CSSTransition({
   show,
-  enter,
-  enterFrom,
-  enterTo,
-  leave,
-  leaveFrom,
-  leaveTo,
+  enter = "",
+  enterFrom = "",
+  enterTo = "",
+  leave = "",
+  leaveFrom = "",
+  leaveTo = "",
+  appear,
   children,
-}: TransitionProps) => {
-  const enterClasses = enter.split(' ');
-  const enterFromClasses = enterFrom.split(' ');
-  const enterToClasses = enterTo.split(' ');
-  const leaveClasses = leave.split(' ');
-  const leaveFromClasses = leaveFrom.split(' ');
-  const leaveToClasses = leaveTo.split(' ');
+}: TransitionProps) {
+  const enterClasses = enter.split(" ").filter(s => s.length);
+  const enterFromClasses = enterFrom.split(" ").filter(s => s.length);
+  const enterToClasses = enterTo.split(" ").filter(s => s.length);
+  const leaveClasses = leave.split(" ").filter(s => s.length);
+  const leaveFromClasses = leaveFrom.split(" ").filter(s => s.length);
+  const leaveToClasses = leaveTo.split(" ").filter(s => s.length);
+
+  function addClasses(node: HTMLElement, classes: Array<string>) {
+    // eslint-disable-next-line no-unused-expressions
+    classes.length > 0 && node.classList.add(...classes);
+  }
+
+  function removeClasses(node: HTMLElement, classes: Array<string>) {
+    // eslint-disable-next-line no-unused-expressions
+    classes.length && node.classList.remove(...classes);
+  }
 
   return (
-    <CSSTransition
+    <ReactCSSTransition
+      appear={appear}
       unmountOnExit
       in={show}
       addEndListener={(node, done) => {
-        node.addEventListener('transitionend', done, false);
+        node.addEventListener("transitionend", done, false);
       }}
       onEnter={(node) => {
-        node.classList.add(...enterClasses, ...enterFromClasses);
+        addClasses(node, [...enterClasses, ...enterFromClasses]);
       }}
       onEntering={(node) => {
-        node.classList.remove(...enterFromClasses);
-        node.classList.add(...enterToClasses);
+        removeClasses(node, enterFromClasses);
+        addClasses(node, enterToClasses);
       }}
       onEntered={(node) => {
-        node.classList.remove(...enterToClasses, ...enterClasses);
+        removeClasses(node, [...enterToClasses, ...enterClasses]);
       }}
       onExit={(node) => {
-        node.classList.add(...leaveClasses, ...leaveFromClasses);
+        addClasses(node, [...leaveClasses, ...leaveFromClasses]);
       }}
       onExiting={(node) => {
-        node.classList.remove(...leaveFromClasses);
-        node.classList.add(...leaveToClasses);
+        removeClasses(node, leaveFromClasses);
+        addClasses(node, leaveToClasses);
       }}
       onExited={(node) => {
-        node.classList.remove(...leaveToClasses, ...leaveClasses);
+        removeClasses(node, [...leaveToClasses, ...leaveClasses]);
       }}
     >
       {children}
-    </CSSTransition>
+    </ReactCSSTransition>
   );
-};
+}
+
+function Transition({ show, appear, ...rest }: TransitionProps) {
+  const { parent } = useContext(TransitionContext);
+  const isInitialRender = useIsInitialRender();
+  const isChild = show === undefined;
+
+  if (isChild) {
+    return (
+      <CSSTransition
+        appear={parent.appear || !parent.isInitialRender}
+        show={parent.show}
+        {...rest}
+      />
+    );
+  }
+
+  return (
+    <TransitionContext.Provider
+      value={{
+        parent: {
+          show,
+          isInitialRender,
+          appear,
+        },
+      }}
+    >
+      <CSSTransition appear={appear} show={show} {...rest} />
+    </TransitionContext.Provider>
+  );
+}
+
+export default Transition;

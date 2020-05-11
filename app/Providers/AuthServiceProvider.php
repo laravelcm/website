@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Modules\Blog\Entities\Post;
+use Modules\Blog\Policies\PostPolicy;
 use Modules\Forum\Entities\Reply;
 use Modules\Forum\Entities\Thread;
 use Modules\Forum\Policies\ReplyPolicy;
@@ -22,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         Reply::class => ReplyPolicy::class,
         Thread::class => ThreadPolicy::class,
         User::class => UserPolicy::class,
+        Post::class => PostPolicy::class
     ];
 
     /**

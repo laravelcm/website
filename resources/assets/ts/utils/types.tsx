@@ -7,13 +7,13 @@ export type User = {
   username: string;
   email: string;
   is_admin: boolean;
-}
+};
 
 export type ChannelType = {
   id: number;
   name: string;
   slug: string;
-}
+};
 
 export type ThreadType = {
   id: number;
@@ -34,7 +34,7 @@ export type ThreadType = {
   local_created_at: Date;
   created_at: Date;
   updated_at: Date;
-}
+};
 
 export type ReplyType = {
   id: number;
@@ -47,7 +47,7 @@ export type ReplyType = {
   local_created_at: Date;
   created_at: Date;
   updated_at: Date;
-}
+};
 
 export type NotificationType = {
   id: number;
@@ -62,13 +62,13 @@ export type NotificationType = {
   read_at: Date;
   created_at: Date;
   updated_at: Date;
-}
+};
 
 export type CategoryType = {
   id: number;
   name: string;
   slug: string;
-}
+};
 
 export type PostType = {
   id: number;
@@ -79,13 +79,14 @@ export type PostType = {
   summary: string;
   visits: number;
   image: string;
+  status_classname: string;
   creator?: User;
   propose?: User;
   category: CategoryType;
   published_at: Date;
   created_at: Date;
   updated_at: Date;
-}
+};
 
 export type TutorialType = {
   id: number;
@@ -103,4 +104,4 @@ export type TutorialType = {
   published_at: Date;
   created_at: Date;
   updated_at: Date;
-}
+};

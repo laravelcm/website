@@ -38,7 +38,7 @@ class Post extends Model implements Searchable
      * @var array
      */
     protected $casts = [
-      'featured' => 'boolean',
+        'featured' => 'boolean',
     ];
 
     /**
@@ -47,7 +47,7 @@ class Post extends Model implements Searchable
      * @var array
      */
     protected $dates = [
-      'published_at'
+        'published_at'
     ];
 
     /**
@@ -57,7 +57,6 @@ class Post extends Model implements Searchable
      */
     protected $appends = [
         'status_classname',
-        'preview_image_link',
     ];
 
     /**
@@ -124,7 +123,7 @@ class Post extends Model implements Searchable
     public function getImageAttribute($value)
     {
         if ($value) {
-            return url('storage/'. $value);
+            return url('storage/' . $value);
         }
 
         if ($this->previewImage && !$value) {
@@ -195,7 +194,7 @@ class Post extends Model implements Searchable
      */
     public function propose()
     {
-        return $this->belongsTo(User::class, 'proposed_id');
+        return $this->belongsTo(User::class, 'proposed_by');
     }
 
     /**

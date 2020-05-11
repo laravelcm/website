@@ -96,7 +96,6 @@ export default ({ isOpen, onClose }: ReplyModalProps) => {
             name="channel_id"
             errors={errors.channel_id}
           >
-            <option value="">Selectionner un channel</option>
             {
               channels.map((channel: ChannelType) => (
                 <option key={channel.id} value={channel.id}>

@@ -13,7 +13,7 @@ class PostRequest extends AbstractBaseRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->isAdmin();
+        return auth()->check();
     }
 
     /**

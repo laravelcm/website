@@ -94,7 +94,7 @@
                                             <div class="text-sm leading-5 text-gray-900">{{ $post->category->name }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap border-t border-gray-100 text-sm leading-5 text-gray-500">
-                                            {{ $post->published_at->format('d F, Y') }}
+                                            {{ $post->published_at ? $post->published_at->format('d F, Y') : "N/A" }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap border-t border-gray-100 text-sm leading-5 text-gray-500">
                                             <div class="text-sm leading-5 text-gray-900">{{ $post->creator->full_name }}</div>

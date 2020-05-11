@@ -8,7 +8,7 @@ interface MenuProps {
 }
 
 const Menu = ({ current }: MenuProps) => {
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState("");
 
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const { value } = e.target;
@@ -25,9 +25,9 @@ const Menu = ({ current }: MenuProps) => {
             value={selected}
             onChange={handleChange}
           >
-            <option value="activity" selected>Mon activité</option>
+            <option value="activity">Mon activité</option>
             {/* <option>Mes badges</option> */}
-            {/* <option>Publications</option> */}
+            <option value="publishing">Publications</option>
             <option value="notifications">Notifications</option>
             <option value="account">Mon compte</option>
           </select>
@@ -35,11 +35,47 @@ const Menu = ({ current }: MenuProps) => {
         <div className="hidden sm:block">
           <div>
             <nav className="-mb-px flex space-x-8">
-              <InertiaLink className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${current === 'dashboard' ? 'border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900' : 'hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300'}`} href="/dashboard">Mon activité</InertiaLink>
+              <InertiaLink
+                className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${
+                  current === "dashboard"
+                    ? "border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900"
+                    : "hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+                }`}
+                href="/dashboard"
+              >
+                Mon activité
+              </InertiaLink>
               {/* <InertiaLink className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${current === 'badges' ? 'border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900' : 'hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300'}`} href="/badges">Mes badges</InertiaLink> */}
-              {/* <InertiaLink className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${current === 'publishing' ? 'border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900' : 'hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300'}`} href="/publishing">Publications</InertiaLink> */}
-              <InertiaLink className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${current === 'notifications' ? 'border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900' : 'hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300'}`} href="/notifications">Notifications</InertiaLink>
-              <InertiaLink className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${current === 'account' ? 'border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900' : 'hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300'}`} href="/account">Mon compte</InertiaLink>
+              <InertiaLink
+                className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${
+                  current === "publishing"
+                    ? "border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900"
+                    : "hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+                }`}
+                href="/publishing"
+              >
+                Publications
+              </InertiaLink>
+              <InertiaLink
+                className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${
+                  current === "notifications"
+                    ? "border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900"
+                    : "hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+                }`}
+                href="/notifications"
+              >
+                Notifications
+              </InertiaLink>
+              <InertiaLink
+                className={`whitespace-no-wrap py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 ${
+                  current === "account"
+                    ? "border-brand-900 text-brand-primary focus:outline-none focus:text-brand-500 focus:border-brand-900"
+                    : "hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300"
+                }`}
+                href="/account"
+              >
+                Mon compte
+              </InertiaLink>
             </nav>
           </div>
         </div>

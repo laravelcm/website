@@ -9,10 +9,10 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const TextInput = ({
   label, name, errors = [], ...rest
 }: TextInputProps) => (
-  <div className="w-full mb-3">
+  <div>
     {label && (
     <label
-      className="block text-sm leading-5 font-medium text-gray-700 mb-2"
+      className="block text-sm leading-5 font-medium text-gray-700"
       htmlFor={name}
     >
       {label}
