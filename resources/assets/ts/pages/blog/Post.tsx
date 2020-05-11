@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown/with-html";
 import hljs from "highlight.js";
@@ -14,9 +14,14 @@ import { popupCenter } from "@/utils/helpers";
 
 const Post = () => {
   const { post } = usePage();
+  const [author, setAuthor] = useState(post.creator);
 
   useEffect(() => {
     updateCodeSyntaxHighlighting();
+
+    if (post.propose) {
+      setAuthor(post.propose);
+    }
   }, []);
 
   function share(e: React.SyntheticEvent, provider: string) {
@@ -82,12 +87,12 @@ const Post = () => {
           <div className="flex items-center justify-between mb-8 lg:mb-10">
             <span className="flex items-center">
               <img
-                src={post.creator.picture}
+                src={author.picture}
                 className="h-14 w-14 rounded-full mr-4"
-                alt={post.creator.full_name}
+                alt={author.full_name}
               />
               <span className="flex flex-col">
-                <span className="text-lg text-gray-600">{post.creator.full_name}</span>
+                <span className="text-lg text-gray-600">{author.full_name}</span>
                 <small className="text-xs text-gray-400 capitalize">Publié Le {format(new Date(post.published_at), "dd MMMM, y", { locale: fr })}</small>
               </span>
             </span>

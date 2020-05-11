@@ -80,7 +80,7 @@ export type PostType = {
   visits: number;
   image: string;
   status_classname: string;
-  creator?: User;
+  creator: User;
   propose?: User;
   category: CategoryType;
   published_at: Date;
