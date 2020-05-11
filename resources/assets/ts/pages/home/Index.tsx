@@ -129,14 +129,22 @@ const Home = () => {
             </span>
           </InertiaLink>
         </div>
-        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers tutoriels</h2>
-        <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">
-          {tutorials.map((tutorial: TutorialType) => <Tutorial key={tutorial.id} tutorial={tutorial} />)}
-        </div>
-        <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers articles</h2>
-        <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">
-          {posts.map((post: PostType) => <Post key={post.id} post={post} />)}
-        </div>
+        {tutorials.length > 0 && (
+          <>
+            <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers tutoriels</h2>
+            <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">
+              {tutorials.map((tutorial: TutorialType) => <Tutorial key={tutorial.id} tutorial={tutorial} />)}
+            </div>
+          </>
+        )}
+        {posts.length > 0 && (
+          <>
+            <h2 className="text-gray-700 mb-6 text-2xl font-medium lg:text-3xl">Les derniers articles</h2>
+            <div className="grid gap-6 max-w-lg mx-auto md:grid-cols-2 md:max-w-3xl lg:grid-cols-3 lg:max-w-none sm:mb-18">
+              {posts.map((post: PostType) => <Post key={post.id} post={post} />)}
+            </div>
+          </>
+        )}
       </div>
       <div className="bg-gradient-green text-white py-6 lg:py-16">
         <div className="container">

@@ -3,7 +3,6 @@
 namespace Modules\Blog\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Modules\Blog\Entities\Category;
 use Modules\Blog\Entities\Post;
