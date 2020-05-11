@@ -7,16 +7,25 @@
     <meta name="crsf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Arthur Monney">
     <!-- Meta -->
-    <meta property="og:url" content="{{ $ }}" />
-    <meta property="og:title" content="Accueil | Goshen Tabernacle" />
-    <meta property="og:image" content="https://goshen-tabernacle.com/images/goshen.png" />
-    <meta property="og:description" content="Bienvenue chez Goshen Tabernacle, L&#039;église c&#039;est plus qu&#039;un lieu, c&#039;est chacun de nous. Dans cette nouvelle saison, année de récolte, nous croyons qu&#039;..." />
-    <meta property="og:type" content="article" />
+    <title>{{ $title ?? "Communauté Laravel & PHP Cameroun" }} - Laravel Cameroun</title>
+    <meta name='description' itemprop='description' content="{{ $description ?? "Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun." }}" />
+    <meta name='keywords' content="laravel, php, Cameroun, developers, tutorials, formations, jobs" />
 
-    <meta name="twitter:url" content="https://goshen-tabernacle.com" />
-    <meta name="twitter:title" content="Accueil | Goshen Tabernacle" />
-    <meta name="twitter:description" content="Bienvenue chez Goshen Tabernacle, L&#039;église c&#039;est plus qu&#039;un lieu, c&#039;est chacun de nous. Dans cette nouvelle saison, année de récolte, nous croyons qu&#039;..." />
-    <meta name="twitter:image" content="https://goshen-tabernacle.com/images/goshen.png" />
+    <meta property="og:description" content="{{ $description ?? "Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun." }}" />
+    <meta property="og:title" content="{{ $title ?? "Communauté Laravel & PHP Cameroun" }}" />
+    <meta property="og:url" content="{{ $openGraphURL ?? url('/') }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="fr-FR" />
+    <meta property="og:site_name" content="Communauté Laravel & PHP Cameroun" />
+    <meta property="og:image:url" content="{{ $OpenGraphImage ?? asset('/img/preview-site.png') }}" />
+    <meta property="og:image:size" content="300" />
+
+    <meta name="twitter:url" content="{{ $openGraphURL ?? url('/') }}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ $title ?? "Communauté Laravel & PHP Cameroun" }}" />
+    <meta name="twitter:site" content="@laravelcm" />
+    <meta name="twitter:description" content="{{ $description ?? "Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun." }}" />
+    <meta name="twitter:image" content="{{ $OpenGraphImage ?? asset('/img/preview-site.png') }}" />
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('img/favicons/apple-touch-icon.png') }}" sizes="180x180">
     <link rel="icon" type="image/png" href="{{ asset('img/favicons/favicon-32x32.png') }}" sizes="32x32">

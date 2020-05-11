@@ -38,6 +38,10 @@ class BlogController extends Controller
 
         return Inertia::render('blog/Index', [
             'posts' => $posts
+        ])->withViewData([
+            'title' => 'Blog',
+            'description' => "Lisez quelques-uns des derniers articles liés au développement, à la conception Web et tout ce qui peut être utile à un developpeur pour la création du design de sa prochaine application web ou mobile.",
+            'openGraphURL' => url('/blog')
         ]);
     }
 
@@ -58,6 +62,10 @@ class BlogController extends Controller
         return Inertia::render('blog/Category', [
             'category' => $category,
             'posts' => $posts
+        ])->withViewData([
+            'title' => 'Blog',
+            'description' => "Lisez quelques-uns des derniers articles liés au développement, à la conception Web et tout ce qui peut être utile à un developpeur pour la création du design de sa prochaine application web ou mobile.",
+            'openGraphURL' => url("/blog/category/$slug")
         ]);
     }
 
@@ -79,6 +87,11 @@ class BlogController extends Controller
 
         return Inertia::render('blog/Post', [
             'post' => $post
+        ])->withViewData([
+            'title' => $post->title,
+            'description' => trim($post->summary),
+            'openGraphURL' => url("/blog/$slug"),
+            'OpenGraphImage' => $post->image,
         ]);
     }
 }

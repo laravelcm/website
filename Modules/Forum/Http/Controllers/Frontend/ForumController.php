@@ -50,6 +50,10 @@ class ForumController extends Controller
             'channel' => $channel,
             'threads' => $threads,
             'filters' => $request->all('search'),
+        ])->withViewData([
+            'title' => 'Forum',
+            'description' => "Les forums communautaires sont un endroit pour discuter de tout ce qui concerne le développement / le design.",
+            'openGraphURL' => url("/forum/channels/$slug")
         ]);
     }
 }

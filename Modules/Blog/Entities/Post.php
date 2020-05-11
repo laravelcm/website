@@ -106,14 +106,14 @@ class Post extends Model implements Searchable
     }
 
     /**
-     * Return The post resume
+     * Return The post resume.
      *
      * @param  string  $value
      * @return string
      */
     public function getSummaryAttribute($value)
     {
-        return str_limit(strip_tags($this->body), 200);
+        return str_limit(strip_tags($this->body), 150);
     }
 
     /**

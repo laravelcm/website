@@ -246,7 +246,7 @@ class Thread extends Model implements Searchable
      */
     public function getResumeAttribute()
     {
-        return str_limit(strip_tags($this->body), 200);
+        return str_limit(strip_tags($this->body), 150);
     }
 
     /**

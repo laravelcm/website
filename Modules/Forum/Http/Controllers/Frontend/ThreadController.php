@@ -44,6 +44,10 @@ class ThreadController extends FrontendBaseController
         return Inertia::render('forum/Index', [
             'threads' => $threads,
             'filters' => $request->all('search'),
+        ])->withViewData([
+            'title' => 'Forum',
+            'description' => "Les forums communautaires sont un endroit pour discuter de tout ce qui concerne le développement / le design. Laravel Cameroun offrira l'un des plus grands forum francophone sur Laravel & PHP",
+            'openGraphURL' => url("/forum")
         ]);
     }
 
@@ -70,6 +74,10 @@ class ThreadController extends FrontendBaseController
 
         return Inertia::render('forum/Thread', [
             'thread' => $thread
+        ])->withViewData([
+            'title' => $thread->title,
+            'description' => $thread->resume,
+            'openGraphURL' => url($thread->path),
         ]);
     }
 
