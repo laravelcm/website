@@ -3,19 +3,12 @@ import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
 import ReactMde, { commands } from "react-mde";
 import * as Showdown from "showdown";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "@chakra-ui/core";
 
 import { ChannelType } from "@/utils/types";
 import LoaderButton from "@/components/LoaderButton";
 import TextInput from "@/components/TextInput";
 import SelectInput from "@/components/SelectInput";
+import Transition from "@/components/Transition";
 
 interface ReplyModalProps {
   isOpen: boolean;
@@ -77,72 +70,98 @@ export default ({ isOpen, onClose }: ReplyModalProps) => {
   }
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      isCentered
-      size="3xl"
-    >
-      <ModalOverlay />
-      <ModalContent className="rounded-md">
-        <ModalHeader className="flex items-center justify-between font-normal text-base">
-          <div className="flex items-center">
-            <img src={user.picture} alt={user.full_name} className="h-10 w-10 rounded-full mr-4" />
-            <small>@{user.username}</small>
+    <Transition show={isOpen}>
+      <div className="fixed z-100 bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
+        <Transition
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 transition-opacity">
+            <div className="absolute z-100 inset-0 bg-gray-800 opacity-75" />
           </div>
-          <SelectInput
-            onChange={handleChange}
-            value={values.channel_id}
-            name="channel_id"
-            errors={errors.channel_id}
-          >
-            {
-              channels.map((channel: ChannelType) => (
-                <option key={channel.id} value={channel.id}>
-                  {channel.name}
-                </option>
-              ))
-            }
-          </SelectInput>
-        </ModalHeader>
-        <form onSubmit={createThread}>
-          <ModalBody>
-            <TextInput
-              name="title"
-              type="text"
-              errors={errors.title}
-              value={values.title}
-              onChange={handleChange}
-              placeholder="Titre du sujet"
-              autoComplete="off"
-            />
-            <ReactMde
-              value={body}
-              onChange={setBody}
-              selectedTab={selectedTab}
-              onTabChange={setSelectedTab}
-              commands={listCommands}
-              generateMarkdownPreview={(markdown) => Promise.resolve(converter.makeHtml(markdown))}
-              textAreaProps={{ required: true, placeholder: "Détaillez votre problème ici..." }}
-            />
-            <p className="text-xs text-gray-500 font-italic font-light mt-3">
-              * Vous pouvez utiliser du Markdown avec des blocs de code du{" "}
-              <a
-                href="https://help.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brand-primary"
-              >
-                style de GitHub.
-              </a>
-            </p>
-          </ModalBody>
-          <ModalFooter>
-            <LoaderButton title="Poster" loading={sending} type="submit" />
-            <button className="px-4 py-2 rounded-md bg-red-100 border-2 border-red-400 text-red-600 hover:bg-red-700 hover:border-red-700 hover:text-white ml-3 transition-all" onClick={onClose}>Fermer</button>
-          </ModalFooter>
-        </form>
-      </ModalContent>
-    </Modal>
+        </Transition>
+
+        <Transition
+          enter="ease-out duration-300"
+          enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          enterTo="opacity-100 translate-y-0 sm:scale-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+          leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        >
+          <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-3xl sm:w-full">
+            <form onSubmit={createThread}>
+              <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div className="flex items-center justify-between font-normal text-base">
+                  <div className="flex items-center">
+                    <img src={user.picture} alt={user.full_name} className="h-10 w-10 rounded-full mr-4" />
+                    <small>@{user.username}</small>
+                  </div>
+                  <SelectInput
+                    onChange={handleChange}
+                    value={values.channel_id}
+                    name="channel_id"
+                    errors={errors.channel_id}
+                  >
+                    {
+                      channels.map((channel: ChannelType) => (
+                        <option key={channel.id} value={channel.id}>
+                          {channel.name}
+                        </option>
+                      ))
+                    }
+                  </SelectInput>
+                </div>
+                <div className="mt-4">
+                  <TextInput
+                    name="title"
+                    type="text"
+                    errors={errors.title}
+                    value={values.title}
+                    onChange={handleChange}
+                    placeholder="Titre de votre sujet"
+                    autoComplete="off"
+                  />
+                  <ReactMde
+                    value={body}
+                    onChange={setBody}
+                    selectedTab={selectedTab}
+                    onTabChange={setSelectedTab}
+                    commands={listCommands}
+                    generateMarkdownPreview={(markdown) => Promise.resolve(converter.makeHtml(markdown))}
+                    textAreaProps={{ required: true, placeholder: "Détaillez votre problème ici..." }}
+                  />
+                  <p className="text-xs text-gray-500 font-italic font-light mt-3">
+                    * Vous pouvez utiliser du Markdown avec des blocs de code du{" "}
+                    <a
+                      href="https://help.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand-primary"
+                    >
+                      style de GitHub.
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div className="bg-gray-50 p-4 sm:px-6 sm:py-4 sm:flex sm:flex-row-reverse">
+                <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+                  <LoaderButton title="Poster" loading={sending} type="submit" />
+                </span>
+                <span className="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+                  <button onClick={onClose} type="button" className="btn-white">
+                    Fermer
+                  </button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </Transition>
+      </div>
+    </Transition>
   );
 };

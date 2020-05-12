@@ -78,7 +78,7 @@ class HomeController extends Controller
             'posts' => $posts,
             'tutorials' => $tutorials,
             'popularTutorials' => $popularTutorials
-        ]);
+        ])->withViewData(['title' => "Accueil"]);
     }
 
     /**
@@ -88,7 +88,7 @@ class HomeController extends Controller
      */
     public function privacy()
     {
-        return Inertia::render('commons/Privacy');
+        return Inertia::render('commons/Privacy')->withViewData(['title' => "Confidentialité"]);
     }
 
     /**
@@ -98,7 +98,7 @@ class HomeController extends Controller
      */
     public function terms()
     {
-        return Inertia::render('commons/Terms');
+        return Inertia::render('commons/Terms')->withViewData(['title' => "Conditions d'utilisation"]);
     }
 
     /**
@@ -108,7 +108,11 @@ class HomeController extends Controller
      */
     public function slack()
     {
-        return Inertia::render('commons/Slack');
+        return Inertia::render('commons/Slack')
+            ->withViewData([
+                'title' => "Rejoindre Slack",
+                'description' => "Rejoignez notre slack pour discuter a propos de Laravel, Javascript, Design, comment demarrer et mener un projet de bout en bout, et découvrer l'univers du développement au Cameroun."
+            ]);
     }
 
     /**

@@ -18,7 +18,6 @@
     <meta property="og:locale" content="fr-FR" />
     <meta property="og:site_name" content="Communauté Laravel & PHP Cameroun" />
     <meta property="og:image:url" content="{{ $OpenGraphImage ?? asset('/img/preview-site.png') }}" />
-    <meta property="og:image:size" content="300" />
 
     <meta name="twitter:url" content="{{ $openGraphURL ?? url('/') }}" />
     <meta name="twitter:card" content="summary" />

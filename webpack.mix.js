@@ -1,7 +1,6 @@
 const mix = require('laravel-mix');
 const path = require('path');
-const tailwindcss = require('tailwindcss');
-require('laravel-mix-purgecss');
+require('laravel-mix-tailwind');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,10 +17,8 @@ mix.setPublicPath('public')
   .sass('resources/assets/sass/application.scss', 'css')
   .react('resources/assets/ts/app.tsx', 'js')
   .react('resources/assets/ts/admin/backend.ts', 'js')
-  .options({
-    processCssUrls: false,
-    postCss: [tailwindcss('./tailwind.config.js')],
-  })
+  .options({ processCssUrls: false })
+  .tailwind("./tailwind.config.js")
   .webpackConfig({
     output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     module: {
@@ -44,17 +41,6 @@ mix.setPublicPath('public')
 
 if (mix.inProduction()) {
   mix.version()
-    .purgeCss({
-      enabled: true,
-      globs: [
-        './Themes/backend/views/**/*.blade.php',
-        './resources/views/**/*.blade.php',
-        './resources/assets/ts/**/*.ts',
-        './resources/assets/ts/**/*.tsx',
-      ],
-      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
-      whitelistPatterns: [/nprogress/, /[\w-/.:]+(?<!:)/],
-    })
     .options({
       // optimize js minification process
       terser: {

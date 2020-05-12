@@ -4,7 +4,16 @@ const rgba = require('hex-to-rgba');
 module.exports = {
   purge: {
     enabled: false,
-    content: [],
+    content: [
+      './Themes/backend/views/**/*.blade.php',
+      './resources/views/**/*.blade.php',
+      './resources/assets/ts/**/*.ts',
+      './resources/assets/ts/**/*.tsx',
+    ],
+    options: {
+      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
+      whitelistPatterns: [/-active$/, /-enter$/, /-leave-to$/, /show$/],
+    },
   },
   theme: {
     extend: {
@@ -37,20 +46,14 @@ module.exports = {
         'outline-brand': `0 0 0 3px ${rgba(theme('colors.brand.primary'), 0.45)}`,
       }),
       spacing: {
-        14: '3.5rem',
-        15: '3.75rem',
         18: '4.5rem',
-        28: '7rem',
-        36: '9rem',
         45: '11.25rem',
         57: '14.25rem',
         58: '14.5rem',
         59: '14.75rem',
-        60: '15rem',
         62: '15.5rem',
         85: '21.25rem',
         87: '21.75rem',
-        96: '24rem',
         100: '25rem',
         116: '29rem',
         120: '30rem',
@@ -78,7 +81,6 @@ module.exports = {
         body: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
       gradients: (theme) => ({
-        'gradient-white': ['180deg', "rgba(255,255,255,1)", "rgba(246,249,252,1)"],
         'gradient-green': ['60deg', theme('colors.brand.primary'), "rgba(5,184,143,1)"],
       }),
     },

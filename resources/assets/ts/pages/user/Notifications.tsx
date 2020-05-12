@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { usePage, InertiaLink } from "@inertiajs/inertia-react";
-import { useToast } from "@chakra-ui/core";
 import ReactMarkdown from "react-markdown/with-html";
 
 import Layout from "@/includes/Layout";
@@ -11,12 +10,14 @@ import Menu from "@/pages/user/Menu";
 import { NotificationType } from "@/utils/types";
 import { timeAgo } from "@/utils/helpers";
 import RowLoader from "@/components/Loaders/RowLoader";
+import NotifyAlert from "@/components/NotifyAlert";
 
 const Notifications = () => {
-  const toast = useToast();
   const { auth: { user } } = usePage();
   const [notifications, setNotifications] = useState<NotificationType[]>([]);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
+  const [notify, setNotify] = useState(false);
 
   useEffect(() => {
     setNotifications(user.notifications);
@@ -26,22 +27,14 @@ const Notifications = () => {
   function readNotification(e: React.SyntheticEvent, id: number) {
     e.preventDefault();
     axios.delete(`/notifications/${id}`).then((response) => {
-      toast({
-        position: `bottom-right`,
-        description: `Notification marquée comme lue.`,
-        status: `success`,
-        duration: 2500,
-        isClosable: true,
-      });
+      setNotify(true);
+      setMessage("Notification marquée comme lue.");
+      setTimeout(() => setNotify(false), 2500);
       setNotifications(response.data.notifications);
     }).catch((error) => {
-      toast({
-        position: `bottom-right`,
-        description: `Une erreur est survenu, veillez réessayer plus tard ou contacter l'administrateur du site si le problème persiste.`,
-        status: `error`,
-        duration: 2500,
-        isClosable: true,
-      });
+      setNotify(true);
+      setMessage("Une erreur est survenu, veillez réessayer plus tard ou contacter l'administrateur du site si le problème persiste.");
+      setTimeout(() => setNotify(false), 2500);
       console.error(error);
     });
   }
@@ -138,6 +131,7 @@ const Notifications = () => {
             </>)
         }
       </div>
+      <NotifyAlert show={notify} onClose={() => setNotify(false)} message={message} />
     </>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown";
-import { useDisclosure, useToast } from "@chakra-ui/core";
 import classNames from "classnames";
 import hljs from "highlight.js";
 
@@ -15,13 +14,15 @@ import Sidebar from "@/components/forum/Sidebar";
 import Reply from "@/components/forum/Reply";
 import ReplyModal from "@/pages/forum/ReplyModal";
 import DeleteModal from "@/components/DeleteModal";
+import NotifyAlert from "@/components/NotifyAlert";
 
 const Thread = () => {
   const { thread, auth, flash } = usePage();
   const { user } = auth;
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [message, setMessage] = useState("");
+  const [notify, setNotify] = useState(false);
   const [show, setShow] = useState(false);
-  const toast = useToast();
+  const [open, setOpen] = useState(false);
   const {
     slug,
     title,
@@ -44,13 +45,8 @@ const Thread = () => {
     updateCodeSyntaxHighlighting();
 
     if (flash.success) {
-      toast({
-        position: `bottom-right`,
-        description: flash.success,
-        status: `success`,
-        duration: 3000,
-        isClosable: true,
-      });
+      setNotify(true);
+      setMessage(flash.success);
     }
   }, []);
 
@@ -182,12 +178,12 @@ const Thread = () => {
                       <button
                         className="w-full bg-white text-left shadow text-sm p-6 rounded-md hover:shadow-md"
                         type="button"
-                        onClick={onOpen}
+                        onClick={() => setOpen(true)}
                       >
                         Laisser un commentaire...
                       </button>
                     </div>
-                    <ReplyModal isOpen={isOpen} onClose={onClose} thread={thread} />
+                    <ReplyModal isOpen={open} onClose={() => setOpen(false)} thread={thread} />
                   </>
                 )
               }
@@ -202,6 +198,7 @@ const Thread = () => {
         confirmURL={`/forum/${channel.slug}/${slug}`}
         cancelAction={() => setShow(false)}
       />
+      <NotifyAlert show={notify} onClose={() => setNotify(false)} message={message} />
     </>
   );
 };

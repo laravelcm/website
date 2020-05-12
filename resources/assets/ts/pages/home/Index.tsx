@@ -180,7 +180,7 @@ const Home = () => {
               <ul>
                 {
                   popularTutorials.map((popular: TutorialType) => (
-                    <li className="py-2">
+                    <li className="py-2" key={popular.id}>
                       <InertiaLink href={`/tutorial/${popular.slug}`} className="flex items-center hover:text-gray-200">
                         <span className="mr-2">
                           <svg className="h-3 w-3 text-white" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
@@ -202,7 +202,7 @@ const Home = () => {
               <ul>
                 {
                   threads.map((thread: ThreadType) => (
-                    <li key={thread.id} className="py-2">
+                    <li className="py-2" key={thread.id}>
                       <InertiaLink
                         href={thread.path}
                         className="flex items-center hover:text-gray-200"

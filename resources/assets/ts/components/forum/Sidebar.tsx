@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
-import { useToast, useDisclosure } from "@chakra-ui/core";
 import axios from "axios";
 
 import ReplyModal from "@/pages/forum/ReplyModal";
 import ThreadModal from "@/pages/forum/ThreadModal";
 import { ThreadType } from "@/utils/types";
+import NotifyAlert from "@/components/NotifyAlert";
 
 interface SidebarProps {
   page?: string;
@@ -15,22 +15,17 @@ interface SidebarProps {
 const Sidebar = ({ page, thread }: SidebarProps) => {
   const { auth } = usePage();
   const { user } = auth;
-  const toast = useToast();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [notify, setNotify] = useState(false);
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const [message, setMessage] = useState("");
   const [subscribe, setSubscribe] = useState(thread?.isSubscribedTo ?? false);
 
   function create(e: React.SyntheticEvent) {
     e.preventDefault();
     if (user === null) {
-      toast({
-        position: `bottom-right`,
-        title: `Attention.`,
-        description: `Vous devez être connecté pour créer sujet.`,
-        status: "info",
-        duration: 5000,
-        isClosable: true,
-      });
+      setNotify(true);
+      setMessage("Vous devez être connecté pour créer sujet.");
     } else {
       setOpen(true);
     }
@@ -39,52 +34,32 @@ const Sidebar = ({ page, thread }: SidebarProps) => {
   function answer(e: React.SyntheticEvent) {
     e.preventDefault();
     if (user === null) {
-      toast({
-        position: `bottom-right`,
-        title: `Attention.`,
-        description: `Vous devez être connecté pour pouvoir commenter ce sujet.`,
-        status: "info",
-        duration: 5000,
-        isClosable: true,
-      });
+      setNotify(true);
+      setMessage("Vous devez être connecté pour commenter ce sujet.");
     } else {
-      onOpen();
+      setShow(true);
     }
   }
 
   function follow(e: React.SyntheticEvent) {
     e.preventDefault();
     if (user === null) {
-      toast({
-        position: `bottom-right`,
-        title: `Attention.`,
-        description: `Vous devez être connecté pour pouvoir suivre ce sujet.`,
-        status: "info",
-        duration: 5000,
-        isClosable: true,
-      });
+      setNotify(true);
+      setMessage("Vous devez être connecté pour pouvoir suivre ce sujet.");
     } else {
       const action = subscribe ? 'delete' : 'post';
 
       if (action === 'delete') {
         axios.delete(`${thread?.path}/subscriptions`).then(() => {
           setSubscribe(false);
-          toast({
-            position: `bottom-right`,
-            description: `Vous ne suivez plus ce sujet.`,
-            status: "info",
-            duration: 4000,
-          });
+          setNotify(true);
+          setMessage("Vous ne suivez plus ce sujet.");
         });
       } else {
         axios.post(`${thread?.path}/subscriptions`).then(() => {
           setSubscribe(true);
-          toast({
-            position: `bottom-right`,
-            description: `Vous vous etes abonné ce sujet.`,
-            status: "info",
-            duration: 4000,
-          });
+          setNotify(true);
+          setMessage("Vous vous êtes abonné à ce sujet.");
         });
       }
     }
@@ -263,11 +238,12 @@ const Sidebar = ({ page, thread }: SidebarProps) => {
       {
         user !== null && (
           <>
-            <ReplyModal isOpen={isOpen} onClose={onClose} thread={thread} />
+            <ReplyModal isOpen={show} onClose={() => setShow(false)} thread={thread} />
             <ThreadModal isOpen={open} onClose={() => setOpen(false)} />
           </>
         )
       }
+      <NotifyAlert show={notify} onClose={() => setNotify(false)} message={message} />
     </div>
   );
 };
