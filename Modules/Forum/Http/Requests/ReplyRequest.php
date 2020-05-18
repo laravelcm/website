@@ -5,7 +5,7 @@ namespace Modules\Forum\Http\Requests;
 use App\Exceptions\ThrottleException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateReplyRequest extends FormRequest
+class ReplyRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

@@ -221,6 +221,9 @@ $grip-height:                       10px;
 .mde-preview {
   .mde-preview-content {
     padding: 20px 0;
+    min-height: 300px !important;
+    max-height: 450px;
+    overflow-y: scroll;
 
     p, blockquote, ul, ol, dl, table, pre {
       margin-top: 0;

@@ -5,7 +5,7 @@ namespace Modules\Forum\Http\Controllers\Frontend;
 use Modules\Core\Http\Controllers\Frontend\FrontendBaseController;
 use Modules\Forum\Entities\Reply;
 use Modules\Forum\Entities\Thread;
-use Modules\Forum\Http\Requests\CreateReplyRequest;
+use Modules\Forum\Http\Requests\ReplyRequest;
 
 class ReplyController extends FrontendBaseController
 {
@@ -13,11 +13,11 @@ class ReplyController extends FrontendBaseController
      * * Store a newly created resource in storage.
      *
      * @param  Thread $thread
-     * @param  CreateReplyRequest $request
+     * @param  ReplyRequest $request
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store(Thread $thread, CreateReplyRequest $request)
+    public function store(Thread $thread, ReplyRequest $request)
     {
         $this->authorize('create', Reply::class);
 
@@ -33,6 +33,25 @@ class ReplyController extends FrontendBaseController
         $thread->update(['last_posted_at' => now()]);
 
         return response()->json(['status' => 'success', 'message' => "Votre commentaire a été envoyé"]);
+    }
+
+    /**
+     * Update a reply on the storage.
+     *
+     * @param  ReplyRequest  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function update(ReplyRequest $request, $id)
+    {
+        $reply = Reply::find($id);
+
+        $this->authorize('update', $reply);
+
+        $reply->update(['body' => $request->get('body')]);
+
+        return response()->json(['status' => 'success', 'message' => "Votre commentaire a été modifié"]);
     }
 
     /**

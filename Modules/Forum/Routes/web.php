@@ -30,7 +30,9 @@ Route::prefix('forum')->group(function() {
 
         Route::prefix('threads')->group(function () {
             Route::post('/', [ThreadController::class, 'store'])->name('threads.store');
+            Route::put('/{id}', [ThreadController::class, 'update'])->name('threads.update');
             Route::post('/{thread}/replies', [ReplyController::class, 'store'])->name('replies.store');
+            Route::put('/reply/{id}', [ReplyController::class, 'update'])->name('replies.update');
             Route::post('/replies/{reply}/best', [ReplyController::class, 'best'])->name('replies.best');
         });
 

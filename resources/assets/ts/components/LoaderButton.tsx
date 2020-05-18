@@ -12,7 +12,7 @@ export default ({
 }: LoaderButtonProps) => (
   <button
     disabled={loading}
-    className={`btn btn-primary flex items-center justify-center ${className}`}
+    className={`btn btn-primary w-full flex items-center justify-center ${className}`}
     {...rest}
   >
     {loading && <span className="btn-spinner mr-3" />}

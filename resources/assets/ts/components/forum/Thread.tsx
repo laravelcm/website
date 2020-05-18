@@ -86,7 +86,7 @@ const Thread = (thread: ThreadType) => {
           </div>
           <InertiaLink
             href={`/forum/channels/${channel.slug}`}
-            className={`text-xs font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug}`}
+            className={`text-xs font-medium py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug}`}
           >
             {channel.name}
           </InertiaLink>

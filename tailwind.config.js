@@ -3,7 +3,6 @@ const rgba = require('hex-to-rgba');
 
 module.exports = {
   purge: {
-    enabled: false,
     content: [
       './Themes/backend/views/**/*.blade.php',
       './resources/views/**/*.blade.php',
