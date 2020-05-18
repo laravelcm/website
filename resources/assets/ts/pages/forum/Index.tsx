@@ -25,7 +25,7 @@ const Forum = () => {
         description="Les forums communautaires sont un endroit pour discuter de tout ce qui concerne le développement / le design (UI et UX)."
       />
       <Header />
-      <div className="container mt-12">
+      <div className="mx-auto max-w-screen-xl px-4 py-4 sm:py-6 sm:px-6 mt-12">
         <ListChannels />
         <div className="grid lg:grid-cols-4 lg:gap-10">
           <Sidebar />

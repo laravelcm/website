@@ -62,7 +62,7 @@ const Thread = () => {
         parentLink={`/forum/channels/${channel.slug}`}
         title={title}
       />
-      <div className="bg-white py-4 lg:hidden">
+      <div className="bg-white lg:hidden">
         <div className="mx-auto max-w-screen-xl px-4 py-4 sm:py-6 sm:px-6">
           <h1 className="text-lg md:text-xl text-gray-800">{title}</h1>
         </div>
@@ -194,7 +194,7 @@ const Thread = () => {
                 <Reply key={reply.id} reply={reply} />
               ))
             }
-            <ThreadModal thread={thread} isOpen={isVisible} onClose={() => setIsVisible(false)} />
+            {user !== null && <ThreadModal thread={thread} isOpen={isVisible} onClose={() => setIsVisible(false)} />}
             {
               user === null && (
                 <p className="text-center text-gray-800 font-medium mt-10">

@@ -16,7 +16,7 @@ const Breadcrumb = ({
   parentTitle,
   title,
 }: BreadcrumbsProps) => (
-  <div className="bg-white py-3 text-sm text-gray-600 hidden lg:block">
+  <div className="bg-white text-sm text-gray-600 hidden lg:block">
     <div className="mx-auto max-w-screen-xl px-4 py-4 sm:py-6 sm:px-6">
       <InertiaLink href={homeLink || "/"} className="hover:text-gray-800">
         {homeTitle}
