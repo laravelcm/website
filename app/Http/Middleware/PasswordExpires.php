@@ -5,13 +5,12 @@ namespace App\Http\Middleware;
 use Closure;
 use Carbon\Carbon;
 
-/**
- * Class PasswordExpired.
- */
 class PasswordExpires
 {
     /**
-     * @param         $request
+     * Handle an incoming request.
+     *
+     * @param \Illuminate\Http\Request  $request
      * @param Closure $next
      *
      * @throws \Exception

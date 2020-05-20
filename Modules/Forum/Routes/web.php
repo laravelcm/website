@@ -22,7 +22,7 @@ Route::prefix('forum')->group(function() {
     Route::get('/channels/{slug}', [ForumController::class, 'channel'])->name('channel');
     Route::get('/{channel}/{thread}', [ThreadController::class, 'thread'])->name('threads');
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth'])->group(function () {
         Route::delete('/{channel}/{thread}', [ThreadController::class, 'destroy'])->name('threads.destroy');
         Route::delete('/{channel}/{thread}/subscriptions', [ThreadSubscriptionController::class, 'destroy'])->name('threads.unsubscribe');
         Route::post('/{channel}/{thread}/subscriptions', [ThreadSubscriptionController::class, 'store'])->name('threads.subscribe');
