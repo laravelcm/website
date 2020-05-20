@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown/with-html";
 import hljs from "highlight.js";
-// eslint-disable-next-line import/no-duplicates
-import { format } from "date-fns";
-// eslint-disable-next-line import/no-duplicates
-import fr from "date-fns/locale/fr";
+import moment from "moment";
+import 'moment/locale/fr';
 
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
 import Breadcrumb from "@/includes/Breadcrumb";
 import { popupCenter } from "@/utils/helpers";
+
+moment.locale('fr');
 
 const Post = () => {
   const { post } = usePage();
@@ -93,7 +93,7 @@ const Post = () => {
               />
               <span className="flex flex-col">
                 <span className="text-lg text-gray-600">{author.full_name}</span>
-                <small className="text-xs text-gray-400 capitalize">Publié Le {format(new Date(post.published_at), "dd MMMM, y", { locale: fr })}</small>
+                <small className="text-xs text-gray-400 capitalize">Publié Le {moment(post.published_at).format('LL')}</small>
               </span>
             </span>
             <span className="text-gray-700 flex items-center text-sm">

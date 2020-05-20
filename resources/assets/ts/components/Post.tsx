@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
-// eslint-disable-next-line import/no-duplicates
-import { format } from "date-fns";
-// eslint-disable-next-line import/no-duplicates
-import fr from "date-fns/locale/fr";
+import moment from "moment";
+import 'moment/locale/fr';
 
 import { PostType } from "@/utils/types";
+
+moment.locale('fr');
 
 interface Props {
   post: PostType;
@@ -48,7 +48,7 @@ export default ({ post }: Props) => {
             />
             <span className="flex flex-col">
               <span className="text-sm text-gray-600">{author.full_name}</span>
-              <small className="text-xs text-gray-400 capitalize">Le {format(new Date(post.published_at), "dd MMMM, y", { locale: fr })}</small>
+              <small className="text-xs text-gray-400 capitalize">Le {moment(post.published_at).format('LL')}</small>
             </span>
           </span>
         </div>

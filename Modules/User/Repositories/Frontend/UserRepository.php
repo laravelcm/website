@@ -246,6 +246,7 @@ class UserRepository extends BaseRepository
                 'first_name' => $nameParts['first_name'],
                 'last_name' => $nameParts['last_name'],
                 'email' => $user_email,
+                'username' => str_slug($nameParts['last_name'], '_'),
                 'active' => true,
                 'confirmed' => true,
                 'password' => null,
