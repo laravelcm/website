@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown";
-import classNames from "classnames";
 import hljs from "highlight.js";
 
 import Layout from "@/includes/Layout";
@@ -15,6 +14,7 @@ import Reply from "@/components/forum/Reply";
 import ReplyModal from "@/pages/forum/ReplyModal";
 import DeleteModal from "@/components/DeleteModal";
 import NotifyAlert from "@/components/NotifyAlert";
+import ThreadModal from "@/pages/forum/ThreadModal";
 
 const Thread = () => {
   const { thread, auth, flash } = usePage();
@@ -23,6 +23,7 @@ const Thread = () => {
   const [notify, setNotify] = useState(false);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const {
     slug,
     title,
@@ -33,13 +34,8 @@ const Thread = () => {
     replies_count,
     local_created_at,
     replies,
+    best_reply_id,
   }: ThreadType = thread;
-  const className = classNames(
-    `bg-white shadow flex flex-col px-6 py-4 rounded-lg mb-4`,
-    {
-      'thread-header': (user !== null && user.id === creator.id) || (user !== null && user.is_admin),
-    },
-  );
 
   useEffect(() => {
     updateCodeSyntaxHighlighting();
@@ -66,16 +62,16 @@ const Thread = () => {
         parentLink={`/forum/channels/${channel.slug}`}
         title={title}
       />
-      <div className="bg-white py-4 lg:hidden">
-        <div className="container">
+      <div className="bg-white lg:hidden">
+        <div className="mx-auto max-w-screen-xl px-4 py-4 sm:py-6 sm:px-6">
           <h1 className="text-lg md:text-xl text-gray-800">{title}</h1>
         </div>
       </div>
-      <div className="container mt-12">
-        <div className="flex w-full">
+      <div className="mx-auto max-w-screen-xl px-4 py-4 sm:py-6 sm:px-6 mt-12">
+        <div className="grid lg:grid-cols-4 lg:gap-10">
           <Sidebar page="show" thread={thread} />
-          <div className="w-full lg:w-9/12">
-            <div className={className}>
+          <div className="col-span-3">
+            <div className="bg-white shadow flex flex-col px-6 py-4 rounded-lg mb-4 group">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <InertiaLink
@@ -122,25 +118,15 @@ const Thread = () => {
                     </div>
                     <InertiaLink
                       href={`/forum/channels/${channel.slug}`}
-                      className={`text-xs text-center font-bold py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug} md:text-sm`}
+                      className={`text-xs text-center font-medium py-2 px-3 rounded-full bg-opacity-${channel.slug} text-brand-${channel.slug} md:text-sm`}
                     >
                       {channel.name}
                     </InertiaLink>
                   </div>
-                  <button className="ml-4 hidden thread-remove" type="button" onClick={() => setShow(true)}>
-                    <svg className="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                      />
-                    </svg>
-                  </button>
                 </div>
               </div>
-              <div className="mt-6">
-                <div className="content-body text-gray-800 text-base md:text-sm">
+              <div className="mt-4">
+                <div className="markdown text-gray-800 text-sm md:text-base">
                   <ReactMarkdown
                     source={body}
                     escapeHtml={false}
@@ -153,6 +139,54 @@ const Thread = () => {
                     skipHtml
                   />
                 </div>
+                {
+                  (user !== null && user.id === creator.id) && (
+                    <div className="flex space-x-10 mt-4">
+                      {best_reply_id === null && (
+                        <div className="flow-root">
+                          <button
+                            type="button"
+                            onClick={() => setIsVisible(true)}
+                            className="-m-2 px-2 py-1 space-x-2 flex items-center rounded-md text-xs font-medium leading-6 text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150"
+                          >
+                            <svg
+                              className="flex-shrink-0 h-4 w-4 text-gray-400"
+                              fill="none"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                            <span>Modifier</span>
+                          </button>
+                        </div>
+                      )}
+                      <div className="flow-root">
+                        <button
+                          onClick={() => setShow(true)}
+                          type="button"
+                          className="-m-2 px-2 py-1 space-x-2 flex items-center rounded-md text-xs font-medium leading-6 text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150"
+                        >
+                          <svg
+                            className="flex-shrink-0 h-4 w-4 text-red-400"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                          <span>Supprimer</span>
+                        </button>
+                      </div>
+                    </div>
+                  )
+                }
               </div>
             </div>
             {
@@ -160,34 +194,33 @@ const Thread = () => {
                 <Reply key={reply.id} reply={reply} />
               ))
             }
-            <div className="mt-10">
-              {
-                user === null && (
-                  <p className="text-center text-gray-800 font-medium">
-                    Veuillez vous <InertiaLink href="/login" className="link">connecter</InertiaLink>{" "}
-                    ou{" "}
-                    <InertiaLink href="/register" className="link">créer un compte</InertiaLink> pour participer à cette conversation.
-                  </p>
-                )
-              }
-              {
-                user !== null && (
-                  <>
-                    <div className="flex items-center px-6">
-                      <img src={user.picture} alt={user.full_name} className="h-12 w-12 rounded-full mr-4" />
-                      <button
-                        className="w-full bg-white text-left shadow text-sm p-6 rounded-md hover:shadow-md"
-                        type="button"
-                        onClick={() => setOpen(true)}
-                      >
-                        Laisser un commentaire...
-                      </button>
-                    </div>
-                    <ReplyModal isOpen={open} onClose={() => setOpen(false)} thread={thread} />
-                  </>
-                )
-              }
-            </div>
+            {user !== null && <ThreadModal thread={thread} isOpen={isVisible} onClose={() => setIsVisible(false)} />}
+            {
+              user === null && (
+                <p className="text-center text-gray-800 font-medium mt-10">
+                  Veuillez vous <InertiaLink href="/login" className="link">connecter</InertiaLink>{" "}
+                  ou{" "}
+                  <InertiaLink href="/register" className="link">créer un compte</InertiaLink> pour participer à cette conversation.
+                </p>
+              )
+            }
+            {
+              user !== null && (
+                <div className="mt-10">
+                  <div className="flex items-center px-6">
+                    <img src={user.picture} alt={user.full_name} className="h-12 w-12 rounded-full mr-4" />
+                    <button
+                      className="w-full bg-white text-left shadow text-sm p-6 rounded-md hover:shadow-md"
+                      type="button"
+                      onClick={() => setOpen(true)}
+                    >
+                      Laisser un commentaire...
+                    </button>
+                  </div>
+                  <ReplyModal isOpen={open} onClose={() => setOpen(false)} thread={thread} />
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

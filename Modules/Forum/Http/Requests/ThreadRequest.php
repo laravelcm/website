@@ -2,33 +2,30 @@
 
 namespace Modules\Forum\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Modules\Core\Http\Requests\AbstractBaseRequest;
 
-class ThreadRequest extends FormRequest
+class ThreadRequest extends AbstractBaseRequest
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Rules for creating a new resource.
      *
-     * @return array
+     * @var array
      */
-    public function rules()
-    {
-        return [
-            'title' => 'required|spamfree',
-            'body' => 'required',
-            'channel_id' => 'required|exists:channels,id',
-        ];
-    }
+    public $storeRules = [
+        'title' => 'required|spamfree',
+        'body' => 'required',
+        'channel_id' => 'required|exists:channels,id',
+    ];
 
     /**
-     * Determine if the user is authorized to make this request.
+     * Rules for updating a resource.
      *
-     * @return bool
+     * @var array
      */
-    public function authorize()
-    {
-        return auth()->check();
-    }
+    public $updateRules = [
+        'title' => 'required|spamfree',
+        'body' => 'required',
+    ];
 
     /**
      * Get the error messages for the defined validation rules.

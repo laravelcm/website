@@ -98,6 +98,22 @@ class ThreadController extends FrontendBaseController
     }
 
     /**
+     * Update a thread resource in the storage.
+     *
+     * @param  ThreadRequest  $request
+     * @param  $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(ThreadRequest $request, $id)
+    {
+        $thread = $this->repository->updateById($id, $request->except('channel_id'));
+
+        session()->flash('success', "Votre thread a été correctement modifiée.");
+
+        return redirect($thread->path);
+    }
+
+    /**
      * Return the users list on a thread.
      *
      * @param  $channel
@@ -114,7 +130,7 @@ class ThreadController extends FrontendBaseController
 
         Reply::where('thread_id', $thread->id)->get()->each(function ($reply) use ($users) {
             if ($reply->owner->id !== auth()->id()) {
-                if (!$users->contains($reply->owner)) {
+                if (!$users->contains($reply->owner) && $reply->owner->username !== null) {
                     $users->add($reply->owner);
                 }
             }

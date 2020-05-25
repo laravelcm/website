@@ -1,30 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { usePage } from "@inertiajs/inertia-react";
 import ReactMde, { commands } from "react-mde";
 import * as Showdown from "showdown";
 
-import { ChannelType } from "@/utils/types";
+import { ChannelType, ThreadType } from "@/utils/types";
 import LoaderButton from "@/components/LoaderButton";
 import TextInput from "@/components/TextInput";
 import SelectInput from "@/components/SelectInput";
 import Transition from "@/components/Transition";
 
 interface ReplyModalProps {
+  thread?: ThreadType;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default ({ isOpen, onClose }: ReplyModalProps) => {
+export default ({ thread, isOpen, onClose }: ReplyModalProps) => {
   const { auth, errors, channels } = usePage();
   const { user } = auth;
   const [body, setBody] = useState("");
+  const [id, setId] = useState<null | number>(null);
   const [selectedTab, setSelectedTab] = useState<"write" | "preview">("write");
   const [sending, setSending] = useState(false);
   const [values, setValues] = useState({
     title: "",
     channel_id: "",
   });
+
+  useEffect(() => {
+    if (thread) {
+      setBody(thread.body);
+      setId(thread.id);
+      // eslint-disable-next-line no-shadow
+      setValues((values) => ({
+        ...values,
+        title: thread.title,
+      }));
+    }
+  }, []);
 
   const converter = new Showdown.Converter({
     tables: true,
@@ -53,7 +67,7 @@ export default ({ isOpen, onClose }: ReplyModalProps) => {
     }));
   }
 
-  function createThread(e: React.SyntheticEvent) {
+  function manageThread(e: React.SyntheticEvent) {
     e.preventDefault();
     setSending(true);
 
@@ -62,11 +76,21 @@ export default ({ isOpen, onClose }: ReplyModalProps) => {
       body,
     };
 
-    Inertia.post(`/forum/threads`, form).then(() => {
-      setSending(false);
-    }).catch((error) => {
-      console.error(error);
-    });
+    if (thread) {
+      Inertia.put(`/forum/threads/${id}`, form).then(() => {
+        setSending(false);
+        onClose();
+        window.location.reload();
+      }).catch((error) => {
+        console.error(error);
+      });
+    } else {
+      Inertia.post(`/forum/threads`, form).then(() => {
+        setSending(false);
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
   }
 
   return (
@@ -94,27 +118,29 @@ export default ({ isOpen, onClose }: ReplyModalProps) => {
           leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-3xl sm:w-full">
-            <form onSubmit={createThread}>
+            <form onSubmit={manageThread}>
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="flex items-center justify-between font-normal text-base">
                   <div className="flex items-center">
-                    <img src={user.picture} alt={user.full_name} className="h-10 w-10 rounded-full mr-4" />
-                    <small>@{user.username}</small>
+                    <img src={user.picture} alt={user.full_name} className="h-10 w-10 rounded-full" />
+                    <small className="text-sm font-medium ml-3">@{user.username}</small>
                   </div>
-                  <SelectInput
-                    onChange={handleChange}
-                    value={values.channel_id}
-                    name="channel_id"
-                    errors={errors.channel_id}
-                  >
-                    {
-                      channels.map((channel: ChannelType) => (
-                        <option key={channel.id} value={channel.id}>
-                          {channel.name}
-                        </option>
-                      ))
-                    }
-                  </SelectInput>
+                  {thread === null && (
+                    <SelectInput
+                      onChange={handleChange}
+                      value={values.channel_id}
+                      name="channel_id"
+                      errors={errors.channel_id}
+                    >
+                      {
+                        channels.map((channel: ChannelType) => (
+                          <option key={channel.id} value={channel.id}>
+                            {channel.name}
+                          </option>
+                        ))
+                      }
+                    </SelectInput>
+                  )}
                 </div>
                 <div className="mt-4">
                   <TextInput
@@ -150,7 +176,7 @@ export default ({ isOpen, onClose }: ReplyModalProps) => {
               </div>
               <div className="bg-gray-50 p-4 sm:px-6 sm:py-4 sm:flex sm:flex-row-reverse">
                 <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                  <LoaderButton title="Poster" loading={sending} type="submit" />
+                  <LoaderButton title={thread !== null ? 'Modifier' : 'Poster'} loading={sending} type="submit" />
                 </span>
                 <span className="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
                   <button onClick={onClose} type="button" className="btn-white">

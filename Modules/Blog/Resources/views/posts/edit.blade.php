@@ -9,7 +9,7 @@
 
     <div class="mt-2 md:flex md:items-center md:justify-between">
         <div class="flex-1 min-w-0">
-            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+            <h2 class="text-2xl font-bold leading-9 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
                 {{ $post->title }}
             </h2>
         </div>
@@ -17,8 +17,8 @@
 
     <div class="py-8">
         {!! Form::model($post, ['route' => ['admin.posts.update', $post], 'files' => true, 'method' => 'PUT']) !!}
-            <div class="flex flex-col lg:flex-row">
-                <div class="w-full lg:w-2/3 space-y-5">
+            <div class="grid lg:grid-cols-6 lg:gap-8">
+                <div class="col-span-6 lg:col-span-4 space-y-5">
                     <div class="bg-white shadow rounded-md overflow-hidden px-4 py-4 sm:px-6">
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2">
@@ -56,7 +56,7 @@
                         <div id="editor" class="mt-2" data-content="{{ $post->body }}"></div>
                     </div>
                 </div>
-                <div class="w-full lg:w-1/3 space-y-5 mt-4 lg:mt-0 lg:ml-4">
+                <div class="col-span-6 lg:col-span-2 space-y-5 mt-4 lg:mt-0">
                     <div class="shadow rounded-md">
                         <div class="bg-white p-4">
                             <h4 class="text-gray-500 font-medium text-base">{{ __('Date de publication') }}</h4>

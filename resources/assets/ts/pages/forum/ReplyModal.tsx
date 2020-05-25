@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactMde, { commands, Suggestion } from "react-mde";
 import * as Showdown from "showdown";
 
 import LoaderButton from "@/components/LoaderButton";
-import { ThreadType, User } from "@/utils/types";
+import { ReplyType, ThreadType, User } from "@/utils/types";
 import Transition from "@/components/Transition";
 import NotifyAlert from "@/components/NotifyAlert";
 
@@ -12,14 +12,26 @@ interface ReplyModalProps {
   isOpen: boolean;
   onClose: () => void;
   thread?: ThreadType;
+  reply?: ReplyType;
 }
 
-export default ({ isOpen, onClose, thread }: ReplyModalProps) => {
+export default ({
+  isOpen,
+  onClose,
+  thread,
+  reply,
+}: ReplyModalProps) => {
   const [value, setValue] = useState("");
   const [selectedTab, setSelectedTab] = useState<"write" | "preview">("write");
   const [sending, setSending] = useState(false);
   const [message, setMessage] = useState("");
   const [notify, setNotify] = useState(false);
+
+  useEffect(() => {
+    if (reply) {
+      setValue(reply.body);
+    }
+  }, []);
 
   const converter = new Showdown.Converter({
     tables: true,
@@ -64,31 +76,54 @@ export default ({ isOpen, onClose, thread }: ReplyModalProps) => {
     });
   }
 
-  function sendReply(e: React.SyntheticEvent) {
+  function manageReply(e: React.SyntheticEvent) {
     e.preventDefault();
     setSending(true);
 
-    axios.post(`/forum/threads/${thread?.slug}/replies`, { body: value }).then((response) => {
-      setSending(false);
-      const { data } = response;
-      if (data.status === 'success') {
-        onClose();
-        setValue("");
-        setNotify(true);
-        setMessage(data.message);
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
-      }
-    }).catch((error) => {
-      const { errors } = error.response.data;
-      if (errors) {
+    if (reply) {
+      axios.put(`/forum/threads/reply/${reply?.id}`, { body: value }).then((response) => {
         setSending(false);
-        setNotify(true);
-        setMessage("Impossible de poster ce commentaire. Peut etre dû à un spam, recommencer plus tard.");
-      }
-    });
+        const { data } = response;
+        if (data.status === 'success') {
+          onClose();
+          setValue("");
+          setMessage(data.message);
+          setNotify(true);
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
+      }).catch((error) => {
+        const { errors } = error.response.data;
+        if (errors) {
+          setSending(false);
+          setMessage("Impossible de modifier votre commentaire. Peut etre dû à un spam, recommencer plus tard.");
+          setNotify(true);
+        }
+      });
+    } else {
+      axios.post(`/forum/threads/${thread?.slug}/replies`, { body: value }).then((response) => {
+        setSending(false);
+        const { data } = response;
+        if (data.status === 'success') {
+          onClose();
+          setValue("");
+          setMessage(data.message);
+          setNotify(true);
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
+      }).catch((error) => {
+        const { errors } = error.response.data;
+        if (errors) {
+          setSending(false);
+          setMessage("Impossible de poster ce commentaire. Peut etre dû à un spam, recommencer plus tard.");
+          setNotify(true);
+        }
+      });
+    }
   }
 
   return (
@@ -116,7 +151,7 @@ export default ({ isOpen, onClose, thread }: ReplyModalProps) => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-3xl sm:w-full">
-              <form onSubmit={sendReply}>
+              <form onSubmit={manageReply}>
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="flex items-center font-normal text-base">
                     <svg className="h-6 w-6 text-brand-200 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -127,7 +162,7 @@ export default ({ isOpen, onClose, thread }: ReplyModalProps) => {
                         strokeWidth="2"
                       />
                     </svg>
-                    Répondre à la conversation
+                    {reply ? 'Modifier ma réponse' : 'Répondre à la conversation'}
                   </div>
                   <div className="mt-4">
                     <ReactMde
@@ -155,7 +190,7 @@ export default ({ isOpen, onClose, thread }: ReplyModalProps) => {
                 </div>
                 <div className="bg-gray-50 p-4 sm:px-6 sm:py-4 sm:flex sm:flex-row-reverse">
                   <span className="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                    <LoaderButton title="Commenter" loading={sending} type="submit" />
+                    <LoaderButton title={reply ? 'Modifier' : 'Commenter'} loading={sending} type="submit" />
                   </span>
                   <span className="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
                     <button onClick={onClose} type="button" className="btn-white">

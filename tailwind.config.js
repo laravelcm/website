@@ -3,9 +3,14 @@ const rgba = require('hex-to-rgba');
 
 module.exports = {
   purge: {
-    enabled: false,
     content: [
       './Themes/backend/views/**/*.blade.php',
+      './Modules/Blog/Resources/views/**/*.blade.php',
+      './Modules/Tutorial/Resources/views/**/*.blade.php',
+      './Modules/Dashboard/Resources/views/**/*.blade.php',
+      './Modules/Forum/Resources/views/**/*.blade.php',
+      './Modules/Job/Resources/views/**/*.blade.php',
+      './Modules/User/Resources/views/**/*.blade.php',
       './resources/views/**/*.blade.php',
       './resources/assets/ts/**/*.ts',
       './resources/assets/ts/**/*.tsx',

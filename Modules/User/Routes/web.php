@@ -30,7 +30,11 @@ use Modules\User\Http\Controllers\Frontend\UserNotificationController;
  */
 Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
     // These routes require the user to be logged in
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/update-username', function () {
+            return "View Username";
+        })->name('username');
+
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
         //For when admin logged in as user from backend
@@ -79,7 +83,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
  * All route names are prefixed with 'frontend.'
  * These routes can not be hit if the password is expired
  */
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => 'password_expires', 'as' => 'user.'], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('account', [AccountController::class, 'index'])->name('account');

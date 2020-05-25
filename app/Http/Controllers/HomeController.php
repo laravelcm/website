@@ -64,7 +64,7 @@ class HomeController extends Controller
         $posts = $this->postRepository
             ->orderBy('published_at', 'desc')
             ->publish()
-            ->limit(3)
+            ->limit(9)
             ->get();
 
         $tutorials = $this->tutorialRepository

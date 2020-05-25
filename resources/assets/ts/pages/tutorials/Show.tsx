@@ -2,15 +2,15 @@ import React, { useEffect } from "react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import ReactMarkdown from "react-markdown/with-html";
 import hljs from "highlight.js";
-// eslint-disable-next-line import/no-duplicates
-import { format } from "date-fns";
-// eslint-disable-next-line import/no-duplicates
-import fr from "date-fns/locale/fr";
+import moment from "moment";
+import 'moment/locale/fr';
 
 import Layout from "@/includes/Layout";
 import Seo from "@/includes/Seo";
 import Breadcrumb from "@/includes/Breadcrumb";
 import { popupCenter } from "@/utils/helpers";
+
+moment.locale('fr');
 
 const Tutorial = () => {
   const { tutorial } = usePage();
@@ -187,7 +187,7 @@ const Tutorial = () => {
                   </a>
                 </h4>
                 <small className="text-xs text-gray-500 capitalize">
-                  Publié Le {format(new Date(tutorial.published_at), "dd MMMM, y", { locale: fr })}
+                  Publié Le {moment(tutorial.published_at).format('LL')}
                 </small>
               </div>
             </div>
