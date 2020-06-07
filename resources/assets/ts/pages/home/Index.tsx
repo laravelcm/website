@@ -36,7 +36,7 @@ const Home = () => {
             </p>
             <InertiaLink
               href="/jobs"
-              className="p-2 bg-brand-100 items-center text-gray-700 rounded-lg md:rounded-full flex lg:inline-flex w-full"
+              className="p-2 bg-brand-100 items-center text-gray-700 rounded-lg md:rounded-full flex lg:inline-flex"
               role="alert"
             >
               <span className="flex rounded-lg md:rounded-full bg-brand-900 uppercase px-2 py-1 text-xs font-bold mr-4 text-white">
