@@ -33,7 +33,7 @@ class BlogController extends Controller
     public function index()
     {
         $posts = Post::publish()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->paginate(16);
 
         return Inertia::render('blog/Index', [
@@ -79,7 +79,7 @@ class BlogController extends Controller
     {
         $post = $this->postRepository->getByColumn($slug, 'slug');
 
-        if(!$post) {
+        if (!$post) {
             abort('404', "L'article que vous demandez n'est plus disponible ou a été supprimé.");
         }
 
