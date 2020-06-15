@@ -56,7 +56,7 @@ class BlogController extends Controller
         $category = Category::with('posts')->where('slug', $slug)->firstOrFail();
         $posts = $category->posts()
             ->publish()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->paginate(16);
 
         return Inertia::render('blog/Category', [
