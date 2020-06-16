@@ -20,9 +20,10 @@
     <meta property="og:image:url" content="{{ $OpenGraphImage ?? asset('/img/preview-site.png') }}" />
 
     <meta name="twitter:url" content="{{ $openGraphURL ?? url('/') }}" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ $title ?? "Communauté Laravel & PHP Cameroun" }}" />
     <meta name="twitter:site" content="@laravelcm" />
+    <meta name="twitter:creator" content="@laravelcm" />
     <meta name="twitter:description" content="{{ $description ?? "Bienvenue sur le site de la communauté des développeurs PHP et Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun." }}" />
     <meta name="twitter:image" content="{{ $OpenGraphImage ?? asset('/img/preview-site.png') }}" />
     <!-- Favicon -->
