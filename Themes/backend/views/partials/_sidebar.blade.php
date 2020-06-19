@@ -8,7 +8,7 @@
                 <nav class="mt-4">
                     <a href="#" class="block text-sm font-medium text-gray-600">Logs</a>
                     <a href="#" class="mt-4 block text-sm font-medium text-gray-600">Audits</a>
-                    <a href="#" class="mt-4 block text-sm font-medium text-gray-600">Backups</a>
+                    <a href="/console/backups" class="mt-4 block text-sm font-medium text-gray-600">Backups</a>
                 </nav>
             </div>
         </div>
