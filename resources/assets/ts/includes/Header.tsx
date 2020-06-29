@@ -181,7 +181,7 @@ export default () => {
                       <input
                         className="transition font-light focus:outline-none border border-transparent focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-200 py-2 pr-8 pl-10 block w-full appearance-none leading-normal ds-input"
                         type="text"
-                        placeholder='Rechercher (Press "\" to focus)'
+                        placeholder="Rechercher"
                         autoComplete="off"
                         style={{ position: "relative", verticalAlign: "top" }}
                         ref={input}
@@ -190,15 +190,14 @@ export default () => {
                       />
                     </span>
                     <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
-                      <svg
-                        className="text-gray-600 w-4 h-4"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
+                      <svg className="text-gray-600 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
                       </svg>
                     </div>
-                    {loader && <span className="spinner top-0 right-0 mt-5 mr-6" />}
+                    <div className="absolute right-3 inset-y-1 border border-gray-400 px-1.5 py-0.5 rounded flex items-center justify-center">
+                      <span className="text-xs leading-4 font-medium text-gray-400">\</span>
+                    </div>
+                    {loader && <span className="spinner top-0 right-6 mt-5 mr-6" />}
                   </div>
                   <Transition
                     show={show}
