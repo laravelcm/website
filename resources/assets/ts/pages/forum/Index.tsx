@@ -6,7 +6,6 @@ import Seo from "@/includes/Seo";
 
 import Header from "@/components/forum/Header";
 import TabBar from "@/components/forum/TabBar";
-import SearchBar from "@/components/forum/SearchBar";
 import Sidebar from "@/components/forum/Sidebar";
 import Thread from "@/components/forum/Thread";
 import ListChannels from "@/pages/forum/ListChannels";
@@ -36,9 +35,6 @@ const Forum = () => {
                   Toutes les discussions
                 </div>
                 <TabBar />
-              </div>
-              <div className="w-full lg:w-1/3">
-                <SearchBar />
               </div>
             </div>
             <div className="my-10">

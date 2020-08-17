@@ -22,11 +22,10 @@ const Home = () => {
       <div className="bg-white relative overflow-hidden">
         <img
           src={require("@/assets/images/illustration.svg")}
-          className="hidden xl:block absolute right-0"
-          style={{ top: "-90px" }}
+          className="hidden xl:block absolute right-0 -top-22"
           alt="illustration"
         />
-        <div className="container px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-14 lg:pt-16 lg:pb-24 xl:pt-24 xl:pb-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:pb-16 lg:pt-16 lg:pb-24 xl:pt-20 xl:pb-40">
           <div className="w-full flex relative">
             <div>
               <h1 className="text-brand-primary font-bold text-3xl mb-4 sm:mb-5 md:text-4xl lg:text-5xl lg:mb-8">Laravel Cameroun</h1>
@@ -65,8 +64,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-8 md:px-4">
-        <div className="w-full space-y-4 mb-10 md:flex md:space-y-0 md:space-x-6 lg:space-x-8 md:mb-14 md:-mt-20 lg:-mt-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        <div className="relative w-full space-y-4 mb-10 md:flex md:space-y-0 md:space-x-6 lg:space-x-8 md:mb-14 md:-mt-20 lg:-mt-32">
           <InertiaLink
             href="/jobs"
             className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full md:flex-col md:justify-between md:px-6 md:py-8"
