@@ -125,7 +125,7 @@ export default ({ thread, isOpen, onClose }: ReplyModalProps) => {
                     <img src={user.picture} alt={user.full_name} className="h-10 w-10 rounded-full" />
                     <small className="text-sm font-medium ml-3">@{user.username}</small>
                   </div>
-                  {thread === null && (
+                  {!thread && (
                     <SelectInput
                       onChange={handleChange}
                       value={values.channel_id}
