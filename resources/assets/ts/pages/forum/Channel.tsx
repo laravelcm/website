@@ -8,7 +8,6 @@ import Pagination from "@/components/Pagination";
 
 import Header from "@/components/forum/Header";
 import TabBar from "@/components/forum/TabBar";
-import SearchBar from "@/components/forum/SearchBar";
 import Sidebar from "@/components/forum/Sidebar";
 import ListChannels from "@/pages/forum/ListChannels";
 import Thread from "@/components/forum/Thread";
@@ -39,9 +38,6 @@ const Channel = () => {
                   {channel.name}
                 </div>
                 <TabBar />
-              </div>
-              <div className="w-full lg:w-1/3">
-                <SearchBar />
               </div>
             </div>
             <div className="my-10">

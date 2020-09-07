@@ -28,7 +28,7 @@ export default () => {
               method="post"
               id="mc-embedded-subscribe-form"
               name="mc-embedded-subscribe-form"
-              className="sm:flex relative"
+              className="sm:flex"
               target="_blank"
               noValidate
             >
@@ -61,7 +61,7 @@ export default () => {
         </div>
       </div>
       <footer>
-        <div className="w-full max-w-screen-xl relative mx-auto px-6">
+        <div className="w-full max-w-screen-xl mx-auto px-6">
           <div className="lg:flex -mx-6">
             <div className="px-6 mb-8 w-full md:text-center md:w-2/3 md:mx-auto lg:w-1/3 lg:text-left">
               <div className="text-brand-primary flex items-center md:justify-center lg:justify-start">

@@ -10,9 +10,7 @@ interface LayoutProps {
 export default ({ child }: LayoutProps) => (
   <>
     <Header />
-    <main className="py-18 w-full min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible">
-      {child}
-    </main>
+    <main className="pt-18">{child}</main>
     <Footer />
   </>
 );

@@ -19,47 +19,53 @@ const Home = () => {
   return (
     <>
       <Seo title="Accueil" />
-      <div className="pt-10 pb-12 h-87 bg-white lg:pt-24 lg:pb-56 lg:h-140 relative">
+      <div className="bg-white relative overflow-hidden">
         <img
           src={require("@/assets/images/illustration.svg")}
-          className="hidden lg:block absolute right-0"
-          style={{ top: "-90px" }}
+          className="hidden xl:block absolute right-0 -top-22"
           alt="illustration"
         />
-        <div className="container">
-          <div className="w-full lg:w-7/12">
-            <h1 className="text-brand-primary font-semibold text-3xl mb-6 lg:text-4xl lg:mb-8">Laravel Cameroun</h1>
-            <p className="text-sm mb-10 lg:w-140 lg:text-lg lg:mb-12">
-              Bienvenue sur le site de la communauté des développeurs PHP et
-              Laravel du Cameroun, le plus gros rassemblement de développeurs au
-              Cameroun.
-            </p>
-            <InertiaLink
-              href="/jobs"
-              className="p-2 bg-brand-100 items-center text-gray-700 rounded-lg md:rounded-full flex lg:inline-flex w-full"
-              role="alert"
-            >
-              <span className="flex rounded-lg md:rounded-full bg-brand-900 uppercase px-2 py-1 text-xs font-bold mr-4 text-white">
-                Soon
-              </span>
-              <span className="font-normal mr-2 text-left flex-auto text-xs lg:text-sm">
-                Une nouvelle section{" "}
-                <span className="text-brand-primary">Jobs</span>{" "}
-                bientôt disponible. Cliquez pour en savoir plus!
-              </span>
-              <svg
-                className="fill-current opacity-75 h-4 w-4 hidden md:block"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:pb-16 lg:pt-16 lg:pb-24 xl:pt-20 xl:pb-40">
+          <div className="w-full flex relative">
+            <div>
+              <h1 className="text-brand-primary font-bold text-3xl mb-4 sm:mb-5 md:text-4xl lg:text-5xl lg:mb-8">Laravel Cameroun</h1>
+              <p className="text-base mb-8 sm:text-lg md:mb-10 lg:max-w-2xl">
+                Bienvenue sur le site de la communauté des développeurs PHP et
+                Laravel du Cameroun, le plus gros rassemblement de développeurs au Cameroun.
+              </p>
+              <InertiaLink
+                href="/jobs"
+                className="p-2 sm:px-4 sm:py-2.5 bg-brand-100 items-center text-gray-700 rounded-md rounded-lg text-sm flex lg:inline-flex w-full"
+                role="alert"
               >
-                <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+                <span className="flex rounded-md rounded-lg bg-brand-900 uppercase px-2 py-1 font-semibold mr-4 text-white">
+                  Bientôt
+                </span>
+                <span className="font-normal mx-2 text-left flex-auto">
+                  Une nouvelle section{" "}
+                  <span className="text-brand-primary">Jobs</span>{" "}
+                  bientôt disponible. Cliquez pour en savoir plus!
+                </span>
+                <svg className="fill-current opacity-75 h-4 w-4 hidden md:block" viewBox="0 0 20 20">
+                  <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+                </svg>
+              </InertiaLink>
+              <svg className="hidden lg:block absolute xl:hidden top-0 right-0 origin-top mt-4" width="221" height="221">
+                <g clipPath="url(#clip0)">
+                  <path opacity=".503" fillRule="evenodd" clipRule="evenodd" d="M2.402 0a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm24.022 24.022a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm0-24.022a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm24.022 0a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm0 24.022a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm0 24.022a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm24.021 0a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm0-24.022a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm0-24.022a2.402 2.402 0 1 1 0 4.804 2.402 2.402 0 0 1 0-4.804zm0 72.065a2.402 2.402 0 1 1 0 4.805 2.402 2.402 0 0 1 0-4.805zM98.49 48.044a2.403 2.403 0 0 1 1.699 4.1 2.403 2.403 0 0 1-3.398-3.397 2.402 2.402 0 0 1 1.7-.703zm0-24.022a2.403 2.403 0 1 1 0 4.807 2.403 2.403 0 0 1 0-4.807zM98.49 0a2.403 2.403 0 1 1 0 4.807 2.403 2.403 0 0 1 0-4.807zm0 72.065a2.403 2.403 0 1 1 0 4.807 2.403 2.403 0 0 1 0-4.807zm0 24.022a2.403 2.403 0 0 1 1.699 4.101 2.405 2.405 0 0 1-3.398 0 2.403 2.403 0 0 1 1.7-4.101zm24.022-48.044a2.4 2.4 0 0 1 2.402 2.403 2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.402-2.402 2.404 2.404 0 0 1 2.402-2.402zm0-24.021a2.4 2.4 0 0 1 2.402 2.402 2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.402-2.402 2.404 2.404 0 0 1 2.402-2.402zm0-24.022a2.4 2.4 0 0 1 2.402 2.402 2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.402-2.402A2.404 2.404 0 0 1 122.511 0zm0 72.065a2.4 2.4 0 0 1 2.402 2.402 2.4 2.4 0 0 1-2.402 2.403 2.404 2.404 0 0 1-2.402-2.403 2.404 2.404 0 0 1 2.402-2.402zm0 24.022a2.4 2.4 0 0 1 2.402 2.402 2.402 2.402 0 1 1-2.402-2.402zm0 24.022a2.402 2.402 0 1 1 0 4.803 2.402 2.402 0 0 1 0-4.803zm24.022-72.065a2.4 2.4 0 0 1 2.402 2.402 2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-1.699-4.1 2.404 2.404 0 0 1 1.699-.704zm0-24.022a2.4 2.4 0 0 1 2.402 2.402 2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.403-2.402 2.405 2.405 0 0 1 2.403-2.402zm0-24.022a2.4 2.4 0 0 1 2.402 2.402 2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.403-2.402A2.405 2.405 0 0 1 146.533 0zm0 72.065a2.4 2.4 0 0 1 2.402 2.402 2.4 2.4 0 0 1-2.402 2.403 2.404 2.404 0 0 1-2.403-2.403 2.405 2.405 0 0 1 2.403-2.402zm0 24.022a2.4 2.4 0 0 1 2.402 2.402 2.402 2.402 0 1 1-2.402-2.402zm0 24.022a2.402 2.402 0 1 1 0 4.803 2.402 2.402 0 0 1 0-4.803zm0 24.021a2.403 2.403 0 1 1-.002 4.805 2.403 2.403 0 0 1 .002-4.805zm24.021-96.087a2.404 2.404 0 0 1 2.403 2.403 2.405 2.405 0 0 1-2.403 2.402 2.4 2.4 0 0 1-2.402-2.402 2.4 2.4 0 0 1 2.402-2.402zm0-24.021a2.404 2.404 0 0 1 2.403 2.402 2.405 2.405 0 0 1-2.403 2.402 2.4 2.4 0 0 1-2.402-2.402 2.4 2.4 0 0 1 2.402-2.402zm0-24.022a2.404 2.404 0 0 1 2.403 2.402 2.405 2.405 0 0 1-2.403 2.402 2.4 2.4 0 0 1-2.402-2.402A2.4 2.4 0 0 1 170.554 0zm0 72.065a2.404 2.404 0 0 1 2.403 2.402 2.405 2.405 0 0 1-2.403 2.403 2.4 2.4 0 0 1-2.402-2.403 2.4 2.4 0 0 1 2.402-2.402zm0 24.022a2.404 2.404 0 0 1 2.403 2.402 2.406 2.406 0 0 1-2.403 2.402 2.402 2.402 0 1 1 0-4.804zm0 24.022a2.406 2.406 0 0 1 2.403 2.402 2.403 2.403 0 1 1-2.403-2.402zm0 24.021a2.407 2.407 0 0 1 2.403 2.403 2.403 2.403 0 1 1-2.403-2.403zm0 24.022a2.402 2.402 0 1 1 0 4.805 2.402 2.402 0 0 1 0-4.805zm24.022-120.108a2.404 2.404 0 0 1 2.402 2.402 2.404 2.404 0 0 1-2.402 2.402 2.4 2.4 0 0 1-2.402-2.402 2.4 2.4 0 0 1 2.402-2.402zm0-24.022a2.404 2.404 0 0 1 2.402 2.402 2.404 2.404 0 0 1-2.402 2.402 2.4 2.4 0 0 1-2.402-2.402 2.4 2.4 0 0 1 2.402-2.402zm0-24.022a2.404 2.404 0 0 1 2.402 2.402 2.404 2.404 0 0 1-2.402 2.402 2.4 2.4 0 0 1-2.402-2.402A2.4 2.4 0 0 1 194.576 0zm0 72.065a2.404 2.404 0 0 1 2.402 2.402 2.404 2.404 0 0 1-2.402 2.403 2.4 2.4 0 0 1-2.402-2.403 2.4 2.4 0 0 1 2.402-2.402zm0 24.022a2.404 2.404 0 0 1 2.402 2.402c0 .637-.253 1.248-.703 1.699a2.406 2.406 0 0 1-3.397 0 2.402 2.402 0 0 1 1.698-4.101zm0 24.022c.637 0 1.248.253 1.699.703a2.406 2.406 0 0 1 0 3.397 2.402 2.402 0 1 1-1.699-4.1zm0 24.021a2.406 2.406 0 0 1 1.699 4.101 2.402 2.402 0 1 1-1.699-4.101zm0 24.022a2.402 2.402 0 1 1 0 4.805 2.402 2.402 0 0 1 0-4.805zm0 24.022c.637 0 1.248.253 1.699.703a2.406 2.406 0 0 1 0 3.398 2.406 2.406 0 0 1-3.398 0 2.406 2.406 0 0 1 0-3.398 2.406 2.406 0 0 1 1.699-.703zm24.022-144.13A2.4 2.4 0 0 1 221 50.445a2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.402-2.402 2.404 2.404 0 0 1 2.402-2.402zm0-24.022A2.4 2.4 0 0 1 221 26.424a2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.402-2.402 2.404 2.404 0 0 1 2.402-2.402zm0-24.022A2.4 2.4 0 0 1 221 2.402a2.4 2.4 0 0 1-2.402 2.402 2.404 2.404 0 0 1-2.402-2.402A2.404 2.404 0 0 1 218.598 0zm0 72.065A2.4 2.4 0 0 1 221 74.467a2.4 2.4 0 0 1-2.402 2.403 2.404 2.404 0 0 1-2.402-2.403 2.404 2.404 0 0 1 2.402-2.402zm0 24.022A2.4 2.4 0 0 1 221 98.489a2.402 2.402 0 1 1-2.402-2.402zm0 24.022a2.402 2.402 0 1 1 0 4.803 2.402 2.402 0 0 1 0-4.803zm0 24.021a2.403 2.403 0 1 1-.002 4.805 2.403 2.403 0 0 1 .002-4.805zm0 24.022c.637 0 1.248.253 1.698.704a2.398 2.398 0 0 1 0 3.397 2.403 2.403 0 1 1-1.698-4.101zm0 24.022a2.402 2.402 0 1 1 0 4.803 2.402 2.402 0 0 1 0-4.803zm0 24.022a2.402 2.402 0 1 1 0 4.803 2.402 2.402 0 0 1 0-4.803z" fill="#38A169" />
+                </g>
+                <defs>
+                  <clipPath id="clip0">
+                    <path fill="#fff" transform="rotate(-180 110.5 110.5)" d="M0 0h221v221H0z" />
+                  </clipPath>
+                </defs>
               </svg>
-            </InertiaLink>
+            </div>
           </div>
         </div>
       </div>
-      <div className="container mt-8 md:px-4">
-        <div className="w-full space-y-4 mb-10 md:flex md:space-y-0 md:space-x-6 lg:space-x-8 md:mb-14 md:-mt-20 lg:-mt-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        <div className="relative w-full space-y-4 mb-10 md:flex md:space-y-0 md:space-x-6 lg:space-x-8 md:mb-14 md:-mt-20 lg:-mt-32">
           <InertiaLink
             href="/jobs"
             className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg w-full md:flex-col md:justify-between md:px-6 md:py-8"

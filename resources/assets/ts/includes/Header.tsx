@@ -143,8 +143,8 @@ export default () => {
 
   return (
     <>
-      <header ref={ref} className="flex bg-white border-t-4 border-brand-primary fixed top-0 z-100 inset-x-0 shadow-smooth h-18 items-center">
-        <div className="w-full max-w-screen-xl relative mx-auto px-6">
+      <header ref={ref} className="flex bg-white border-t-4 border-brand-primary fixed top-0 z-50 inset-x-0 shadow-smooth h-18 items-center">
+        <div className="w-full max-w-screen-xl mx-auto px-6">
           <div className="flex items-center -mx-6">
             <div className="lg:w-1/2 pl-6 pr-6 lg:pr-8">
               <div className="flex flex-grow items-center">
@@ -169,27 +169,28 @@ export default () => {
             <div className="lg:w-1/2 flex flex-grow lg:pr-6 items-center">
               <div className="w-full">
                 <div className="relative">
-                  <div className="relative">
-                    <span className="flex" style={{ direction: "ltr" }}>
+                  <div className="relative h-full flex items-center">
+                    <div className="relative w-full text-gray-400 focus-within:text-gray-600">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
+                        </svg>
+                      </div>
                       <input
-                        className="transition font-light focus:outline-none border border-transparent focus:bg-gray-100 placeholder-gray-600 rounded-md bg-gray-200 py-2 pr-8 pl-10 block w-full appearance-none leading-normal ds-input"
-                        type="text"
-                        placeholder="Rechercher"
-                        autoComplete="off"
-                        style={{ position: "relative", verticalAlign: "top" }}
+                        className="block w-full h-full pl-10 pr-3 py-2 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:text-sm bg-gray-100 focus:bg-white border border-transparent focus:border-gray-200 leading-normal"
+                        type="search"
                         ref={input}
                         value={query}
                         onChange={handleChange}
+                        placeholder="Rechercher"
+                        autoComplete="off"
                       />
-                    </span>
-                    <div className="pointer-events-none absolute inset-y-0 left-0 pl-4 flex items-center">
-                      <svg className="text-gray-600 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-                      </svg>
                     </div>
-                    <div className="absolute right-3 inset-y-1 border border-gray-400 px-1.5 py-0.5 rounded flex items-center justify-center">
-                      <span className="text-xs leading-4 font-medium text-gray-400">\</span>
-                    </div>
+                    {!loader && (
+                      <div className="absolute right-0 hidden md:block h-auto mr-2 text-xs px-2 py-1 border border-gray-300 rounded-md text-gray-500">
+                        <span>Press \ to focus</span>
+                      </div>
+                    )}
                     {loader && <span className="spinner top-0 right-6 mt-5 mr-6" />}
                   </div>
                   <Transition
@@ -231,7 +232,7 @@ export default () => {
                   </Transition>
                 </div>
               </div>
-              <div className="ml-4 mr-6 lg:hidden">
+              <div className="mx-4 lg:hidden">
                 <button
                   type="button"
                   className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"

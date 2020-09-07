@@ -73,6 +73,9 @@ module.exports = {
         90: '90',
         100: '100',
       },
+      inset: {
+        '-22': '-5.5rem',
+      },
       minHeight: {
         sm: '20rem',
       },
